@@ -1,0 +1,2 @@
+# Minishell
+Our own shell
