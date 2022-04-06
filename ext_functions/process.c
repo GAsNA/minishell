@@ -4,7 +4,7 @@
 #include <sys/wait.h>
 #include <stdlib.h>
 
-int	main(int ac, char **av)
+int	main(int ac, char **av, char **env)
 {
 	int pid;
 	int status;

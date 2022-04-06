@@ -24,8 +24,10 @@ Examples in file readline.c in the folder external_functions
 	Source: https://man7.org/linux/man-pages/man3/getcwd.3.html
 - chdir for change directory: changes the current working directory of the calling process to the directory specified in path.
 	Source: https://man7.org/linux/man-pages/man2/chdir.2.html
+- getenv: searches for the environment string pointed to by name and returns the associated value to the string
+	Source: https://man7.org/linux/man-pages/man3/getenv.3.html
 
-- printf, malloc, free, signal, sigaction are knowned functions
+- printf, malloc, free, perror, signal, sigaction are knowned functions
 
 Examples in file open.c in the folder external_functions
 - access: Check the accessibility to a pathname (file, directory) with differents flags (F_ok for file exists for example)
@@ -59,6 +61,12 @@ Examples in file opendir.c in the folder external_functions
 	Source: https://man7.org/linux/man-pages/man3/readdir.3.html
 - closedir: The closedir() function closes the directory stream associated with dirp.
 	Source: https://man7.org/linux/man-pages/man3/closedir.3.html
+
+VOIR Pipex
+- execve: execve() executes the program referred to by pathname.
+	Source: https://man7.org/linux/man-pages/man2/execve.2.html
+
+Missing functions: strerror, perror, isatty, ttyname, ttyslot, ioctl, getenv, tcsetattr, tcgetattr, tgetent, tgetflag, tgetnum, tgetstr, tgoto, tputs
 
 
 

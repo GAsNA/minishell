@@ -55,7 +55,10 @@ int	main(int ac, char **av)
 	printf("%s\n", cdir);
 */
 
-
-
+// get the env variable
+/*
+	printf("ENV V: %s\n", getenv("PATH"));
+	printf("ENV V: %s\n", getenv("LOGNAME"));
+*/
 	return (0);
 }
