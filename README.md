@@ -27,8 +27,18 @@ Examples in file readline.c in the folder external_functions
 - getenv: searches for the environment string pointed to by name and returns the associated value to the string
 	Source: https://man7.org/linux/man-pages/man3/getenv.3.html
 
-- printf, malloc, free, perror, signal, sigaction are knowned functions
+- printf, malloc, free, perror, strerror and exit are knowned functions
 
+Examples in file signal.c and sigaction.c in the folder external_functions
+- signal: This function handle the signal and manage it how you want. Use sigaction instead
+	Source: https://man7.org/linux/man-pages/man2/signal.2.html
+- sigaction: The sigaction() system call is used to change the action taken by a process on receipt of a specific signal.
+	Source: https://man7.org/linux/man-pages/man2/sigaction.2.html
+- sigemptyset: Initializes the signal set given by set to empty, with all signals excluded from the set.
+- sigaddset: Adds a signal to the set of signals already recorded in set.
+	Sources: https://stackoverflow.com/questions/27227585/what-is-sigaddset-used-for
+- kill: Send the signal in parameter
+			
 Examples in file open.c in the folder external_functions
 - access: Check the accessibility to a pathname (file, directory) with differents flags (F_ok for file exists for example)
 	Source: http://manpagesfr.free.fr/man/man2/access.2.html
@@ -66,7 +76,7 @@ VOIR Pipex
 - execve: execve() executes the program referred to by pathname.
 	Source: https://man7.org/linux/man-pages/man2/execve.2.html
 
-Missing functions: strerror, perror, isatty, ttyname, ttyslot, ioctl, getenv, tcsetattr, tcgetattr, tgetent, tgetflag, tgetnum, tgetstr, tgoto, tputs
+Missing functions: isatty, ttyname, ttyslot, ioctl, tcsetattr, tcgetattr, tgetent, tgetflag, tgetnum, tgetstr, tgoto, tputs
 
 
 
