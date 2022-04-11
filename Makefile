@@ -1,41 +1,56 @@
-SRCS	=	$(addprefix srcs/, main.c)
+PRESENTATION	=	" \e[32m*******************************************************\033[0m\n"\
+					"\e[32m*                                                     *\033[0m\n"\
+					"\e[32m*               Project: Minishell                    *\033[0m\n"\
+					"\e[32m*                                                     *\033[0m\n"\
+					"\e[32m* By: David ASLI && Romane LESEUR                     *\033[0m\n"\
+					"\e[32m*******************************************************\033[0m\n"
 
-OBJS	=	${SRCS:.c=.o}
 
-CC		=	cc
+####### VARIABLES #######
 
-CFLAGS	=	-Wall -Werror -Wextra
+SRCS_PATH	=	./srcs/
+OBJS_PATH	=	./objs/
+FILES		=	main.c
+SRCS		=	$(addprefix ${SRCS_PATH}, ${FILES})
+OBJS		=	$(addprefix ${OBJS_PATH}, ${FILES:.c=.o})
 
-RM		=	rm -rf
+HEADER_PATH	=	./headers/
+HEADER		=	$(addprefix ${HEADER_PATH}, minishell.h)
 
-LIBFT	=	libft
+CC			=	clang
+CFLAGS		=	-Wall -Werror -Wextra
+RM			=	rm -rf
 
-NAME	=	minishell
+LIBFT		=	libft
 
-all:	${NAME}
+NAME		=	minishell
 
-%.o:	%.c
-	@${CC} ${CFLAGS} -c $< -o $@
 
-${NAME}:	${OBJS}
-	@echo   "\e[32m*******************************************************\033[0m"
-	@echo   "\e[32m*                                                     *\033[0m"
-	@echo   "\e[32m*               Project: Minishell                    *\033[0m"
-	@echo   "\e[32m*                                                     *\033[0m"
-	@echo   "\e[32m*By: David ASLI && Romane LESEUR                      *\033[0m"
-	@echo   "\e[32m*******************************************************\033[0m"
-	@make -C libft
-	@${CC} ${CFLAGS} -o ${NAME} ${OBJS}
-	@echo "\e[32m"Compilation success"\033[0m"
+####### COMMANDS #######
+
+all:				${NAME}
+
+${OBJS_PATH}%.o:	${SRCS_PATH}%.c
+				@mkdir -p ${dir $@}
+				@${CC} ${CFLAGS} -c $< -o $@
+
+${NAME}:			${OBJS}
+				@echo ${PRESENTATION} 
+				@make -C libft
+				@${CC} ${CFLAGS} -o ${NAME} ${OBJS}
+				@echo "\e[32m"Compilation success"\033[0m"
 
 clean:
-	@${RM} ${OBJS}
-	@echo "\e[35m"Object files deleted"\033[0m"
+				@${RM} ${OBJS_PATH}
+				@echo "\e[35m"Object files deleted"\033[0m"
 
-fclean:	clean
-	@${RM} ${NAME}
-	@echo "\e[35m"Executable deleted"\033[0m"
+fclean:				clean
+				@${RM} ${NAME}
+				@echo "\e[35m"Executable deleted"\033[0m"
 
-re:	fclean all
+re:					fclean all
 
-.PHONY:	clean fclean re	
+david:
+				@cat srcs/david.txt
+
+.PHONY:			all clean fclean re
