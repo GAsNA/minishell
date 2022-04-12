@@ -29,7 +29,8 @@ PRESENTATION2	=	" \e[32m********************************************************
 
 SRCS_PATH	=	./srcs/
 OBJS_PATH	=	./objs/
-FILES		=	main.c
+FILES		=	main.c	\
+				parsing.c
 SRCS		=	$(addprefix ${SRCS_PATH}, ${FILES})
 OBJS		=	$(addprefix ${OBJS_PATH}, ${FILES:.c=.o})
 
@@ -51,7 +52,7 @@ all:				${NAME}
 
 ${OBJS_PATH}%.o:	${SRCS_PATH}%.c
 				@mkdir -p ${dir $@}
-				@${CC} ${CFLAGS} -c $< -o $@
+				@${CC} ${CFLAGS} -c -I${HEADER_PATH} $< -o $@
 
 ${NAME}:			${OBJS}
 				@echo ${PRESENTATION2} 
