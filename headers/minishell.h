@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:43:07 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/12 10:52:19 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/12 13:56:32 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,14 @@ struct s_data
 struct s_command
 {
 	char		**command;
-	char		**words;
-	enum ops	op;
 	t_command	*next;
 };
+
+/********************************************/
+/*				Protoypes					*/
+/********************************************/
+
+/* parsing.c */
+t_command	*get_commands(char *line);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:44:11 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/12 10:52:37 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/12 13:57:21 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	minishell(char **env)
 		}
 		if (data.line[0])
 			add_history(data.line);
+		get_commands(data.line);
 		printf("%s\n", data.line);
 	}
 	return (0);
