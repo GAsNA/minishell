@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:43:07 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/12 09:51:55 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/12 10:23:16 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,31 @@
 # include<readline/history.h>
 # include<signal.h>
 
-typedef struct s_data
+enum ops
+{
+	PIPE,
+	REDI_IN,
+	REDI_OUT,
+	DREDI_IN,
+	DREDI_OUT
+};
+
+typedef struct s_data		t_data;
+typedef struct s_command	t_command;
+
+struct s_data
 {
 	int		run;
 	int		exit_code;
 	char	**env;
 	char	*line;
-}	t_data;
+};
+
+struct s_command
+{
+	char		**command;
+	enum ops	op;
+	t_command	*next;
+}
 
 #endif
