@@ -6,19 +6,19 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:43:07 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/12 10:23:16 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/12 10:26:23 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include<stdio.h>
-# include<stdlib.h>
-# include<unistd.h>
-# include<readline/readline.h>
-# include<readline/history.h>
-# include<signal.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+# include <signal.h>
 
 enum ops
 {
