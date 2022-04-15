@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:43:07 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/12 13:56:32 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/15 16:41:30 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <readline/history.h>
 # include <signal.h>
 
-enum ops
+enum e_ops
 {
 	PIPE,
 	REDI_IN,
@@ -47,10 +47,10 @@ struct s_command
 };
 
 /********************************************/
-/*				Protoypes					*/
+/*	  			   Protoypes				*/
 /********************************************/
 
 /* parsing.c */
-t_command	*get_commands(char *line);
+char	**get_commands(char *line);
 
 #endif

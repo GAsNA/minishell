@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:44:11 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/12 13:57:21 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/15 16:42:52 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	handle_signals_main(void)
 int	minishell(char **env)
 {
 	t_data	data;
+	char	**strs;
 
 	(void)env;
 	handle_signals_main();
@@ -45,7 +46,10 @@ int	minishell(char **env)
 		}
 		if (data.line[0])
 			add_history(data.line);
-		get_commands(data.line);
+		strs = get_commands(data.line);
+		int	i = -1;
+		while (strs[++i])
+			printf("%s\n", strs[i]);
 		printf("%s\n", data.line);
 	}
 	return (0);
