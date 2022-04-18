@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 10:28:13 by rleseur           #+#    #+#             */
-/*   Updated: 2022/04/15 16:57:38 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/18 13:45:30 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,88 +44,89 @@ static int	is_quotes_close(char *line)
 	return (1);
 }
 
-static int	counter_words(char *str)
+static int	is_char(char c, char *charset)
 {
 	int	i;
-	int	in_quote;
-	int	nb_words;
 
-	i = 0;
-	while (str[i] && str[i] == ' ')
-		i++;
-	in_quote = 0;
-	nb_words = 0;
-	while (str[i])
-	{
-		if (str[i] == '"' || str[i] == '\'')
-			in_quote = 1;
-		while (str[i] && (str[i] != ' ' || in_quote == 1))
-		{
-			if (str[i] == '"' || str[i] == '\'')
-				in_quote = 0;
-			i++;
-		}
-		nb_words++;
-		while (str[i] && (str[i] == ' ' && in_quote == 0))
-		{
-			if (str[i] == '"' || str[i] == '\'')
-				in_quote = 1;
-			i++;
-		}
-	}
-	return (nb_words);
+	i = -1;
+	while (charset[++i])
+		if (c == charset[i])
+			return (1);
+	return (0);
 }
 
-static char	*ft_strdup(char *src)
+static int	count_words(char const *s, char *charset)
 {
-	char	*dest;
+	int	i;
+	int	words;
+
+	i = 0;
+	while (s[i] && is_char(s[i], charset))
+		i++;
+	words = 0;
+	while (s[i])
+	{
+		while (s[i] && !is_char(s[i], charset))
+			i++;
+		words++;
+		while (s[i] && is_char(s[i], charset))
+			i++;
+	}
+	return (words);
+}
+
+static char	*ft_strdup_mod(char const *s, char *charset)
+{
+	char	*dup;
 	int		i;
-	int		len;
-	int		in_quote;
 
-	len = 0;
-	in_quote = 1;
-	while (src[len] && (src[len] != ' ' || in_quote == 1))
-	{
-		if (src[i] == '"' || src[i] == '\'')
-			in_quote = 0;
-		len++;
-	}
-	dest = malloc((len + 1) * sizeof(char));
-	if (!dest)
-		return (0);
 	i = 0;
-	while (src[i] && src[i] != ' ')
-	{
-		dest[i] = src[i];
+	while (s[i] && !is_char(s[i], charset))
 		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
+	dup = malloc((i + 1) * sizeof(char));
+	if (!dup)
+		return (0);
+	i = -1;
+	while (s[++i] && !is_char(s[i], charset))
+		dup[i] = s[i];
+	dup[i] = '\0';
+	return (dup);
 }
 
-static char	**ft_split(char *str)
+char	**to_free(char **tab)
 {
+	int	i;
+
+	i = -1;
+	while (tab[++i])
+		free(tab[i]);
+	free(tab);
+	return (0);
+}
+
+char	**ft_split(char const *s, char *charset)
+{
+	int		words;
 	char	**tab;
-	int		nb_words;
 	int		i;
 	int		j;
 
-	nb_words = counter_words(str);
-	tab = malloc((nb_words + 1) * sizeof(char *));
+	if (!s)
+		return (0);
+	words = count_words(s, charset);
+	tab = malloc((words + 1) * sizeof(char *));
 	if (!tab)
 		return (0);
 	i = 0;
 	j = 0;
-	while (str[i] && j < nb_words)
+	while (s[i] && j < words)
 	{
-		while (str[i] && str[i] == ' ')
+		while (s[i] && is_char(s[i], charset))
 			i++;
-		tab[j] = ft_strdup(&str[i]);
-		if (!tab[j])
-			return (0);
-		j++;
-		while (str[i] && str[i] != ' ')
+		tab[j] = ft_strdup_mod(&s[i], charset);
+		if (!tab[j++])
+			return (to_free(tab));
+		while (s[i] && !is_char(s[i], charset))
 			i++;
 	}
 	tab[j] = 0;
@@ -137,7 +138,7 @@ char	**get_commands(char *line)
 {
 	char	**commands;
 
-	commands = ft_split(line);
+	commands = ft_split(line, " '\"");
 	if (!is_quotes_close(line))
 	{
 		printf("C'est pas bon.\n");
