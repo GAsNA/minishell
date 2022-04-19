@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:43:07 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/19 11:43:48 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/19 12:13:58 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@ struct s_lexing
 /********************************************/
 
 /* parsing.c */
-t_lexing	*get_commands(char *line);
+t_lexing	*get_lexing(char *line);
 
 #endif

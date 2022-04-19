@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 10:28:13 by rleseur           #+#    #+#             */
-/*   Updated: 2022/04/19 12:01:53 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/19 12:13:44 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,24 +95,16 @@ t_lexing	*get_lexing(char *line)
 	int			i;
 	t_lexing	*lexing;
 
+	if (!is_quotes_close(line))
+	{
+		printf("C'est pas bon.\n");
+		return (0);
+	}
 	lexing = ft_create_elem(line[0], get_type(line[0]));
 	if (!lexing)
 		return (0);
 	i = 0;
 	while (line[++i])
 		ft_list_push_back(&lexing, line[i], get_type(line[i]));
-	return (lexing);
-}
-
-t_lexing	*get_commands(char *line)
-{
-	t_lexing	*lexing;
-
-	if (!is_quotes_close(line))
-	{
-		printf("C'est pas bon.\n");
-		return (0);
-	}
-	lexing = get_lexing(line);
 	return (lexing);
 }

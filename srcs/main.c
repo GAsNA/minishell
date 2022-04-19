@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:44:11 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/19 11:44:29 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/19 12:14:09 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	minishell(char **env)
 		}
 		if (data.line[0])
 			add_history(data.line);
-		lex = get_commands(data.line);
+		lex = get_lexing(data.line);
 		if (lex)
 		{
 			while (lex)
