@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:43:07 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/15 16:41:30 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/19 11:43:48 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,19 @@
 # include <readline/history.h>
 # include <signal.h>
 
-enum e_ops
+enum e_type
 {
+	LITERAL,
+	SPACE_,
+	OUTREDIR,
+	INREDIR,
 	PIPE,
-	REDI_IN,
-	REDI_OUT,
-	DREDI_IN,
-	DREDI_OUT
+	SIMPLEQUOTE,
+	DOUBLEQUOTE
 };
 
 typedef struct s_data		t_data;
-typedef struct s_command	t_command;
+typedef struct s_lexing		t_lexing;
 
 struct s_data
 {
@@ -40,10 +42,11 @@ struct s_data
 	char	*line;
 };
 
-struct s_command
+struct s_lexing
 {
-	char		**command;
-	t_command	*next;
+	char		letter;
+	enum e_type	type;
+	t_lexing	*next;
 };
 
 /********************************************/
@@ -51,6 +54,6 @@ struct s_command
 /********************************************/
 
 /* parsing.c */
-char	**get_commands(char *line);
+t_lexing	*get_commands(char *line);
 
 #endif
