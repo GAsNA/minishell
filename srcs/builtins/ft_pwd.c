@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:25 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/13 17:27:21 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/19 11:46:09 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_pwd(char **cmd)
 		return (1);
 	}
 	getcwd(buff, 2048);
-	printf("%s\n", buff);
+	printf("PWD: --- %s\n", buff);
 	free(buff);
 	return (0);
 }

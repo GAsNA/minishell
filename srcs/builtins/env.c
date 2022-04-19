@@ -6,8 +6,8 @@
 /*   By: aasli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 19:40:23 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/18 21:25:30 by aasli            ###   ########.fr       */
-/*                                                                            */	
+/*   Updated: 2022/04/19 14:05:51 by aasli            ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
@@ -38,13 +38,12 @@ void	free_env(char **env)
 
 char	**rep_var_env(char **env, char *var, char *str, int n)
 {
-
-	int	i;
-	int	size;
-	char **tmp;
+	int		i;
+	int		size;
+	char	**tmp;
 
 	i = 0;
-	size = env_size(env) + 2;
+	size = env_size(env) + 1;
 	tmp = malloc(sizeof(char *) * size);
 	if (!tmp)
 		return (NULL);
@@ -56,19 +55,16 @@ char	**rep_var_env(char **env, char *var, char *str, int n)
 			tmp[i] = ft_strdup(env[i]);
 		i++;
 	}
-	tmp[i] = ft_strdup(var);
-	i++;
 	tmp[i] = 0;
 	free_env(env);
 	return (tmp);
 }
 
-char **add_var_env(char **env, char *var)
+char	**add_var_env(char **env, char *var)
 {
-
-	int	i;
-	int	size;
-	char **tmp;
+	int		i;
+	int		size;
+	char	**tmp;
 
 	i = 0;
 	size = env_size(env) + 2;
@@ -89,9 +85,9 @@ char **add_var_env(char **env, char *var)
 
 char	**get_env(char **env)
 {
-	int	i;
-	int	size;
-	char **tmp;
+	int		i;
+	int		size;
+	char	**tmp;
 
 	i = 0;
 	size = env_size(env) + 1;

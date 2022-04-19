@@ -29,7 +29,7 @@ PRESENTATION2	=	" \e[32m********************************************************
 
 SRCS_PATH	=	./builtins/
 OBJS_PATH	=	./builtins/
-FILES		=	main.c ft_pwd.c ft_cd.c env.c
+FILES		=	main.c ft_pwd.c ft_cd.c cd_utils.c env.c
 SRCS		=	$(addprefix ${SRCS_PATH}, ${FILES})
 OBJS		=	$(addprefix ${OBJS_PATH}, ${FILES:.c=.o})
 
