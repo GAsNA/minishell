@@ -6,12 +6,12 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:25 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/13 08:44:29 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/13 17:27:21 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
-#include "../../libft/libft.h"
+#include "../libft/libft.h"
 
 int	ft_pwd(char **cmd)
 {

@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:43:07 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/13 08:03:07 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/18 21:54:42 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include<stdio.h>
 # include<stdlib.h>
 # include<unistd.h>
-# include<readline/readline.h>
-# include<readline/history.h>
+//# include<readline/readline.h>
+//# include<readline/history.h>
 # include<signal.h>
 
 enum ops
@@ -48,5 +48,9 @@ struct s_command
 };
 
 int	ft_pwd(char **cmd);
-
+int	ft_cd(char **cmd, char **env);
+char	**get_env(char **env);
+char	**add_var_env(char **env, char *var);
+char	**rep_var_env(char **env, char *var, char *str, int n);
+void	free_env(char **env);
 #endif

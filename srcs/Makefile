@@ -29,7 +29,7 @@ PRESENTATION2	=	" \e[32m********************************************************
 
 SRCS_PATH	=	./builtins/
 OBJS_PATH	=	./builtins/
-FILES		=	main.c ft_pwd.c ft_cd.c
+FILES		=	main.c ft_pwd.c ft_cd.c env.c
 SRCS		=	$(addprefix ${SRCS_PATH}, ${FILES})
 OBJS		=	$(addprefix ${OBJS_PATH}, ${FILES:.c=.o})
 
@@ -37,7 +37,7 @@ HEADER_PATH	=	../headers/
 HEADER		=	$(addprefix ${HEADER_PATH}, minishell.h)
 
 CC			=	clang
-CFLAGS		=	-Wall -Werror -Wextra
+CFLAGS		=	-Wall -Werror -Wextra -g
 RM			=	rm -rf
 
 LIBFT		=	../libft
@@ -56,7 +56,7 @@ ${OBJS_PATH}%.o:	${SRCS_PATH}%.c
 ${NAME}:			${OBJS}
 				@echo ${PRESENTATION2} 
 				@make -C libft
-				@${CC} ${CFLAGS} -o ${NAME} ${OBJS} -lreadline
+				@${CC} ${CFLAGS} -o ${NAME} ${OBJS} libft/libft.a
 				@echo "\e[32m"Compilation success"\033[0m"
 
 clean:
