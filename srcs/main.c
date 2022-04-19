@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:44:11 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/19 12:14:09 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/19 14:20:55 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	handle_signals_main(void)
 int	minishell(char **env)
 {
 	t_data		data;
-	t_lexing	*lex;
+	t_regroup	*reg;
 
 	(void)env;
 	handle_signals_main();
@@ -46,13 +46,13 @@ int	minishell(char **env)
 		}
 		if (data.line[0])
 			add_history(data.line);
-		lex = get_lexing(data.line);
-		if (lex)
+		reg = get_regroup(get_lexing(data.line));
+		if (reg)
 		{
-			while (lex)
+			while (reg)
 			{
-				printf("%c\t->\t%d\n", lex->letter, lex->type);
-				lex = lex->next;
+				printf("%s\n", reg->str);
+				reg = reg->next;
 			}
 		}
 		printf("%s\n", data.line);

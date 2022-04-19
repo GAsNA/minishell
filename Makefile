@@ -29,8 +29,9 @@ PRESENTATION2	=	" \e[32m********************************************************
 
 SRCS_PATH	=	./srcs/
 OBJS_PATH	=	./objs/
-FILES		=	main.c	\
-				parsing.c
+FILES		=	main.c		\
+				parsing.c	\
+				manage_lists.c
 SRCS		=	$(addprefix ${SRCS_PATH}, ${FILES})
 OBJS		=	$(addprefix ${OBJS_PATH}, ${FILES:.c=.o})
 

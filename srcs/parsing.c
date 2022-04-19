@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 10:28:13 by rleseur           #+#    #+#             */
-/*   Updated: 2022/04/19 12:13:44 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/19 14:52:15 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,35 +44,8 @@ static int	is_quotes_close(char *line)
 	return (1);
 }
 
-t_lexing	*ft_create_elem(char letter, enum e_type type)
-{
-	t_lexing	*elem;
 
-	elem = malloc(sizeof(t_lexing));
-	if (!elem)
-		return (0);
-	elem->letter = letter;
-	elem->type = type;
-	elem->next = NULL;
-	return (elem);
-}
-
-void	ft_list_push_back(t_lexing **begin_list, char letter, enum e_type type)
-{
-	t_lexing	*list;
-
-	if (*begin_list)
-	{
-		list = *begin_list;
-		while (list->next)
-			list = list->next;
-		list->next = ft_create_elem(letter, type);
-	}
-	else
-		*begin_list = ft_create_elem(letter, type);
-}
-
-enum e_type	get_type(char c)
+static enum e_type	get_type(char c)
 {
 	if (c == ' ')
 		return (SPACE_);
@@ -100,11 +73,60 @@ t_lexing	*get_lexing(char *line)
 		printf("C'est pas bon.\n");
 		return (0);
 	}
-	lexing = ft_create_elem(line[0], get_type(line[0]));
+	lexing = ft_create_elem_lex(line[0], get_type(line[0]));
 	if (!lexing)
 		return (0);
 	i = 0;
 	while (line[++i])
-		ft_list_push_back(&lexing, line[i], get_type(line[i]));
+		ft_list_push_back_lex(&lexing, line[i], get_type(line[i]));
 	return (lexing);
+}
+
+t_lexing	*ft_regroup(t_lexing *lex, char **str)
+{
+	int			j;
+	int			i;
+	t_lexing	*tmp;
+
+	tmp = lex;
+	i = 0;
+	while (lex)
+	{
+		if(lex->type == SPACE_)
+		{
+			lex = lex->next;
+			break;
+		}
+		i++;
+		lex = lex->next;
+	}
+	*str = malloc((i + 1) * sizeof(char));
+	if (!*str)
+		return (0);
+	j = -1;
+	while (++j < i)
+	{
+		(*str)[j] = tmp->letter;
+		tmp = tmp->next;
+	}
+	(*str)[j] = '\0';
+	return (lex);
+}
+
+t_regroup	*get_regroup(t_lexing *lex)
+{
+	char		*str;
+	t_regroup	*regroup;
+
+	str = NULL;
+	lex = ft_regroup(lex, &str);
+	regroup = ft_create_elem_reg(str);
+	if (!regroup)
+		return (0);
+	while (lex)
+	{
+		lex = ft_regroup(lex, &str);
+		ft_list_push_back_reg(&regroup, str);
+	}
+	return (regroup);
 }
