@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/19 11:52:07 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/20 14:22:09 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int ac, char **av, char **env)
 	ft_pwd(av);
 	ft_cd(av, &n_env);
 	ft_pwd(av);
-	if (n_env)
+	/*if (n_env)
 	{
 		int i = 0;
 		char **tmp = n_env;
@@ -34,6 +34,6 @@ int	main(int ac, char **av, char **env)
 			i++;
 		}
 		free_env(tmp);
-	}
+	}*/
 	return (0);
 }

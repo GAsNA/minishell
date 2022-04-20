@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 12:11:42 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/19 16:33:00 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/20 14:59:07 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,22 @@ int	check_cd_access(char **cmd)
 	DIR	*dir;
 
 	dir = opendir(cmd[1]);
-	perm = access(cmd[1], X_OK);
-	open = access(cmd[1], F_OK);
-	if (dir == NULL && open != -1)
+	if (dir == NULL)
 	{
-		printf("Rovidshell: cd: %s: Not a directory\n", cmd[1]);
+		printf("Rovidshell: cd: %s: %s\n", cmd[1], strerror(errno));
 		closedir(dir);
 		return (1);
 	}
-	if (open != -1)
+	open = access(cmd[1], F_OK);
+	if (open == -1)
 	{
-		printf("Rovidshell: cd: %s: No such file or directory\n", cmd[1]);
+		printf("Rovidshell: cd: %s: %s\n", cmd[1], strerror(errno));
 		return (1);
 	}
+	perm = access(cmd[1], X_OK);
 	if (perm == -1)
 	{
-		printf("Rovidshell: cd: %s: Permission denied\n", cmd[1]);
+		printf("Rovidshell: cd: %s: %s\n", cmd[1], strerror(errno));
 		return (1);
 	}
 	return (0);
