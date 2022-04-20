@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:50:21 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/20 16:42:32 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/20 21:12:11 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,6 @@ char	**update_old_pwd(char **env)
 
 int	ft_cd(char **cmd, char ***env)
 {
-	char	*buff;
-
-	buff = NULL;
 	if (cmd[0] && cmd[1] && cmd[2])
 	{
 		printf("Rovidshell: cd: too many arguments\n");
@@ -94,17 +91,16 @@ int	ft_cd(char **cmd, char ***env)
 	{
 		if (check_cd_access(cmd) == 1)
 			return (1);
+		if (strcmp(cmd[1], "//") == 0)
+		{
+			*env = update_pwd(*env, "//");
+			ft_pwd(cmd);
+		}
 		if (chdir(cmd[1]) == -1)
 			return (1);
-		*env = update_old_pwd(*env);
-		buff = ft_calloc(2049, 1);
-		getcwd(buff, 2048);
-		*env = update_pwd(*env, buff);
-		free(buff);
+		update_env(env);
 	}
 	else if (cmd[0])
-	{
 		go_home(env, get_var_from_env(*env, "HOME=", 5));
-	}
 	return (0);
 }

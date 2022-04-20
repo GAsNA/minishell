@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/20 15:34:54 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/20 18:13:56 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 int	main(int ac, char **av, char **env)
 {
-	char **n_env;
+	char	**n_env;
+
 	(void)ac;
 	av++;
 	n_env = get_env(env);

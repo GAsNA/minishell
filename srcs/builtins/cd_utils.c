@@ -6,18 +6,36 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 12:11:42 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/20 16:40:06 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/20 21:15:35 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 #include "../libft/libft.h"
 
+int	update_env(char ***env)
+{
+	char	*buff;
+
+	buff = NULL;
+	*env = update_old_pwd(*env);
+	buff = ft_calloc(2049, 1);
+	getcwd(buff, 2048);
+	*env = update_pwd(*env, buff);
+	free(buff);
+	return (0);
+}
+
 int	go_home(char ***env, char *home)
 {
 	char	*buff;
 
 	buff = NULL;
+	if (home == NULL)
+	{
+		printf("Rovidshell: cd: HOME not set\n");
+		return (1);
+	}
 	if (chdir(home) == -1)
 		return (1);
 	*env = update_old_pwd(*env);
