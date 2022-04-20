@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 10:28:13 by rleseur           #+#    #+#             */
-/*   Updated: 2022/04/19 14:52:15 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/20 13:29:13 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,16 +86,37 @@ t_lexing	*ft_regroup(t_lexing *lex, char **str)
 {
 	int			j;
 	int			i;
+	int			s_quote;
+	int			d_quote;
 	t_lexing	*tmp;
 
+	s_quote = 0;
+	d_quote = 0;
 	tmp = lex;
 	i = 0;
 	while (lex)
 	{
-		if(lex->type == SPACE_)
+		if (lex->type == SIMPLEQUOTE)
 		{
-			lex = lex->next;
-			break;
+			if (s_quote == 0 && d_quote == 0)
+				s_quote = 1;
+			else
+				s_quote = 0;
+		}
+		else if (lex->type == DOUBLEQUOTE)
+		{
+			if (d_quote == 0 && s_quote == 0)
+				d_quote = 1;
+			else
+				d_quote = 0;
+		}
+		else if(lex->type == SPACE_)
+		{
+			if (d_quote == 0 && s_quote == 0)
+			{
+				lex = lex->next;
+				break;
+			}
 		}
 		i++;
 		lex = lex->next;
