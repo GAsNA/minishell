@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:50:21 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/19 16:33:03 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/20 16:42:32 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ char	**update_old_pwd(char **env)
 	char	*tmp2;
 	char	*last;
 
-	tmp = get_var_from_env(env, "PWD=", 4);
+	tmp = ft_calloc(2049, sizeof(char));
+	getcwd(tmp, 2048);
 	tmp2 = get_var_from_env(env, "OLDPWD=", 7);
 	last = ft_strjoin("OLDPWD=", tmp);
 	if (tmp2 && get_line(env, "OLDPWD=", 7) != -1)
@@ -84,7 +85,6 @@ int	ft_cd(char **cmd, char ***env)
 	char	*buff;
 
 	buff = NULL;
-	(void)env;
 	if (cmd[0] && cmd[1] && cmd[2])
 	{
 		printf("Rovidshell: cd: too many arguments\n");
@@ -94,16 +94,17 @@ int	ft_cd(char **cmd, char ***env)
 	{
 		if (check_cd_access(cmd) == 1)
 			return (1);
-	// Use chdir
 		if (chdir(cmd[1]) == -1)
 			return (1);
-	// Dup the current pwd into the old pwd
 		*env = update_old_pwd(*env);
-	// Set the pwd variable to this new directory
 		buff = ft_calloc(2049, 1);
 		getcwd(buff, 2048);
 		*env = update_pwd(*env, buff);
 		free(buff);
+	}
+	else if (cmd[0])
+	{
+		go_home(env, get_var_from_env(*env, "HOME=", 5));
 	}
 	return (0);
 }

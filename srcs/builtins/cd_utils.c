@@ -6,12 +6,27 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 12:11:42 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/20 14:59:07 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/20 16:40:06 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 #include "../libft/libft.h"
+
+int	go_home(char ***env, char *home)
+{
+	char	*buff;
+
+	buff = NULL;
+	if (chdir(home) == -1)
+		return (1);
+	*env = update_old_pwd(*env);
+	buff = ft_calloc(2049, 1);
+	getcwd(buff, 2048);
+	*env = update_pwd(*env, buff);
+	free(buff);
+	return (0);
+}
 
 int	check_cd_access(char **cmd)
 {
@@ -23,9 +38,9 @@ int	check_cd_access(char **cmd)
 	if (dir == NULL)
 	{
 		printf("Rovidshell: cd: %s: %s\n", cmd[1], strerror(errno));
-		closedir(dir);
 		return (1);
 	}
+	closedir(dir);
 	open = access(cmd[1], F_OK);
 	if (open == -1)
 	{

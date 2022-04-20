@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:43:07 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/20 14:51:51 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/20 16:37:34 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,7 @@ char	**rep_var_env(char **env, char *var, char *str, int n);
 void	free_env(char **env);
 int		check_cd_access(char **cmd);
 int		get_line(char **env, char *str, int n);
+int		go_home(char ***env, char *home);
+char	**update_pwd(char **env, char *pwd);
+char	**update_old_pwd(char **env);
 #endif
