@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:43:07 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/20 20:26:20 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/21 14:13:59 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ struct s_command
 	t_command	*next;
 };
 
-int	ft_pwd(char **cmd);
-int	ft_cd(char **cmd, char ***env);
+int		ft_pwd(char **cmd, char ***env);
+int		ft_cd(char **cmd, char ***env);
 char	**get_env(char **env);
 char	**add_var_env(char **env, char *var);
 char	**rep_var_env(char **env, char *var, char *str, int n);
@@ -61,4 +61,5 @@ int		go_home(char ***env, char *home);
 int		update_env(char ***env);
 char	**update_pwd(char **env, char *pwd);
 char	**update_old_pwd(char **env);
+char	*get_var_from_env(char **env, char *str, size_t n);
 #endif

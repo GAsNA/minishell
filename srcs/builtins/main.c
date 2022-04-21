@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/20 18:13:56 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/21 14:34:45 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	main(int ac, char **av, char **env)
 	n_env = get_env(env);
 	if (!n_env)
 		return (1);
-	ft_pwd(av);
+	ft_pwd(av, &n_env);
 	ft_cd(av, &n_env);
-	ft_pwd(av);
+	ft_pwd(av, &n_env);
 	/*if (n_env)
 	{
 		int i = 0;
