@@ -6,33 +6,32 @@
 
 int	main(int ac, char **av, char **env)
 {
-	int pid;
-	int status;
-	int i = 5;
-	int pipefd[2];
-	char buff[100];
-/*
-	printf("Beginning of the main process\n");
-	pid = fork();
-	if (pid == 0)
-	{
-		printf("Child process created\n");
-		i = 12;
-		printf("i: %i\n", i);
-		sleep(2);
-		exit(0);
-	}
-	else
-	{
-		waitpid(pid, &status, 0);
-		printf("Parent has waited for child\n");
-	}
-	printf("i: %i\n", i);
-	printf("Status: %i\n", status);
-*/
-
-// Write  something in the child process and get it to the main process
-
+	int		pid;
+	int		status;
+	int		i;
+	int		pipefd[2];
+	char	buff[100];
+	/*
+	   printf("Beginning of the main process\n");
+	   pid = fork();
+	   if (pid == 0)
+	   {
+	   printf("Child process created\n");
+	   i = 12;
+	   printf("i: %i\n", i);
+	   sleep(2);
+	   exit(0);
+	   }
+	   else
+	   {
+	   waitpid(pid, &status, 0);
+	   printf("Parent has waited for child\n");
+	   }
+	   printf("i: %i\n", i);
+	   printf("Status: %i\n", status);
+	 */
+	// Write  something in the child process and get it to the main process
+	i = 5;
 	printf("Beginning of the main process\n");
 	if (pipe(pipefd) == -1)
 	{	
@@ -43,7 +42,8 @@ int	main(int ac, char **av, char **env)
 	if (pid == 0)
 	{
 		close(pipefd[0]);
-		if (dup2(pipefd[1], 1) == -1) // We now write into the pipe instead of stdout
+		if (dup2(pipefd[1], 1) == -1)
+			// We now write into the pipe instead of stdout
 		{
 			perror("Dup");
 			exit (0);
@@ -56,7 +56,8 @@ int	main(int ac, char **av, char **env)
 	{
 		waitpid(pid, &status, 0);
 		close(pipefd[1]);
-		if (dup2(pipefd[0], 0) == -1) // We now read into the pipe instead of stdin
+		if (dup2(pipefd[0], 0) == -1)
+			// We now read into the pipe instead of stdin
 		{
 			perror("Dup");
 			exit (0);

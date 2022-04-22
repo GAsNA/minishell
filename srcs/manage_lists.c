@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 12:17:38 by rleseur           #+#    #+#             */
-/*   Updated: 2022/04/19 12:26:29 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/22 11:11:03 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ t_lexing	*ft_create_elem_lex(char letter, enum e_type type)
 	return (elem);
 }
 
-void	ft_list_push_back_lex(t_lexing **begin_list, char letter, enum e_type type)
+void	ft_list_push_back_lex(t_lexing **begin_list,
+		char letter, enum e_type type)
 {
 	t_lexing	*list;
 

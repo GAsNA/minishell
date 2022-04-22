@@ -4,8 +4,8 @@
 
 int	main(int ac, char **av)
 {
-	struct stat statusfile; // TW Do not declare pointer to struct or allocate dynamically
-
+	struct stat	statusfile; // TW Do not declare pointer to
+							// struct or allocate dynamically
 	if (stat(av[1], &statusfile) == -1)
 	{
 		perror("Error");

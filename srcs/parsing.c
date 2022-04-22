@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 10:28:13 by rleseur           #+#    #+#             */
-/*   Updated: 2022/04/22 10:56:36 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/22 11:20:44 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ static int	is_quotes_close(char *line)
 		return (0);
 	return (1);
 }
-
 
 static enum e_type	get_type(char c)
 {
@@ -82,18 +81,13 @@ t_lexing	*get_lexing(char *line)
 	return (lexing);
 }
 
-t_lexing	*ft_regroup(t_lexing *lex, char **str)
+static t_lexing	*choose_str(t_lexing *lex, int *i)
 {
-	int			j;
-	int			i;
-	int			s_quote;
-	int			d_quote;
-	t_lexing	*tmp;
+	int	s_quote;
+	int	d_quote;
 
 	s_quote = 0;
 	d_quote = 0;
-	tmp = lex;
-	i = 0;
 	while (lex)
 	{
 		if (lex->type == SIMPLEQUOTE)
@@ -118,15 +112,28 @@ t_lexing	*ft_regroup(t_lexing *lex, char **str)
 				break ;
 			}
 		}
-		if (lex->next && lex->type != lex->next->type && lex->next->type != SPACE_ && (d_quote == 0 && s_quote == 0))
+		if (lex->next && lex->type != lex->next->type
+			&& lex->next->type != SPACE_ && d_quote == 0 && s_quote == 0)
 		{
-			i++;
+			(*i)++;
 			lex = lex->next;
 			break ;
 		}
-		i++;
+		(*i)++;
 		lex = lex->next;
 	}
+	return (lex);
+}
+
+t_lexing	*ft_regroup(t_lexing *lex, char **str)
+{
+	int			i;
+	int			j;
+	t_lexing	*tmp;
+
+	tmp = lex;
+	i = 0;
+	lex = choose_str(lex, &i);
 	*str = malloc((i + 1) * sizeof(char));
 	if (!*str)
 		return (0);

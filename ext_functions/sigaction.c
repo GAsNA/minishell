@@ -1,14 +1,15 @@
 #include <signal.h>
 #include <string.h>
 
-static void	handler(int signal, siginfo_t *siginfo, void *context) // recoit signaux
+static void	handler(int signal, siginfo_t *siginfo,
+		void *context) // recoit signaux
 {
 	(void) context;
 	// actions + kill
 	// siginfo contient pid de l'envoyeur
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	struct sigaction	sig;
 
