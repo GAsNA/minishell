@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:43:07 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/22 13:43:14 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/22 17:06:35 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,7 @@ void		ft_list_push_back_lex(t_lexing **begin_list,
 				char letter, enum e_type type);
 t_regroup	*ft_create_elem_reg(char *str);
 void		ft_list_push_back_reg(t_regroup **begin_list, char *str);
+void		ft_list_clear_lex(t_lexing *begin_list);
+void		ft_list_clear_reg(t_regroup *begin_list);
 
 #endif
