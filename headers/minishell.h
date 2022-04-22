@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:43:07 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/22 11:01:07 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/22 13:43:14 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,12 @@ struct s_regroup
 /*	  			   Protoypes				*/
 /********************************************/
 
-/* parsing.c */
+/* lexing.c */
 t_lexing	*get_lexing(char *line);
 t_regroup	*get_regroup(t_lexing *lex);
+
+/* parsing.c */
+int			is_quotes_close(char *line);
 
 /* manage_lists.c */
 t_lexing	*ft_create_elem_lex(char letter, enum e_type type);

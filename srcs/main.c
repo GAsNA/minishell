@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:44:11 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/19 14:20:55 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/22 16:56:58 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,13 @@ int	minishell(char **env)
 		if (data.line[0])
 			add_history(data.line);
 		reg = get_regroup(get_lexing(data.line));
-		if (reg)
+		if (!reg)
+			return (1);
+		while (reg)
 		{
-			while (reg)
-			{
-				printf("%s\n", reg->str);
-				reg = reg->next;
-			}
+			printf("%s\n", reg->str);
+			reg = reg->next;
 		}
-		printf("%s\n", data.line);
 	}
 	return (0);
 }
