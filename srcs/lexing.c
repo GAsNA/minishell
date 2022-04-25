@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 13:38:43 by rleseur           #+#    #+#             */
-/*   Updated: 2022/04/25 10:52:49 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/25 11:59:36 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_lexing	*get_lexing(char *line)
 	return (lexing);
 }
 
-static t_lexing	*choose_str(t_lexing *lex, int *i) // SPACE AVANT APRES
+static t_lexing	*choose_str(t_lexing *lex, int *i)
 {
 	int	s_quote;
 	int	d_quote;

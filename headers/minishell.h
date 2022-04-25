@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:43:07 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/22 17:06:35 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/25 12:15:04 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ enum e_type
 typedef struct s_data		t_data;
 typedef struct s_lexing		t_lexing;
 typedef struct s_regroup	t_regroup;
+typedef struct s_pipe		t_pipe;
+typedef struct s_cmd		t_cmd;
+typedef struct s_redir		t_redir;
 
 struct s_data
 {
@@ -54,6 +57,25 @@ struct s_regroup
 {
 	char		*str;
 	t_regroup	*next;
+};
+
+struct s_pipe
+{
+	t_cmd	*left;
+	t_cmd	*right;
+	t_pipe	*next;
+};
+
+struct s_cmd
+{
+	char	**av;
+	t_redir	*redir;
+};
+
+struct s_redir
+{
+	char		*val;
+	enum e_type	type;
 };
 
 /********************************************/
