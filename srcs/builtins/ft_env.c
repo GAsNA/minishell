@@ -1,44 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/25 12:09:28 by aasli            ###   ########.fr       */
+/*   Created: 2022/04/25 12:10:30 by aasli             #+#    #+#             */
+/*   Updated: 2022/04/25 14:13:58 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 #include "../libft/libft.h"
 
-int	main(int ac, char **av, char **env)
+int	ft_env(char **cmd, char ***env)
 {
-	char	**n_env;
+	int		i;
+	char	**tmp;
 
-	(void)ac;
-	av++;
-	n_env = get_env(env);
-	if (!n_env)
-		return (1);
-//	ft_pwd(av, &n_env);
-//	ft_cd(av, &n_env);
-//	ft_pwd(av, &n_env);
-	/*if (n_env)
+	tmp = *env;
+	i = 0;
+	if (cmd[1])
 	{
-		int i = 0;
-		char **tmp = n_env;
-		while (tmp[i])
-		{
-			printf("%s\n", tmp[i]);
-			i++;
-		}
-	}*/
-	ft_echo(av, &env);
-
-	ft_env(av, &env);
-
-	free_env(n_env);
+		printf("Rovidshell: env: %s: options or arguments are not handled\n",
+			cmd[1]);
+		return (1);
+	}
+	while (tmp[i])
+	{
+		printf("%s\n", tmp[i]);
+		i++;
+	}
 	return (0);
 }
