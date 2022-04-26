@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:43:07 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/25 12:15:04 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/26 16:05:44 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ t_regroup	*get_regroup(t_lexing *lex);
 
 /* parsing.c */
 int			is_quotes_close(char *line);
+t_pipe		*parsing(t_regroup *reg);
 
 /* manage_lists.c */
 t_lexing	*ft_create_elem_lex(char letter, enum e_type type);
@@ -97,5 +98,10 @@ t_regroup	*ft_create_elem_reg(char *str);
 void		ft_list_push_back_reg(t_regroup **begin_list, char *str);
 void		ft_list_clear_lex(t_lexing *begin_list);
 void		ft_list_clear_reg(t_regroup *begin_list);
+t_pipe		*ft_create_elem_pipe(char **av);
+void		ft_list_push_back_pipe(t_pipe **begin_list, char **av);
+
+/* utils.c */
+int			ft_strcmp(char *s1, char *s2);
 
 #endif
