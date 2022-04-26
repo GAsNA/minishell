@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 10:28:13 by rleseur           #+#    #+#             */
-/*   Updated: 2022/04/26 17:10:39 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/26 17:39:38 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,34 @@ static t_pipe	*get_cmd_left_to_right(t_pipe *pipe)
 	return (rt);
 }
 
+static t_pipe	*get_redir(t_pipe *pipe)
+{
+	int		i;
+	t_pipe	*rt;
+
+	rt = pipe;
+	while (pipe)
+	{
+		pipe->left->redir = ft_create_elem_redir();
+		i = -1;
+		while (pipe->left->av[++i])
+		{
+			if (ft_strcmp(pipe->left->av[i], "<") == 0 || ft_strcmp(pipe->left->av[i], "<<") == 0)
+			{
+				pipe->left->redir->val = pipe->left->av[i];
+				pipe->left->redir->type = INREDIR;
+			}
+			else if (ft_strcmp(pipe->left->av[i], ">") == 0 || ft_strcmp(pipe->left->av[i], ">>") == 0)
+			{
+				pipe->left->redir->val = pipe->left->av[i];
+				pipe->left->redir->type = OUTREDIR;
+			}
+		}
+		pipe = pipe->next;
+	}
+	return (rt);
+}
+
 t_pipe	*parsing(t_regroup *reg)
 {
 	char	**av;
@@ -100,5 +128,6 @@ t_pipe	*parsing(t_regroup *reg)
 		av = NULL;
 	}
 	pipe = get_cmd_left_to_right(pipe);
+	pipe = get_redir(pipe);
 	return (pipe);
 }

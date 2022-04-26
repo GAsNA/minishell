@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 12:17:38 by rleseur           #+#    #+#             */
-/*   Updated: 2022/04/26 15:24:28 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/26 17:40:09 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ t_pipe	*ft_create_elem_pipe(char **av)
 	if (!cmd)
 		return (0);
 	cmd->av = av;
+	cmd->redir = NULL;
 	elem = malloc(sizeof(t_pipe));
 	if (!elem)
 		return (0);
@@ -124,4 +125,15 @@ void	ft_list_push_back_pipe(t_pipe **begin_list, char **av)
 	}
 	else
 		*begin_list = ft_create_elem_pipe(av);
+}
+
+t_redir	*ft_create_elem_redir(void)
+{
+	t_redir	*elem;
+
+	elem = malloc(sizeof(t_redir));
+	if (!elem)
+		return (0);
+	elem->val = NULL;
+	return (elem);
 }
