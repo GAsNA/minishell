@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:43:07 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/27 10:54:09 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/27 14:05:20 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,11 @@ struct s_redir
 
 /* lexing.c */
 t_lexing	*get_lexing(char *line);
+
+/* regroup */
 t_regroup	*get_regroup(t_lexing *lex);
 
 /* parsing.c */
-int			is_quotes_close(char *line);
 t_pipe		*parsing(t_regroup *reg);
 
 /* manage_lists.c */
@@ -102,7 +103,9 @@ void		ft_list_clear_reg(t_regroup *begin_list);
 t_pipe		*ft_create_elem_pipe(char **av);
 void		ft_list_push_back_pipe(t_pipe **begin_list, char **av);
 t_redir		*ft_create_elem_redir(char *str, enum e_type type);
-void		ft_list_push_back_redir(t_redir **begin_list, char *str, enum e_type type);
+void		ft_list_push_back_redir(t_redir **begin_list,
+				char *str, enum e_type type);
+t_redir		*ft_create_elem_redir_null(void);
 
 /* utils.c */
 int			ft_strcmp(char *s1, char *s2);

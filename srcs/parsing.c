@@ -6,42 +6,11 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 10:28:13 by rleseur           #+#    #+#             */
-/*   Updated: 2022/04/27 11:03:32 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/27 14:04:49 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-int	is_quotes_close(char *line)
-{
-	int	i;
-	int	s_quote;
-	int	d_quote;
-
-	s_quote = 0;
-	d_quote = 0;
-	i = -1;
-	while (line[++i])
-	{
-		if (line[i] == '\'')
-		{
-			if (s_quote == 0 && d_quote == 0)
-				s_quote = 1;
-			else
-				s_quote = 0;
-		}
-		else if (line[i] == '"')
-		{
-			if (d_quote == 0 && s_quote == 0)
-				d_quote = 1;
-			else
-				d_quote = 0;
-		}
-	}
-	if (s_quote == 1 || d_quote == 1)
-		return (0);
-	return (1);
-}
 
 static t_regroup	*get_av(t_regroup *reg, char ***av)
 {
@@ -94,19 +63,17 @@ static t_pipe	*get_redir(t_pipe *pipe)
 		i = -1;
 		while (pipe->left->av[++i])
 		{
-			if (ft_strcmp(pipe->left->av[i], "<") == 0 || ft_strcmp(pipe->left->av[i], "<<") == 0)
-				ft_list_push_back_redir(&pipe->left->redir, pipe->left->av[i], INREDIR);
-			else if (ft_strcmp(pipe->left->av[i], ">") == 0 || ft_strcmp(pipe->left->av[i], ">>") == 0)
-				ft_list_push_back_redir(&pipe->left->redir, pipe->left->av[i], OUTREDIR);
+			if (ft_strcmp(pipe->left->av[i], "<") == 0
+				|| ft_strcmp(pipe->left->av[i], "<<") == 0)
+				ft_list_push_back_redir(&pipe->left->redir,
+					pipe->left->av[i], INREDIR);
+			else if (ft_strcmp(pipe->left->av[i], ">") == 0
+				|| ft_strcmp(pipe->left->av[i], ">>") == 0)
+				ft_list_push_back_redir(&pipe->left->redir,
+					pipe->left->av[i], OUTREDIR);
 		}
 		if (!pipe->left->redir)
-		{
-			pipe->left->redir = malloc(sizeof(t_redir));
-			if (!pipe->left->redir)
-				return (0);
-			pipe->left->redir->val = NULL;
-			pipe->left->redir->next = NULL;
-		}	
+			pipe->left->redir = ft_create_elem_redir_null();
 		pipe = pipe->next;
 	}
 	return (rt);

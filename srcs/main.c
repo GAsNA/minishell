@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:44:11 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/27 11:11:48 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/27 13:52:57 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ int	minishell(char **env)
 		{
 			while (pipe->left->redir)
 			{
-				printf("%s\t%i\n", pipe->left->redir->val, pipe->left->redir->type);
+				printf("%s\t%i\n", pipe->left->redir->val,
+					pipe->left->redir->type);
 				pipe->left->redir = pipe->left->redir->next;
 			}
 			printf("\n");
