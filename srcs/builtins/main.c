@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/25 12:09:28 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/27 17:19:16 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,14 @@ int	main(int ac, char **av, char **env)
 			printf("%s\n", tmp[i]);
 			i++;
 		}
-	}*/
-	ft_echo(av, &env);
-
-	ft_env(av, &env);
-
+	}
+	ft_echo(av, &env);*/
+	ft_unset(av, &n_env);
+/*	char **avenv = malloc(2 * sizeof(char *));
+	avenv[0] = ft_strdup("env");
+	avenv[1] = 0;
+	ft_env(avenv, &n_env);*/
 	free_env(n_env);
+//	free_env(avenv);
 	return (0);
 }

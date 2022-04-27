@@ -29,7 +29,7 @@ PRESENTATION2	=	" \e[32m********************************************************
 
 SRCS_PATH	=	./builtins/
 OBJS_PATH	=	./builtins/
-FILES		=	main.c ft_pwd.c ft_cd.c cd_utils.c env.c ft_echo.c ft_env.c
+FILES		=	main.c ft_pwd.c ft_cd.c cd_utils.c env.c env2.c ft_echo.c ft_env.c ft_unset.c
 SRCS		=	$(addprefix ${SRCS_PATH}, ${FILES})
 OBJS		=	$(addprefix ${OBJS_PATH}, ${FILES:.c=.o})
 
@@ -37,7 +37,7 @@ HEADER_PATH	=	../headers/
 HEADER		=	$(addprefix ${HEADER_PATH}, minishell.h)
 
 CC			=	clang
-CFLAGS		=	-Wall -Werror -Wextra -g
+CFLAGS		=	-Wall -Werror -Wextra -g3
 RM			=	rm -rf
 
 LIBFT		=	../libft
