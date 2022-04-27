@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:43:07 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/26 17:39:53 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/27 10:54:09 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ struct s_redir
 {
 	char		*val;
 	enum e_type	type;
+	t_redir		*next;
 };
 
 /********************************************/
@@ -100,7 +101,8 @@ void		ft_list_clear_lex(t_lexing *begin_list);
 void		ft_list_clear_reg(t_regroup *begin_list);
 t_pipe		*ft_create_elem_pipe(char **av);
 void		ft_list_push_back_pipe(t_pipe **begin_list, char **av);
-t_redir		*ft_create_elem_redir(void);
+t_redir		*ft_create_elem_redir(char *str, enum e_type type);
+void		ft_list_push_back_redir(t_redir **begin_list, char *str, enum e_type type);
 
 /* utils.c */
 int			ft_strcmp(char *s1, char *s2);

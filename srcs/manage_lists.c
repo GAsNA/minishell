@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 12:17:38 by rleseur           #+#    #+#             */
-/*   Updated: 2022/04/26 17:40:09 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/27 10:53:54 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,13 +127,30 @@ void	ft_list_push_back_pipe(t_pipe **begin_list, char **av)
 		*begin_list = ft_create_elem_pipe(av);
 }
 
-t_redir	*ft_create_elem_redir(void)
+t_redir	*ft_create_elem_redir(char *str, enum e_type type)
 {
 	t_redir	*elem;
 
 	elem = malloc(sizeof(t_redir));
 	if (!elem)
 		return (0);
-	elem->val = NULL;
+	elem->val = str;
+	elem->type = type;
+	elem->next = NULL;
 	return (elem);
+}
+
+void	ft_list_push_back_redir(t_redir **begin_list, char *str, enum e_type type)
+{
+	t_redir	*list;
+
+	if (*begin_list)
+	{
+		list = *begin_list;
+		while (list->next)
+			list = list->next;
+		list->next = ft_create_elem_redir(str, type);
+	}
+	else
+		*begin_list = ft_create_elem_redir(str, type);
 }

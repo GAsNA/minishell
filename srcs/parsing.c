@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 10:28:13 by rleseur           #+#    #+#             */
-/*   Updated: 2022/04/26 17:39:38 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/27 11:03:32 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,21 +91,22 @@ static t_pipe	*get_redir(t_pipe *pipe)
 	rt = pipe;
 	while (pipe)
 	{
-		pipe->left->redir = ft_create_elem_redir();
 		i = -1;
 		while (pipe->left->av[++i])
 		{
 			if (ft_strcmp(pipe->left->av[i], "<") == 0 || ft_strcmp(pipe->left->av[i], "<<") == 0)
-			{
-				pipe->left->redir->val = pipe->left->av[i];
-				pipe->left->redir->type = INREDIR;
-			}
+				ft_list_push_back_redir(&pipe->left->redir, pipe->left->av[i], INREDIR);
 			else if (ft_strcmp(pipe->left->av[i], ">") == 0 || ft_strcmp(pipe->left->av[i], ">>") == 0)
-			{
-				pipe->left->redir->val = pipe->left->av[i];
-				pipe->left->redir->type = OUTREDIR;
-			}
+				ft_list_push_back_redir(&pipe->left->redir, pipe->left->av[i], OUTREDIR);
 		}
+		if (!pipe->left->redir)
+		{
+			pipe->left->redir = malloc(sizeof(t_redir));
+			if (!pipe->left->redir)
+				return (0);
+			pipe->left->redir->val = NULL;
+			pipe->left->redir->next = NULL;
+		}	
 		pipe = pipe->next;
 	}
 	return (rt);
