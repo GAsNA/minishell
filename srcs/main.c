@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:44:11 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/27 14:48:22 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/28 20:11:41 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,12 @@ void	handle_signals_main(void)
 	signal(SIGQUIT, SIG_IGN);
 }
 
-int	minishell(char **env)
+int	minishell(t_lenv *lenv)
 {
 	t_data		data;
 	t_pipe		*pipe;
 	t_pipe		*tmp;
 
-	(void)env;
 	handle_signals_main();
 	data.run = 1;
 	while (data.run)
@@ -47,18 +46,15 @@ int	minishell(char **env)
 		}
 		if (data.line[0])
 			add_history(data.line);
-		pipe = parsing(get_regroup(get_lexing(data.line)));
+		pipe = parsing(get_regroup(get_lexing(data.line)), lenv);
 		if (!pipe)
 			return (1);
 		tmp = pipe;
 		while (tmp)
 		{
-			while (tmp->left->redir)
-			{
-				printf("%s\t%i\n", tmp->left->redir->val,
-					tmp->left->redir->type);
-				tmp->left->redir = tmp->left->redir->next;
-			}
+			int i = -1;
+			while (tmp->left->av[++i])
+				printf("%s\t", tmp->left->av[i]);
 			printf("\n");
 			tmp = tmp->next;
 		}
@@ -67,12 +63,69 @@ int	minishell(char **env)
 	return (0);
 }
 
+static char	**get_k_v(char *env)
+{
+	int		i;
+	int		j;
+	char	**res;
+
+	res = malloc(3 * sizeof(char *));
+	if (!res)
+		return (0);
+	i = 0;
+	while (env[i] != '=')
+		i++;
+	i += 1;
+	res[0] = malloc((i + 1) * sizeof(char));
+	if (!res[0])
+		return (0);
+	i = -1;
+	while (env[++i] != '=')
+		res[0][i] = env[i];
+	res[0][i] = '=';
+	i += 1;
+	res[0][i] = '\0';
+	j = 0;
+	while (env[i + j])
+		j++;
+	res[1] = malloc((j + 1) * sizeof(char));
+	if (!res[1])
+		return (0);
+	j = 0;
+	while (env[i + j])
+	{
+		res[1][j] = env[i + j];
+		j++;
+	}
+	res[1][j] = '\0';
+	res[2] = 0;
+	return (res);
+}
+
+static t_lenv	*get_lenv(char **env)
+{
+	int		i;
+	char	**res;
+	t_lenv	*lenv;
+
+	lenv = NULL;
+	i = -1;
+	while (env[++i])
+	{
+		res = get_k_v(env[i]);
+		ft_list_push_back_lenv(&lenv, res[0], res[1]);
+	}
+	return (lenv);
+}
+
 int	main(int ac, char **av, char **env)
 {
-	int	exit_code;
+	int		exit_code;
+	t_lenv	*lenv;
 
 	(void)ac;
 	(void)av;
-	exit_code = minishell(env);
+	lenv = get_lenv(env);
+	exit_code = minishell(lenv);
 	return (exit_code);
 }

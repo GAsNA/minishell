@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 10:28:13 by rleseur           #+#    #+#             */
-/*   Updated: 2022/04/27 14:33:29 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/28 20:09:49 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,77 @@ static t_pipe	*get_redir(t_pipe *pipe)
 	return (rt);
 }
 
-t_pipe	*parsing(t_regroup *reg)
+static char	*make_expand(char *str, int n, t_lenv *lenv)
+{
+	int		i;
+	int		j;
+	char	*n_str;
+
+	i = -1;
+	while (str[++i])
+		if (str[i] == '$')
+			break ;
+	while (lenv)
+	{
+		if (ft_strncmp(&str[i], lenv->k, n))
+			break ;
+		lenv = lenv->next;
+	}
+	if (!lenv)
+		return (str);
+	n_str = malloc((ft_strlen(str) - n + ft_strlen(lenv->v) + 1) * sizeof(char));
+	if (!n_str)
+		return (0);
+	i = -1;
+	while (str[++i] && str[i] != '$')
+		n_str[i] = str[i];
+	j = -1;
+	while (lenv->v[++j])
+		n_str[i + j] = lenv->v[j];
+	i += n;
+	while (str[++i])
+		n_str[i + j] = str[i];
+	n_str[i + j] = '\0';
+	return (n_str);
+}
+
+static t_pipe	*get_expands(t_pipe *pipe, t_lenv *lenv)
+{
+	int		i;
+	int		j;
+	int		k;
+	int		s_quote;
+	t_pipe	*rt;
+
+	rt = pipe;
+	while (pipe)
+	{
+		s_quote = 0;
+		i = -1;
+		while (pipe->left->av[++i])
+		{
+			if (pipe->left->av[i][0] == '\'')
+				s_quote = 1;
+			j = -1;
+			k = 0;
+			while (pipe->left->av[i][++j])
+			{
+				if (pipe->left->av[i][j] == '$' && s_quote == 0 && k == 0)
+					k++;
+				if (pipe->left->av[i][j] == ' ' && k > 0)
+					break ;
+				if (k > 0)
+					k++;
+			}
+			if (k > 0)
+				pipe->left->av[i] = make_expand(pipe->left->av[i], k, lenv);
+		}
+		pipe = pipe->next;
+	}
+	return (rt);
+}
+
+t_pipe	*parsing(t_regroup *reg, t_lenv *lenv)
 {
 	char		**av;
 	t_pipe		*pipe;
@@ -87,6 +157,7 @@ t_pipe	*parsing(t_regroup *reg)
 
 	if (!reg)
 		return (0);
+	(void) lenv;
 	tmp = reg;
 	av = NULL;
 	tmp = get_av(tmp, &av);
@@ -99,8 +170,9 @@ t_pipe	*parsing(t_regroup *reg)
 		ft_list_push_back_pipe(&pipe, av);
 		av = NULL;
 	}
+	ft_list_clear_reg(reg);
 	pipe = get_cmd_left_to_right(pipe);
 	pipe = get_redir(pipe);
-	ft_list_clear_reg(reg);
+	pipe = get_expands(pipe, lenv);
 	return (pipe);
 }

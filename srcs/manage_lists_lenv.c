@@ -1,45 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   manage_lists_lenv.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/26 16:01:51 by rleseur           #+#    #+#             */
-/*   Updated: 2022/04/28 14:16:24 by rleseur          ###   ########.fr       */
+/*   Created: 2022/04/19 12:17:38 by rleseur           #+#    #+#             */
+/*   Updated: 2022/04/28 11:42:05 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_strcmp(char *s1, char *s2)
+t_lenv	*ft_create_elem_lenv(char *k, char *v)
 {
-	int	i;
+	t_lenv	*elem;
 
-	i = 0;
-	while (s1[i] && s2[i] && s1[i] == s2[i])
-		i++;
-	return (s1[i] - s2[i]);
-}
-
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
-{
-	unsigned int	i;
-
-	if (n == 0)
+	elem = malloc(sizeof(t_lenv));
+	if (!elem)
 		return (0);
-	i = 0;
-	while (s1[i] && s2[i] && s1[i] == s2[i] && i < n - 1)
-		i++;
-	return (s1[i] - s2[i]);
+	elem->k = k;
+	elem->v = v;
+	elem->next = NULL;
+	return (elem);
 }
 
-int	ft_strlen(char *s)
+void	ft_list_push_back_lenv(t_lenv **begin_list, char *k, char *v)
 {
-	int	i;
+	t_lenv	*list;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	if (*begin_list)
+	{
+		list = *begin_list;
+		while (list->next)
+			list = list->next;
+		list->next = ft_create_elem_lenv(k, v);
+	}
+	else
+		*begin_list = ft_create_elem_lenv(k, v);
 }
+

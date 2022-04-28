@@ -37,6 +37,7 @@ FILES		=	main.c					\
 				manage_lists_regroup.c	\
 				manage_lists_pipe.c		\
 				manage_lists_redir.c	\
+				manage_lists_lenv.c		\
 				utils.c
 SRCS		=	$(addprefix ${SRCS_PATH}, ${FILES})
 OBJS		=	$(addprefix ${OBJS_PATH}, ${FILES:.c=.o})
