@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:43:07 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/27 14:05:20 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/27 14:48:44 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,8 @@ t_redir		*ft_create_elem_redir(char *str, enum e_type type);
 void		ft_list_push_back_redir(t_redir **begin_list,
 				char *str, enum e_type type);
 t_redir		*ft_create_elem_redir_null(void);
-
+void		ft_list_clear_redir(t_redir *begin_list);
+void		ft_list_clear_pipe(t_pipe *begin_list);
 /* utils.c */
 int			ft_strcmp(char *s1, char *s2);
 

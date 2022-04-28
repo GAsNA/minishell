@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   manage_lists.c                                     :+:      :+:    :+:   */
+/*   manage_lists_lexing.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 12:17:38 by rleseur           #+#    #+#             */
-/*   Updated: 2022/04/27 14:10:23 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/27 14:29:43 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ void	ft_list_clear_lex(t_lexing *begin_list)
 {
 	t_lexing	*tmp;
 
-	tmp = begin_list;
-	while (tmp)
+	while (begin_list)
 	{
 		tmp = begin_list->next;
 		free(begin_list);
+		begin_list = tmp;
 	}
 }

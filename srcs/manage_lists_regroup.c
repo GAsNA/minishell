@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 14:07:42 by rleseur           #+#    #+#             */
-/*   Updated: 2022/04/27 14:08:14 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/27 14:41:21 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,10 @@ void	ft_list_clear_reg(t_regroup *begin_list)
 {
 	t_regroup	*tmp;
 
-	tmp = begin_list;
-	while (tmp)
+	while (begin_list)
 	{
 		tmp = begin_list->next;
-		free(begin_list->str);
 		free(begin_list);
+		begin_list = tmp;
 	}
 }

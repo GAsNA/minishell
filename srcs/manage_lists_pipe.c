@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 14:08:48 by rleseur           #+#    #+#             */
-/*   Updated: 2022/04/27 14:09:06 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/27 14:45:00 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,18 @@ void	ft_list_push_back_pipe(t_pipe **begin_list, char **av)
 	}
 	else
 		*begin_list = ft_create_elem_pipe(av);
+}
+
+void	ft_list_clear_pipe(t_pipe *begin_list)
+{
+	t_pipe	*tmp;
+
+	while (begin_list)
+	{
+		tmp = begin_list->next;
+		ft_list_clear_redir(begin_list->left->redir);
+		free(begin_list->left);
+		free(begin_list);
+		begin_list = tmp;
+	}
 }

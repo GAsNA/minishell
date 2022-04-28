@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 10:28:13 by rleseur           #+#    #+#             */
-/*   Updated: 2022/04/27 14:04:49 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/27 14:33:29 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,21 +81,26 @@ static t_pipe	*get_redir(t_pipe *pipe)
 
 t_pipe	*parsing(t_regroup *reg)
 {
-	char	**av;
-	t_pipe	*pipe;
+	char		**av;
+	t_pipe		*pipe;
+	t_regroup	*tmp;
 
+	if (!reg)
+		return (0);
+	tmp = reg;
 	av = NULL;
-	reg = get_av(reg, &av);
+	tmp = get_av(tmp, &av);
 	pipe = ft_create_elem_pipe(av);
 	if (!pipe)
 		return (0);
-	while (reg)
+	while (tmp)
 	{
-		reg = get_av(reg, &av);
+		tmp = get_av(tmp, &av);
 		ft_list_push_back_pipe(&pipe, av);
 		av = NULL;
 	}
 	pipe = get_cmd_left_to_right(pipe);
 	pipe = get_redir(pipe);
+	ft_list_clear_reg(reg);
 	return (pipe);
 }

@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 14:09:50 by rleseur           #+#    #+#             */
-/*   Updated: 2022/04/27 14:12:42 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/27 14:46:28 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,16 @@ t_redir	*ft_create_elem_redir_null(void)
 	elem->val = NULL;
 	elem->next = NULL;
 	return (elem);
+}
+
+void	ft_list_clear_redir(t_redir *begin_list)
+{
+	t_redir	*tmp;
+
+	while (begin_list)
+	{
+		tmp = begin_list->next;
+		free(begin_list);
+		begin_list = tmp;
+	}
 }
