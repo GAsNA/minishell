@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:43:07 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/28 15:03:42 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/28 18:13:39 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,23 +66,33 @@ void	free_lenv(t_lenv **lst);
 int		ft_strnlen(char *str);
 
 //	builtins
-int		ft_pwd(char **cmd, char ***env);
-int		ft_cd(char **cmd, char ***env);
+//int		ft_pwd(char **cmd, char ***env);
+int		ft_pwd(char **cmd, t_lenv **env);
+//int		ft_cd(char **cmd, char ***env);
+int		ft_cd(char **cmd, t_lenv **env);
 int		ft_echo(char **cmd, char ***env);
 int		ft_env(char **cmd, char ***env);
 int		ft_unset(char **cmd, char ***env);
 //char	**get_env(char **env);
-char	**add_var_env(char **env, char *var);
+//char	**add_var_env(char **env, char *var);
+int		add_var_env(t_lenv **env, char *var);
 int		check_env_var(char **env, char *var);
-char	**rep_var_env(char **env, char *var, char *str, int n);
+//char	**rep_var_env(char **env, char *var, char *str, int n);
+int		rep_var_env(t_lenv **env, char *var, char *str, int n);
 char	**unset_var_env(char ***env, char *var, int n);
 void	free_env(char **env);
 int		check_cd_access(char **cmd);
-int		get_line(char **env, char *str, int n);
-int		go_home(char ***env, char *home);
-int		update_env(char ***env);
+//int		get_line(char **env, char *str, int n);
+int		get_line(t_lenv **env, char *str, int n);
+//int		go_home(char ***env, char *home);
+int		go_home(t_lenv **env, char *home);
+//int		update_env(char ***env);
+int		update_env(t_lenv **env);
 int		env_size(char **env);
-char	**update_pwd(char **env, char *pwd);
-char	**update_old_pwd(char **env);
-char	*get_var_from_env(char **env, char *str, size_t n);
+//char	**update_pwd(char **env, char *pwd);
+int		update_pwd(t_lenv **env, char *pwd);
+int		update_old_pwd(t_lenv **env);
+//char	**update_old_pwd(char **env);
+//char	*get_var_from_env(char **env, char *str, size_t n);
+char	*get_var_from_env(t_lenv **env, char *str, size_t n);
 #endif

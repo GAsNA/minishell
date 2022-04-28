@@ -6,27 +6,27 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 12:11:42 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/21 14:21:19 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/28 18:18:01 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 #include "../libft/libft.h"
 
-int	update_env(char ***env)
+int	update_env(t_lenv **env)
 {
 	char	*buff;
 
 	buff = NULL;
-	*env = update_old_pwd(*env);
+	update_old_pwd(env);
 	buff = ft_calloc(2049, 1);
 	getcwd(buff, 2048);
-	*env = update_pwd(*env, buff);
+	update_pwd(env, buff);
 	free(buff);
 	return (0);
 }
 
-int	go_home(char ***env, char *home)
+int	go_home(t_lenv **env, char *home)
 {
 	char	*buff;
 
@@ -38,10 +38,10 @@ int	go_home(char ***env, char *home)
 	}
 	if (chdir(home) == -1)
 		return (1);
-	*env = update_old_pwd(*env);
+	update_old_pwd(env);
 	buff = ft_calloc(2049, 1);
 	getcwd(buff, 2048);
-	*env = update_pwd(*env, buff);
+	update_pwd(env, buff);
 	free(buff);
 	return (0);
 }
@@ -74,16 +74,19 @@ int	check_cd_access(char **cmd)
 	return (0);
 }
 
-int	get_line(char **env, char *str, int n)
+int	get_line(t_lenv **env, char *str, int n)
 {
 	int	i;
+	t_lenv *tmp;
 
 	i = 0;
-	while (env[i])
+	tmp = *env;
+	while (tmp)
 	{
-		if ((strncmp(env[i], str, n)) == 0)
+		if ((strncmp(tmp->k, str, n)) == 0)
 			return (i);
 		i++;
+		tmp = tmp->next;
 	}
 	return (-1);
 }

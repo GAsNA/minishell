@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/28 15:10:49 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/28 18:34:32 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ int	main(int ac, char **av, char **env)
 	if (!begin)
 		return (1);
 	print_lenv(&begin);
-	free_lenv(&begin);
+	printf ("---------------------------------------------------\n");
 	ft_pwd(av, &begin);
+	free_lenv(&begin);
 
 //	ft_pwd(av, &n_env);
 //	ft_cd(av, &n_env);
