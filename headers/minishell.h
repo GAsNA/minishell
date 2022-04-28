@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:43:07 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/28 10:27:33 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/28 10:39:16 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ struct s_command
 struct s_lenv
 {
 	char		*line;
+	t_lenv		*next;
 };
 
 #endif
