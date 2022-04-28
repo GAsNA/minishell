@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/28 13:52:01 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/28 15:10:49 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,9 @@ int	main(int ac, char **av, char **env)
 	t_lenv	*begin = get_env(env);
 	if (!begin)
 		return (1);
-	t_lenv	*tmp = begin;
-	while (tmp)
-	{
-		printf("%s\n",tmp->k);
-		printf("%s\n",tmp->v);
-		tmp = tmp->next;
-	}
-	
-	tmp = begin;
-	t_lenv	*tmp2;
-	while (tmp)
-	{
-		tmp2 = tmp;
-		free(tmp->k);
-		free(tmp->v);
-		tmp = tmp->next;
-		free(tmp2);
-	}
+	print_lenv(&begin);
+	free_lenv(&begin);
+	ft_pwd(av, &begin);
 
 //	ft_pwd(av, &n_env);
 //	ft_cd(av, &n_env);

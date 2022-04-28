@@ -6,26 +6,16 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 11:09:39 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/28 13:22:40 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/28 15:09:40 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 #include "../libft/libft.h"
 
-int	ft_strlen_k(char *line)
-{
-	int	i;
-
-	i = 0;
-	while (line[i] != '=')
-		i++;
-	return (i);
-}
-
 t_lenv	*ft_last_lenv(t_lenv **begin)
 {
-	t_lenv *tmp;
+	t_lenv	*tmp;
 
 	tmp = *begin;
 	while (tmp->next)
@@ -57,7 +47,7 @@ t_lenv	*ft_new_lenv(char *line)
 	new = malloc(sizeof(t_lenv) * 1);
 	if (!new)
 		return (NULL);
-	n = ft_strlen_k(line) + 1;
+	n = ft_strnlen(line) + 1;
 	new->k = ft_substr(line, 0, n);
 	if (!new->k)
 	{
