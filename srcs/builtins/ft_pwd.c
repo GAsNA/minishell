@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:25 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/28 18:32:58 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/29 11:54:35 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	ft_pwd(char **cmd, t_lenv **env)
 	buff = get_var_from_env(env, "PWD=", 4);
 	if (!buff)
 		return (1);
+	printf("Buffer: %s\n", buff);
+	
 	if (ft_strncmp(buff, "//", 2) == 0)
 		print_pwd_exception(buff);
 	else

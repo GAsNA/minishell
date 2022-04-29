@@ -6,7 +6,7 @@
 /*   By: aasli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 10:11:36 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/22 11:39:39 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/29 13:19:38 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,11 @@ static void	print_echo(char **cmd, int n)
 	}
 }
 
-int	ft_echo(char **cmd, char ***env)
+int	ft_echo(char **cmd, t_lenv **env)
 {
 	int		n;
 
+	printf("ECHOYAGE\n");
 	(void)env;
 	n = check_echo(cmd);
 	print_echo(cmd, n);

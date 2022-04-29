@@ -6,54 +6,66 @@
 /*   By: aasli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 19:40:23 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/28 17:08:40 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/29 14:59:22 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 #include "../libft/libft.h"
 
-int	check_env_var(char **env, char *var)
+int	check_env_var(t_lenv **env, char *var)
 {
-	int	i;
+	t_lenv *tmp;
 
-	i = 0;
-	while (env[i])
+	tmp = *env;
+	if (!tmp)
+		return (0);
+	while (tmp)
 	{
-		if (ft_strncmp(env[i], var, ft_strlen(var)) == 0)
+		if (ft_strncmp(tmp->k, var, ft_strlen(var)) == 0)
+		{
 			return (1);
-		i++;
+		}
+		tmp = tmp->next;
 	}
 	return (0);
 }
 
-char	**unset_var_env(char ***env, char *var, int n)
+int	unset_var_env(t_lenv **env, char *var, int n)
 {
+	t_lenv	*tmp;
+	t_lenv	*pre;
+	t_lenv	*next;
 	int		i;
 	int		j;
-	int		size;
-	char	**tmp;
-	char	**r;
 
+	tmp = *env;
 	i = 0;
 	j = 0;
-	size = env_size(*env);
-	tmp = ft_calloc(sizeof(char *), size);
-	if (!tmp)
-		return (NULL);
-	r = *env;
-	while (r[i])
+	while (tmp)
 	{
-		if ((ft_strncmp(r[i], var, n) != 0))
+		if ((ft_strncmp(tmp->k, var, n) == 0))
 		{
-			tmp[j] = ft_strdup(r[i]);
-			i++;
+			next = tmp->next;
+			break ;
+		}
+		tmp = tmp->next;
+		i++;
+	}
+	if (i != 0)
+	{
+		tmp = *env;
+		while (j < i - 1)
+		{
+			tmp = tmp->next;
 			j++;
 		}
-		else
-			i++;
+		pre = tmp;
+		tmp = tmp->next;
+		free(tmp->k);
+		free(tmp->v);
+		free(tmp);
+		pre->next = next;
 	}
-	tmp[j] = 0;
-	free_env(r);
-	return (tmp);
+	return (1);
 }
