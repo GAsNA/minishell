@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:44:11 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/29 11:55:09 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/29 16:10:21 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	handle_signals_main(void)
 
 int	minishell(t_lenv *lenv)
 {
+	int			i;
 	t_data		data;
 	t_pipe		*pipe;
 	t_pipe		*tmp;
@@ -52,7 +53,7 @@ int	minishell(t_lenv *lenv)
 		tmp = pipe;
 		while (tmp)
 		{
-			int i = -1;
+			i = -1;
 			while (tmp->left->av[++i])
 				printf("%s\t", tmp->left->av[i]);
 			printf("\n");

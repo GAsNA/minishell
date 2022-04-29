@@ -33,6 +33,7 @@ FILES		=	main.c					\
 				lexing.c				\
 				regroup.c				\
 				parsing.c				\
+				expand.c				\
 				manage_lists_lexing.c	\
 				manage_lists_regroup.c	\
 				manage_lists_pipe.c		\

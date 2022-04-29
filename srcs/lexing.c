@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 13:38:43 by rleseur           #+#    #+#             */
-/*   Updated: 2022/04/29 12:00:35 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/29 16:09:56 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	has_no_double_pipe(char *line)
 {
 	int	i;
 	int	j;
-	
+
 	i = -1;
 	while (line[++i])
 	{

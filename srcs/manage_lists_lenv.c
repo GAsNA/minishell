@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 12:17:38 by rleseur           #+#    #+#             */
-/*   Updated: 2022/04/28 11:42:05 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/29 16:09:33 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,3 @@ void	ft_list_push_back_lenv(t_lenv **begin_list, char *k, char *v)
 	else
 		*begin_list = ft_create_elem_lenv(k, v);
 }
-
