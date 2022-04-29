@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 13:38:43 by rleseur           #+#    #+#             */
-/*   Updated: 2022/04/27 14:18:24 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/29 12:00:35 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,26 @@ static int	is_quotes_close(char *line)
 	return (1);
 }
 
+static int	has_no_double_pipe(char *line)
+{
+	int	i;
+	int	j;
+	
+	i = -1;
+	while (line[++i])
+	{
+		if (line[i] == '|')
+		{
+			j = i + 1;
+			while (line[j] == ' ')
+				j++;
+			if (!line[j] || line[j] == '|')
+				return (0);
+		}
+	}
+	return (1);
+}
+
 static enum e_type	get_type(char c)
 {
 	if (c == ' ')
@@ -64,11 +84,8 @@ t_lexing	*get_lexing(char *line)
 	int			i;
 	t_lexing	*lexing;
 
-	if (!is_quotes_close(line))
-	{
-		printf("C'est pas bon.\n");
+	if (!is_quotes_close(line) || !has_no_double_pipe(line))
 		return (0);
-	}
 	lexing = ft_create_elem_lex(line[0], get_type(line[0]));
 	if (!lexing)
 		return (0);
