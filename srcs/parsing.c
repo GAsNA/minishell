@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 10:28:13 by rleseur           #+#    #+#             */
-/*   Updated: 2022/04/28 20:09:49 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/04/29 10:58:25 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,13 @@ static char	*make_expand(char *str, int n, t_lenv *lenv)
 			break ;
 	while (lenv)
 	{
-		if (ft_strncmp(&str[i], lenv->k, n))
+		if (ft_strncmp(&str[i + 1], lenv->k, n) == 0)
 			break ;
 		lenv = lenv->next;
 	}
 	if (!lenv)
 		return (str);
-	n_str = malloc((ft_strlen(str) - n + ft_strlen(lenv->v) + 1) * sizeof(char));
+	n_str = malloc((ft_strlen(str) - (n + 1) + ft_strlen(lenv->v) + 1) * sizeof(char));
 	if (!n_str)
 		return (0);
 	i = -1;
@@ -108,7 +108,9 @@ static char	*make_expand(char *str, int n, t_lenv *lenv)
 		n_str[i + j] = lenv->v[j];
 	i += n;
 	while (str[++i])
-		n_str[i + j] = str[i];
+	{
+		n_str[i + j - (n + 1)] = str[i];
+	}
 	n_str[i + j] = '\0';
 	return (n_str);
 }
@@ -136,13 +138,13 @@ static t_pipe	*get_expands(t_pipe *pipe, t_lenv *lenv)
 			{
 				if (pipe->left->av[i][j] == '$' && s_quote == 0 && k == 0)
 					k++;
-				if (pipe->left->av[i][j] == ' ' && k > 0)
+				if ((pipe->left->av[i][j] == ' ' || pipe->left->av[i][j] == '\'' || pipe->left->av[i][j] == '"') && k > 0)
 					break ;
 				if (k > 0)
 					k++;
 			}
 			if (k > 0)
-				pipe->left->av[i] = make_expand(pipe->left->av[i], k, lenv);
+				pipe->left->av[i] = make_expand(pipe->left->av[i], k - 2, lenv);
 		}
 		pipe = pipe->next;
 	}
