@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:25 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/29 11:54:35 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/29 15:14:52 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ int	ft_pwd(char **cmd, t_lenv **env)
 	buff = get_var_from_env(env, "PWD=", 4);
 	if (!buff)
 		return (1);
-	printf("Buffer: %s\n", buff);
-	
 	if (ft_strncmp(buff, "//", 2) == 0)
 		print_pwd_exception(buff);
 	else
@@ -55,32 +53,3 @@ int	ft_pwd(char **cmd, t_lenv **env)
 	}
 	return (0);
 }
-
-/*
-int	ft_pwd(char **cmd, char ***env)
-{
-	char	*buff;
-
-	if (cmd[1] && cmd[1][0] == '-')
-	{
-		printf("Rovidshell: pwd: %s: options are not handled\n", cmd[1]);
-		return (1);
-	}
-	buff = get_var_from_env(*env, "PWD=", 4);
-	if (!buff)
-		return (1);
-	if (ft_strncmp(buff, "//", 2) == 0)
-		print_pwd_exception(buff);
-	else
-	{
-		free(buff);
-		buff = calloc(2049, sizeof(char));
-		if (!buff)
-		{
-			printf("Allocation error");
-			return (1);
-		}
-		print_pwd(buff);
-	}
-	return (0);
-}*/

@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 12:11:42 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/28 18:18:01 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/29 15:15:23 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ int	check_cd_access(char **cmd)
 
 int	get_line(t_lenv **env, char *str, int n)
 {
-	int	i;
-	t_lenv *tmp;
+	int		i;
+	t_lenv	*tmp;
 
 	i = 0;
 	tmp = *env;

@@ -6,7 +6,7 @@
 /*   By: aasli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 10:16:35 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/29 14:59:24 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/29 15:12:18 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int	ft_unset(char **cmd, t_lenv **env)
 		{
 			if (is_bad_specifier(cmd[i][0]) == 1)
 			{
-				printf("Rovidshell: unset: %s: not a valid identifier\n", cmd[i]);
+				printf("Rovidshell: unset: %s: not a valid identifier\n",
+					cmd[i]);
 			}
 			else if (check_env_var(env, cmd[i]) == 1)
 				unset_var_env(env, cmd[i], ft_strlen(cmd[i]));

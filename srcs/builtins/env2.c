@@ -6,7 +6,7 @@
 /*   By: aasli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 19:40:23 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/29 14:59:22 by aasli            ###   ########.fr       */
+/*   Updated: 2022/04/29 15:33:05 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	check_env_var(t_lenv **env, char *var)
 {
-	t_lenv *tmp;
+	t_lenv	*tmp;
 
 	tmp = *env;
 	if (!tmp)
@@ -31,6 +31,24 @@ int	check_env_var(t_lenv **env, char *var)
 	return (0);
 }
 
+int	get_next(t_lenv *tmp, char *var, int n, t_lenv **next)
+{	
+	int	i;
+
+	i = 0;
+	while (tmp)
+	{
+		if ((ft_strncmp(tmp->k, var, n) == 0))
+		{
+			*next = tmp->next;
+			break ;
+		}
+		tmp = tmp->next;
+		i++;
+	}
+	return (i);
+}
+
 int	unset_var_env(t_lenv **env, char *var, int n)
 {
 	t_lenv	*tmp;
@@ -40,18 +58,8 @@ int	unset_var_env(t_lenv **env, char *var, int n)
 	int		j;
 
 	tmp = *env;
-	i = 0;
+	i = get_next(tmp, var, n, &next);
 	j = 0;
-	while (tmp)
-	{
-		if ((ft_strncmp(tmp->k, var, n) == 0))
-		{
-			next = tmp->next;
-			break ;
-		}
-		tmp = tmp->next;
-		i++;
-	}
 	if (i != 0)
 	{
 		tmp = *env;
