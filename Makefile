@@ -47,7 +47,7 @@ HEADER_PATH	=	./headers/
 HEADER		=	$(addprefix ${HEADER_PATH}, minishell.h)
 
 CC			=	clang
-CFLAGS		=	-Wall -Werror -Wextra
+CFLAGS		=	-Wall -Werror -Wextra -g3
 RM			=	rm -rf
 
 LIBFT		=	libft
