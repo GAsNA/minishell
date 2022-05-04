@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/04 11:22:35 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/04 15:03:41 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,13 @@ int	main(int ac, char **av, char **env)
 */	
 //	print_lenv(&begin);
 	printf ("---------------------------------------------------\n");
-
 //	ft_echo(av, &env);
 //	ft_unset(av, &begin);
 //	print_lenv(&begin);
-	printf("exit return: %d",ft_exit(av, &begin));
+//	printf("exit return: %d",ft_exit(av, &begin));
+//	print_lenv(&begin);
+	ft_export(av, &begin);
+	print_lenv(&begin);
 	free_lenv(&begin);
 	return (0);
 }
