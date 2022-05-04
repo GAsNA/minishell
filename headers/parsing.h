@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:15:15 by rleseur           #+#    #+#             */
-/*   Updated: 2022/04/29 16:18:03 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/05/04 11:33:00 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,5 +113,6 @@ void		ft_list_clear_redir(t_redir *begin_list);
 /* manage_lists_lenv.c */
 t_lenv		*ft_create_elem_lenv(char *k, char *v);
 void		ft_list_push_back_lenv(t_lenv **begin_list, char *k, char *v);
+void		ft_list_clear_lenv(t_lenv *begin_list);
 
 #endif

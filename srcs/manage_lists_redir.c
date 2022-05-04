@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 14:09:50 by rleseur           #+#    #+#             */
-/*   Updated: 2022/04/27 14:46:28 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/05/04 11:45:09 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	ft_list_clear_redir(t_redir *begin_list)
 	while (begin_list)
 	{
 		tmp = begin_list->next;
+		free(begin_list->val);
 		free(begin_list);
 		begin_list = tmp;
 	}

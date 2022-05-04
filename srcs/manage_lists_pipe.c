@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 14:08:48 by rleseur           #+#    #+#             */
-/*   Updated: 2022/04/27 14:45:00 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/05/04 11:54:56 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,16 @@ void	ft_list_push_back_pipe(t_pipe **begin_list, char **av)
 		*begin_list = ft_create_elem_pipe(av);
 }
 
+static void	ft_list_clear_cmd(t_cmd *cmd)
+{
+	int	i;
+
+	i = -1;
+	while (cmd->av[++i])
+		free(cmd->av[i]);
+	free(cmd);
+}
+
 void	ft_list_clear_pipe(t_pipe *begin_list)
 {
 	t_pipe	*tmp;
@@ -54,7 +64,7 @@ void	ft_list_clear_pipe(t_pipe *begin_list)
 	{
 		tmp = begin_list->next;
 		ft_list_clear_redir(begin_list->left->redir);
-		free(begin_list->left);
+		ft_list_clear_cmd(begin_list->left);
 		free(begin_list);
 		begin_list = tmp;
 	}

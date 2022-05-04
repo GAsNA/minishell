@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:44:11 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/29 16:10:21 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/05/04 11:38:23 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,18 +115,37 @@ static t_lenv	*get_lenv(char **env)
 	{
 		res = get_k_v(env[i]);
 		ft_list_push_back_lenv(&lenv, res[0], res[1]);
+		free(res);
 	}
 	return (lenv);
 }
 
 int	main(int ac, char **av, char **env)
 {
-	int		exit_code;
+	int		i;
+	//int		exit_code;
 	t_lenv	*lenv;
+	t_pipe	*pipe;
+	t_pipe	*tmp;
 
 	(void)ac;
 	(void)av;
 	lenv = get_lenv(env);
-	exit_code = minishell(lenv);
-	return (exit_code);
+	//exit_code = minishell(lenv);
+	pipe = parsing(get_regroup(get_lexing(av[1])), lenv);
+	if (!pipe)
+		printf("ERROR\n");
+	tmp = pipe;
+	while (tmp)
+	{
+		i = -1;
+		while (tmp->left->av[++i])
+			printf("%s\t", tmp->left->av[i]);
+		printf("\n");
+		tmp = tmp->next;
+	}
+	ft_list_clear_lenv(lenv);
+	ft_list_clear_pipe(pipe);
+	//return (exit_code);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:13:02 by rleseur           #+#    #+#             */
-/*   Updated: 2022/05/02 13:40:11 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/05/04 11:57:10 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static char	*replace_expand(char *str, int n, t_lenv *lenv)
 
 	n_str = malloc((ft_strlen(str) - (n + 1)
 				+ ft_strlen(lenv->v) + 1) * sizeof(char));
-	printf("%i\n", ft_strlen(str) - (n + 1) + ft_strlen(lenv->v) + 1);
 	if (!n_str)
 		return (0);
 	i = -1;
