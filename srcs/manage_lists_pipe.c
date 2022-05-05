@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 14:08:48 by rleseur           #+#    #+#             */
-/*   Updated: 2022/05/04 11:54:56 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/05/05 11:51:42 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static void	ft_list_clear_cmd(t_cmd *cmd)
 	i = -1;
 	while (cmd->av[++i])
 		free(cmd->av[i]);
+	free(cmd->av);
 	free(cmd);
 }
 

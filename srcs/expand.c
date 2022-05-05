@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:13:02 by rleseur           #+#    #+#             */
-/*   Updated: 2022/05/04 11:57:10 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/05/05 10:37:11 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,10 @@ static char	*make_expand(char *str, int n, t_lenv *lenv)
 
 static void	prepare_expand(char	**av, t_lenv *lenv)
 {
-	int	i;
-	int	k;
-	int	s_quote;
+	int		i;
+	int		k;
+	int		s_quote;
+	char	*str;
 
 	s_quote = 0;
 	if ((*av)[0] == '\'')
@@ -78,7 +79,11 @@ static void	prepare_expand(char	**av, t_lenv *lenv)
 			k++;
 	}
 	if (k > 0)
-		*av = make_expand(*av, k - 2, lenv);
+	{
+		str = make_expand(*av, k - 2, lenv);
+		free(*av);
+		*av = str;
+	}
 }
 
 t_pipe	*get_expands(t_pipe *pipe, t_lenv *lenv)
