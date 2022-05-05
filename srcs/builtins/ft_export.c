@@ -6,14 +6,12 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 12:37:38 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/05 17:58:02 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/05 18:03:11 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 #include "../libft/libft.h"
-
-
 
 static void	make_export(t_lenv **env, char *cmd)
 {
