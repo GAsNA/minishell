@@ -6,12 +6,14 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 12:37:38 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/05 13:34:24 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/05 17:58:02 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 #include "../libft/libft.h"
+
+
 
 static void	make_export(t_lenv **env, char *cmd)
 {
@@ -25,10 +27,10 @@ static void	make_export(t_lenv **env, char *cmd)
 	if (is_bad_identifier(cmd[0]) == 1)
 		printf("Rovidshell: unset: %s: not a valid identifier\n",
 			cmd);
-	else if (check_env_var(env, k) == 1 && k && c_c(k) == 0)
-		rep_var_env(env, cmd + j + 1, k, ft_strlen(cmd));
-	else if (k && c_c(k) == 1)
-		con_var_env(env, cmd + j + 1, k, ft_strlen(cmd - 1));
+	else if (check_env_con(env, k) == 1 && k && c_c(k) == 1)
+		con_var_env(env, cmd + j + 1, k, ft_strlen(k) - 2);
+	else if (k)
+		rep_var_env(env, cmd + j + 1, k, ft_strlen(k));
 	else if (k != NULL)
 		add_var_env(env, cmd);
 	free(k);

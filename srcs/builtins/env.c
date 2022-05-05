@@ -6,7 +6,7 @@
 /*   By: aasli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 19:40:23 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/05 13:25:00 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/05 17:58:00 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ int	con_var_env(t_lenv **env, char *var, char *str, int n)
 	lst = *env;
 	while (lst)
 	{
-		if ((ft_strncmp(lst->k, str, n) == 0))
+		if (ft_strncmp(lst->k, str, n) == 0)
 		{
 			tmp = ft_strjoin(lst->v, var);
 			free(lst->v);
 			lst->v = tmp;
+			return (0);
 		}
 		lst = lst-> next;
 	}
