@@ -6,14 +6,14 @@
 /*   By: aasli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 10:16:35 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/04 12:53:14 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/05 13:34:22 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 #include "../libft/libft.h"
 
-static int	is_bad_identifier(char c)
+int	is_bad_identifier(char c)
 {
 	if (isalpha(c) || c == '_')
 		return (0);

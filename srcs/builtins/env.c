@@ -6,34 +6,30 @@
 /*   By: aasli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 19:40:23 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/04 17:04:22 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/05 13:25:00 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 #include "../libft/libft.h"
 
-int	env_size(char **env)
+int	con_var_env(t_lenv **env, char *var, char *str, int n)
 {
-	int	i;
+	char	*tmp;
+	t_lenv	*lst;
 
-	i = 0;
-	while (env[i])
-		i++;
-	return (i);
-}
-
-void	free_env(char **env)
-{
-	int	i;
-
-	i = 0;
-	while (env[i])
+	lst = *env;
+	while (lst)
 	{
-		free(env[i]);
-		i++;
+		if ((ft_strncmp(lst->k, str, n) == 0))
+		{
+			tmp = ft_strjoin(lst->v, var);
+			free(lst->v);
+			lst->v = tmp;
+		}
+		lst = lst-> next;
 	}
-	free(env);
+	return (1);
 }
 
 int	rep_var_env(t_lenv **env, char *var, char *str, int n)

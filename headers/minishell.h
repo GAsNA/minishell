@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:43:07 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/04 12:50:44 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/05 13:27:04 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,18 +71,21 @@ int		ft_cd(char **cmd, t_lenv **env);
 int		ft_echo(char **cmd, t_lenv **env);
 int		ft_exit(char **cmd, t_lenv **env);
 int		ft_export(char **cmd, t_lenv **env);
+int		is_bad_identifier(char c);
+int		check_key(char *key);
+int		c_c(char *key);
+char	*get_key(char *key);
 int		ft_env(char **cmd, char ***env);
-//int		ft_unset(char **cmd, char ***env);
 int		ft_unset(char **cmd, t_lenv **env);
 int		add_var_env(t_lenv **env, char *var);
 int		check_env_var(t_lenv **env, char *var);
 int		rep_var_env(t_lenv **env, char *var, char *str, int n);
+int		con_var_env(t_lenv **env, char *var, char *str, int n);
 int		unset_var_env(t_lenv **env, char *var, int n);
 int		check_cd_access(char **cmd);
 int		get_line(t_lenv **env, char *str, int n);
 int		go_home(t_lenv **env, char *home);
 int		update_env(t_lenv **env);
-int		env_size(char **env);
 int		update_pwd(t_lenv **env, char *pwd);
 int		update_old_pwd(t_lenv **env);
 char	*get_var_from_env(t_lenv **env, char *str, size_t n);
