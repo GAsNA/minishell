@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:43:07 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/05 16:22:40 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/06 12:21:00 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@
 # include<unistd.h>
 # include<signal.h>
 # include <dirent.h>
-#include <errno.h>
+# include <errno.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+# include <sys/types.h>
+# include <sys/wait.h>
 
 enum ops
 {
@@ -75,7 +79,7 @@ int		is_bad_identifier(char c);
 int		check_key(char *key);
 int		c_c(char *key);
 char	*get_key(char *key);
-int		ft_env(char **cmd, char ***env);
+int		ft_env(char **cmd, t_lenv **env);
 int		ft_unset(char **cmd, t_lenv **env);
 int		add_var_env(t_lenv **env, char *var);
 int		check_env_var(t_lenv **env, char *var);

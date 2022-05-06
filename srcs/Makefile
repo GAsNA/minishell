@@ -57,7 +57,7 @@ ${OBJS_PATH}%.o:	${SRCS_PATH}%.c
 ${NAME}:			${OBJS}
 				@echo ${PRESENTATION2} 
 				@make -C libft
-				@${CC} ${CFLAGS} -o ${NAME} ${OBJS} libft/libft.a
+				@${CC} ${CFLAGS} -o ${NAME} ${OBJS} libft/libft.a -lreadline
 				@echo "\e[32m"Compilation success"\033[0m"
 
 clean:

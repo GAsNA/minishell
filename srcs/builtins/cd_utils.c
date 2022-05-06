@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 12:11:42 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/29 15:15:23 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/06 11:27:28 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	go_home(t_lenv **env, char *home)
 	getcwd(buff, 2048);
 	update_pwd(env, buff);
 	free(buff);
+	free(home);
 	return (0);
 }
 
