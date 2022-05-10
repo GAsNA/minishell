@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/06 13:16:03 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/10 12:46:00 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	ctrl_c(int signum)
 {
 	(void)signum;
 	printf("\n");
+	//Need to set global_status to signum + 28
 	rl_on_new_line();
 	rl_replace_line("", 0);
 	rl_redisplay();
@@ -107,22 +108,34 @@ int	minishell(t_lenv **env)
 			if (pid == 0)
 			{
 				char **env = getEnv(lenv);
+				char **paths = ft_get_paths(lenv);
+				int  i = 0;
+				char *tmp;
+				char *path;
 				if (!env[0])
 					printf("env empty\n");
 				execve(cmd[0], cmd, env);
-				printf("cmd not found\n");
-				printf("---------------------------------------\n");
-				free_split(cmd);
-				free(data.line);
+				while (paths[i])
+				{
+					tmp = ft_strjoin(paths[i], "/");
+					path = ft_strjoin(tmp, cmd[0]);
+					free(tmp);
+					printf("%s\n", path);
+					execve(path, cmd, env);
+					free(path);
+					i++;
+				}
+				free_split(env);
+				free_split(paths);
 			}
 			else
 			{
 				waitpid(pid, NULL, 0);
 				printf("---------------------------------------\n");
-				free_split(cmd);
-				free(data.line);
 			}
 		}
+		free_split(cmd);
+		free(data.line);
 	}	
 	return (0);
 }
@@ -141,34 +154,3 @@ int	main(int ac, char **av, char **env)
 	free_lenv(&begin);
 	return (exit_code);
 }
-
-/*
-int	main(int ac, char **av, char **env)
-{
-	(void)ac;
-	(void)av;
-
-// Test env linked list
-	
-	t_lenv	*begin = get_env(env);
-	if (!begin)
-		return (1);
-	av++;
-//	print_lenv(&begin);
-	printf ("---------------------------------------------------\n");
-	ft_pwd(av, &begin);
-	ft_cd(av, &begin);
-	ft_pwd(av, &begin);
-	
-//	print_lenv(&begin);
-	printf ("---------------------------------------------------\n");
-//	ft_echo(av, &env);
-//	ft_unset(av, &begin);
-//	print_lenv(&begin);
-//	printf("exit return: %d",ft_exit(av, &begin));
-//	print_lenv(&begin);
-	ft_export(av, &begin);
-	print_lenv(&begin);
-	free_lenv(&begin);
-	return (0);
-}*/

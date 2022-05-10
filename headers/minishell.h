@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:43:07 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/06 12:21:00 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/10 10:44:52 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,9 @@ struct s_lenv
 	char		*v;
 	t_lenv		*next;
 };
+
+//	path
+char	**ft_get_paths(t_lenv **lenv);
 
 //	env linked list
 t_lenv	*get_env(char **env);

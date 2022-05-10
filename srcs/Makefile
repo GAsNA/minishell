@@ -29,7 +29,7 @@ PRESENTATION2	=	" \e[32m********************************************************
 
 SRCS_PATH	=	./builtins/
 OBJS_PATH	=	./builtins/
-FILES		=	main.c l_env.c l_env_utils.c ft_pwd.c ft_cd.c cd_utils.c env.c env2.c ft_echo.c ft_env.c ft_unset.c ft_exit.c ft_export.c ft_export_utils.c
+FILES		=	main.c l_env.c l_env_utils.c ft_pwd.c ft_cd.c cd_utils.c env.c env2.c ft_echo.c ft_env.c ft_unset.c ft_exit.c ft_export.c ft_export_utils.c path.c
 
 SRCS		=	$(addprefix ${SRCS_PATH}, ${FILES})
 OBJS		=	$(addprefix ${OBJS_PATH}, ${FILES:.c=.o})
@@ -43,7 +43,7 @@ RM			=	rm -rf
 
 LIBFT		=	../libft
 
-NAME		=	exec
+NAME		=	minishell
 
 
 ####### COMMANDS #######
