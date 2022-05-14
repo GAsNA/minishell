@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:50:21 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/14 09:41:16 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/14 11:03:11 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,23 @@ char	*get_var_from_env(t_lenv **env, char *str, size_t n)
 int	update_pwd(t_lenv **env, char *pwd)
 {
 	char	*tmp;
+	char	*tmp2;
 
-	tmp = get_var_from_env(env, "PWD=", 4);
-	if (tmp && get_line(env, "PWD=", 4) != -1)
+	(void)pwd;
+	tmp = ft_calloc(2049, sizeof(char));
+	if (!tmp)
 	{
-		rep_var_env(env, pwd, "PWD=", 4);
+		printf("Allocation error");
+		return (0);
 	}
-	else
+	getcwd(tmp, 2048);
+	tmp2 = get_var_from_env(env, "PWD=", 4);
+	if (tmp2 && get_line(env, "PWD=", 4) != -1)
 	{
-		add_var_env(env, pwd);
+		rep_var_env(env, tmp, "PWD=", 4);
 	}
 	free (tmp);
-	tmp = get_var_from_env(env, "PWD=", 4);
-	free (tmp);
+	free (tmp2);
 	return (1);
 }
 
@@ -55,25 +59,19 @@ int	update_old_pwd(t_lenv **env)
 {
 	char	*tmp;
 	char	*tmp2;
-	char	*last;
 
 	tmp = ft_calloc(2049, sizeof(char));
+	if (!tmp)
+	{
+		printf("Allocation error");
+		return (0);
+	}
 	getcwd(tmp, 2048);
 	tmp2 = get_var_from_env(env, "OLDPWD=", 7);
-	last = ft_strjoin("OLDPWD=", tmp);
 	if (tmp2 && get_line(env, "OLDPWD=", 7) != -1)
-	{
-		rep_var_env(env, tmp2, "OLDPWD=", 7);
-	}
-	else
-	{
-		add_var_env(env, tmp2);
-	}
-	free (tmp2);
-	tmp2 = get_var_from_env(env, "OLDPWD=", 7);
+		rep_var_env(env, tmp, "OLDPWD=", 7);
 	free (tmp);
 	free (tmp2);
-	free (last);
 	return (1);
 }
 
@@ -90,15 +88,16 @@ int	ft_cd(char **cmd, t_lenv **env)
 			return (1);
 		if (strcmp(cmd[1], "//") == 0)
 		{
+			update_old_pwd(env);
 			if (chdir(cmd[1]) == -1)
 				return (1);
-			update_old_pwd(env);
 			update_pwd(env, "//");
 			return (0);
 		}
+		update_old_pwd(env);
 		if (chdir(cmd[1]) == -1)
 			return (1);
-		update_env(env);
+		update_pwd(env, "PWD");
 	}
 	else if (cmd[0])
 		go_home(env, get_var_from_env(env, "HOME=", 5));

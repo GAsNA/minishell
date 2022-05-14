@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 10:24:43 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/05 11:46:40 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/14 11:14:12 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,16 +79,16 @@ int	ft_exit(char **cmd, t_lenv **env)
 	{
 		printf("Exit\n");
 		printf("Rovidshell: exit: %s: numeric argument is required\n", cmd[1]);
-		return (2);
+		exit (2);
 	}
 	else if (cmd[0] && cmd[1] && ft_isnumeric(cmd[1]))
 	{
 		printf("Exit\n");
-		return (get_exit(cmd[1]));
+		exit (get_exit(cmd[1]));
 	}
 	else
 	{
 		printf("Exit\n");
-		return (0);
+		exit (0);
 	}
 }

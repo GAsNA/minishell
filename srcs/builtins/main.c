@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/10 12:46:00 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/14 11:04:19 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int	minishell(t_lenv **env)
 					tmp = ft_strjoin(paths[i], "/");
 					path = ft_strjoin(tmp, cmd[0]);
 					free(tmp);
-					printf("%s\n", path);
+					//printf("%s\n", path);
 					execve(path, cmd, env);
 					free(path);
 					i++;
