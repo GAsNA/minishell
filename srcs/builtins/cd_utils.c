@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 12:11:42 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/14 12:10:53 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/14 12:23:23 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int	go_home(t_lenv **env, char *home)
 		printf("Rovidshell: cd: HOME not set\n");
 		return (1);
 	}
+	update_old_pwd(env);
 	if (chdir(home) == -1)
 		return (1);
-	update_old_pwd(env);
 	buff = ft_calloc(2049, 1);
 	getcwd(buff, 2048);
 	update_pwd(env, buff);
