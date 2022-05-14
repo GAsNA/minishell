@@ -6,11 +6,12 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:25 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/14 09:57:31 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/14 12:13:10 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
+#include "../../headers/builtins.h"
 #include "../libft/libft.h"
 
 static void	print_pwd_exception(char *buff)

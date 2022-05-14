@@ -6,11 +6,12 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 12:11:42 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/06 11:27:28 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/14 12:10:53 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
+#include "../../headers/builtins.h"
 #include "../libft/libft.h"
 
 int	update_env(t_lenv **env)

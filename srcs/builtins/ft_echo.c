@@ -6,11 +6,12 @@
 /*   By: aasli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 10:11:36 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/06 12:31:16 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/14 12:12:06 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
+#include "../../headers/builtins.h"
 #include "../libft/libft.h"
 
 static int	check_echo(char **cmd)

@@ -6,11 +6,12 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:50:21 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/14 11:03:11 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/14 12:11:54 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
+#include "../../headers/builtins.h"
 #include "../libft/libft.h"
 
 char	*get_var_from_env(t_lenv **env, char *str, size_t n)

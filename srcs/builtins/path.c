@@ -6,11 +6,12 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 09:59:45 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/10 12:46:57 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/14 12:16:44 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
+#include "../../headers/builtins.h"
 #include "../libft/libft.h"
 
 char	**ft_get_paths(t_lenv **env)
