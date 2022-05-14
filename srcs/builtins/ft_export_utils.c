@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 12:37:38 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/05 16:59:58 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/14 09:07:58 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,9 @@ int	c_c(char *key)
 	{
 		if (key[i] == '=' && key[i - 1] == '+')
 		{
-			printf("CONCATENATION\n");
 			return (1);
 		}
 		i++;
-		printf("NOT CONCATENATION\n");
 	}
 	return (0);
 }

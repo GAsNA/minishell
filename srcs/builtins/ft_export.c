@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 12:37:38 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/05 18:03:11 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/14 09:42:20 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ static void	make_export(t_lenv **env, char *cmd)
 	if (!k)
 		return ;
 	if (is_bad_identifier(cmd[0]) == 1)
-		printf("Rovidshell: unset: %s: not a valid identifier\n",
+		printf("Rovidshell: export: %s: not a valid identifier\n",
 			cmd);
 	else if (check_env_con(env, k) == 1 && k && c_c(k) == 1)
 		con_var_env(env, cmd + j + 1, k, ft_strlen(k) - 2);
-	else if (k)
+	else if (k && check_env_var(env, k))
 		rep_var_env(env, cmd + j + 1, k, ft_strlen(k));
-	else if (k != NULL)
+	else if (*k)
 		add_var_env(env, cmd);
 	free(k);
 }
@@ -42,17 +42,19 @@ int	ft_export(char **cmd, t_lenv **env)
 	if (cmd[1])
 	{
 		if (cmd[1][0] == '-')
-			return (printf("Rovidshell: unset: %s: options are not handled\n",
+			return (printf("Rovidshell: export: %s: options are not handled\n",
 					cmd[1]), 1);
 		while (cmd[i])
 		{	
 			if (is_bad_identifier(cmd[i][0]) == 1)
-				printf("Rovidshell: unset: %s: not a valid identifier\n",
+				printf("Rovidshell: export: %s: not a valid identifier\n",
 					cmd[i]);
 			make_export(env, cmd[i]);
 			i++;
 		}
 		return (0);
 	}
+	else
+		printf("Rovidshell: export: undefined behavior on bash posix\n");
 	return (2);
 }
