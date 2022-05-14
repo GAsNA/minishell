@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/14 12:16:57 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/14 18:39:00 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,19 +89,19 @@ int	minishell(t_lenv **env)
 			add_history(data.line);
 		cmd = ft_split(data.line, ' ');
 		printf("---------------------------------------\n");
-		if (ft_strncmp(cmd[0], "cd", ft_strlen(cmd[0])) == 0)
+		if (ft_strncmp(cmd[0], "cd", ft_strlen("cd\0")) == 0)
 			ft_cd(cmd, lenv);
-		else if (ft_strncmp(cmd[0], "pwd", ft_strlen(cmd[0])) == 0)
+		else if (ft_strncmp(cmd[0], "pwd", ft_strlen("pwd\0")) == 0)
 			ft_pwd(cmd, lenv);
-		else if (ft_strncmp(cmd[0], "env", ft_strlen(cmd[0])) == 0)
+		else if (ft_strncmp(cmd[0], "env", ft_strlen("env\0")) == 0)
 			ft_env(cmd, lenv);
-		else if (ft_strncmp(cmd[0], "unset", ft_strlen(cmd[0])) == 0)
+		else if (ft_strncmp(cmd[0], "unset", ft_strlen("unset\0")) == 0)
 			ft_unset(cmd, lenv);
-		else if (ft_strncmp(cmd[0], "exit", ft_strlen(cmd[0])) == 0)
+		else if (ft_strncmp(cmd[0], "exit", ft_strlen("exit\0")) == 0)
 			ft_exit(cmd, lenv);
-		else if (ft_strncmp(cmd[0], "export", ft_strlen(cmd[0])) == 0)
+		else if (ft_strncmp(cmd[0], "export", ft_strlen("export\0")) == 0)
 			ft_export(cmd, lenv);
-		else if (ft_strncmp(cmd[0], "echo", ft_strlen(cmd[0])) == 0)
+		else if (ft_strncmp(cmd[0], "echo", ft_strlen("echo\0")) == 0)
 			ft_echo(cmd, lenv);
 		else
 		{
