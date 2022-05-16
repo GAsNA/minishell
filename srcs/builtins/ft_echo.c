@@ -6,13 +6,27 @@
 /*   By: aasli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 10:11:36 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/14 12:12:06 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/16 12:46:13 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 #include "../../headers/builtins.h"
 #include "../libft/libft.h"
+
+static int	full_n(char *cmd)
+{
+	int	i = 0;
+
+	cmd += 2;
+	while (cmd[i])
+	{
+		if (cmd[i] != 'n')
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 static int	check_echo(char **cmd)
 {
@@ -21,9 +35,15 @@ static int	check_echo(char **cmd)
 
 	i = 1;
 	n = 0;
-	if (ft_strncmp(cmd[i], "-n", 3) == 0)
-		n++;
-	i++;
+	while (cmd[i])
+	{
+		if (ft_strncmp(cmd[i], "-n", 2) != 0)
+			return (n);
+		if (ft_strncmp(cmd[i], "-n", 2) == 0
+				&& full_n(cmd[i]))
+			n++;
+		i++;
+	}
 	return (n);
 }
 
