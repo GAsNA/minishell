@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/12 09:43:07 by aasli             #+#    #+#             */
-/*   Updated: 2022/04/28 10:27:33 by aasli            ###   ########.fr       */
+/*   Created: 2022/05/14 12:40:37 by aasli             #+#    #+#             */
+/*   Updated: 2022/05/14 12:40:39 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ struct s_command
 
 struct s_lenv
 {
-	char		*line;
+	char		*k;
+	char		*v;
+	t_lenv		*next;
 };
 
 #endif

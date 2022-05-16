@@ -27,20 +27,21 @@ PRESENTATION2	=	" \e[32m********************************************************
 
 ####### VARIABLES #######
 
-SRCS_PATH	=	./srcs/
-OBJS_PATH	=	./objs/
-FILES		=	main.c
+SRCS_PATH	=	./builtins/
+OBJS_PATH	=	./builtins/
+FILES		=	main.c l_env.c l_env_utils.c ft_pwd.c ft_cd.c cd_utils.c env.c env2.c ft_echo.c ft_env.c ft_unset.c ft_exit.c ft_export.c ft_export_utils.c path.c
+
 SRCS		=	$(addprefix ${SRCS_PATH}, ${FILES})
 OBJS		=	$(addprefix ${OBJS_PATH}, ${FILES:.c=.o})
 
-HEADER_PATH	=	./headers/
+HEADER_PATH	=	../headers/
 HEADER		=	$(addprefix ${HEADER_PATH}, minishell.h)
 
 CC			=	clang
-CFLAGS		=	-Wall -Werror -Wextra
+CFLAGS		=	-Wall -Werror -Wextra -g3
 RM			=	rm -rf
 
-LIBFT		=	libft
+LIBFT		=	../libft
 
 NAME		=	minishell
 
@@ -55,11 +56,12 @@ ${OBJS_PATH}%.o:	${SRCS_PATH}%.c
 
 ${NAME}:			${OBJS}
 				@echo ${PRESENTATION2} 
-				@${CC} ${CFLAGS} -o ${NAME} ${OBJS} -lreadline
+				@make -C libft
+				@${CC} ${CFLAGS} -o ${NAME} ${OBJS} libft/libft.a -lreadline
 				@echo "\e[32m"Compilation success"\033[0m"
 
 clean:
-				@${RM} ${OBJS_PATH}
+				@${RM} ${OBJS}
 				@echo "\e[35m"Object files deleted"\033[0m"
 
 fclean:				clean
@@ -67,8 +69,5 @@ fclean:				clean
 				@echo "\e[35m"Executable deleted"\033[0m"
 
 re:					fclean all
-
-david:
-				@cat srcs/david.txt
 
 .PHONY:			all clean fclean re
