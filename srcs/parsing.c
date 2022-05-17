@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 10:28:13 by rleseur           #+#    #+#             */
-/*   Updated: 2022/05/05 10:54:30 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/05/17 13:17:47 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ static t_regroup	*get_av(t_regroup *reg, char ***av)
 		reg = reg->next;
 	}
 	if (reg)
+	{
+		free(reg->str);
 		reg = reg->next;
+	}
 	(*av)[i + 1] = 0;
 	return (reg);
 }

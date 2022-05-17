@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 13:58:50 by rleseur           #+#    #+#             */
-/*   Updated: 2022/05/05 11:53:07 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/05/05 18:46:46 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,12 +104,12 @@ t_regroup	*get_regroup(t_lexing *lex)
 		if (!regroup)
 			return (0);
 	}
+	str = NULL;
 	while (tmp)
 	{
 		tmp = ft_regroup(tmp, &str);
 		if (str)
 			ft_list_push_back_reg(&regroup, str);
-		//str = NULL;
 	}
 	ft_list_clear_lex(lex);
 	return (regroup);

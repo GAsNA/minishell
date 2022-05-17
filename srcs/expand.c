@@ -6,28 +6,28 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:13:02 by rleseur           #+#    #+#             */
-/*   Updated: 2022/05/05 10:37:11 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/05/17 13:40:55 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char	*replace_expand(char *str, int n, t_lenv *lenv)
+static char	*replace_expand(char *str, int n, char *rep)
 {
 	int		i;
 	int		j;
 	char	*n_str;
 
 	n_str = malloc((ft_strlen(str) - (n + 1)
-				+ ft_strlen(lenv->v) + 1) * sizeof(char));
+				+ ft_strlen(rep) + 1) * sizeof(char));
 	if (!n_str)
 		return (0);
 	i = -1;
 	while (str[++i] && str[i] != '$')
 		n_str[i] = str[i];
 	j = -1;
-	while (lenv->v[++j])
-		n_str[i + j] = lenv->v[j];
+	while (rep[++j])
+		n_str[i + j] = rep[j];
 	i += n;
 	while (str[++i])
 		n_str[i + j - (n + 1)] = str[i];
@@ -38,7 +38,6 @@ static char	*replace_expand(char *str, int n, t_lenv *lenv)
 static char	*make_expand(char *str, int n, t_lenv *lenv)
 {
 	int		i;
-	char	*n_str;
 
 	i = -1;
 	while (str[++i])
@@ -46,14 +45,13 @@ static char	*make_expand(char *str, int n, t_lenv *lenv)
 			break ;
 	while (lenv)
 	{
-		if (ft_strncmp(&str[i + 1], lenv->k, n) == 0)
+		if (ft_strncmp(&str[i + 1], lenv->k, ft_strlen(lenv->k) - 1) == 0)
 			break ;
 		lenv = lenv->next;
 	}
 	if (!lenv)
-		return (str);
-	n_str = replace_expand(str, n, lenv);
-	return (n_str);
+		return (replace_expand(str, n, ""));
+	return (replace_expand(str, n, lenv->v));
 }
 
 static void	prepare_expand(char	**av, t_lenv *lenv)
@@ -70,13 +68,11 @@ static void	prepare_expand(char	**av, t_lenv *lenv)
 	k = 0;
 	while ((*av)[++i])
 	{
-		if ((*av)[i] == '$' && s_quote == 0 && k == 0)
+		if (((*av)[i] == '$' && s_quote == 0 && k == 0) || k > 0)
 			k++;
 		if (((*av)[i] == ' ' || (*av)[i] == '\''
 					|| (*av)[i] == '"') && k > 0)
 			break ;
-		if (k > 0)
-			k++;
 	}
 	if (k > 0)
 	{

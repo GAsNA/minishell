@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:44:11 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/04 11:38:23 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/05/06 23:55:32 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,17 +122,17 @@ static t_lenv	*get_lenv(char **env)
 
 int	main(int ac, char **av, char **env)
 {
-	int		i;
-	//int		exit_code;
+	//int		i;
+	int		exit_code;
 	t_lenv	*lenv;
-	t_pipe	*pipe;
-	t_pipe	*tmp;
+	//t_pipe	*pipe;
+	//t_pipe	*tmp;
 
 	(void)ac;
 	(void)av;
 	lenv = get_lenv(env);
-	//exit_code = minishell(lenv);
-	pipe = parsing(get_regroup(get_lexing(av[1])), lenv);
+	exit_code = minishell(lenv);
+	/*pipe = parsing(get_regroup(get_lexing(av[1])), lenv);
 	if (!pipe)
 		printf("ERROR\n");
 	tmp = pipe;
@@ -144,8 +144,8 @@ int	main(int ac, char **av, char **env)
 		printf("\n");
 		tmp = tmp->next;
 	}
+	ft_list_clear_pipe(pipe);*/
 	ft_list_clear_lenv(lenv);
-	ft_list_clear_pipe(pipe);
-	//return (exit_code);
-	return (0);
+	return (exit_code);
+	//return (0);
 }
