@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 10:28:13 by rleseur           #+#    #+#             */
-/*   Updated: 2022/05/17 13:17:47 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/05/17 14:50:47 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,9 @@ static t_regroup	*get_av(t_regroup *reg, char ***av)
 	t_regroup	*tmp;
 
 	tmp = reg;
-	i = 0;
-	while (tmp && ft_strcmp(tmp->str, "|") != 0)
-	{
-		i++;
+	i = -1;
+	while (++i >= 0 && tmp && ft_strcmp(tmp->str, "|") != 0)
 		tmp = tmp->next;
-	}
 	*av = malloc((i + 1) * sizeof(char *));
 	if (!*av)
 		return (0);
