@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/14 18:39:00 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/17 14:38:31 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 #include "../../headers/builtins.h"
 #include "../libft/libft.h"
 
+int	g_status = 0;
+
 void	ctrl_c(int signum)
 {
 	(void)signum;
 	printf("\n");
-	//Need to set global_status to signum + 28
+	g_status = signum + 28;
 	rl_on_new_line();
 	rl_replace_line("", 0);
 	rl_redisplay();
@@ -51,12 +53,20 @@ int	print_cmd(char **cmd)
 	return (0);
 }
 
-char	**getEnv(t_lenv **lenv)
+char	**get_c_nv(t_lenv **lenv)
 {
-	t_lenv *tmp;
-	char **env = malloc(1000 * sizeof(char *));
+	t_lenv	*tmp;
+	char	**env;
+	int i;
+	
+	env = malloc(1000 * sizeof(char *));
+	if (!env)
+	{
+		printf("Allocation error");
+		return (NULL);
+	}
 	tmp = *lenv;
-	int i = 0;
+	i = 0;
 	while (tmp)
 	{
 		env[i] = ft_strjoin(tmp->k, tmp->v);
@@ -65,6 +75,33 @@ char	**getEnv(t_lenv **lenv)
 	}
 	env[i] = 0;
 	return (env);
+}
+
+t_lenv	*get_min_env(void)
+{
+	t_lenv	*lbegin;
+	char	*pwd;
+	char	*tmp;
+	char	*tmp2;
+
+	lbegin = NULL;
+	tmp = ft_calloc(2049, sizeof(char));
+	if (!tmp)
+	{
+		printf("Allocation error");
+		return (0);
+	}
+	pwd = ft_strjoin("PWD=", getcwd(tmp, 2048));
+	ft_addback_lenv(&lbegin, ft_new_lenv(pwd));
+	free (pwd);
+	ft_addback_lenv(&lbegin, ft_new_lenv("SHLVL=1"));
+	tmp2 = ft_strjoin("_=", getcwd(tmp, 2048));
+	free(tmp);
+	tmp = ft_strjoin(tmp2, "/Minishell");
+	ft_addback_lenv(&lbegin, ft_new_lenv(tmp));
+	free(tmp);
+	free(tmp2);
+	return (lbegin);
 }
 
 int	minishell(t_lenv **env)
@@ -108,7 +145,7 @@ int	minishell(t_lenv **env)
 			int pid = fork();
 			if (pid == 0)
 			{
-				char **env = getEnv(lenv);
+				char **env = get_c_nv(lenv);
 				char **paths = ft_get_paths(lenv);
 				int  i = 0;
 				char *tmp;
@@ -121,7 +158,6 @@ int	minishell(t_lenv **env)
 					tmp = ft_strjoin(paths[i], "/");
 					path = ft_strjoin(tmp, cmd[0]);
 					free(tmp);
-					//printf("%s\n", path);
 					execve(path, cmd, env);
 					free(path);
 					i++;
@@ -143,11 +179,15 @@ int	minishell(t_lenv **env)
 
 int	main(int ac, char **av, char **env)
 {
-	int	exit_code;
+	int		exit_code;
+	t_lenv	*begin;
 
 	(void)ac;
 	(void)av;
-	t_lenv	*begin = get_env(env);
+	if (!*env)
+		begin = get_min_env();
+	else
+		begin = get_env(env);
 	if (!begin)
 		return (1);
 	exit_code = minishell(&begin);
