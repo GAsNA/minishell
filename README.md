@@ -79,5 +79,70 @@ VOIR Pipex
 Missing functions: isatty, ttyname, ttyslot, ioctl, tcsetattr, tcgetattr, tgetent, tgetflag, tgetnum, tgetstr, tgoto, tputs
 
 
+How to implement Minishell
+
+ > ls -la > test | wc > test2 > test3
+t_list token_letter
+####LLELLLE>ELLLLE|ELL>ELLLLLE>ELLLLL
+####WWEWWWE>EWWWWE|EWWE>EWWWWWWWE>EWWWWWWW
+t_list token_word
+WORD
+SPACE
+WORD
+SPACE
+REDIRECTION_OUT
+SPACE
+WORD
+SPACE
+PIPE
+SPACE
+WORD
 
 
+WORD
+WORD
+REDIRECTION_OUT
+WORD
+PIPE
+WORD
+REDIRECTION_OUT
+WORD
+REDIRECTION_OUT
+WORD
+NULL
+
+
+t_list cmd
+
+NEW MAILLON =
+char **cmd[0]ls
+          [1]-la
+
+int fd_out = test (int ?)
+int fd_in = 0
+pid_t pid = NULL;
+next = NEW MAILLON 2
+
+NEW MAILLON 2
+char **cmd [0]wc
+int fd_out = dernier fd de ma liste avant pipe ou fin de liste
+int fd_in = 0
+pid_t pid = NULL;
+next = NULL;
+
+t_list tmp = cmd;
+
+while (tmp != NULL)
+{
+    tmp->pid = fork()
+    {
+        execution classico classique
+    }
+    tmp = tmp->next;
+}
+tmp = cmd;
+while (tmp != NULL)
+{
+    waitpid(tmp->pid);
+    tmp = tmp->next;
+}
