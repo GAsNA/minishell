@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/17 14:38:31 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/25 16:49:21 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,12 +107,12 @@ t_lenv	*get_min_env(void)
 int	minishell(t_lenv **env)
 {
 	t_data	data;
-	char	**cmd;
+	//char	**cmd;
 	t_lenv	**lenv;
 
+	lenv = env;
 	handle_signals_main();
 	data.run = 1;
-	lenv = env;
 	while (data.run)
 	{
 		data.line = readline("Rovidshell $>");
@@ -124,7 +124,27 @@ int	minishell(t_lenv **env)
 		}
 		if (data.line[0])
 			add_history(data.line);
-		cmd = ft_split(data.line, ' ');
+		t_cmd cmd;
+		cmd.cmd = malloc(sizeof(char *) * 2);
+		cmd.cmd[0] = ft_strdup("/usr/bin/ls");
+		cmd.cmd[1] = 0;
+		cmd.fd_out = open("test", O_CREAT | O_WRONLY | O_TRUNC, 0644);
+		if (cmd.fd_out < 0)
+			printf("error fd\n");
+		cmd.fd_in = 0;
+		cmd.prev = NULL;
+		t_cmd cmd2;
+		cmd2.cmd = malloc(sizeof(char *) * 2);
+		cmd2.cmd[0] = ft_strdup("/usr/bin/wc");
+		cmd2.cmd[1] = 0;
+		cmd2.fd_out = -1;
+		cmd2.fd_in = -1;
+		cmd.next = &cmd2;
+		cmd2.next = NULL;
+		cmd2.prev = &cmd;
+		char **enve = get_c_nv(lenv);
+		ft_loop_cmds(&cmd, enve);
+/*		cmd = ft_split(data.line, ' ');
 		printf("---------------------------------------\n");
 		if (ft_strncmp(cmd[0], "cd", ft_strlen("cd\0")) == 0)
 			ft_cd(cmd, lenv);
@@ -172,7 +192,7 @@ int	minishell(t_lenv **env)
 			}
 		}
 		free_split(cmd);
-		free(data.line);
+		free(data.line);*/
 	}	
 	return (0);
 }
