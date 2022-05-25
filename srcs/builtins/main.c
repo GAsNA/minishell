@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/25 16:49:21 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/25 17:40:09 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,7 +211,6 @@ int	main(int ac, char **av, char **env)
 	if (!begin)
 		return (1);
 	exit_code = minishell(&begin);
-	printf("%d\n", exit_code);
 	free_lenv(&begin);
 	return (exit_code);
 }
