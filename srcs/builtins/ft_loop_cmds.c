@@ -16,21 +16,18 @@ void	ft_loop_cmds(t_cmd *cmds, char **env)
 		tmp->pid = fork ();
 		if (tmp->pid == 0)
 		{
-			if (tmp->prev != NULL && tmp->fd_in == -1)
-			{
-				dup2(tmp->pipe_fd[0], 0);
-			}
-			else if (tmp->fd_in != -1)
+			close(tmp->pipe_fd[0]);
+			if (tmp->fd_in != 0)
 			{
 				dup2(tmp->fd_in, 0);
-				close(tmp->pipe_fd[0]);
 				close(tmp->fd_in);
 			}
-			if (tmp->next != NULL && tmp->fd_out == -1)
+			if (tmp->next != NULL && tmp->fd_out == 0)
 			{
 				dup2(tmp->pipe_fd[1], 1);
+				close(tmp->pipe_fd[1]);
 			}
-			else if (tmp->fd_out != -1)
+			else if (tmp->fd_out != 0)
 			{
 				dup2(tmp->fd_out, 1);
 				close(tmp->pipe_fd[1]);
@@ -42,7 +39,7 @@ void	ft_loop_cmds(t_cmd *cmds, char **env)
 		{
 			if (tmp->fd_in != 0)
 				close(tmp->fd_in);
-			if (tmp->fd_out != 1)
+			if (tmp->fd_out != 0)
 				close(tmp->fd_out);
 			close(tmp->pipe_fd[0]);
 			close(tmp->pipe_fd[1]);

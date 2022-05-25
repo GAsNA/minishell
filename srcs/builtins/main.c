@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/25 17:40:09 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/25 20:55:16 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,13 +135,21 @@ int	minishell(t_lenv **env)
 		cmd.prev = NULL;
 		t_cmd cmd2;
 		cmd2.cmd = malloc(sizeof(char *) * 2);
-		cmd2.cmd[0] = ft_strdup("/usr/bin/wc");
+		cmd2.cmd[0] = ft_strdup("/usr/bin/ls");
 		cmd2.cmd[1] = 0;
-		cmd2.fd_out = -1;
-		cmd2.fd_in = -1;
+		cmd2.fd_out = 0;
+		cmd2.fd_in = 0;
 		cmd.next = &cmd2;
 		cmd2.next = NULL;
 		cmd2.prev = &cmd;
+		t_cmd cmd3;
+		cmd3.cmd = malloc(sizeof(char *) * 2);
+		cmd3.cmd[0] = ft_strdup("/usr/bin/wc");
+		cmd3.cmd[1] = 0;
+		cmd3.fd_out = 0;
+		cmd3.fd_in = 0;
+		cmd2.next = &cmd3;
+		cmd3.next = NULL;
 		char **enve = get_c_nv(lenv);
 		ft_loop_cmds(&cmd, enve);
 /*		cmd = ft_split(data.line, ' ');
@@ -191,8 +199,8 @@ int	minishell(t_lenv **env)
 				printf("---------------------------------------\n");
 			}
 		}
-		free_split(cmd);
-		free(data.line);*/
+		free_split(cmd);*/
+		free(data.line);
 	}	
 	return (0);
 }
