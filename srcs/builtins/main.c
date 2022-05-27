@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/27 11:28:11 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/27 16:23:02 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,15 +126,15 @@ int	minishell(t_lenv **env)
 			add_history(data.line);
 		t_cmd cmd;
 		cmd.cmd = malloc(sizeof(char *) * 2);
-		cmd.cmd[0] = ft_strdup("/usr/bin/cat");
+		cmd.cmd[0] = ft_strdup("pwd");
 		cmd.cmd[1] = 0;
-		//cmd.fd_out = open("test", O_CREAT | O_WRONLY | O_TRUNC, 0644);
-		cmd.fd_out = -1;
+		cmd.fd_out = open("test", O_CREAT | O_WRONLY | O_TRUNC, 0644);
+		//cmd.fd_out = -1;
 		if (cmd.fd_out < 0)
 			printf("error fd\n");
 		cmd.fd_in = -1;
-		cmd.prev = NULL;
-		t_cmd cmd2;
+		cmd.next = NULL;
+	/*	t_cmd cmd2;
 		cmd2.cmd = malloc(sizeof(char *) * 2);
 		cmd2.cmd[0] = ft_strdup("/usr/bin/cat");
 		cmd2.cmd[1] = 0;
@@ -150,16 +150,16 @@ int	minishell(t_lenv **env)
 		cmd3.fd_out = -1;
 		cmd3.fd_in = -1;
 		cmd2.next = &cmd3;
-		cmd3.next = NULL;
-		char **enve = get_c_nv(lenv);
-		ft_loop_cmds(&cmd, enve);
-		free(cmd.cmd[0]);
+		cmd3.next = NULL;*/
+//		char **enve = get_c_nv(lenv);
+		ft_loop_cmds(&cmd, lenv);
+/*		free(cmd.cmd[0]);
 		free(cmd2.cmd[0]);
 		free(cmd3.cmd[0]);
 		free(cmd.cmd);
 		free(cmd2.cmd);
 		free(cmd3.cmd);
-		free_split(enve);
+		free_split(enve);*/
 /*		cmd = ft_split(data.line, ' ');
 		printf("---------------------------------------\n");
 		if (ft_strncmp(cmd[0], "cd", ft_strlen("cd\0")) == 0)
