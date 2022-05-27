@@ -7,16 +7,14 @@ extern int	g_status;
 void	ft_redir_pipe(t_cmd *cmd)
 {
 	if (pipe(cmd->pipe_fd) == -1)
-		ft_putstr_fd("Error pipe\n", 1);
-	else
 	{
-		if (cmd->next)
-		{
-			if (cmd->next->fd_in == -1)
-				cmd->next->fd_in = cmd->pipe_fd[0];
-		}
-	//	if (!cmd->prev && cmd->fd_in == -1)
-	//		cmd->fd_in
+		ft_putstr_fd("Error pipe\n", 1);
+		return ;
+	}
+	if (cmd->next)
+	{
+		if (cmd->next->fd_in == -1)
+			cmd->next->fd_in = cmd->pipe_fd[0];
 	}
 }
 
@@ -52,7 +50,7 @@ void	ft_loop_cmds(t_cmd *cmds, char **env)
 				if (tmp->next)
 					close(tmp->pipe_fd[1]);
 			}
-			execve(tmp->cmd[0], tmp->cmd, env);
+			g_status = execve(tmp->cmd[0], tmp->cmd, env);
 		}
 		else if (tmp->pid != 0)
 		{
@@ -60,16 +58,10 @@ void	ft_loop_cmds(t_cmd *cmds, char **env)
 				close(tmp->pipe_fd[1]);
 			if (tmp->fd_in != -1)
 				close(tmp->fd_in);
-//			else
-//				close(tmp->pipe_fd[0]);
 			if (tmp->fd_out != -1)
 				close(tmp->fd_out);
-			if (tmp->next != NULL )
-			{
-//				dup2(tmp->pipe_fd[0], 0);
-//				close(tmp->pipe_fd[0]);
-			}
 		}
+		printf("gstatus: %i\n", g_status);
 		tmp = tmp->next;
 	}
 	tmp = cmds;
