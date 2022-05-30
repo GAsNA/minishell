@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:38:45 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/27 19:56:15 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/30 16:07:15 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 extern int	g_status;
 
 char	**get_c_nv(t_lenv **lenv);
+
 void	ft_redir_pipe(t_cmd *cmd)
 {
 	if (pipe(cmd->pipe_fd) == -1)
@@ -111,37 +112,74 @@ int	is_builtin(char **cmd)
 	return (0);
 }
 
+char	*get_exec_path(char *cmd, t_lenv **lenv)
+{
+	char	**paths;
+	int		i;
+	char	*tmp;
+	char	*path;
+
+	i = 0;
+	paths = ft_get_paths(lenv);
+	while (paths[i])
+	{
+		tmp = ft_strjoin(paths[i], "/");
+		path = ft_strjoin(tmp, cmd);
+		free(tmp);
+		if (access(path, X_OK) == 0)
+		{
+			free_split(paths);
+			return (path);
+		}
+		free(path);
+		i++;
+	}
+	free_split(paths);
+	return (NULL);
+}
+
 int	ft_exec_child(t_cmd *cmd, t_lenv **lenv)
 {
+	char	*path;
+	char	**env;
+
 	if (is_builtin(cmd->cmd))
 		launch_builtin(cmd, lenv);
 	else
 	{
-		char **env = get_c_nv(lenv);
-		char **paths = ft_get_paths(lenv);
-		int  i = 0;
-		char *tmp;
-		char *path;
-		if (!env[0])
-			printf("env empty\n");
-		execve(cmd->cmd[0], cmd->cmd, env);
-		while (paths[i])
-		{
-			tmp = ft_strjoin(paths[i], "/");
-			path = ft_strjoin(tmp, cmd->cmd[0]);
-			free(tmp);
+		env = get_c_nv(lenv);
+		path = get_exec_path(cmd->cmd[0], lenv);
+		if (path)
 			g_status = execve(path, cmd->cmd, env);
-			free(path);
-			i++;
-		}
+		free(path);
+		usleep(100);
+		ft_putstr_fd(cmd->cmd[0], 2);
+		ft_putstr_fd(": command not found\n", 2);
 	}
-	//if (cmd->next == NULL)
-	//{
-		close (0);
-		close (1);
-		close (2);
-//	}
+	close (0);
+	close (1);
+	close (2);
 	exit (0);
+}
+
+void	close_parent_fds(t_cmd *cmd)
+{
+	if (cmd->next)
+		close(cmd->pipe_fd[1]);
+	if (cmd->fd_in != -1)
+		close(cmd->fd_in);
+	if (cmd->fd_out != -1)
+		close(cmd->fd_out);
+}
+
+void	wait_childs(t_cmd *cmd)
+{
+	while (cmd != NULL)
+	{
+		if (cmd->pid != 0)
+			waitpid(cmd->pid, &g_status, 0);
+		cmd = cmd->next;
+	}
 }
 
 void	ft_loop_cmds(t_cmd *cmds, t_lenv **env)
@@ -164,24 +202,10 @@ void	ft_loop_cmds(t_cmd *cmds, t_lenv **env)
 				ft_exec_child(tmp, env);
 			}
 			else if (tmp->pid != 0)
-			{
-				if (tmp->next)
-					close(tmp->pipe_fd[1]);
-				if (tmp->fd_in != -1)
-					close(tmp->fd_in);
-				if (tmp->fd_out != -1)
-					close(tmp->fd_out);
-			}
+				close_parent_fds(tmp);
 		}
 		tmp = tmp->next;
 	}
 	tmp = cmds;
-	while (tmp != NULL)
-	{
-		if (tmp->pid != 0)
-		{
-			waitpid(tmp->pid, &g_status, 0);
-		}
-		tmp = tmp->next;
-	}
+	wait_childs(tmp);
 }

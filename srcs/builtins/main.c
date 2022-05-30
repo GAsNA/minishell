@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/27 19:56:17 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/30 16:07:18 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,31 +126,31 @@ int	minishell(t_lenv **env)
 			add_history(data.line);
 		t_cmd cmd;
 		cmd.cmd = malloc(sizeof(char *) * 2);
-		cmd.cmd[0] = ft_strdup("/usr/bin/cat");
+		cmd.cmd[0] = ft_strdup("laaaa");
 		cmd.cmd[1] = 0;
-		//cmd.fd_out = open("test", O_CREAT | O_WRONLY | O_TRUNC, 0644);
-		cmd.fd_out = -1;
+		cmd.fd_out = open("test", O_CREAT | O_WRONLY | O_TRUNC, 0644);
+		//cmd.fd_out = -1;
 		if (cmd.fd_out < 0)
 			printf("error fd\n");
 		cmd.fd_in = -1;
 //		cmd.next = NULL;
 		t_cmd cmd2;
 		cmd2.cmd = malloc(sizeof(char *) * 2);
-		cmd2.cmd[0] = ft_strdup("/usr/bin/cat");
+		cmd2.cmd[0] = ft_strdup("wc");
 		cmd2.cmd[1] = 0;
 		cmd2.fd_out = -1;
 		cmd2.fd_in = -1;
 		cmd.next = &cmd2;
 		cmd2.next = NULL;
 		cmd2.prev = &cmd;
-		t_cmd cmd3;
+/*		t_cmd cmd3;
 		cmd3.cmd = malloc(sizeof(char *) * 2);
 		cmd3.cmd[0] = ft_strdup("/usr/bin/ls");
 		cmd3.cmd[1] = 0;
 		cmd3.fd_out = -1;
 		cmd3.fd_in = -1;
 		cmd2.next = &cmd3;
-		cmd3.next = NULL;
+		cmd3.next = NULL;*/
 //		char **enve = get_c_nv(lenv);
 		ft_loop_cmds(&cmd, lenv);/*
 		free(cmd.cmd[0]);
@@ -160,54 +160,7 @@ int	minishell(t_lenv **env)
 		free(cmd2.cmd);
 		free(cmd3.cmd);*/
 //		free_split(enve);
-/*		cmd = ft_split(data.line, ' ');
-		printf("---------------------------------------\n");
-		if (ft_strncmp(cmd[0], "cd", ft_strlen("cd\0")) == 0)
-			ft_cd(cmd, lenv);
-		else if (ft_strncmp(cmd[0], "pwd", ft_strlen("pwd\0")) == 0)
-			ft_pwd(cmd, lenv);
-		else if (ft_strncmp(cmd[0], "env", ft_strlen("env\0")) == 0)
-			ft_env(cmd, lenv);
-		else if (ft_strncmp(cmd[0], "unset", ft_strlen("unset\0")) == 0)
-			ft_unset(cmd, lenv);
-		else if (ft_strncmp(cmd[0], "exit", ft_strlen("exit\0")) == 0)
-			ft_exit(cmd, lenv);
-		else if (ft_strncmp(cmd[0], "export", ft_strlen("export\0")) == 0)
-			ft_export(cmd, lenv);
-		else if (ft_strncmp(cmd[0], "echo", ft_strlen("echo\0")) == 0)
-			ft_echo(cmd, lenv);
-		else
-		{
-			int pid = fork();
-			if (pid == 0)
-			{
-				char **env = get_c_nv(lenv);
-				char **paths = ft_get_paths(lenv);
-				int  i = 0;
-				char *tmp;
-				char *path;
-				if (!env[0])
-					printf("env empty\n");
-				execve(cmd[0], cmd, env);
-				while (paths[i])
-				{
-					tmp = ft_strjoin(paths[i], "/");
-					path = ft_strjoin(tmp, cmd[0]);
-					free(tmp);
-					execve(path, cmd, env);
-					free(path);
-					i++;
-				}
-				free_split(env);
-				free_split(paths);
-			}
-			else
-			{
-				waitpid(pid, NULL, 0);
-				printf("---------------------------------------\n");
-			}
-		}
-		free_split(cmd);*/
+//		free_split(cmd);
 		free(data.line);
 	}	
 	return (0);
