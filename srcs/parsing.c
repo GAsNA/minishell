@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 10:28:13 by rleseur           #+#    #+#             */
-/*   Updated: 2022/05/17 14:50:47 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/05/30 17:15:44 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,70 +19,81 @@ static t_regroup	*get_av(t_regroup *reg, char ***av)
 
 	tmp = reg;
 	i = -1;
-	while (++i >= 0 && tmp && ft_strcmp(tmp->str, "|") != 0)
+	while (++i >= 0 && tmp && ft_strcmp(tmp->str, "|") != 0
+		&& ft_strcmp(tmp->str, "<") != 0 && ft_strcmp(tmp->str, "<<") != 0
+		&& ft_strcmp(tmp->str, ">") != 0 && ft_strcmp(tmp->str, ">>") != 0)
 		tmp = tmp->next;
 	*av = malloc((i + 1) * sizeof(char *));
 	if (!*av)
 		return (0);
 	i = -1;
-	while (reg && ft_strcmp(reg->str, "|") != 0)
+	while (reg && ft_strcmp(reg->str, "|") != 0
+		&& ft_strcmp(reg->str, "<") != 0 && ft_strcmp(reg->str, "<<") != 0
+                && ft_strcmp(reg->str, ">") != 0 && ft_strcmp(reg->str, ">>") != 0)
 	{
 		(*av)[++i] = reg->str;
-		reg = reg->next;
-	}
-	if (reg)
-	{
-		free(reg->str);
 		reg = reg->next;
 	}
 	(*av)[i + 1] = 0;
 	return (reg);
 }
 
-static t_pipe	*get_cmd_left_to_right(t_pipe *pipe)
+static int	get_fd_out(t_regroup *reg)
 {
-	t_pipe	*rt;
-
-	rt = pipe;
-	while (pipe->next)
-	{
-		pipe->right = pipe->next->left;
-		pipe = pipe->next;
-	}
-	return (rt);
+	if (reg && ft_strcmp(reg->str, ">") == 0)
+		return (open(reg->next->str, O_CREAT | O_TRUNC));
+	else if (reg && ft_strcmp(reg->str, ">>") == 0)
+		return (open(reg->next->str, O_CREAT | O_APPEND));
+	else
+		return (-42);
 }
 
-static t_pipe	*get_redir(t_pipe *pipe)
+static t_regroup	*get_other_av(t_regroup *reg, char ***av)
 {
 	int		i;
-	t_pipe	*rt;
+	char		**tmpav;
+	t_regroup	*tmp;
 
-	rt = pipe;
-	while (pipe)
+	if (!(*av)[0])
 	{
-		i = -1;
-		while (pipe->left->av[++i])
-		{
-			if (ft_strcmp(pipe->left->av[i], "<") == 0
-				|| ft_strcmp(pipe->left->av[i], "<<") == 0)
-				ft_list_push_back_redir(&pipe->left->redir,
-					pipe->left->av[i], INREDIR);
-			else if (ft_strcmp(pipe->left->av[i], ">") == 0
-				|| ft_strcmp(pipe->left->av[i], ">>") == 0)
-				ft_list_push_back_redir(&pipe->left->redir,
-					pipe->left->av[i], OUTREDIR);
-		}
-		if (!pipe->left->redir)
-			pipe->left->redir = ft_create_elem_redir_null();
-		pipe = pipe->next;
+		while (reg && ft_strcmp(reg->str, "|") != 0)
+			reg = reg->next;
+		return (reg);
 	}
-	return (rt);
+	if (reg && reg->next && reg->next->next)
+		reg = reg->next->next;
+	tmp = reg;
+	i = 0;
+	while ((*av)[i])
+		i++;
+	while (tmp && ft_strcmp(tmp->str, "|") != 0)
+	{
+		tmp = tmp->next;
+		i++;
+	}
+	tmpav = *av;
+	*av = NULL;
+	*av = malloc((i + 1) * sizeof(char *));
+	if (!*av)
+		return (0);
+	i = -1;
+	while (tmpav[++i])
+		(*av)[i] = tmpav[i];
+	while (reg && ft_strcmp(reg->str, "|") != 0)
+	{
+		(*av)[i] = reg->str;
+		reg = reg->next;
+		i++;
+	}
+	(*av)[i] = 0;
+	return (reg);
 }
 
-t_pipe	*parsing(t_regroup *reg, t_lenv *lenv)
+t_cmd2	*parsing(t_regroup *reg, t_lenv *lenv)
 {
 	char		**av;
-	t_pipe		*pipe;
+	int		fd_out;
+	t_cmd2		*cmd2;
 	t_regroup	*tmp;
 
 	if (!reg)
@@ -90,19 +101,19 @@ t_pipe	*parsing(t_regroup *reg, t_lenv *lenv)
 	(void) lenv;
 	tmp = reg;
 	av = NULL;
-	tmp = get_av(tmp, &av);
-	pipe = ft_create_elem_pipe(av);
-	if (!pipe)
-		return (0);
+	cmd2 = NULL;
 	while (tmp)
 	{
 		tmp = get_av(tmp, &av);
-		ft_list_push_back_pipe(&pipe, av);
+		fd_out = get_fd_out(tmp);
+		tmp = get_other_av(tmp, &av);
+		ft_list_push_back_cmd2(&cmd2, av, fd_out);
 		av = NULL;
+		if (tmp && ft_strcmp(tmp->str, "|") == 0)
+			tmp = tmp->next;
 	}
 	ft_list_clear_reg(reg);
-	pipe = get_cmd_left_to_right(pipe);
-	pipe = get_redir(pipe);
-	pipe = get_expands(pipe, lenv);
-	return (pipe);
+	//pipe = get_cmd_left_to_right(pipe);
+	//pipe = get_expands(pipe, lenv);
+	return (cmd2);
 }

@@ -37,6 +37,7 @@ FILES		=	main.c					\
 				manage_lists_lexing.c	\
 				manage_lists_regroup.c	\
 				manage_lists_pipe.c		\
+				manage_lists_cmd2.c		\
 				manage_lists_redir.c	\
 				manage_lists_lenv.c		\
 				utils.c

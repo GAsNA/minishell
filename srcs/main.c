@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:44:11 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/06 23:55:32 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/05/30 14:00:06 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ int	minishell(t_lenv *lenv)
 {
 	int			i;
 	t_data		data;
-	t_pipe		*pipe;
-	t_pipe		*tmp;
+	t_cmd2		*cmd2;
 
 	handle_signals_main();
 	data.run = 1;
@@ -47,19 +46,17 @@ int	minishell(t_lenv *lenv)
 		}
 		if (data.line[0])
 			add_history(data.line);
-		pipe = parsing(get_regroup(get_lexing(data.line)), lenv);
-		if (!pipe)
+		cmd2 = parsing(get_regroup(get_lexing(data.line)), lenv);
+		if (!cmd2)
 			printf("ERROR\n");
-		tmp = pipe;
-		while (tmp)
+		while (cmd2)
 		{
 			i = -1;
-			while (tmp->left->av[++i])
-				printf("%s\t", tmp->left->av[i]);
-			printf("\n");
-			tmp = tmp->next;
+			while (cmd2->cmd[++i])
+				printf("%s\t", cmd2->cmd[i]);
+			printf("\n\tfd_out: %i\n", cmd2->fd_out);
+			cmd2 = cmd2->next;
 		}
-		ft_list_clear_pipe(pipe);
 	}
 	return (0);
 }

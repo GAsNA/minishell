@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:15:15 by rleseur           #+#    #+#             */
-/*   Updated: 2022/05/04 11:33:00 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/05/30 14:00:34 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_pipe		t_pipe;
 typedef struct s_cmd		t_cmd;
 typedef struct s_redir		t_redir;
 typedef struct s_lenv		t_lenv;
+typedef struct s_cmd2		t_cmd2;
 
 struct s_lexing
 {
@@ -49,6 +50,17 @@ struct s_pipe
 	t_cmd	*left;
 	t_cmd	*right;
 	t_pipe	*next;
+};
+
+struct s_cmd2
+{
+	char		**cmd;
+	int		fd_in;
+	int		fd_out;
+	int		pipe_fd[2];
+	pid_t		pid;// NULL
+	struct s_cmd2	*prev;
+	struct s_cmd2	*next;
 };
 
 struct s_cmd
@@ -82,7 +94,7 @@ t_lexing	*get_lexing(char *line);
 t_regroup	*get_regroup(t_lexing *lex);
 
 /* parsing.c */
-t_pipe		*parsing(t_regroup *reg, t_lenv *lenv);
+t_cmd2		*parsing(t_regroup *reg, t_lenv *lenv);
 
 /* expand.c */
 t_pipe		*get_expands(t_pipe *pipe, t_lenv *lenv);
@@ -102,6 +114,10 @@ void		ft_list_clear_reg(t_regroup *begin_list);
 t_pipe		*ft_create_elem_pipe(char **av);
 void		ft_list_push_back_pipe(t_pipe **begin_list, char **av);
 void		ft_list_clear_pipe(t_pipe *begin_list);
+
+/* manage_lists_cmd2.c */
+t_cmd2		*ft_create_elem_cmd2(char **av, int fd_out);
+void		ft_list_push_back_cmd2(t_cmd2 **begin_list, char **av, int fd_out);
 
 /* manage_lists_redir.c */
 t_redir		*ft_create_elem_redir(char *str, enum e_type type);
