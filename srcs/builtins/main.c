@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/30 16:07:18 by aasli            ###   ########.fr       */
+/*   Updated: 2022/05/30 17:38:50 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,20 @@
 #include "../libft/libft.h"
 
 int	g_status = 0;
+
+void	ctrl_c_exec(int signum)
+{
+	(void)signum;
+	printf("\n");
+	g_status = signum + 28;
+}
+
+void	handle_signals_exec(void)
+{
+	signal(SIGINT, ctrl_c_exec);
+	signal(SIGQUIT, SIG_IGN);
+}
+
 
 void	ctrl_c(int signum)
 {
@@ -111,10 +125,10 @@ int	minishell(t_lenv **env)
 	t_lenv	**lenv;
 
 	lenv = env;
-	handle_signals_main();
 	data.run = 1;
 	while (data.run)
 	{
+		handle_signals_main();
 		data.line = readline("Rovidshell $>");
 		if (!data.line)
 		{
@@ -126,7 +140,7 @@ int	minishell(t_lenv **env)
 			add_history(data.line);
 		t_cmd cmd;
 		cmd.cmd = malloc(sizeof(char *) * 2);
-		cmd.cmd[0] = ft_strdup("laaaa");
+		cmd.cmd[0] = ft_strdup("wc");
 		cmd.cmd[1] = 0;
 		cmd.fd_out = open("test", O_CREAT | O_WRONLY | O_TRUNC, 0644);
 		//cmd.fd_out = -1;
@@ -152,6 +166,7 @@ int	minishell(t_lenv **env)
 		cmd2.next = &cmd3;
 		cmd3.next = NULL;*/
 //		char **enve = get_c_nv(lenv);
+		handle_signals_exec();
 		ft_loop_cmds(&cmd, lenv);/*
 		free(cmd.cmd[0]);
 		free(cmd2.cmd[0]);
