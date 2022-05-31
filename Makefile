@@ -27,14 +27,15 @@ PRESENTATION2	=	" \e[32m********************************************************
 
 ####### VARIABLES #######
 
-SRCS_PATH	=	./srcs/
+SRCS_PATH	=	./srcs/builtins/
 OBJS_PATH	=	./objs/
-FILES		=	main.c
+
+FILES		=	main.c l_env.c l_env_utils.c ft_pwd.c ft_cd.c cd_utils.c env.c env2.c ft_echo.c ft_env.c ft_unset.c ft_exit.c ft_export.c ft_export_utils.c path.c ft_loop_cmds.c
 SRCS		=	$(addprefix ${SRCS_PATH}, ${FILES})
 OBJS		=	$(addprefix ${OBJS_PATH}, ${FILES:.c=.o})
 
 HEADER_PATH	=	./headers/
-HEADER		=	$(addprefix ${HEADER_PATH}, minishell.h)
+HEADER		=	$(addprefix ${HEADER_PATH}, minishell.h, builtins.h)
 
 CC			=	clang
 CFLAGS		=	-Wall -Werror -Wextra
@@ -54,8 +55,9 @@ ${OBJS_PATH}%.o:	${SRCS_PATH}%.c
 				@${CC} ${CFLAGS} -c $< -o $@
 
 ${NAME}:			${OBJS}
-				@echo ${PRESENTATION2} 
-				@${CC} ${CFLAGS} -o ${NAME} ${OBJS} -lreadline
+				@echo ${PRESENTATION2}
+				@make -C libft
+				@${CC} ${CFLAGS} -o ${NAME} ${OBJS} libft/libft.a -lreadline
 				@echo "\e[32m"Compilation success"\033[0m"
 
 clean:
