@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:44:11 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/30 14:00:06 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/05/31 15:38:34 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	minishell(t_lenv *lenv)
 {
 	int			i;
 	t_data		data;
-	t_cmd2		*cmd2;
+	t_cmd		*cmd;
 
 	handle_signals_main();
 	data.run = 1;
@@ -46,16 +46,17 @@ int	minishell(t_lenv *lenv)
 		}
 		if (data.line[0])
 			add_history(data.line);
-		cmd2 = parsing(get_regroup(get_lexing(data.line)), lenv);
-		if (!cmd2)
+		cmd = parsing(get_regroup(get_lexing(data.line)), lenv);
+		if (!cmd)
 			printf("ERROR\n");
-		while (cmd2)
+		while (cmd)
 		{
 			i = -1;
-			while (cmd2->cmd[++i])
-				printf("%s\t", cmd2->cmd[i]);
-			printf("\n\tfd_out: %i\n", cmd2->fd_out);
-			cmd2 = cmd2->next;
+			while (cmd->cmd[++i])
+				printf("%s\t", cmd->cmd[i]);
+			printf("\n\tfd_out: %i", cmd->fd_out);
+			printf("\n\tfd_in: %i\n", cmd->fd_in);
+			cmd = cmd->next;
 		}
 	}
 	return (0);
@@ -119,30 +120,13 @@ static t_lenv	*get_lenv(char **env)
 
 int	main(int ac, char **av, char **env)
 {
-	//int		i;
 	int		exit_code;
 	t_lenv	*lenv;
-	//t_pipe	*pipe;
-	//t_pipe	*tmp;
-
+	
 	(void)ac;
 	(void)av;
 	lenv = get_lenv(env);
 	exit_code = minishell(lenv);
-	/*pipe = parsing(get_regroup(get_lexing(av[1])), lenv);
-	if (!pipe)
-		printf("ERROR\n");
-	tmp = pipe;
-	while (tmp)
-	{
-		i = -1;
-		while (tmp->left->av[++i])
-			printf("%s\t", tmp->left->av[i]);
-		printf("\n");
-		tmp = tmp->next;
-	}
-	ft_list_clear_pipe(pipe);*/
 	ft_list_clear_lenv(lenv);
 	return (exit_code);
-	//return (0);
 }

@@ -1,55 +1,53 @@
 PRESENTATION	=	" \e[32m*******************************************************\033[0m\n"\
-					"\e[32m*                                                     *\033[0m\n"\
-					"\e[32m*        ___  ____       _     _          _ _         *\033[0m\n"\
-					"\e[32m*        |  \/  (_)     (_)   | |        | | |        *\033[0m\n"\
-					"\e[32m*        | .  . |_ _ __  _ ___| |__   ___| | |        *\033[0m\n"\
-					"\e[32m*        | |\/| | | '_ \| / __| '_ \ / _ \ | |        *\033[0m\n"\
-					"\e[32m*        | |  | | | | | | \__ \ | | |  __/ | |        *\033[0m\n"\
-					"\e[32m*        \_|  |_/_|_| |_|_|___/_| |_|\___|_|_|        *\033[0m\n"\
-					"\e[32m*                                                     *\033[0m\n"\
-					"\e[32m*                                                     *\033[0m\n"\
-					"\e[32m* By: David ASLI && Romane LESEUR                     *\033[0m\n"\
-					"\e[32m*******************************************************\033[0m\n"
+			"\e[32m*                                                     *\033[0m\n"\
+			"\e[32m*        ___  ____       _     _          _ _         *\033[0m\n"\
+			"\e[32m*        |  \/  (_)     (_)   | |        | | |        *\033[0m\n"\
+			"\e[32m*        | .  . |_ _ __  _ ___| |__   ___| | |        *\033[0m\n"\
+			"\e[32m*        | |\/| | | '_ \| / __| '_ \ / _ \ | |        *\033[0m\n"\
+			"\e[32m*        | |  | | | | | | \__ \ | | |  __/ | |        *\033[0m\n"\
+			"\e[32m*        \_|  |_/_|_| |_|_|___/_| |_|\___|_|_|        *\033[0m\n"\
+			"\e[32m*                                                     *\033[0m\n"\
+			"\e[32m*                                                     *\033[0m\n"\
+			"\e[32m* By: David ASLI && Romane LESEUR                     *\033[0m\n"\
+			"\e[32m*******************************************************\033[0m\n"
 
 PRESENTATION2	=	" \e[32m*********************************************************************************\033[0m\n"\
-					"\e[32m*                                                                               *\033[0m\n"\
-					"\e[32m*        ____    ____   _             _          __             __   __         *\033[0m\n"\
-					"\e[32m*       |_   \  /   _| (_)           (_)        [  |           [  | [  |        *\033[0m\n"\
-					"\e[32m*         |   \/   |   __   _ .--.   __   .--.   | |--.  .---.  | |  | |        *\033[0m\n"\
-					'\e[32m*         | |\\  /| |  [  | [ `.-. | [  | ( (`\\]  | .-. |/ /__\\\\ | |  | |        *\033[0m\n'\
-					"\e[32m*        _| |_\/_| |_  | |  | | | |  | |  \`'.'.  | | | || \__., | |  | |        *\033[0m\n"\
-					"\e[32m*       |_____||_____|[___][___||__][___][\\__) )[___]|__]'.__.'[___][___]       *\033[0m\n"\
-					"\e[32m*                                                                               *\033[0m\n"\
-					"\e[32m*                                                                               *\033[0m\n"\
-					"\e[32m* By: David ASLI && Romane LESEUR                                               *\033[0m\n"\
-					"\e[32m*********************************************************************************\033[0m\n"
+			"\e[32m*                                                                               *\033[0m\n"\
+			"\e[32m*        ____    ____   _             _          __             __   __         *\033[0m\n"\
+			"\e[32m*       |_   \  /   _| (_)           (_)        [  |           [  | [  |        *\033[0m\n"\
+			"\e[32m*         |   \/   |   __   _ .--.   __   .--.   | |--.  .---.  | |  | |        *\033[0m\n"\
+			'\e[32m*         | |\\  /| |  [  | [ `.-. | [  | ( (`\\]  | .-. |/ /__\\\\ | |  | |        *\033[0m\n'\
+			"\e[32m*        _| |_\/_| |_  | |  | | | |  | |  \`'.'.  | | | || \__., | |  | |        *\033[0m\n"\
+			"\e[32m*       |_____||_____|[___][___||__][___][\\__) )[___]|__]'.__.'[___][___]       *\033[0m\n"\
+			"\e[32m*                                                                               *\033[0m\n"\
+			"\e[32m*                                                                               *\033[0m\n"\
+			"\e[32m* By: David ASLI && Romane LESEUR                                               *\033[0m\n"\
+			"\e[32m*********************************************************************************\033[0m\n"
 
 
 ####### VARIABLES #######
 
 SRCS_PATH	=	./srcs/
 OBJS_PATH	=	./objs/
-FILES		=	main.c					\
-				lexing.c				\
-				regroup.c				\
-				parsing.c				\
-				expand.c				\
-				manage_lists_lexing.c	\
-				manage_lists_regroup.c	\
-				manage_lists_pipe.c		\
-				manage_lists_cmd2.c		\
-				manage_lists_redir.c	\
-				manage_lists_lenv.c		\
-				utils.c
+FILES		=	main.c			\
+			lexing.c		\
+			regroup.c		\
+			parsing.c		\
+			expand.c		\
+			manage_lists_lexing.c	\
+			manage_lists_regroup.c	\
+			manage_lists_cmd.c	\
+			manage_lists_lenv.c	\
+			utils.c
 SRCS		=	$(addprefix ${SRCS_PATH}, ${FILES})
 OBJS		=	$(addprefix ${OBJS_PATH}, ${FILES:.c=.o})
 
 HEADER_PATH	=	./headers/
 HEADER		=	$(addprefix ${HEADER_PATH}, minishell.h)
 
-CC			=	clang
+CC		=	clang
 CFLAGS		=	-Wall -Werror -Wextra -g3
-RM			=	rm -rf
+RM		=	rm -rf
 
 LIBFT		=	libft
 
@@ -58,29 +56,29 @@ NAME		=	minishell
 
 ####### COMMANDS #######
 
-all:				${NAME}
+all:			${NAME}
 
 ${OBJS_PATH}%.o:	${SRCS_PATH}%.c
-				@mkdir -p ${dir $@}
-				@${CC} ${CFLAGS} -c -I${HEADER_PATH} $< -o $@
+			@mkdir -p ${dir $@}
+			@${CC} ${CFLAGS} -c -I${HEADER_PATH} $< -o $@
 
-${NAME}:			${OBJS}
-				@echo ${PRESENTATION2} 
+${NAME}:		${OBJS}
+			@echo ${PRESENTATION2} 
 #@make -C libft
-				@${CC} ${CFLAGS} -o ${NAME} ${OBJS} -lreadline
-				@echo "\e[32m"Compilation success"\033[0m"
+			@${CC} ${CFLAGS} -o ${NAME} ${OBJS} -lreadline
+			@echo "\e[32m"Compilation success"\033[0m"
 
 clean:
-				@${RM} ${OBJS_PATH}
-				@echo "\e[35m"Object files deleted"\033[0m"
+			@${RM} ${OBJS_PATH}
+			@echo "\e[35m"Object files deleted"\033[0m"
 
-fclean:				clean
-				@${RM} ${NAME}
-				@echo "\e[35m"Executable deleted"\033[0m"
+fclean:			clean
+			@${RM} ${NAME}
+			@echo "\e[35m"Executable deleted"\033[0m"
 
-re:					fclean all
+re:			fclean all
 
 david:
-				@cat srcs/david.txt
+			@cat srcs/david.txt
 
 .PHONY:			all clean fclean re

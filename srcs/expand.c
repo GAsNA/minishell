@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:13:02 by rleseur           #+#    #+#             */
-/*   Updated: 2022/05/17 14:49:27 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/05/31 10:16:01 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,18 +83,18 @@ static void	prepare_expand(char	**av, t_lenv *lenv)
 	}
 }
 
-t_pipe	*get_expands(t_pipe *pipe, t_lenv *lenv)
+t_cmd2	*get_expands(t_cmd2 *cmd2, t_lenv *lenv)
 {
 	int		i;
-	t_pipe	*rt;
+	t_cmd2	*rt;
 
-	rt = pipe;
-	while (pipe)
+	rt = cmd2;
+	while (cmd2)
 	{
 		i = -1;
-		while (pipe->left->av[++i])
-			prepare_expand(&pipe->left->av[i], lenv);
-		pipe = pipe->next;
+		while (cmd2->cmd[++i])
+			prepare_expand(&cmd2->cmd[i], lenv);
+		cmd2 = cmd2->next;
 	}
 	return (rt);
 }

@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   manage_lists_cmd2.c                                :+:      :+:    :+:   */
+/*   manage_lists_cmd.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 14:08:48 by rleseur           #+#    #+#             */
-/*   Updated: 2022/05/30 13:58:00 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/05/31 13:27:33 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_cmd2	*ft_create_elem_cmd2(char **av, int fd_out)
+t_cmd	*ft_create_elem_cmd(char **av)
 {
-	t_cmd2	*elem;
+	t_cmd	*elem;
 
-	elem = malloc(sizeof(t_cmd2));
+	elem = malloc(sizeof(t_cmd));
 	if (!elem)
 		return (0);
 	elem->cmd = av;
 	elem->fd_in = -42;
-	elem->fd_out = fd_out;
+	elem->fd_out = -42;
 	elem->pipe_fd[0] = -42;
 	elem->pipe_fd[1] = -42;
 	elem->pid = -42;
@@ -30,17 +30,17 @@ t_cmd2	*ft_create_elem_cmd2(char **av, int fd_out)
 	return (elem);
 }
 
-void	ft_list_push_back_cmd2(t_cmd2 **begin_list, char **av, int fd_out)
+void	ft_list_push_back_cmd(t_cmd **begin_list, char **av)
 {
-	t_cmd2	*list;
+	t_cmd	*list;
 
 	if (*begin_list)
 	{
 		list = *begin_list;
 		while (list->next)
 			list = list->next;
-		list->next = ft_create_elem_cmd2(av, fd_out);
+		list->next = ft_create_elem_cmd(av);
 	}
 	else
-		*begin_list = ft_create_elem_cmd2(av, fd_out);
+		*begin_list = ft_create_elem_cmd(av);
 }
