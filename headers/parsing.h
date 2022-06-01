@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:15:15 by rleseur           #+#    #+#             */
-/*   Updated: 2022/05/31 13:27:16 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/01 13:31:05 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,9 @@ t_cmd		*parsing(t_regroup *reg, t_lenv *lenv);
 /* expand.c */
 t_cmd		*get_expands(t_cmd *cmd, t_lenv *lenv);
 
+/* heredoc.c */
+int		make_heredoc(void);
+
 /* manage_lists_lexing.c */
 t_lexing	*ft_create_elem_lex(char letter, enum e_type type);
 void		ft_list_push_back_lex(t_lexing **begin_list,
@@ -88,8 +91,8 @@ void		ft_list_push_back_reg(t_regroup **begin_list, char *str);
 void		ft_list_clear_reg(t_regroup *begin_list);
 
 /* manage_lists_cmd.c */
-t_cmd		*ft_create_elem_cmd(char **av);
-void		ft_list_push_back_cmd(t_cmd **begin_list, char **av);
+t_cmd		*ft_create_elem_cmd(char **av, int fd_in);
+void		ft_list_push_back_cmd(t_cmd **begin_list, char **av, int fd_in);
 
 /* manage_lists_lenv.c */
 t_lenv		*ft_create_elem_lenv(char *k, char *v);

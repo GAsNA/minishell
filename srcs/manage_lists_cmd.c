@@ -6,13 +6,13 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 14:08:48 by rleseur           #+#    #+#             */
-/*   Updated: 2022/05/31 13:27:33 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/01 11:41:16 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_cmd	*ft_create_elem_cmd(char **av)
+t_cmd	*ft_create_elem_cmd(char **av, int fd_in)
 {
 	t_cmd	*elem;
 
@@ -20,7 +20,7 @@ t_cmd	*ft_create_elem_cmd(char **av)
 	if (!elem)
 		return (0);
 	elem->cmd = av;
-	elem->fd_in = -42;
+	elem->fd_in = fd_in;
 	elem->fd_out = -42;
 	elem->pipe_fd[0] = -42;
 	elem->pipe_fd[1] = -42;
@@ -30,7 +30,7 @@ t_cmd	*ft_create_elem_cmd(char **av)
 	return (elem);
 }
 
-void	ft_list_push_back_cmd(t_cmd **begin_list, char **av)
+void	ft_list_push_back_cmd(t_cmd **begin_list, char **av, int fd_in)
 {
 	t_cmd	*list;
 
@@ -39,8 +39,8 @@ void	ft_list_push_back_cmd(t_cmd **begin_list, char **av)
 		list = *begin_list;
 		while (list->next)
 			list = list->next;
-		list->next = ft_create_elem_cmd(av);
+		list->next = ft_create_elem_cmd(av, fd_in);
 	}
 	else
-		*begin_list = ft_create_elem_cmd(av);
+		*begin_list = ft_create_elem_cmd(av, fd_in);
 }
