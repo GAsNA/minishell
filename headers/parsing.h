@@ -6,12 +6,14 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:15:15 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/01 13:31:05 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/06 13:51:27 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
+
+# include <errno.h>
 
 enum e_type
 {
@@ -44,11 +46,11 @@ struct s_regroup
 
 struct s_cmd
 {
-	char		**cmd;
-	int		fd_in;
-	int		fd_out;
-	int		pipe_fd[2];
-	pid_t		pid;// NULL
+	char			**cmd;
+	int				fd_in;
+	int				fd_out;
+	int				pipe_fd[2];
+	pid_t			pid;
 	struct s_cmd	*prev;
 	struct s_cmd	*next;
 };
@@ -61,7 +63,7 @@ struct s_lenv
 };
 
 /********************************************/
-/*		  Protoypes		    */
+/*				  Protoypes					*/
 /********************************************/
 
 /* lexing.c */
@@ -73,11 +75,19 @@ t_regroup	*get_regroup(t_lexing *lex);
 /* parsing.c */
 t_cmd		*parsing(t_regroup *reg, t_lenv *lenv);
 
+/* calcul_divide_cmd.c */
+int			calcul_av(t_regroup *reg);
+t_regroup	*divide_cmd(t_regroup *reg, char ***av, int *fd);
+
+/* get_check_fd.c */
+void		check_fd_out(int *fd_in, int *fd_out, t_regroup *reg, char ***cmd);
+void		check_fd_in(int *fd_in, int *fd_out, t_regroup *reg, char ***cmd);
+
 /* expand.c */
 t_cmd		*get_expands(t_cmd *cmd, t_lenv *lenv);
 
 /* heredoc.c */
-int		make_heredoc(void);
+int			make_heredoc(char *s);
 
 /* manage_lists_lexing.c */
 t_lexing	*ft_create_elem_lex(char letter, enum e_type type);
@@ -93,6 +103,7 @@ void		ft_list_clear_reg(t_regroup *begin_list);
 /* manage_lists_cmd.c */
 t_cmd		*ft_create_elem_cmd(char **av, int fd_in);
 void		ft_list_push_back_cmd(t_cmd **begin_list, char **av, int fd_in);
+void		ft_list_clear_cmd(t_cmd *begin_list);
 
 /* manage_lists_lenv.c */
 t_lenv		*ft_create_elem_lenv(char *k, char *v);

@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:13:02 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/01 09:34:33 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/06 14:00:31 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,9 @@ t_cmd	*get_expands(t_cmd *cmd, t_lenv *lenv)
 	while (cmd)
 	{
 		i = -1;
-		while (cmd->cmd[++i])
-			prepare_expand(&cmd->cmd[i], lenv);
+		if (cmd->cmd)
+			while (cmd->cmd[++i])
+				prepare_expand(&cmd->cmd[i], lenv);
 		cmd = cmd->next;
 	}
 	return (rt);

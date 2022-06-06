@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:44:11 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/01 10:23:01 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/06 14:01:12 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	minishell(t_lenv *lenv)
 	int			i;
 	t_data		data;
 	t_cmd		*cmd;
+	t_cmd		*tmp;
 
 	handle_signals_main();
 	data.run = 1;
@@ -49,15 +50,19 @@ int	minishell(t_lenv *lenv)
 		cmd = parsing(get_regroup(get_lexing(data.line)), lenv);
 		if (!cmd)
 			printf("ERROR\n");
+		tmp = cmd;
+		i = 0;
 		while (cmd)
 		{
 			i = -1;
-			while (cmd->cmd[++i])
-				printf("%s\t", cmd->cmd[i]);
+			if (cmd->cmd)
+				while (cmd->cmd[++i])
+					printf("%s\t", cmd->cmd[i]);
 			printf("\n\tfd_out: %i", cmd->fd_out);
 			printf("\n\tfd_in: %i\n", cmd->fd_in);
 			cmd = cmd->next;
 		}
+		ft_list_clear_cmd(tmp);
 	}
 	return (0);
 }
@@ -122,7 +127,7 @@ int	main(int ac, char **av, char **env)
 {
 	int		exit_code;
 	t_lenv	*lenv;
-	
+
 	(void)ac;
 	(void)av;
 	lenv = get_lenv(env);
