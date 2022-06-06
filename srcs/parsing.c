@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 10:28:13 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/06 14:03:59 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/06 17:03:42 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static t_cmd	*get_cmd_and_heredoc(t_regroup *reg)
 
 static t_cmd	*get_in_out_file(t_cmd *cmd, t_regroup *reg)
 {
+	int		redir;
 	t_cmd	*rt;
 
 	rt = cmd;
@@ -44,18 +45,36 @@ static t_cmd	*get_in_out_file(t_cmd *cmd, t_regroup *reg)
 	{
 		while (reg && ft_strcmp(reg->str, "|") != 0)
 		{
+			redir = 0;
 			if (ft_strcmp(reg->str, ">") == 0 || ft_strcmp(reg->str, ">>") == 0)
 			{
 				check_fd_out(&cmd->fd_in, &cmd->fd_out, reg, &cmd->cmd);
+				free(reg->str);
+				redir = 1;
 				reg = reg->next;
 			}
 			else if (ft_strcmp(reg->str, "<") == 0)
 			{
 				check_fd_in(&cmd->fd_in, &cmd->fd_out, reg, &cmd->cmd);
+				free(reg->str);
+				redir = 1;
 				reg = reg->next;
 			}
 			if (reg && ft_strcmp(reg->str, "|") != 0)
+			{
+				if (redir)
+					free(reg->str);
+				if (!redir && ft_strcmp(reg->str, "<<") == 0)
+				{
+					free(reg->str);
+					if (reg->next && ft_strcmp(reg->next->str, "|") != 0)
+					{
+						free(reg->next->str);
+						reg = reg->next;
+					}
+				}
 				reg = reg->next;
+			}
 		}
 		if (reg)
 		{

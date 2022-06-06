@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 13:31:59 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/02 14:15:05 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/06 15:23:05 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ int	make_heredoc(char *s)
 		{
 			write(fd, line, ft_strlen(line));
 			write(fd, "\n", 1);
+			free(line);
+			line = NULL;
 		}
 	}
+	free(line);
 	return (fd);
 }

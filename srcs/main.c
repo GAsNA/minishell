@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:44:11 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/06 14:01:12 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/06 15:20:13 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	minishell(t_lenv *lenv)
 		{
 			data.run = 0;
 			printf("exit\n");
+			rl_clear_history();
 			return (0);
 		}
 		if (data.line[0])
@@ -63,7 +64,10 @@ int	minishell(t_lenv *lenv)
 			cmd = cmd->next;
 		}
 		ft_list_clear_cmd(tmp);
+		free(data.line);
+		data.line = NULL;
 	}
+	rl_clear_history();
 	return (0);
 }
 

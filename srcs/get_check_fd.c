@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 10:47:47 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/06 13:57:38 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/06 14:58:28 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,17 @@ static int	get_fd_in(t_regroup *reg)
 
 void	check_fd_out(int *fd_in, int *fd_out, t_regroup *reg, char ***cmd)
 {
+	int	i;
 	int	fd;
 
 	fd = get_fd_out(reg);
 	if (fd == -1)
 	{
 		printf("Rovidshell: %s: %s\n", reg->next->str, strerror(errno));
+		i = -1;
+		while ((*cmd)[++i])
+			free((*cmd)[i]);
+		free(*cmd);
 		*cmd = NULL;
 		*fd_in = -1;
 	}
@@ -77,12 +82,17 @@ void	check_fd_out(int *fd_in, int *fd_out, t_regroup *reg, char ***cmd)
 
 void	check_fd_in(int *fd_in, int *fd_out, t_regroup *reg, char ***cmd)
 {
+	int	i;
 	int	fd;
 
 	fd = get_fd_in(reg);
 	if (fd == -1)
 	{
 		printf("Rovidshell: %s: %s\n", reg->next->str, strerror(errno));
+		i = -1;
+		while ((*cmd)[++i])
+			free((*cmd)[i]);
+		free(*cmd);
 		*cmd = NULL;
 		*fd_out = -1;
 	}
