@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:44:11 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/06 15:20:13 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/07 14:41:49 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,8 @@ int	minishell(t_lenv *lenv)
 			add_history(data.line);
 		cmd = parsing(get_regroup(get_lexing(data.line)), lenv);
 		if (!cmd)
-			printf("ERROR\n");
+			printf("bash: syntax error near unexpected token `[qqc]'\n");
 		tmp = cmd;
-		i = 0;
 		while (cmd)
 		{
 			i = -1;

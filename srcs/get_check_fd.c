@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 10:47:47 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/06 17:18:06 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/07 14:49:17 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ static int	get_fd_out(t_regroup *reg)
 		flags = O_CREAT | O_RDWR | O_TRUNC;
 	else if (ft_strcmp(reg->str, ">>") == 0)
 		flags = O_CREAT | O_APPEND;
-	if (!reg->next || ft_strcmp(reg->next->str, "|") == 0)
-		return (-42);
 	return (open(reg->next->str, flags, S_IRWXU));
 }
 
@@ -41,15 +39,11 @@ static int	get_fd_in(t_regroup *reg)
 {
 	int	flags;
 
-	flags = -42;
-	if (ft_strcmp(reg->str, "<") == 0)
-		flags = O_RDONLY;
-	if (!reg->next || ft_strcmp(reg->next->str, "|") == 0)
-		return (-42);
+	flags = O_RDONLY;
 	if (any_next_heredoc(reg))
 		return (open(reg->next->str, flags));
 	else
-		return (-21);
+		return (-42);
 }
 
 void	check_fd_out(int *fd_in, int *fd_out, t_regroup *reg, char ***cmd)
@@ -67,14 +61,6 @@ void	check_fd_out(int *fd_in, int *fd_out, t_regroup *reg, char ***cmd)
 		free(*cmd);
 		*cmd = NULL;
 		*fd_in = -1;
-	}
-	else if (fd == -42)
-	{
-		printf("Rovidshell: syntax error near unexpected token ");
-		if (!reg->next)
-			printf("`newline'\n");
-		else
-			printf("`|'\n");
 	}
 	else
 		*fd_out = fd;
@@ -96,14 +82,6 @@ void	check_fd_in(int *fd_in, int *fd_out, t_regroup *reg, char ***cmd)
 		*cmd = NULL;
 		*fd_out = -1;
 	}
-	else if (fd == -42)
-	{
-		printf("bash: syntax error near unexpected token ");
-		if (!reg->next)
-			printf("`newline'\n");
-		else
-			printf("`|'\n");
-	}
-	else if (fd != -21)
+	else if (fd != -42)
 		*fd_in = fd;
 }

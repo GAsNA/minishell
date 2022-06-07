@@ -30,6 +30,7 @@ PRESENTATION2	=	" \e[32m********************************************************
 SRCS_PATH	=	./srcs/
 OBJS_PATH	=	./objs/
 FILES		=	main.c					\
+				checks_before_all.c		\
 				lexing.c				\
 				regroup.c				\
 				parsing.c				\

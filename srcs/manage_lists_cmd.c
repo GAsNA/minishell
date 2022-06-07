@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 14:08:48 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/06 16:50:26 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/07 10:58:19 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,11 @@ void	ft_list_clear_cmd(t_cmd *begin_list)
 	{
 		tmp = begin_list->next;
 		i = -1;
-		while (begin_list->cmd[++i])
-			free(begin_list->cmd[i]);
+		if (begin_list->cmd)
+		{
+			while (begin_list->cmd[++i])
+				free(begin_list->cmd[i]);
+		}
 		free(begin_list->cmd);
 		free(begin_list);
 		begin_list = tmp;

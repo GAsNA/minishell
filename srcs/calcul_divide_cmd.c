@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 10:58:49 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/03 10:59:08 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/07 14:57:10 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,10 @@ int	calcul_av(t_regroup *reg)
 			|| ft_strcmp(reg->str, "<<") == 0
 			|| ft_strcmp(reg->str, ">") == 0
 			|| ft_strcmp(reg->str, ">>") == 0)
-		{
-			if (reg->next && ft_strcmp(reg->next->str, "|") != 0)
 				reg = reg->next;
-		}
 		else
 			i++;
-		if (reg)
-			reg = reg->next;
+		reg = reg->next;
 	}
 	return (i);
 }
@@ -42,20 +38,16 @@ t_regroup	*divide_cmd(t_regroup *reg, char ***av, int *fd)
 	i = -1;
 	while (reg && ft_strcmp(reg->str, "|") != 0)
 	{
-		if (reg->next && ft_strcmp(reg->str, "<<") == 0 && reg->next)
+		if (reg->next && ft_strcmp(reg->str, "<<") == 0)
 			*fd = make_heredoc(reg->next->str);
 		if (ft_strcmp(reg->str, "<") == 0
 			|| ft_strcmp(reg->str, "<<") == 0
 			|| ft_strcmp(reg->str, ">") == 0
 			|| ft_strcmp(reg->str, ">>") == 0)
-		{
-			if (reg->next && ft_strcmp(reg->next->str, "|") != 0)
 				reg = reg->next;
-		}
 		else
 			(*av)[++i] = reg->str;
-		if (reg)
-			reg = reg->next;
+		reg = reg->next;
 	}
 	(*av)[i + 1] = 0;
 	return (reg);

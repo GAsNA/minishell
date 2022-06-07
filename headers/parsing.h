@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:15:15 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/06 13:51:27 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/07 15:03:19 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,11 @@ struct s_lenv
 /********************************************/
 /*				  Protoypes					*/
 /********************************************/
+
+/* checks_before_all.c */
+int			is_quotes_close(char *line);
+int			has_no_double_pipe(char *line);
+int			has_no_multiple_redir(char *line);
 
 /* lexing.c */
 t_lexing	*get_lexing(char *line);
