@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/08 13:52:51 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/08 16:46:41 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,65 +138,44 @@ int	minishell(t_lenv **env)
 		}
 		if (data.line[0])
 			add_history(data.line);
-/*		t_cmd cmd;
-		cmd.cmd = malloc(sizeof(char *) * 2);
-		cmd.cmd[0] = ft_strdup("wc");
-		cmd.cmd[1] = 0;
-		cmd.fd_out = open("test", O_CREAT | O_WRONLY | O_TRUNC, 0644);
-		//cmd.fd_out = -1;
-		if (cmd.fd_out < 0)
-			printf("error fd\n");
-		cmd.fd_in = -1;
-//		cmd.next = NULL;
-		t_cmd cmd2;
-		cmd2.cmd = malloc(sizeof(char *) * 2);
-		cmd2.cmd[0] = ft_strdup("wc");
-		cmd2.cmd[1] = 0;
-		cmd2.fd_out = -1;
-		cmd2.fd_in = -1;
-		cmd.next = &cmd2;
-		cmd2.next = NULL;
-		cmd2.prev = &cmd;
-		t_cmd cmd3;
-		cmd3.cmd = malloc(sizeof(char *) * 2);
-		cmd3.cmd[0] = ft_strdup("/usr/bin/ls");
-		cmd3.cmd[1] = 0;
-		cmd3.fd_out = -1;
-		cmd3.fd_in = -1;
-		cmd2.next = &cmd3;
-		cmd3.next = NULL;*/
-//		char **enve = get_c_nv(lenv);*/
 		handle_signals_exec();
 		cmd = parsing(get_regroup(get_lexing(data.line)), *lenv);
 		ft_loop_cmds(cmd, lenv);
-		ft_list_clear_cmd(cmd);/*
-		free(cmd.cmd[0]);
-		free(cmd2.cmd[0]);
-		free(cmd3.cmd[0]);
-		free(cmd.cmd);
-		free(cmd2.cmd);
-		free(cmd3.cmd);*/
-//		free_split(enve);
-//		free_split(cmd);
+		ft_list_clear_cmd(cmd);
 		free(data.line);
 	}	
 	return (0);
 }
 
-int	main(int ac, char **av, char **env)
+void	data_init(t_data *data, char **envp, t_glist *glist)
 {
-	int		exit_code;
-	t_lenv	*begin;
+	data->glist = glist;
+	data->unset_path = 0;
+	if (!*envp)
+	{
+		data->env = get_min_env();
+		data->min_env = 1;
+	}
+	else
+	{
+		data->env = get_env(envp);
+		data->min_env = 0;
+	}
+}
+
+int	main(int ac, char **av, char **envp)
+{
+	t_glist	*glist;
+	t_data	*data;
 
 	(void)ac;
 	(void)av;
-	if (!*env)
-		begin = get_min_env();
-	else
-		begin = get_env(env);
-	if (!begin)
-		return (1);
-	exit_code = minishell(&begin);
-	free_lenv(&begin);
-	return (exit_code);
+	glist = malloc(sizeof(t_glist) * 1);
+	if (!glist)
+		return (0);
+	data = ft_malloc(sizeof(t_data), 1, &glist);
+	data_init(data, envp, glist);
+	minishell(&data->env);
+	free_lenv(&data->env);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 12:40:37 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/08 12:01:44 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/08 16:46:43 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <fcntl.h>
 
 # include "parsing.h"
+# include "garbage.h"
 # include "../srcs/libft/libft.h"
 
 /*enum ops
@@ -38,12 +39,15 @@
 typedef struct s_data		t_data;
 typedef struct s_command	t_command;
 typedef struct s_lenv		t_lenv;
+typedef struct s_glist		t_glist;
 
 struct s_data
 {
 	int		run;
-	int		exit_code;
-	char	**env;
+	t_lenv	*env;
+	int		min_env;
+	int		unset_path;
+	t_glist	*glist;
 	char	*line;
 };
 
