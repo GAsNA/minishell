@@ -27,34 +27,56 @@ PRESENTATION2	=	" \e[32m********************************************************
 
 ####### VARIABLES #######
 
-SRCS_PATH	=	./srcs/builtins/
-OBJS_PATH	=	./objs/
+OBJ_DIR        =    objs
+INC_DIR        =    headers
+SRC_DIR        =    $(shell find srcs -type d)
+LIB            =    -lreadline
 
-FILES		=	main.c l_env.c l_env_utils.c ft_pwd.c ft_cd.c cd_utils.c env.c env2.c ft_echo.c ft_env.c ft_unset.c ft_exit.c ft_export.c ft_export_utils.c path.c ft_loop_cmds.c
-SRCS		=	$(addprefix ${SRCS_PATH}, ${FILES})
-OBJS		=	$(addprefix ${OBJS_PATH}, ${FILES:.c=.o})
+vpath %.c $(foreach dir, $(SRC_DIR), $(dir):)
 
-HEADER_PATH	=	./headers/
-HEADER		=	$(addprefix ${HEADER_PATH}, minishell.h, builtins.h)
+# --  Redirection in OBJS  -- #
+OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 
-CC			=	clang
-CFLAGS		=	-Wall -Werror -Wextra
-RM			=	rm -rf
+SRCS			=	main.c\
+					l_env.c\
+					l_env_utils.c\
+					ft_pwd.c\
+					ft_cd.c\
+					cd_utils.c\
+					env.c env2.c\
+					ft_echo.c\
+					ft_env.c\
+					ft_unset.c\
+					ft_exit.c\
+					ft_export.c\
+					ft_export_utils.c\
+					path.c\
+					ft_loop_cmds.c\
+					garbage.c\
+					ft_gsplit.c\
+					ft_strgdup.c\
+					ft_strgjoin.c\
+					ft_subgstr.c
 
-LIBFT		=	libft
+HEADER_PATH		=	./headers/
 
-NAME		=	minishell
+CC				=	clang
+CFLAGS			=	-Wall -Werror -Wextra -g3
+RM				=	rm -rf
+
+LIBFT			=	libft
+
+NAME			=	minishell
 
 
 ####### COMMANDS #######
 
 all:				${NAME}
 
-${OBJS_PATH}%.o:	${SRCS_PATH}%.c
-				@mkdir -p ${dir $@}
-				@${CC} ${CFLAGS} -c $< -o $@
+$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
+					$(CC) $(CFLAGS) -c $< -o $@ -I $(INC_DIR)
 
-${NAME}:			${OBJS}
+${NAME}:		${OBJS}
 				@echo ${PRESENTATION2}
 				@make -C libft
 				@${CC} ${CFLAGS} -o ${NAME} ${OBJS} libft/libft.a -lreadline
@@ -72,5 +94,3 @@ re:					fclean all
 
 david:
 				@cat srcs/david.txt
-
-.PHONY:			all clean fclean re

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_gsplit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 12:49:24 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/06 13:45:11 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/08 10:28:13 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,6 @@ static int	ft_count_str(const char *str, char set)
 			i++;
 	}
 	return (count);
-}
-
-static	char	**ft_free(char **splitted, int len)
-{
-	int	i;
-
-	i = 0;
-	while (i < len)
-	{
-		free(splitted[i]);
-		i++;
-	}
-	free(splitted);
-	return (NULL);
 }
 
 char	**ft_gsplit(t_glist **lst, const char *s, char c)
