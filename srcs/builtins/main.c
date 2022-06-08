@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/08 10:44:31 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/08 13:52:51 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,8 @@ t_lenv	*get_min_env(void)
 int	minishell(t_lenv **env)
 {
 	t_data	data;
-	//char	**cmd;
 	t_lenv	**lenv;
+	t_cmd 	*cmd;
 
 	lenv = env;
 	data.run = 1;
@@ -138,7 +138,7 @@ int	minishell(t_lenv **env)
 		}
 		if (data.line[0])
 			add_history(data.line);
-		t_cmd cmd;
+/*		t_cmd cmd;
 		cmd.cmd = malloc(sizeof(char *) * 2);
 		cmd.cmd[0] = ft_strdup("wc");
 		cmd.cmd[1] = 0;
@@ -157,7 +157,7 @@ int	minishell(t_lenv **env)
 		cmd.next = &cmd2;
 		cmd2.next = NULL;
 		cmd2.prev = &cmd;
-/*		t_cmd cmd3;
+		t_cmd cmd3;
 		cmd3.cmd = malloc(sizeof(char *) * 2);
 		cmd3.cmd[0] = ft_strdup("/usr/bin/ls");
 		cmd3.cmd[1] = 0;
@@ -165,9 +165,11 @@ int	minishell(t_lenv **env)
 		cmd3.fd_in = -1;
 		cmd2.next = &cmd3;
 		cmd3.next = NULL;*/
-//		char **enve = get_c_nv(lenv);
+//		char **enve = get_c_nv(lenv);*/
 		handle_signals_exec();
-		ft_loop_cmds(&cmd, lenv);/*
+		cmd = parsing(get_regroup(get_lexing(data.line)), *lenv);
+		ft_loop_cmds(cmd, lenv);
+		ft_list_clear_cmd(cmd);/*
 		free(cmd.cmd[0]);
 		free(cmd2.cmd[0]);
 		free(cmd3.cmd[0]);

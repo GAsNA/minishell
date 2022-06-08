@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 10:28:13 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/06 17:44:27 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/08 13:50:13 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static t_cmd	*get_cmd_and_heredoc(t_regroup *reg)
 	av = NULL;
 	while (reg)
 	{
-		fd = -42;
+		fd = -1;
 		av = malloc((calcul_av(reg) + 1) * sizeof(char *));
 		if (!av)
 			return (0);
