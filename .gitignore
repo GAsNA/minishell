@@ -1,4 +1,4 @@
 *.swp
 objs/
 minishell
-*.o
+srcs/libft/*.o
