@@ -74,12 +74,13 @@ NAME			=	minishell
 all:				${NAME}
 
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
+					@mkdir -p ./objs/
 					$(CC) $(CFLAGS) -c $< -o $@ -I $(INC_DIR)
 
 ${NAME}:		${OBJS}
 				@echo ${PRESENTATION2}
-				@make -C libft
-				@${CC} ${CFLAGS} -o ${NAME} ${OBJS} libft/libft.a -lreadline
+				@make -C srcs/libft
+				@${CC} ${CFLAGS} -o ${NAME} ${OBJS} srcs/libft/libft.a -lreadline
 				@echo "\e[32m"Compilation success"\033[0m"
 
 clean:

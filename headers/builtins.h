@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 12:01:24 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/30 14:59:51 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/08 11:35:49 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-typedef struct	s_cmd
+/*typedef struct	s_cmd
 {
 	char			**cmd;
 	int				fd_in;
@@ -29,7 +29,9 @@ typedef struct	s_cmd
 	pid_t			pid;
 	struct s_cmd	*prev;
 	struct s_cmd	*next;
-}	t_cmd;
+}	t_cmd;*/
+
+typedef struct s_cmd	t_cmd;
 
 
 void	ft_loop_cmds(t_cmd *cmds, t_lenv **env);

@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 12:40:37 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/08 11:05:59 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/08 11:29:08 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@
 
 # include "parsing.h"
 
-enum ops
+/*enum ops
 {
 	PIPE,
 	REDI_IN,
 	REDI_OUT,
 	DREDI_IN,
 	DREDI_OUT
-};
+};*/
 
 typedef struct s_data		t_data;
 typedef struct s_command	t_command;
@@ -43,12 +43,12 @@ struct s_data
 	char	*line;
 };
 
-struct s_command
+/*struct s_command
 {
 	char		**command;
 	enum ops	op;
 	t_command	*next;
-};
+};*/
 
 struct s_lenv
 {

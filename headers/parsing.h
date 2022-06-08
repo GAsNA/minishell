@@ -6,12 +6,14 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:15:15 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/08 11:06:21 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/08 11:34:05 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
+
+# include "minishell.h"
 
 # include <errno.h>
 
@@ -29,6 +31,7 @@ enum e_type
 typedef struct s_lexing		t_lexing;
 typedef struct s_regroup	t_regroup;
 typedef struct s_cmd		t_cmd;
+typedef struct s_lenv		t_lenv;
 
 struct s_lexing
 {
