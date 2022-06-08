@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 12:40:37 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/25 09:33:50 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/08 11:05:59 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include<readline/readline.h>
 # include<readline/history.h>
 # include<signal.h>
+
+# include "parsing.h"
 
 enum ops
 {

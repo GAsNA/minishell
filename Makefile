@@ -56,7 +56,7 @@ SRCS			=	main.c\
 					ft_gsplit.c\
 					ft_strgdup.c\
 					ft_strgjoin.c\
-					ft_subgstr.c
+					ft_subgstr.c			
 
 HEADER_PATH		=	./headers/
 
@@ -83,7 +83,7 @@ ${NAME}:		${OBJS}
 				@echo "\e[32m"Compilation success"\033[0m"
 
 clean:
-				@${RM} ${OBJS_PATH}
+				@${RM} ${OBJS}
 				@echo "\e[35m"Object files deleted"\033[0m"
 
 fclean:				clean
