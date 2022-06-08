@@ -56,7 +56,19 @@ SRCS			=	main.c\
 					ft_gsplit.c\
 					ft_strgdup.c\
 					ft_strgjoin.c\
-					ft_subgstr.c			
+					ft_subgstr.c			\
+					checks_before_all.c		\
+					lexing.c				\
+					regroup.c				\
+					parsing.c				\
+					calcul_divide_cmd.c		\
+					get_check_fd.c			\
+					expand.c				\
+					heredoc.c				\
+					manage_lists_lexing.c	\
+					manage_lists_regroup.c	\
+					manage_lists_cmd.c		\
+					manage_lists_lenv.c
 
 HEADER_PATH		=	./headers/
 
@@ -73,7 +85,7 @@ NAME			=	minishell
 
 all:				${NAME}
 
-$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: %.c
 					@mkdir -p ./objs/
 					$(CC) $(CFLAGS) -c $< -o $@ -I $(INC_DIR)
 
@@ -84,10 +96,11 @@ ${NAME}:		${OBJS}
 				@echo "\e[32m"Compilation success"\033[0m"
 
 clean:
-				@${RM} ${OBJS}
+				@${RM} ${OBJ_DIR}
 				@echo "\e[35m"Object files deleted"\033[0m"
 
 fclean:				clean
+				@make fclean -C srcs/libft
 				@${RM} ${NAME}
 				@echo "\e[35m"Executable deleted"\033[0m"
 
