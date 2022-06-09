@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 12:37:38 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/14 12:12:47 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/09 18:46:39 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../../headers/builtins.h"
 #include "../libft/libft.h"
 
-static void	make_export(t_lenv **env, char *cmd)
+static void	make_export(t_data *data, char *cmd)
 {
 	int		j;
 	char	*k;
@@ -26,16 +26,16 @@ static void	make_export(t_lenv **env, char *cmd)
 	if (is_bad_identifier(cmd[0]) == 1)
 		printf("Rovidshell: export: %s: not a valid identifier\n",
 			cmd);
-	else if (check_env_con(env, k) == 1 && k && c_c(k) == 1)
-		con_var_env(env, cmd + j + 1, k, ft_strlen(k) - 2);
-	else if (k && check_env_var(env, k))
-		rep_var_env(env, cmd + j + 1, k, ft_strlen(k));
+	else if (check_env_con(&data->env, k) == 1 && k && c_c(k) == 1)
+		con_var_env(&data->env, cmd + j + 1, k, ft_strlen(k) - 2);
+	else if (k && check_env_var(&data->env, k))
+		rep_var_env(&data->env, cmd + j + 1, k, ft_strlen(k));
 	else if (*k)
-		add_var_env(env, cmd);
+		add_var_env(data, cmd);
 	free(k);
 }
 
-int	ft_export(char **cmd, t_lenv **env)
+int	ft_export(char **cmd, t_data *data)
 {
 	int		i;
 
@@ -50,7 +50,7 @@ int	ft_export(char **cmd, t_lenv **env)
 			if (is_bad_identifier(cmd[i][0]) == 1)
 				printf("Rovidshell: export: %s: not a valid identifier\n",
 					cmd[i]);
-			make_export(env, cmd[i]);
+			make_export(data, cmd[i]);
 			i++;
 		}
 		return (0);

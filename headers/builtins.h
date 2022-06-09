@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 12:01:24 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/09 15:21:13 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/09 18:45:47 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int		ft_pwd(char **cmd, t_lenv **env);
 int		ft_cd(char **cmd, t_lenv **env);
 int		ft_echo(char **cmd, t_lenv **env);
 int		ft_exit(char **cmd, t_lenv **env);
-int		ft_export(char **cmd, t_lenv **env);
+int		ft_export(char **cmd, t_data *data);
 int		is_bad_identifier(char c);
 int		check_key(char *key);
 int		c_c(char *key);

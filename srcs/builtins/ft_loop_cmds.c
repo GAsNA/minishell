@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:38:45 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/09 16:22:16 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/09 18:57:54 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ int	launch_builtin(t_cmd *cmd, t_lenv **lenv)
 		g_status = ft_unset(cmd->cmd, lenv);
 	else if (ft_strncmp(cmd->cmd[0], "exit", ft_strlen("exit\0")) == 0)
 		g_status = ft_exit(cmd->cmd, lenv);
-	else if (ft_strncmp(cmd->cmd[0], "export", ft_strlen("export\0")) == 0)
-		g_status = ft_export(cmd->cmd, lenv);
+//	else if (ft_strncmp(cmd->cmd[0], "export", ft_strlen("export\0")) == 0)
+//		g_status = ft_export(cmd->cmd,);
 	else if (ft_strncmp(cmd->cmd[0], "echo", ft_strlen("echo\0")) == 0)
 		g_status = ft_echo(cmd->cmd, lenv);
 	if (cmd->next)
