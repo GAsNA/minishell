@@ -6,7 +6,7 @@
 /*   By: aasli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 19:40:23 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/17 13:40:25 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/09 15:46:38 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,23 +53,27 @@ int	rep_var_env(t_lenv **env, char *var, char *str, int n)
 	return (1);
 }
 
-int	add_var_env(t_lenv **env, char *var)
+int	add_var_env(t_data *data, char *var)
 {
-	ft_addback_lenv(env, ft_new_lenv(var));
+	ft_addback_lenv(data, ft_new_lenv(var));
 	return (1);
 }
 
-t_lenv	*get_env(char **env)
+t_lenv	*get_env(t_data *data, char **env)
 {
-	t_lenv	*lbegin;
 	int		i;
 
-	lbegin = NULL;
 	i = 0;
 	while (env[i])
 	{
-		ft_addback_lenv(&lbegin, ft_new_lenv(env[i]));
+		if (ft_addback_lenv(data, ft_new_lenv(env[i])) == 0)
+		{
+			free_lenv(&data->env);
+			exit (1);
+		}
 		i++;
 	}
-	return (lbegin);
+	if (data->env == NULL)
+		exit (1);
+	return (data->env);
 }

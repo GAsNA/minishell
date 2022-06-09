@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:38:45 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/07 17:22:29 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/09 16:22:16 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,8 @@ int	ft_exec_child(t_cmd *cmd, t_lenv **lenv)
 		ft_putstr_fd(cmd->cmd[0], 2);
 		ft_putstr_fd(": command not found\n", 2);
 	}
+	ft_list_clear_cmd(cmd);
+	free_lenv(lenv);
 	close (0);
 	close (1);
 	close (2);

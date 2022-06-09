@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 12:01:24 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/08 11:35:49 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/09 15:21:13 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@
 
 typedef struct s_cmd	t_cmd;
 
-
 void	ft_loop_cmds(t_cmd *cmds, t_lenv **env);
 
 //	free
@@ -43,9 +42,10 @@ void	free_split(char **cmd);
 char	**ft_get_paths(t_lenv **lenv);
 
 //	env linked list
-t_lenv	*get_env(char **env);
+t_lenv	*get_env(t_data *data, char **env);
+t_lenv	*get_min_env(t_data *data);
 t_lenv	*ft_new_lenv(char *line);
-int		ft_addback_lenv(t_lenv **begin, t_lenv *new);
+int		ft_addback_lenv(t_data *data, t_lenv *new);
 void	print_lenv(t_lenv **lst);
 void	free_lenv(t_lenv **lst);
 
@@ -64,7 +64,7 @@ int		c_c(char *key);
 char	*get_key(char *key);
 int		ft_env(char **cmd, t_lenv **env);
 int		ft_unset(char **cmd, t_lenv **env);
-int		add_var_env(t_lenv **env, char *var);
+int		add_var_env(t_data *data, char *var);
 int		check_env_var(t_lenv **env, char *var);
 int		check_env_con(t_lenv **env, char *var);
 int		rep_var_env(t_lenv **env, char *var, char *str, int n);
