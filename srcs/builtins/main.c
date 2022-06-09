@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/09 16:22:21 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/09 17:28:23 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	handle_signals_exec(void)
 	signal(SIGINT, ctrl_c_exec);
 	signal(SIGQUIT, SIG_IGN);
 }
-
 
 void	ctrl_c(int signum)
 {
@@ -71,8 +70,8 @@ char	**get_c_nv(t_lenv **lenv)
 {
 	t_lenv	*tmp;
 	char	**env;
-	int i;
-	
+	int		i;
+
 	env = malloc(1000 * sizeof(char *));
 	if (!env)
 	{
@@ -120,7 +119,7 @@ t_lenv	*get_min_env(t_data *data)
 int	minishell(t_data *data)
 {
 	t_lenv	**lenv;
-	t_cmd 	*cmd;
+	t_cmd	*cmd;
 
 	lenv = &data->env;
 	data->run = 1;
@@ -134,8 +133,9 @@ int	minishell(t_data *data)
 			printf("exit\n");
 			return (0);
 		}
-		if (data->line[0])
-			add_history(data->line);
+		if (!data->line[0])
+			continue ;
+		add_history(data->line);
 		handle_signals_exec();
 		cmd = parsing(get_regroup(get_lexing(data->line)), *lenv);
 		ft_loop_cmds(cmd, lenv);
