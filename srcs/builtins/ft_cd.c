@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:50:21 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/17 13:47:12 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/10 18:01:55 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	update_old_pwd(t_lenv **env)
 	tmp = ft_calloc(2049, sizeof(char));
 	if (!tmp)
 	{
-		printf("Allocation error");
+		printf("Allocation error\n");
 		return (0);
 	}
 	getcwd(tmp, 2048);

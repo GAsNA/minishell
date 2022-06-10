@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:38:45 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/10 16:08:21 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/10 18:23:04 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	ft_prepare_child(t_cmd *tmp)
 
 int	no_fork_allowed(char **cmd)
 {
+	if (cmd[0] == NULL)
+		return (0);
 	if (ft_strncmp(cmd[0], "cd", ft_strlen("cd\0")) == 0)
 		return (1);
 	if (ft_strncmp(cmd[0], "unset", ft_strlen("unset\0")) == 0)
@@ -134,12 +136,15 @@ char	*get_exec_path(char *cmd, t_data *data)
 		path = ft_strjoin(tmp, cmd);
 		free(tmp);
 		if (access(path, X_OK) == 0)
-			break ;
+		{
+			free_split(paths);
+			return (path);
+		}
 		free(path);
 		i++;
 	}
 	free_split(paths);
-	return (path);
+	return (NULL);
 }
 
 int	ft_exec_child(t_cmd *cmd, t_data *data)
