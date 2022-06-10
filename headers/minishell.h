@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 12:40:37 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/09 13:11:14 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/10 12:24:47 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ struct s_data
 	int		unset_path;
 	t_glist	*glist;
 	char	*line;
+	char	*hidden_path;
 };
 
 /*struct s_command

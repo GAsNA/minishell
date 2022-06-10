@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:38:45 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/10 12:12:41 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/10 16:08:21 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ int	launch_builtin(t_cmd *cmd, t_data *data)
 
 int	is_builtin(char **cmd)
 {
+	if (cmd[0] == NULL)
+		return (0);
 	if (ft_strncmp(cmd[0], "cd", ft_strlen("cd\0")) == 0)
 		return (1);
 	else if (ft_strncmp(cmd[0], "pwd", ft_strlen("pwd\0")) == 0)
@@ -120,7 +122,10 @@ char	*get_exec_path(char *cmd, t_data *data)
 	char	*path;
 
 	i = 0;
-	paths = ft_get_paths(&data->env);
+	if (data->min_env == 1)
+		paths = ft_split(data->hidden_path, ':');
+	else
+		paths = ft_get_paths(&data->env);
 	if (!paths)
 		return (NULL);
 	while (paths[i])
@@ -129,15 +134,12 @@ char	*get_exec_path(char *cmd, t_data *data)
 		path = ft_strjoin(tmp, cmd);
 		free(tmp);
 		if (access(path, X_OK) == 0)
-		{
-			free_split(paths);
-			return (path);
-		}
+			break ;
 		free(path);
 		i++;
 	}
 	free_split(paths);
-	return (NULL);
+	return (path);
 }
 
 int	ft_exec_child(t_cmd *cmd, t_data *data)
@@ -145,18 +147,20 @@ int	ft_exec_child(t_cmd *cmd, t_data *data)
 	char	*path;
 	char	**env;
 
-	if (is_builtin(cmd->cmd))
+	if (*cmd->cmd == NULL)
+	{
+	}
+	else if (is_builtin(cmd->cmd))
 		launch_builtin(cmd, data);
-	else
+	else if (cmd->cmd[0])
 	{
 		env = get_c_nv(&data->env);
 		path = get_exec_path(cmd->cmd[0], data);
 		if (path)
-			g_status = execve(path, cmd->cmd, env);
+			execve(path, cmd->cmd, env);
 		free(path);
-		usleep(100);
-		ft_putstr_fd(cmd->cmd[0], 2);
-		ft_putstr_fd(": command not found\n", 2);
+		path = ft_strjoin(cmd->cmd[0], ": command not found\n");
+		write(2, path, ft_strlen(path));
 	}
 	ft_list_clear_cmd(cmd);
 	free_lenv(&data->env);
@@ -196,7 +200,7 @@ void	ft_loop_cmds(t_cmd *cmds, t_data *data)
 		if (tmp->next)
 			ft_redir_pipe(tmp);
 		if (tmp->next == NULL && no_fork_allowed(tmp->cmd))
-			g_status = launch_builtin(tmp, data);
+			launch_builtin(tmp, data);
 		else
 		{
 			tmp->pid = fork ();

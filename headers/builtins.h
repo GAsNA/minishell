@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 12:01:24 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/10 11:29:50 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/10 14:20:25 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,6 @@
 # include <sys/wait.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-
-/*typedef struct	s_cmd
-{
-	char			**cmd;
-	int				fd_in;
-	int				fd_out;
-	int				pipe_fd[2];
-	pid_t			pid;
-	struct s_cmd	*prev;
-	struct s_cmd	*next;
-}	t_cmd;*/
 
 typedef struct s_cmd	t_cmd;
 

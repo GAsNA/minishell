@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/10 11:46:24 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/10 16:08:23 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,13 +153,18 @@ void	data_init(t_data *data, char **envp)
 	{
 		data->env = get_min_env(data);
 		data->min_env = 1;
+		data->hidden_path
+			= ft_strjoin("/usr/local/sbin/:",
+				"/usr/local/bin/:/usr/sbin/:/usr/bin/");
 	}
 	else
 	{
 		data->env = get_env(data, envp);
 		data->min_env = 0;
+		data->hidden_path = NULL;
 	}
-	if (data->env == NULL)
+	if (data->env == NULL
+		|| (data->min_env == 1 && data->hidden_path == NULL))
 	{
 		printf("Allocation error");
 		exit (1);
