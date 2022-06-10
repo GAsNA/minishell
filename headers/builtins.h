@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 12:01:24 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/09 18:45:47 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/10 11:29:50 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 
 typedef struct s_cmd	t_cmd;
 
-void	ft_loop_cmds(t_cmd *cmds, t_lenv **env);
+void	ft_loop_cmds(t_cmd *cmds, t_data *data);
 
 //	free
 void	free_split(char **cmd);

@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:38:45 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/09 18:57:54 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/10 12:12:41 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,22 +68,22 @@ int	no_fork_allowed(char **cmd)
 	return (0);
 }
 
-int	launch_builtin(t_cmd *cmd, t_lenv **lenv)
+int	launch_builtin(t_cmd *cmd, t_data *data)
 {
 	if (ft_strncmp(cmd->cmd[0], "cd", ft_strlen("cd\0")) == 0)
-		g_status = ft_cd(cmd->cmd, lenv);
+		g_status = ft_cd(cmd->cmd, &data->env);
 	else if (ft_strncmp(cmd->cmd[0], "pwd", ft_strlen("pwd\0")) == 0)
-		g_status = ft_pwd(cmd->cmd, lenv);
+		g_status = ft_pwd(cmd->cmd, &data->env);
 	else if (ft_strncmp(cmd->cmd[0], "env", ft_strlen("env\0")) == 0)
-		g_status = ft_env(cmd->cmd, lenv);
+		g_status = ft_env(cmd->cmd, &data->env);
 	else if (ft_strncmp(cmd->cmd[0], "unset", ft_strlen("unset\0")) == 0)
-		g_status = ft_unset(cmd->cmd, lenv);
+		g_status = ft_unset(cmd->cmd, &data->env);
 	else if (ft_strncmp(cmd->cmd[0], "exit", ft_strlen("exit\0")) == 0)
-		g_status = ft_exit(cmd->cmd, lenv);
-//	else if (ft_strncmp(cmd->cmd[0], "export", ft_strlen("export\0")) == 0)
-//		g_status = ft_export(cmd->cmd,);
+		g_status = ft_exit(cmd->cmd, &data->env);
+	else if (ft_strncmp(cmd->cmd[0], "export", ft_strlen("export\0")) == 0)
+		g_status = ft_export(cmd->cmd, data);
 	else if (ft_strncmp(cmd->cmd[0], "echo", ft_strlen("echo\0")) == 0)
-		g_status = ft_echo(cmd->cmd, lenv);
+		g_status = ft_echo(cmd->cmd, &data->env);
 	if (cmd->next)
 		close(cmd->pipe_fd[0]);
 	if (cmd->fd_in != -1)
@@ -112,7 +112,7 @@ int	is_builtin(char **cmd)
 	return (0);
 }
 
-char	*get_exec_path(char *cmd, t_lenv **lenv)
+char	*get_exec_path(char *cmd, t_data *data)
 {
 	char	**paths;
 	int		i;
@@ -120,7 +120,9 @@ char	*get_exec_path(char *cmd, t_lenv **lenv)
 	char	*path;
 
 	i = 0;
-	paths = ft_get_paths(lenv);
+	paths = ft_get_paths(&data->env);
+	if (!paths)
+		return (NULL);
 	while (paths[i])
 	{
 		tmp = ft_strjoin(paths[i], "/");
@@ -138,17 +140,17 @@ char	*get_exec_path(char *cmd, t_lenv **lenv)
 	return (NULL);
 }
 
-int	ft_exec_child(t_cmd *cmd, t_lenv **lenv)
+int	ft_exec_child(t_cmd *cmd, t_data *data)
 {
 	char	*path;
 	char	**env;
 
 	if (is_builtin(cmd->cmd))
-		launch_builtin(cmd, lenv);
+		launch_builtin(cmd, data);
 	else
 	{
-		env = get_c_nv(lenv);
-		path = get_exec_path(cmd->cmd[0], lenv);
+		env = get_c_nv(&data->env);
+		path = get_exec_path(cmd->cmd[0], data);
 		if (path)
 			g_status = execve(path, cmd->cmd, env);
 		free(path);
@@ -157,11 +159,11 @@ int	ft_exec_child(t_cmd *cmd, t_lenv **lenv)
 		ft_putstr_fd(": command not found\n", 2);
 	}
 	ft_list_clear_cmd(cmd);
-	free_lenv(lenv);
+	free_lenv(&data->env);
 	close (0);
 	close (1);
 	close (2);
-	exit (0);
+	exit (1);
 }
 
 void	close_parent_fds(t_cmd *cmd)
@@ -184,7 +186,7 @@ void	wait_childs(t_cmd *cmd)
 	}
 }
 
-void	ft_loop_cmds(t_cmd *cmds, t_lenv **env)
+void	ft_loop_cmds(t_cmd *cmds, t_data *data)
 {
 	t_cmd	*tmp;
 
@@ -194,14 +196,14 @@ void	ft_loop_cmds(t_cmd *cmds, t_lenv **env)
 		if (tmp->next)
 			ft_redir_pipe(tmp);
 		if (tmp->next == NULL && no_fork_allowed(tmp->cmd))
-			g_status = launch_builtin(tmp, env);
+			g_status = launch_builtin(tmp, data);
 		else
 		{
 			tmp->pid = fork ();
 			if (tmp->pid == 0)
 			{
 				ft_prepare_child(tmp);
-				ft_exec_child(tmp, env);
+				ft_exec_child(tmp, data);
 			}
 			else if (tmp->pid != 0)
 				close_parent_fds(tmp);

@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/09 18:22:57 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/10 11:46:24 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ t_lenv	*get_min_env(t_data *data)
 	ft_addback_lenv(data, ft_new_lenv(tmp));
 	free(tmp);
 	free(tmp2);
-	return (lbegin);
+	return (data->env);
 }
 
 int	minishell(t_data *data)
@@ -130,7 +130,7 @@ int	minishell(t_data *data)
 		if (!data->line)
 		{
 			data->run = 0;
-			printf("exit\n");
+			printf("exit");
 			return (0);
 		}
 		if (!data->line[0])
@@ -138,7 +138,7 @@ int	minishell(t_data *data)
 		add_history(data->line);
 		handle_signals_exec();
 		cmd = parsing(get_regroup(get_lexing(data->line)), *lenv);
-		ft_loop_cmds(cmd, lenv);
+		ft_loop_cmds(cmd, data);
 		ft_list_clear_cmd(cmd);
 		free(data->line);
 	}	
