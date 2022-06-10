@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 13:58:50 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/10 09:48:07 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/10 13:43:55 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,9 @@ t_regroup	*get_regroup(t_lexing *lex)
 	while (tmp)
 	{
 		tmp = ft_regroup(tmp, &str);
-		if (str)
+		if (str && str[0])
 			ft_list_push_back_reg(&regroup, str);
+		str = NULL;
 	}
 	ft_list_clear_lex(lex);
 	return (regroup);
