@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:15:15 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/08 11:34:05 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/10 10:12:18 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,9 @@ t_regroup	*get_regroup(t_lexing *lex);
 /* parsing.c */
 t_cmd		*parsing(t_regroup *reg, t_lenv *lenv);
 
+/* last_quotes.c */
+t_cmd		*supp_useless_quotes(t_cmd *cmd);
+
 /* calcul_divide_cmd.c */
 int			calcul_av(t_regroup *reg);
 t_regroup	*divide_cmd(t_regroup *reg, char ***av, int *fd);
@@ -109,5 +112,8 @@ void		ft_list_clear_cmd(t_cmd *begin_list);
 t_lenv		*ft_create_elem_lenv(char *k, char *v);
 void		ft_list_push_back_lenv(t_lenv **begin_list, char *k, char *v);
 void		ft_list_clear_lenv(t_lenv *begin_list);
+
+/* print_error.c */
+int			error_syntax(char c);
 
 #endif

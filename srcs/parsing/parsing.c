@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 10:28:13 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/08 13:50:13 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/09 15:12:57 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ t_cmd	*parsing(t_regroup *reg, t_lenv *lenv)
 		tmp = tmp->next;
 	}
 	cmd = get_expands(cmd, lenv);
+	cmd = supp_useless_quotes(cmd);
 	ft_list_clear_reg(reg);
 	return (cmd);
 }

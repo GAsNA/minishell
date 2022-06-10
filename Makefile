@@ -37,34 +37,36 @@ vpath %.c $(foreach dir, $(SRC_DIR), $(dir):)
 # --  Redirection in OBJS  -- #
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 
-SRCS			=	main.c\
-					l_env.c\
-					l_env_utils.c\
-					ft_pwd.c\
-					ft_cd.c\
-					cd_utils.c\
-					env.c env2.c\
-					ft_echo.c\
-					ft_env.c\
-					ft_unset.c\
-					ft_exit.c\
-					ft_export.c\
-					ft_export_utils.c\
-					path.c\
-					ft_loop_cmds.c\
-					garbage.c\
-					ft_gsplit.c\
-					ft_strgdup.c\
-					ft_strgjoin.c\
+SRCS			=	main.c					\
+					l_env.c					\
+					l_env_utils.c			\
+					ft_pwd.c				\
+					ft_cd.c					\
+					cd_utils.c				\
+					env.c env2.c			\
+					ft_echo.c				\
+					ft_env.c				\
+					ft_unset.c				\
+					ft_exit.c				\
+					ft_export.c				\
+					ft_export_utils.c		\
+					path.c					\
+					ft_loop_cmds.c			\
+					garbage.c				\
+					ft_gsplit.c				\
+					ft_strgdup.c			\
+					ft_strgjoin.c			\
 					ft_subgstr.c			\
 					checks_before_all.c		\
 					lexing.c				\
 					regroup.c				\
 					parsing.c				\
+					last_quotes.c			\
 					calcul_divide_cmd.c		\
 					get_check_fd.c			\
 					expand.c				\
 					heredoc.c				\
+					print_error.c			\
 					manage_lists_lexing.c	\
 					manage_lists_regroup.c	\
 					manage_lists_cmd.c		\
