@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/10 16:08:23 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/10 18:43:11 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char	**get_c_nv(t_lenv **lenv)
 	env = malloc(1000 * sizeof(char *));
 	if (!env)
 	{
-		printf("Allocation error");
+		printf("Allocation error\n");
 		return (NULL);
 	}
 	tmp = *lenv;
