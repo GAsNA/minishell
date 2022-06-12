@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:38:45 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/10 18:55:08 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/12 18:28:34 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,41 +18,46 @@ extern int	g_status;
 
 char	**get_c_nv(t_lenv **lenv);
 
-void	ft_redir_pipe(t_cmd *cmd)
+int	ft_redir_pipe(t_cmd *cmd)
 {
 	if (pipe(cmd->pipe_fd) == -1)
 	{
 		ft_putstr_fd("Error pipe\n", 1);
-		return ;
+		return (0);
 	}
 	if (cmd->next)
 	{
 		if (cmd->next->fd_in == -1)
 			cmd->next->fd_in = cmd->pipe_fd[0];
 	}
+	return (1);
 }
 
-void	ft_prepare_child(t_cmd *tmp)
+int	ft_prepare_child(t_cmd *tmp)
 {
 	if (tmp->next)
 		close(tmp->pipe_fd[0]);
 	if (tmp->fd_in != -1)
 	{
-		dup2(tmp->fd_in, 0);
+		if (dup2(tmp->fd_in, 0) == -1)
+			return (write(2, "Dup error\n", ft_strlen("Dup error\n")), 0);
 		close(tmp->fd_in);
 	}
 	if (tmp->next != NULL && tmp->fd_out == -1)
 	{
-		dup2(tmp->pipe_fd[1], 1);
+		if (dup2(tmp->pipe_fd[1], 1) == -1)
+			return (write(2, "Dup error\n", ft_strlen("Dup error\n")), 0);
 		close(tmp->pipe_fd[1]);
 	}
 	else if (tmp->fd_out != -1)
 	{
-		dup2(tmp->fd_out, 1);
+		if (dup2(tmp->fd_out, 1) == -1)
+			return (write(2, "Dup error\n", ft_strlen("Dup error\n")), 0);
 		close(tmp->fd_out);
 		if (tmp->next)
 			close(tmp->pipe_fd[1]);
 	}
+	return (1);
 }
 
 int	no_fork_allowed(char **cmd)
@@ -116,11 +121,31 @@ int	is_builtin(char **cmd)
 	return (0);
 }
 
+char	*try_access_path(char *cmd, char **paths, int i)
+{
+	char	*path;
+	char	*tmp;
+
+	tmp = ft_strjoin(paths[i], "/");
+	if (!tmp)
+		return (NULL);
+	path = ft_strjoin(tmp, cmd);
+	if (!path)
+		return (NULL);
+	free(tmp);
+	if (access(path, X_OK) == 0)
+	{
+		free_split(paths);
+		return (path);
+	}
+	free(path);
+	return (NULL);
+}
+
 char	*get_exec_path(char *cmd, t_data *data)
 {
 	char	**paths;
 	int		i;
-	char	*tmp;
 	char	*path;
 
 	i = 0;
@@ -132,19 +157,20 @@ char	*get_exec_path(char *cmd, t_data *data)
 		return (NULL);
 	while (paths[i])
 	{
-		tmp = ft_strjoin(paths[i], "/");
-		path = ft_strjoin(tmp, cmd);
-		free(tmp);
-		if (access(path, X_OK) == 0)
-		{
-			free_split(paths);
+		path = try_access_path(cmd, paths, i);
+		if (path != NULL)
 			return (path);
-		}
-		free(path);
 		i++;
 	}
 	free_split(paths);
 	return (NULL);
+}
+
+void	ft_close(void)
+{
+	close (0);
+	close (1);
+	close (2);
 }
 
 int	ft_exec_child(t_cmd *cmd, t_data *data)
@@ -171,9 +197,8 @@ int	ft_exec_child(t_cmd *cmd, t_data *data)
 	}
 	ft_list_clear_cmd(cmd);
 	free_lenv(&data->env);
-	close (0);
-	close (1);
-	close (2);
+	free(data->line);
+	ft_close();
 	exit (1);
 }
 
@@ -197,6 +222,28 @@ void	wait_childs(t_cmd *cmd)
 	}
 }
 
+int	ft_fork(t_cmd *cmds, t_cmd *tmp, t_data *data)
+{
+	tmp->pid = fork ();
+	if (tmp->pid == -1)
+	{
+		ft_list_clear_cmd(cmds);
+		return (0);
+	}
+	if (tmp->pid == 0)
+	{
+		if (ft_prepare_child(tmp) == 0)
+		{
+			ft_list_clear_cmd(cmds);
+			return (0);
+		}
+		ft_exec_child(tmp, data);
+	}
+	else if (tmp->pid != 0)
+		close_parent_fds(tmp);
+	return (1);
+}
+
 void	ft_loop_cmds(t_cmd *cmds, t_data *data)
 {
 	t_cmd	*tmp;
@@ -205,19 +252,19 @@ void	ft_loop_cmds(t_cmd *cmds, t_data *data)
 	while (tmp != NULL)
 	{
 		if (tmp->next)
-			ft_redir_pipe(tmp);
+		{
+			if (!ft_redir_pipe(tmp))
+			{
+				ft_list_clear_cmd(cmds);
+				return ;
+			}
+		}
 		if (tmp->next == NULL && no_fork_allowed(tmp->cmd))
 			launch_builtin(tmp, data);
 		else
 		{
-			tmp->pid = fork ();
-			if (tmp->pid == 0)
-			{
-				ft_prepare_child(tmp);
-				ft_exec_child(tmp, data);
-			}
-			else if (tmp->pid != 0)
-				close_parent_fds(tmp);
+			if (ft_fork(cmds, tmp, data) == 0)
+				return ;
 		}
 		tmp = tmp->next;
 	}
