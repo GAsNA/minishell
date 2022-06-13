@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 15:00:19 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/07 16:29:50 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/10 10:11:28 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,7 @@ int	has_no_double_pipe(char *line)
 			while (line[j] == ' ')
 				j++;
 			if (!line[j] || line[j] == '|')
-			{
-				printf("Rovidshell: syntax error near unexpected token `");
-				if (!line)
-					printf("newline'\n");
-				else
-					printf("|'\n");
-				return (0);
-			}
+				return (error_syntax(line[j]));
 		}
 	}
 	return (1);
@@ -101,21 +94,11 @@ int	has_no_multiple_redir(char *line)
 			j = i + 1;
 			ret = check_redir(line, i, &j);
 			if (!ret)
-			{
-				printf("Rovidshell: syntax error near unexpected token `%c'\n", line[j]);
-				return (0);
-			}
+				return (error_syntax(line[j]));
 			while (line[j] == ' ')
 				j++;
 			if (!line[j] || line[j] == '<' || line[j] == '>' || line[j] == '|')
-			{
-				printf("Rovidshell: syntax error near unexpected token `");
-				if (!line[j])
-					printf("newline'\n");
-				else
-					printf("%c'\n", line[j]);
-				return (0);
-			}
+				return (error_syntax(line[j]));
 		}
 	}
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/13 13:23:10 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/13 16:56:18 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,11 @@ int	minishell(t_data *data)
 		add_history(data->line);
 		handle_signals_exec();
 		cmd = parsing(get_regroup(get_lexing(data->line)), *lenv);
+		if (!cmd->cmd)
+		{
+			free(cmd);
+			continue ;
+		}
 		ft_loop_cmds(cmd, data);
 		ft_list_clear_cmd(cmd);
 		free(data->line);

@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:13:02 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/06 14:00:31 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/13 14:07:16 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static char	*replace_expand(char *str, int n, char *rep)
 	return (n_str);
 }
 
-static char	*make_expand(char *str, int n, t_lenv *lenv)
+char	*make_expand(char *str, int n, t_lenv *lenv)
 {
 	int		i;
 

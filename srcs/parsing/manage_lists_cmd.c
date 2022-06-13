@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 14:08:48 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/08 13:43:44 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/13 12:55:24 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_cmd	*ft_create_elem_cmd(char **av, int fd_in)
 	elem->fd_out = -1;
 	elem->pipe_fd[0] = -1;
 	elem->pipe_fd[1] = -1;
+	elem->to_free = 0;
 	elem->pid = -1;
 	elem->prev = NULL;
 	elem->next = NULL;

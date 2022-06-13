@@ -66,10 +66,12 @@ SRCS			=	main.c					\
 					lexing.c				\
 					regroup.c				\
 					parsing.c				\
+					last_quotes.c			\
 					calcul_divide_cmd.c		\
 					get_check_fd.c			\
 					expand.c				\
 					heredoc.c				\
+					print_error.c			\
 					manage_lists_lexing.c	\
 					manage_lists_regroup.c	\
 					manage_lists_cmd.c		\

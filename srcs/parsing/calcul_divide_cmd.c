@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 10:58:49 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/07 14:57:10 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/13 14:53:37 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	calcul_av(t_regroup *reg)
 	return (i);
 }
 
-t_regroup	*divide_cmd(t_regroup *reg, char ***av, int *fd)
+t_regroup	*divide_cmd(t_regroup *reg, char ***av, int *fd, t_lenv *lenv)
 {
 	int	i;
 
@@ -39,7 +39,7 @@ t_regroup	*divide_cmd(t_regroup *reg, char ***av, int *fd)
 	while (reg && ft_strcmp(reg->str, "|") != 0)
 	{
 		if (reg->next && ft_strcmp(reg->str, "<<") == 0)
-			*fd = make_heredoc(reg->next->str);
+			*fd = make_heredoc(reg->next->str, lenv);
 		if (ft_strcmp(reg->str, "<") == 0
 			|| ft_strcmp(reg->str, "<<") == 0
 			|| ft_strcmp(reg->str, ">") == 0
