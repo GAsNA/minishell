@@ -52,6 +52,8 @@ SRCS			=	main.c\
 					ft_export_utils.c\
 					path.c\
 					ft_loop_cmds.c\
+					signals.c\
+					free.c\
 					garbage.c\
 					ft_gsplit.c\
 					ft_strgdup.c\

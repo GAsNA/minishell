@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/12 18:28:31 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/13 08:50:52 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,56 +15,6 @@
 #include "../libft/libft.h"
 
 int	g_status = 0;
-
-void	ctrl_c_exec(int signum)
-{
-	(void)signum;
-	printf("\n");
-	g_status = signum + 28;
-}
-
-void	handle_signals_exec(void)
-{
-	signal(SIGINT, ctrl_c_exec);
-	signal(SIGQUIT, SIG_IGN);
-}
-
-void	ctrl_c(int signum)
-{
-	(void)signum;
-	printf("\n");
-	g_status = signum + 28;
-	rl_on_new_line();
-	rl_replace_line("", 0);
-	rl_redisplay();
-}
-
-void	handle_signals_main(void)
-{
-	signal(SIGINT, ctrl_c);
-	signal(SIGQUIT, SIG_IGN);
-}
-
-void	free_split(char **cmd)
-{
-	int		i;
-
-	i = 0;
-	while (cmd[i])
-		free(cmd[i++]);
-	free(cmd);
-}
-
-int	print_cmd(char **cmd)
-{
-	int		i;
-
-	i = 0;
-	while (cmd[i])
-		printf("%s ", cmd[i++]);
-	printf("\n");
-	return (0);
-}
 
 char	**get_c_nv(t_lenv **lenv)
 {

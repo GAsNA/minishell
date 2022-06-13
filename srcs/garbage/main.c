@@ -1,10 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/13 08:57:16 by aasli             #+#    #+#             */
+/*   Updated: 2022/06/13 08:57:37 by aasli            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "garbage.h"
 
-int main()
+int	main(void)
 {
-	t_glist *list;
-
-	char **split;
+	t_glist	*list;
+	t_glist	*test;
+	char	**split;
+	char	*james;
 
 	list = malloc(sizeof(t_glist));
 	list->el = NULL;
@@ -12,7 +25,7 @@ int main()
 	list->prev = NULL;
 	ft_strgdup(&list, "Hello toi");
 	ft_strgdup(&list, "Hello moi");
-	char *james = ft_strgjoin(&list, "Hello vous", " et moi");
+	james = ft_strgjoin(&list, "Hello vous", " et moi");
 	ft_subgstr(&list, "Hello vous", 3, 5);
 	ft_gfree(&list, (void *)james);
 	ft_subgstr(&list, "Hellotghyr", 3, 5);
@@ -21,13 +34,10 @@ int main()
 	printf("%s\n", (char *)list->next->el);
 	printf("%s\n", (char *)list->next->next->el);
 	printf("%s\n", (char *)list->next->next->next->el);
-	t_glist *test;
 	test = list->next->next->next;
 	test = test->prev;
-
 	printf("%s\n", (char *)test->el);
 	printf("%s\n", split[0]);
 	printf("%s\n", split[1]);
-
 	ft_free_all(&list);
 }

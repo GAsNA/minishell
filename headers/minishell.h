@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 12:40:37 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/10 12:24:47 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/13 08:49:42 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,12 @@ struct s_lenv
 	t_lenv		*next;
 };
 
+//	Signals functions
+void	ctrl_c_exec(int signum);
+void	ctrl_c(int signum);
+void	handle_signals_exec(void);
+void	handle_signals_main(void);
+
+//	Free functions
+void	free_split(char **cmd);
 #endif
