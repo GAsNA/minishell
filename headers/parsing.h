@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:15:15 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/10 10:12:18 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/13 14:54:16 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ struct s_cmd
 	char			**cmd;
 	int				fd_in;
 	int				fd_out;
+	int				to_free;
 	int				pipe_fd[2];
 	pid_t			pid;
 	struct s_cmd	*prev;
@@ -80,17 +81,18 @@ t_cmd		*supp_useless_quotes(t_cmd *cmd);
 
 /* calcul_divide_cmd.c */
 int			calcul_av(t_regroup *reg);
-t_regroup	*divide_cmd(t_regroup *reg, char ***av, int *fd);
+t_regroup	*divide_cmd(t_regroup *reg, char ***av, int *fd, t_lenv *lenv);
 
 /* get_check_fd.c */
-void		check_fd_out(int *fd_in, int *fd_out, t_regroup *reg, char ***cmd);
-void		check_fd_in(int *fd_in, int *fd_out, t_regroup *reg, char ***cmd);
+void		check_fd_out(int *fd_in, int *fd_out, t_regroup *reg, int *to_free);
+void		check_fd_in(int *fd_in, int *fd_out, t_regroup *reg, int *to_free);
 
 /* expand.c */
+char		*make_expand(char *str, int n, t_lenv *lenv); // n = size $ ($USER == 4)
 t_cmd		*get_expands(t_cmd *cmd, t_lenv *lenv);
 
 /* heredoc.c */
-int			make_heredoc(char *s);
+int			make_heredoc(char *s, t_lenv *lenv);
 
 /* manage_lists_lexing.c */
 t_lexing	*ft_create_elem_lex(char letter, enum e_type type);

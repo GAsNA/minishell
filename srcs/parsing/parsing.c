@@ -6,13 +6,13 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 10:28:13 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/10 13:44:33 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/13 14:53:57 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static t_cmd	*get_cmd_and_heredoc(t_regroup *reg)
+static t_cmd	*get_cmd_and_heredoc(t_regroup *reg, t_lenv *lenv)
 {
 	int			fd;
 	t_cmd		*cmd;
@@ -26,12 +26,12 @@ static t_cmd	*get_cmd_and_heredoc(t_regroup *reg)
 		av = malloc((calcul_av(reg) + 1) * sizeof(char *));
 		if (!av)
 			return (0);
-		reg = divide_cmd(reg, &av, &fd);
+		reg = divide_cmd(reg, &av, &fd, lenv);
 		ft_list_push_back_cmd(&cmd, av, fd);
 		av = NULL;
 		if (reg)
 			reg = reg->next;
-	}	
+	}
 	return (cmd);
 }
 
@@ -56,21 +56,21 @@ static t_regroup	*free_and_pass(t_regroup *reg, int redir)
 }
 
 static t_regroup	*make_redir(t_regroup *reg, int *fd_in, int *fd_out,
-								char ***cmd)
+								int *to_free)
 {
 	int	redir;
 
 	redir = 0;
 	if (ft_strcmp(reg->str, ">") == 0 || ft_strcmp(reg->str, ">>") == 0)
 	{
-		check_fd_out(fd_in, fd_out, reg, cmd);
+		check_fd_out(fd_in, fd_out, reg, to_free);
 		free(reg->str);
 		redir = 1;
 		reg = reg->next;
 	}
 	else if (ft_strcmp(reg->str, "<") == 0)
 	{
-		check_fd_in(fd_in, fd_out, reg, cmd);
+		check_fd_in(fd_in, fd_out, reg, to_free);
 		free(reg->str);
 		redir = 1;
 		reg = reg->next;
@@ -84,10 +84,20 @@ static t_cmd	*get_in_out_file(t_cmd *cmd, t_regroup *reg)
 	t_cmd	*rt;
 
 	rt = cmd;
-	while (reg)
+	while (reg && cmd)
 	{
-		while (reg && ft_strcmp(reg->str, "|") != 0)
-			reg = make_redir(reg, &cmd->fd_in, &cmd->fd_out, &cmd->cmd);
+		while (reg && reg->str && ft_strcmp(reg->str, "|") != 0 && cmd->to_free == 0)
+			reg = make_redir(reg, &cmd->fd_in, &cmd->fd_out, &cmd->to_free);
+		if (cmd->to_free == 1)
+		{
+			while (reg && ft_strcmp(reg->str, "|") != 0)
+			{
+				free(reg->str);
+				reg = reg->next;
+			}
+			free(cmd->cmd);
+			cmd->cmd = NULL;
+		}
 		if (reg)
 		{
 			free(reg->str);
@@ -105,7 +115,7 @@ t_cmd	*parsing(t_regroup *reg, t_lenv *lenv)
 
 	if (!reg)
 		return (0);
-	cmd = get_cmd_and_heredoc(reg);
+	cmd = get_cmd_and_heredoc(reg, lenv);
 	cmd = get_in_out_file(cmd, reg);
 	tmp = cmd;
 	while (tmp->next)

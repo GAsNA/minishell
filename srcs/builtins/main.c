@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/08 16:46:41 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/13 13:07:52 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ int	minishell(t_lenv **env)
 	t_data	data;
 	t_lenv	**lenv;
 	t_cmd 	*cmd;
+	t_cmd	*tmp;
 
 	lenv = env;
 	data.run = 1;
@@ -140,8 +141,22 @@ int	minishell(t_lenv **env)
 			add_history(data.line);
 		handle_signals_exec();
 		cmd = parsing(get_regroup(get_lexing(data.line)), *lenv);
-		ft_loop_cmds(cmd, lenv);
-		ft_list_clear_cmd(cmd);
+		if (!cmd->cmd)
+		{
+			free(cmd);
+			continue;
+		}
+		tmp = cmd;
+		/*while (cmd)
+		{
+			int i = -1;
+			while (cmd->cmd[++i])
+				printf("\t%s\n", cmd->cmd[i]);
+			printf("fd_in: %i\nfd_out: %i\n", cmd->fd_in, cmd->fd_out);
+			cmd = cmd->next;
+		}*/
+		ft_loop_cmds(tmp, lenv);
+		ft_list_clear_cmd(tmp);
 		free(data.line);
 	}	
 	return (0);
@@ -173,9 +188,14 @@ int	main(int ac, char **av, char **envp)
 	glist = malloc(sizeof(t_glist) * 1);
 	if (!glist)
 		return (0);
-	data = ft_malloc(sizeof(t_data), 1, &glist);
+	//data = ft_malloc(sizeof(t_data), 1, &glist);
+	data = malloc(sizeof(t_data) * 1);
+	if (!data)
+		return (0);
 	data_init(data, envp, glist);
 	minishell(&data->env);
 	free_lenv(&data->env);
+	free(glist);
+	free(data);
 	return (0);
 }
