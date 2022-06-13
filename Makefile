@@ -37,27 +37,30 @@ vpath %.c $(foreach dir, $(SRC_DIR), $(dir):)
 # --  Redirection in OBJS  -- #
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 
-SRCS			=	main.c\
-					l_env.c\
-					l_env_utils.c\
-					ft_pwd.c\
-					ft_cd.c\
-					cd_utils.c\
-					env.c env2.c\
-					ft_echo.c\
-					ft_env.c\
-					ft_unset.c\
-					ft_exit.c\
-					ft_export.c\
-					ft_export_utils.c\
-					path.c\
-					ft_loop_cmds.c\
-					signals.c\
-					free.c\
-					garbage.c\
-					ft_gsplit.c\
-					ft_strgdup.c\
-					ft_strgjoin.c\
+SRCS			=	main.c					\
+					l_env.c					\
+					l_env_utils.c			\
+					ft_pwd.c				\
+					ft_cd.c					\
+					cd_utils.c				\
+					env.c env2.c			\
+					ft_echo.c				\
+					ft_env.c				\
+					ft_unset.c				\
+					ft_exit.c				\
+					ft_export.c				\
+					ft_export_utils.c		\
+					path.c					\
+					exec.c					\
+					exec_utils.c			\
+					close_exec.c			\
+					child.c					\
+					signals.c				\
+					free.c					\
+					garbage.c				\
+					ft_gsplit.c				\
+					ft_strgdup.c			\
+					ft_strgjoin.c			\
 					ft_subgstr.c			\
 					checks_before_all.c		\
 					lexing.c				\
