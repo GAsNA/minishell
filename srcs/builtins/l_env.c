@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 11:09:39 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/17 13:22:13 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/09 15:34:34 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,20 @@ t_lenv	*ft_last_lenv(t_lenv **begin)
 	return (tmp);
 }
 
-int	ft_addback_lenv(t_lenv **begin, t_lenv *new)
+int	ft_addback_lenv(t_data *data, t_lenv *new)
 {
 	t_lenv	*last;
 
-	if (*begin == NULL)
-		*begin = new;
+	if (new == NULL)
+	{
+		printf ("New est null\n");
+		return (0);
+	}
+	if (data->env == NULL)
+		data->env = new;
 	else
 	{
-		last = ft_last_lenv(begin);
+		last = ft_last_lenv(&data->env);
 		if (!last)
 			return (0);
 		last->next = new;

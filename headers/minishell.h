@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 12:40:37 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/08 16:46:43 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/13 13:29:00 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ struct s_data
 	int		unset_path;
 	t_glist	*glist;
 	char	*line;
+	char	*hidden_path;
 };
 
 /*struct s_command
@@ -64,5 +65,34 @@ struct s_lenv
 	char		*v;
 	t_lenv		*next;
 };
+
+//	Env
+char	**get_c_nv(t_lenv **lenv);
+
+//	Signals functions
+void	ctrl_c_exec(int signum);
+void	ctrl_c(int signum);
+void	handle_signals_exec(void);
+void	handle_signals_main(void);
+
+//	Free functions
+void	free_split(char **cmd);
+
+//	Exec
+
+void	close_parent_fds(t_cmd *cmd);
+void	ft_close(void);
+int		ft_prepare_child(t_cmd *tmp);
+int		no_fork_allowed(char **cmd);
+int		ft_exec_child(t_cmd *cmd, t_data *data);
+void	wait_childs(t_cmd *cmd);
+int		launch_builtin(t_cmd *cmd, t_data *data);
+
+//	Exec utils
+char	*try_access_path(char *cmd, char **paths, int i);
+char	*get_exec_path(char *cmd, t_data *data);
+int		is_builtin(char **cmd);
+
+
 
 #endif

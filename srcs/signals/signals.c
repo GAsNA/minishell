@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/25 12:10:30 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/10 17:22:43 by aasli            ###   ########.fr       */
+/*   Created: 2022/06/13 08:27:53 by aasli             #+#    #+#             */
+/*   Updated: 2022/06/13 08:54:50 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,33 @@
 #include "../../headers/builtins.h"
 #include "../libft/libft.h"
 
-int	ft_env(char **cmd, t_lenv **env)
-{
-	t_lenv	*tmp;
+extern int	g_status;
 
-	tmp = *env;
-	if (cmd[1])
-	{
-		printf("Rovidshell: env: %s: options or arguments are not handled\n",
-			cmd[1]);
-		return (1);
-	}
-	while (tmp)
-	{
-		printf("%s%s\n", tmp->k, tmp->v);
-		tmp = tmp->next;
-	}
-	return (0);
+void	ctrl_c_exec(int signum)
+{
+	(void)signum;
+	printf("\n");
+	g_status = signum + 28;
+}
+
+void	handle_signals_exec(void)
+{
+	signal(SIGINT, ctrl_c_exec);
+	signal(SIGQUIT, SIG_IGN);
+}
+
+void	ctrl_c(int signum)
+{
+	(void)signum;
+	printf("\n");
+	g_status = signum + 28;
+	rl_on_new_line();
+	rl_replace_line("", 0);
+	rl_redisplay();
+}
+
+void	handle_signals_main(void)
+{
+	signal(SIGINT, ctrl_c);
+	signal(SIGQUIT, SIG_IGN);
 }

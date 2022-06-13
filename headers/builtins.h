@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 12:01:24 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/08 11:35:49 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/10 14:20:25 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,9 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-/*typedef struct	s_cmd
-{
-	char			**cmd;
-	int				fd_in;
-	int				fd_out;
-	int				pipe_fd[2];
-	pid_t			pid;
-	struct s_cmd	*prev;
-	struct s_cmd	*next;
-}	t_cmd;*/
-
 typedef struct s_cmd	t_cmd;
 
-
-void	ft_loop_cmds(t_cmd *cmds, t_lenv **env);
+void	ft_loop_cmds(t_cmd *cmds, t_data *data);
 
 //	free
 void	free_split(char **cmd);
@@ -43,9 +31,10 @@ void	free_split(char **cmd);
 char	**ft_get_paths(t_lenv **lenv);
 
 //	env linked list
-t_lenv	*get_env(char **env);
+t_lenv	*get_env(t_data *data, char **env);
+t_lenv	*get_min_env(t_data *data);
 t_lenv	*ft_new_lenv(char *line);
-int		ft_addback_lenv(t_lenv **begin, t_lenv *new);
+int		ft_addback_lenv(t_data *data, t_lenv *new);
 void	print_lenv(t_lenv **lst);
 void	free_lenv(t_lenv **lst);
 
@@ -57,14 +46,14 @@ int		ft_pwd(char **cmd, t_lenv **env);
 int		ft_cd(char **cmd, t_lenv **env);
 int		ft_echo(char **cmd, t_lenv **env);
 int		ft_exit(char **cmd, t_lenv **env);
-int		ft_export(char **cmd, t_lenv **env);
+int		ft_export(char **cmd, t_data *data);
 int		is_bad_identifier(char c);
 int		check_key(char *key);
 int		c_c(char *key);
 char	*get_key(char *key);
 int		ft_env(char **cmd, t_lenv **env);
 int		ft_unset(char **cmd, t_lenv **env);
-int		add_var_env(t_lenv **env, char *var);
+int		add_var_env(t_data *data, char *var);
 int		check_env_var(t_lenv **env, char *var);
 int		check_env_con(t_lenv **env, char *var);
 int		rep_var_env(t_lenv **env, char *var, char *str, int n);

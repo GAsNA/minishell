@@ -51,7 +51,12 @@ SRCS			=	main.c					\
 					ft_export.c				\
 					ft_export_utils.c		\
 					path.c					\
-					ft_loop_cmds.c			\
+					exec.c					\
+					exec_utils.c			\
+					close_exec.c			\
+					child.c					\
+					signals.c				\
+					free.c					\
 					garbage.c				\
 					ft_gsplit.c				\
 					ft_strgdup.c			\
@@ -96,6 +101,12 @@ ${NAME}:		${OBJS}
 				@make -C srcs/libft
 				@${CC} ${CFLAGS} -o ${NAME} ${OBJS} srcs/libft/libft.a -lreadline
 				@echo "\e[32m"Compilation success"\033[0m"
+
+test:			${NAME}
+				valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --trace-children=yes --track-fds=yes --suppressions=leak_suppress ./minishell			
+
+full:			${NAME}
+				valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --trace-children=yes --track-fds=yes --suppressions=leak_suppress --log-file=valgrind_ret.log  ./minishell			
 
 clean:
 				@${RM} ${OBJ_DIR}

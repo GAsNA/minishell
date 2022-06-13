@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/25 12:10:30 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/10 17:22:43 by aasli            ###   ########.fr       */
+/*   Created: 2022/06/13 08:47:25 by aasli             #+#    #+#             */
+/*   Updated: 2022/06/13 08:47:44 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,12 @@
 #include "../../headers/builtins.h"
 #include "../libft/libft.h"
 
-int	ft_env(char **cmd, t_lenv **env)
+void	free_split(char **cmd)
 {
-	t_lenv	*tmp;
+	int		i;
 
-	tmp = *env;
-	if (cmd[1])
-	{
-		printf("Rovidshell: env: %s: options or arguments are not handled\n",
-			cmd[1]);
-		return (1);
-	}
-	while (tmp)
-	{
-		printf("%s%s\n", tmp->k, tmp->v);
-		tmp = tmp->next;
-	}
-	return (0);
+	i = 0;
+	while (cmd[i])
+		free(cmd[i++]);
+	free(cmd);
 }

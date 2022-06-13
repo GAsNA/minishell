@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   close_exec.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/25 12:10:30 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/10 17:22:43 by aasli            ###   ########.fr       */
+/*   Created: 2022/06/13 12:56:01 by aasli             #+#    #+#             */
+/*   Updated: 2022/06/13 13:05:21 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 #include "../../headers/builtins.h"
 #include "../libft/libft.h"
 
-int	ft_env(char **cmd, t_lenv **env)
-{
-	t_lenv	*tmp;
+extern int	g_status;
 
-	tmp = *env;
-	if (cmd[1])
-	{
-		printf("Rovidshell: env: %s: options or arguments are not handled\n",
-			cmd[1]);
-		return (1);
-	}
-	while (tmp)
-	{
-		printf("%s%s\n", tmp->k, tmp->v);
-		tmp = tmp->next;
-	}
-	return (0);
+void	ft_close(void)
+{
+	close (0);
+	close (1);
+	close (2);
+}
+
+void	close_parent_fds(t_cmd *cmd)
+{
+	if (cmd->next)
+		close(cmd->pipe_fd[1]);
+	if (cmd->fd_in != -1)
+		close(cmd->fd_in);
+	if (cmd->fd_out != -1)
+		close(cmd->fd_out);
 }
