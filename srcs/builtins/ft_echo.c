@@ -6,7 +6,7 @@
 /*   By: aasli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 10:11:36 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/10 17:25:14 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/14 12:53:38 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ static void	print_echo(char **cmd, int n)
 	int	i;
 
 	i = 1;
-	while (cmd[i + n])
+	while (cmd[i + n] != NULL)
 	{
 		if (i != 1)
-			printf(" ");
-		printf("%s", cmd[i + n]);
+			write(1, " ", 1);
+		write(1, cmd[i + n], ft_strlen(cmd[i + n]));
 		i++;
 	}
 }
@@ -70,6 +70,6 @@ int	ft_echo(char **cmd, t_lenv **env)
 	n = check_echo(cmd);
 	print_echo(cmd, n);
 	if (n == 0)
-		printf("\n");
+		write(1, "\n", 1);
 	return (0);
 }
