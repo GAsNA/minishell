@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 12:01:24 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/10 14:20:25 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/14 13:55:24 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,6 @@ int		update_env(t_lenv **env);
 int		update_pwd(t_lenv **env, char *pwd);
 int		update_old_pwd(t_lenv **env);
 char	*get_var_from_env(t_lenv **env, char *str, size_t n);
+int		nb_isminus(int nb);
+int		get_exit(int nb);
 #endif
