@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:38:45 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/14 15:44:30 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/15 14:21:50 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,10 +118,8 @@ void	ft_loop_cmds(t_cmd *cmds, t_data *data)
 			launch_builtin(tmp, data);
 		else
 		{
-			printf("chils\n");
 			if (ft_fork(cmds, tmp, data) == 0)
 				return ;
-			g_status = g_status / 128;
 		}
 		tmp = tmp->next;
 	}

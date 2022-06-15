@@ -6,7 +6,7 @@
 /*   By: aasli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 10:11:36 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/14 13:58:06 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/15 14:23:04 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ static void	print_echo(char **cmd, int n)
 			write(1, " ", 1);
 		if (ft_strncmp(cmd[i + n], "$?", 2) == 0)
 		{
-			printf("gstatus = %i\n", g_status);
 			g_status = get_exit(g_status);
 			status = ft_itoa(g_status);
 			write(1, status, ft_strlen(status));
