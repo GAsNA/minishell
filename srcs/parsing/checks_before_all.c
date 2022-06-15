@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 15:00:19 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/10 10:11:28 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/15 18:18:50 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ int	is_quotes_close(char *line)
 		else if (line[i] == '"')
 			set_quotes(&d_quote, &s_quote);
 	}
-	if (s_quote == 1 || d_quote == 1)
-		return (0);
+	if (s_quote == 1)
+		return (error_syntax('\''));
+	if (d_quote == 1)
+		return (error_syntax('"'));
 	return (1);
 }
 

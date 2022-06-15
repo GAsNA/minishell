@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:13:02 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/13 14:07:16 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/15 17:50:25 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*make_expand(char *str, int n, t_lenv *lenv)
 			break ;
 	while (lenv)
 	{
-		if (ft_strncmp(&str[i + 1], lenv->k, ft_strlen(lenv->k) - 1) == 0)
+		if (ft_strncmp(&str[i + 1], lenv->k, n) == 0)
 			break ;
 		lenv = lenv->next;
 	}
@@ -68,16 +68,18 @@ static void	prepare_expand(char	**av, t_lenv *lenv)
 	k = 0;
 	while ((*av)[++i])
 	{
-		if (((*av)[i] == '$' && (*av)[i + 1] != '?' && (*av)[i + 1] != '_'
-			&& s_quote == 0 && k == 0) || k > 0)
-			k++;
-		if (((*av)[i] == ' ' || (*av)[i] == '\''
+		if (((*av)[i] == '$' && (*av)[i + 1] != '?' && s_quote == 0 && k == 0) || k > 0)
+		{
+			if ((!(*av)[i] || (*av)[i] == ' ' || (*av)[i] == '\''
 					|| (*av)[i] == '"') && k > 0)
-			break ;
+				break ;
+			k++;
+		}
 	}
+	k--;
 	if (k > 0)
 	{
-		str = make_expand(*av, k - 2, lenv);
+		str = make_expand(*av, k, lenv);
 		free(*av);
 		*av = str;
 	}

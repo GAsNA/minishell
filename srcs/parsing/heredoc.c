@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 13:31:59 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/13 14:55:47 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/15 17:47:33 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	get_n(char *line)
 	n = 0;
 	while (line[++i])
 	{
-		if ((line[i] == '$' && line[i + 1] != '?' && line[i + 1] != '_' && n == 0) || n > 0)
+		if ((line[i] == '$' && line[i + 1] != '?' && n == 0) || n > 0)
 		{
 			if ((!line[i] || line[i] == ' ' || line[i] == '\'' || line[i] == '"') && n > 0)
 				break ;

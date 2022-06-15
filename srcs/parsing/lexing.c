@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 13:38:43 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/07 15:01:43 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/15 18:21:27 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,24 @@ static enum e_type	get_type(char c)
 		return (LITERAL);
 }
 
+static int not_all_spaces(char *line)
+{
+	int	i;
+
+	i = -1;
+	while (line[++i])
+		if (line[i] != ' ')
+			return (1);
+	return (0);
+}
+
 t_lexing	*get_lexing(char *line)
 {
 	int			i;
 	t_lexing	*lexing;
 
 	if (!is_quotes_close(line) || !has_no_double_pipe(line)
-		|| !has_no_multiple_redir(line))
+		|| !has_no_multiple_redir(line) || !not_all_spaces(line))
 		return (0);
 	lexing = ft_create_elem_lex(line[0], get_type(line[0]));
 	if (!lexing)
