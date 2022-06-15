@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 10:24:43 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/14 13:59:01 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/15 18:13:24 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,10 @@ static int	ft_is_integer(char *av)
 		i++;
 		len++;
 	}
-	nb = ft_atoll(av);
+	if (av[0] == '-')
+		nb = ft_atoll(av + 1) - 1;
+	else
+		nb = ft_atoll(av + 1);
 	if (len > 19 || nb > 9223372036854775807)
 		return (0);
 	return (len);
@@ -109,19 +112,19 @@ int	ft_exit(char **cmd, t_lenv **env)
 	(void)env;
 	if (cmd[0] && cmd[1] && cmd[2] && ft_is_integer(cmd[1]))
 	{
-		printf("Exit\n");
+		printf("exit\n");
 		printf("Rovidshell: exit: too many arguments\n");
 		return (1);
 	}
-	else if (cmd[0] && cmd[1] && !ft_is_integer(cmd[1]))
+	else if (cmd[0] && cmd[1] && ft_is_integer(cmd[1]) == 0)
 	{
-		printf("Exit\n");
+		printf("exit\n");
 		printf("Rovidshell: exit: %s: numeric argument is required\n", cmd[1]);
 		exit (2);
 	}
 	else if (cmd[0] && cmd[1] && ft_is_integer(cmd[1]))
 	{
-		printf("Exit\n");
+		printf("exit\n");
 		exit (get_exit_exit(cmd[1]));
 	}
 	else

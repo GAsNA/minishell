@@ -6,7 +6,7 @@
 /*   By: aasli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 10:11:36 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/15 14:23:04 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/15 17:18:55 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ static int	check_echo(char **cmd)
 		if (ft_strncmp(cmd[i], "-n", 2) == 0
 			&& full_n(cmd[i]))
 			n++;
+		if (ft_strncmp(cmd[i], "-n", 2) == 0
+			&& !full_n(cmd[i]))
+			return (n);
 		i++;
 	}
 	return (n);
