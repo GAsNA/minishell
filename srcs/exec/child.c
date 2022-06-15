@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 13:14:56 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/15 14:21:36 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/15 14:38:58 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	ft_exec_child(t_cmd *cmd, t_data *data)
 	else if (cmd->cmd[0])
 	{
 		env = get_c_nv(&data->env);
+		execve(cmd->cmd[0], cmd->cmd, env);
 		path = get_exec_path(cmd->cmd[0], data);
 		if (path)
 			execve(path, cmd->cmd, env);
