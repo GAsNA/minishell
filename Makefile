@@ -50,6 +50,7 @@ SRCS			=	main.c					\
 					ft_exit.c				\
 					ft_export.c				\
 					ft_export_utils.c		\
+					utils.c					\
 					path.c					\
 					exec.c					\
 					exec_utils.c			\

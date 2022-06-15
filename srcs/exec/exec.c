@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:38:45 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/13 13:30:17 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/15 14:38:02 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	ft_loop_cmds(t_cmd *cmds, t_data *data)
 				return ;
 			}
 		}
-		if (tmp->next == NULL && no_fork_allowed(tmp->cmd))
+		if (tmp->next == NULL && no_fork_allowed(tmp->cmd) == 1)
 			launch_builtin(tmp, data);
 		else
 		{
@@ -125,4 +125,5 @@ void	ft_loop_cmds(t_cmd *cmds, t_data *data)
 	}
 	tmp = cmds;
 	wait_childs(tmp);
+	
 }

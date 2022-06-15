@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 13:14:56 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/13 13:26:13 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/15 14:38:58 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	ft_exec_child(t_cmd *cmd, t_data *data)
 	else if (cmd->cmd[0])
 	{
 		env = get_c_nv(&data->env);
+		execve(cmd->cmd[0], cmd->cmd, env);
 		path = get_exec_path(cmd->cmd[0], data);
 		if (path)
 			execve(path, cmd->cmd, env);
@@ -78,13 +79,16 @@ int	ft_exec_child(t_cmd *cmd, t_data *data)
 		free(path);
 		path = ft_strjoin(cmd->cmd[0], ": command not found\n");
 		write(2, path, ft_strlen(path));
+		g_status = 127;
 		free(path);
 	}
 	ft_list_clear_cmd(cmd);
 	free_lenv(&data->env);
 	free(data->line);
 	ft_close();
-	exit (1);
+	if (errno == EACCES)
+		exit (126);
+	exit (g_status);
 }
 
 void	wait_childs(t_cmd *cmd)
@@ -93,6 +97,8 @@ void	wait_childs(t_cmd *cmd)
 	{
 		if (cmd->pid != 0)
 			waitpid(cmd->pid, &g_status, 0);
+		if (WIFEXITED(g_status))
+        	g_status = WEXITSTATUS(g_status);       
 		cmd = cmd->next;
 	}
 }

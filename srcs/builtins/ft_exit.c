@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 10:24:43 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/10 17:26:23 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/14 13:59:01 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static long long int	ft_atoll(const char *nptr)
 	return (res * s);
 }
 
-static int	nb_isminus(int nb)
+int	nb_isminus(int nb)
 {
 	int	j;
 
@@ -59,7 +59,7 @@ static int	nb_isminus(int nb)
 	return (j);
 }
 
-static int	get_exit(char *av)
+static int	get_exit_exit(char *av)
 {
 	int	j;
 	int	nb;
@@ -122,7 +122,7 @@ int	ft_exit(char **cmd, t_lenv **env)
 	else if (cmd[0] && cmd[1] && ft_is_integer(cmd[1]))
 	{
 		printf("Exit\n");
-		exit (get_exit(cmd[1]));
+		exit (get_exit_exit(cmd[1]));
 	}
 	else
 	{
