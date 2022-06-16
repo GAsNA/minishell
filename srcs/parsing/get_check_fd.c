@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 10:47:47 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/13 13:00:39 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/15 18:49:41 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	get_fd_out(t_regroup *reg)
 	if (ft_strcmp(reg->str, ">") == 0)
 		flags = O_CREAT | O_RDWR | O_TRUNC;
 	else if (ft_strcmp(reg->str, ">>") == 0)
-		flags = O_CREAT | O_APPEND;
+		flags = O_CREAT | O_RDWR | O_APPEND;
 	return (open(reg->next->str, flags, S_IRWXU));
 }
 
