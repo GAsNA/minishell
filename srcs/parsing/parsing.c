@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 10:28:13 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/13 14:53:57 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/18 19:39:21 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,10 +108,46 @@ static t_cmd	*get_in_out_file(t_cmd *cmd, t_regroup *reg)
 	return (rt);
 }
 
+/*static char	**get_cmd_after_split(char **cmd)
+{
+	int		i;
+	int		j;
+	int		k;
+	int		size;
+	char	**split;
+	char	**new_cmd;
+
+	size = 0;
+	i = -1;
+	while (cmd[++i])
+	{
+		split = ft_split(cmd[i], ' ');
+		j = -1;
+		while (split[++j])
+			size++;
+	}
+	new_cmd = malloc((size + 1) * sizeof(char *));
+	if (!new_cmd)
+		return (0);
+	i = -1;
+	j = -1;
+	while (cmd[++i])
+	{
+		split = ft_split(cmd[i], ' ');
+		k = -1;
+		while (split[++k])
+			new_cmd[++j] = split[k];
+	}
+	new_cmd[j + 1] = 0;
+	return (new_cmd);
+}*/
+
 t_cmd	*parsing(t_regroup *reg, t_lenv *lenv)
 {
 	t_cmd	*cmd;
 	t_cmd	*tmp;
+//	int		i;
+//	char	**tmp_char;
 
 	if (!reg)
 		return (0);
@@ -125,6 +161,17 @@ t_cmd	*parsing(t_regroup *reg, t_lenv *lenv)
 	}
 	cmd = get_expands(cmd, lenv);
 	cmd = supp_useless_quotes(cmd);
+	/*tmp = cmd;
+	while (tmp)
+	{
+		tmp_char = get_cmd_after_split(tmp->cmd);
+		i = -1;
+		while (tmp->cmd[++i])
+			free(tmp->cmd[i]);
+		free(tmp->cmd);
+		tmp->cmd = tmp_char;
+		tmp = tmp->next;
+	}*/
 	ft_list_clear_reg(reg);
 	return (cmd);
 }
