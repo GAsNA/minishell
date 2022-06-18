@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:38:45 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/15 14:38:02 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/18 13:29:16 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int	ft_fork(t_cmd *cmds, t_cmd *tmp, t_data *data)
 		ft_list_clear_cmd(cmds);
 		return (0);
 	}
+	handle_signals_exec(data);
 	if (tmp->pid == 0)
 	{
 		if (ft_prepare_child(tmp) == 0)

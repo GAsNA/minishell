@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 12:40:37 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/13 13:29:00 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/18 13:21:14 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_glist		t_glist;
 struct s_data
 {
 	int		run;
+	int		lvl;
 	t_lenv	*env;
 	int		min_env;
 	int		unset_path;
@@ -72,7 +73,7 @@ char	**get_c_nv(t_lenv **lenv);
 //	Signals functions
 void	ctrl_c_exec(int signum);
 void	ctrl_c(int signum);
-void	handle_signals_exec(void);
+void	handle_signals_exec(t_data *data);
 void	handle_signals_main(void);
 
 //	Free functions

@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/15 17:34:48 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/18 13:27:23 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,13 @@ int	minishell(t_data *data)
 		if (!data->line)
 		{
 			data->run = 0;
-			printf("exit");
+			printf("exit\n");
 			return (0);
 		}
 		if (!data->line[0])
 			continue ;
 		add_history(data->line);
-		handle_signals_exec();
+		//handle_signals_exec(t_data *data);
 		cmd = parsing(get_regroup(get_lexing(data->line)), *lenv);
 		if (cmd && !cmd->cmd)
 		{
@@ -103,6 +103,8 @@ int	minishell(t_data *data)
 void	data_init(t_data *data, char **envp)
 {
 	data->unset_path = 0;
+	if (data->lvl == 0)
+		data->lvl = data->lvl++;
 	data->env = NULL;
 	if (!*envp)
 	{
@@ -128,12 +130,15 @@ void	data_init(t_data *data, char **envp)
 
 int	main(int ac, char **av, char **envp)
 {
-	t_data	data;
+	static int	lvl = 0;
+	t_data		data;
 
 	(void)ac;
 	(void)av;
+	data.lvl = lvl;
 	data_init(&data, envp);
 	minishell(&data);
 	free_lenv(&data.env);
+	lvl --;
 	return (0);
 }

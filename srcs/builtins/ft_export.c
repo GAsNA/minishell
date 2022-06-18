@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 12:37:38 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/10 17:29:59 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/18 13:56:34 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	ft_export(char **cmd, t_data *data)
 		return (0);
 	}
 	else
-		printf("Rovidshell: export: undefined behavior on bash posix\n");
+		write(2, "Rovidshell: export: undefined behavior on bash posix\n",
+			ft_strlen("Rovidshell: export: undefined behavior on bash posix\n"));
 	return (2);
 }
