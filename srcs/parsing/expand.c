@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:13:02 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/18 18:51:45 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/18 19:00:23 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static char	*replace_expand(char *str, int n, char *rep)
 
 char	*make_expand(char *str, int n, t_lenv *lenv)
 {
+	int	size;
 	int	i;
 
 	i = -1;
@@ -57,7 +58,10 @@ char	*make_expand(char *str, int n, t_lenv *lenv)
 			break ;
 	while (lenv)
 	{
-		if (ft_strncmp(&str[i + 1], lenv->k, ft_strlen(lenv->k) - 1) == 0)
+		size = ft_strlen(lenv->k) - 1;
+		if (size < n)
+			size = n;
+		if (ft_strncmp(&str[i + 1], lenv->k, size) == 0)
 			break ;
 		lenv = lenv->next;
 	}
