@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 10:28:13 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/18 19:39:21 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/18 20:00:52 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,18 @@ static t_cmd	*get_in_out_file(t_cmd *cmd, t_regroup *reg)
 	return (rt);
 }
 
-/*static char	**get_cmd_after_split(char **cmd)
+static int	get_quotes(char *s)
+{
+	int	i;
+
+	i = -1;
+	while (s[++i])
+		if (s[i] == '\'' || s[i] == '"')
+			return (1);
+	return (0);
+}
+
+static char	**get_cmd_after_split(char **cmd)
 {
 	int		i;
 	int		j;
@@ -121,10 +132,15 @@ static t_cmd	*get_in_out_file(t_cmd *cmd, t_regroup *reg)
 	i = -1;
 	while (cmd[++i])
 	{
-		split = ft_split(cmd[i], ' ');
-		j = -1;
-		while (split[++j])
+		if (get_quotes(cmd[i]))
 			size++;
+		else
+		{
+			split = ft_split(cmd[i], ' ');
+			j = -1;
+			while (split[++j])
+				size++;
+		}
 	}
 	new_cmd = malloc((size + 1) * sizeof(char *));
 	if (!new_cmd)
@@ -133,21 +149,27 @@ static t_cmd	*get_in_out_file(t_cmd *cmd, t_regroup *reg)
 	j = -1;
 	while (cmd[++i])
 	{
-		split = ft_split(cmd[i], ' ');
-		k = -1;
-		while (split[++k])
-			new_cmd[++j] = split[k];
+		if (get_quotes(cmd[i]))
+			new_cmd[++j] = ft_strdup(cmd[i]);
+		else
+		{
+			split = ft_split(cmd[i], ' ');
+			k = -1;
+			while (split[++k])
+				new_cmd[++j] = split[k];
+		}
 	}
 	new_cmd[j + 1] = 0;
+	i = 1;
 	return (new_cmd);
-}*/
+}
 
 t_cmd	*parsing(t_regroup *reg, t_lenv *lenv)
 {
 	t_cmd	*cmd;
 	t_cmd	*tmp;
-//	int		i;
-//	char	**tmp_char;
+	int		i;
+	char	**tmp_char;
 
 	if (!reg)
 		return (0);
@@ -160,10 +182,10 @@ t_cmd	*parsing(t_regroup *reg, t_lenv *lenv)
 		tmp = tmp->next;
 	}
 	cmd = get_expands(cmd, lenv);
-	cmd = supp_useless_quotes(cmd);
-	/*tmp = cmd;
+	tmp = cmd;
 	while (tmp)
 	{
+		i = -1;
 		tmp_char = get_cmd_after_split(tmp->cmd);
 		i = -1;
 		while (tmp->cmd[++i])
@@ -171,7 +193,8 @@ t_cmd	*parsing(t_regroup *reg, t_lenv *lenv)
 		free(tmp->cmd);
 		tmp->cmd = tmp_char;
 		tmp = tmp->next;
-	}*/
+	}
+	cmd = supp_useless_quotes(cmd);
 	ft_list_clear_reg(reg);
 	return (cmd);
 }
