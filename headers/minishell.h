@@ -75,6 +75,7 @@ void	ctrl_c_exec(int signum);
 void	ctrl_c(int signum);
 void	handle_signals_exec(t_data *data);
 void	handle_signals_main(void);
+void	reset_signals(t_data *data);
 
 //	Free functions
 void	free_split(char **cmd);

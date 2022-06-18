@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 13:14:56 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/18 13:33:10 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/18 16:08:46 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	ft_exec_child(t_cmd *cmd, t_data *data)
 	free(data->line);
 	ft_close();
 	if (errno == EACCES)
-		exit (126);
+		g_status = 126;
 	exit (g_status);
 }
 
@@ -99,7 +99,9 @@ void	wait_childs(t_cmd *cmd)
 		if (cmd->pid != 0)
 			waitpid(cmd->pid, &g_status, 0);
 		if (WIFEXITED(g_status))
-        	g_status = WEXITSTATUS(g_status);       
+        	g_status = WEXITSTATUS(g_status);
+		else if (g_status != 131)
+			g_status = 130;
 		cmd = cmd->next;
 	}
 }
