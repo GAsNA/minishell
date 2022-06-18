@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 10:47:47 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/15 18:49:41 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/18 15:10:58 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,34 +48,42 @@ static int	get_fd_in(t_regroup *reg)
 
 void	check_fd_out(int *fd_in, int *fd_out, t_regroup *reg, int *to_free)
 {
-	int	i;
 	int	fd;
 
 	fd = get_fd_out(reg);
 	if (fd == -1)
 	{
 		printf("Rovidshell: %s: %s\n", reg->next->str, strerror(errno));
-		i = -1;
 		*to_free = 1;
+		if (*fd_in != -1)
+			close(*fd_in);
 		*fd_in = -1;
 	}
 	else
+	{
+		if (*fd_out != -1)
+			close(*fd_out);
 		*fd_out = fd;
+	}
 }
 
 void	check_fd_in(int *fd_in, int *fd_out, t_regroup *reg, int *to_free)
 {
-	int	i;
 	int	fd;
 
 	fd = get_fd_in(reg);
 	if (fd == -1)
 	{
 		printf("Rovidshell: %s: %s\n", reg->next->str, strerror(errno));
-		i = -1;
 		*to_free = 1;
+		if (*fd_out != -1)
+			close(*fd_out);
 		*fd_out = -1;
 	}
 	else if (fd != -42)
+	{
+		if (*fd_in != -1)
+			close(*fd_in);
 		*fd_in = fd;
+	}
 }
