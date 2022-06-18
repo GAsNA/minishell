@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 13:31:59 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/15 17:47:33 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/18 15:05:47 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ int	make_heredoc(char *s, t_lenv *lenv)
 	int		n;
 	char	*line;
 	char	*new_line;
+	char	*file;
 
-	fd = open("/tmp/.tmp.heredoc", O_CREAT | O_RDWR, S_IRWXU);
+	file = "/tmp/.tmp.heredoc";
+	fd = open(file, O_CREAT | O_RDWR | O_TRUNC, S_IRWXU);
 	line = NULL;
 	while (!line || ft_strcmp(line, s) != 0)
 	{
@@ -59,5 +61,7 @@ int	make_heredoc(char *s, t_lenv *lenv)
 		}
 	}
 	free(line);
+	close(fd);
+	fd = open(file, O_RDWR, 0666);
 	return (fd);
 }
