@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:38:45 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/18 16:07:25 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/18 16:26:55 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ int	ft_fork(t_cmd *cmds, t_cmd *tmp, t_data *data)
 {
 	tmp->pid = fork ();
 	reset_signals(data);
-	//handle_signals_exec(data);
 	if (tmp->pid == -1)
 	{
 		ft_list_clear_cmd(cmds);

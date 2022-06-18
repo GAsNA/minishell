@@ -6,7 +6,7 @@
 /*   By: aasli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 10:11:36 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/18 13:07:34 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/18 16:24:59 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../../headers/builtins.h"
 #include "../libft/libft.h"
 
-extern int g_status;
+extern int	g_status;
 
 static int	full_n(char *cmd)
 {
@@ -55,8 +55,8 @@ static int	check_echo(char **cmd)
 
 static void	print_echo(char **cmd, int n)
 {
-	int	i;
-	char *status;
+	int		i;
+	char	*status;
 
 	i = 1;
 	status = NULL;
@@ -69,7 +69,7 @@ static void	print_echo(char **cmd, int n)
 			g_status = get_exit(g_status);
 			status = ft_itoa(g_status);
 			write(1, status, ft_strlen(status));
-			if (cmd[i + n] + 2 != NULL)	
+			if (cmd[i + n] + 2 != NULL)
 				write(1, cmd[i + n] + 2, ft_strlen(cmd[i + n] + 2));
 			free(status);
 		}

@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 13:14:56 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/18 16:08:46 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/18 17:00:02 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,34 +58,40 @@ int	no_fork_allowed(char **cmd)
 	return (0);
 }
 
+static void	launch_execve(t_data *data, t_cmd *cmd)
+{
+	char	**env;
+	char	*path;
+
+	env = get_c_nv(&data->env);
+	execve(cmd->cmd[0], cmd->cmd, env);
+	path = get_exec_path(cmd->cmd[0], data);
+	if (path)
+		execve(path, cmd->cmd, env);
+	free_split(env);
+	if (path)
+		free(path);
+}
+
 int	ft_exec_child(t_cmd *cmd, t_data *data)
 {
-	char	*path;
-	char	**env;
+	char	*str;
 
-	if (*cmd->cmd == NULL)
+	if (*cmd->cmd == NULL || ft_strcmp("", *cmd->cmd) == 0)
 	{
 	}
 	else if (is_builtin(cmd->cmd))
 		launch_builtin(cmd, data);
 	else if (cmd->cmd[0])
 	{
-		env = get_c_nv(&data->env);
 		handle_signals_exec(data);
-		execve(cmd->cmd[0], cmd->cmd, env);
-		path = get_exec_path(cmd->cmd[0], data);
-		if (path)
-			execve(path, cmd->cmd, env);
-		free_split(env);
-		free(path);
-		path = ft_strjoin(cmd->cmd[0], ": command not found\n");
-		write(2, path, ft_strlen(path));
+		launch_execve(data, cmd);
+		str = ft_strjoin(cmd->cmd[0], ": command not found\n");
+		write(2, str, ft_strlen(str));
 		g_status = 127;
-		free(path);
+		free(str);
 	}
-	ft_list_clear_cmd(cmd);
-	free_lenv(&data->env);
-	free(data->line);
+	free_all(data, cmd);
 	ft_close();
 	if (errno == EACCES)
 		g_status = 126;
@@ -99,7 +105,7 @@ void	wait_childs(t_cmd *cmd)
 		if (cmd->pid != 0)
 			waitpid(cmd->pid, &g_status, 0);
 		if (WIFEXITED(g_status))
-        	g_status = WEXITSTATUS(g_status);
+			g_status = WEXITSTATUS(g_status);
 		else if (g_status != 131)
 			g_status = 130;
 		cmd = cmd->next;

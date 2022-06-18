@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 08:47:25 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/13 08:47:44 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/18 16:42:20 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,11 @@ void	free_split(char **cmd)
 	while (cmd[i])
 		free(cmd[i++]);
 	free(cmd);
+}
+
+void	free_all(t_data *data, t_cmd *cmd)
+{
+	ft_list_clear_cmd(cmd);
+	free_lenv(&data->env);
+	free(data->line);
 }

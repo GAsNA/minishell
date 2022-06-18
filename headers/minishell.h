@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 12:40:37 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/18 13:21:14 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/18 16:42:08 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	reset_signals(t_data *data);
 
 //	Free functions
 void	free_split(char **cmd);
+void	free_all(t_data *data, t_cmd *cmd);
 
 //	Exec
 
