@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 12:40:37 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/18 16:42:08 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/19 13:43:11 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ typedef struct s_glist		t_glist;
 struct s_data
 {
 	int		run;
-	int		lvl;
 	t_lenv	*env;
 	int		min_env;
 	int		unset_path;
@@ -66,6 +65,10 @@ struct s_lenv
 	char		*v;
 	t_lenv		*next;
 };
+
+
+//	Main
+int	empty_cmd(t_cmd *cmd);
 
 //	Env
 char	**get_c_nv(t_lenv **lenv);

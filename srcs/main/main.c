@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/18 16:56:11 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/19 13:42:33 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_lenv	*get_min_env(t_data *data)
 	return (data->env);
 }
 
-int	minishell(t_data *data)
+void	minishell(t_data *data)
 {
 	t_lenv	**lenv;
 	t_cmd	*cmd;
@@ -81,30 +81,23 @@ int	minishell(t_data *data)
 		{
 			data->run = 0;
 			printf("exit\n");
-			return (0);
+			return ;
 		}
 		if (!data->line[0])
 			continue ;
 		add_history(data->line);
-		//handle_signals_exec(t_data *data);
 		cmd = parsing(get_regroup(get_lexing(data->line)), *lenv);
-		if (cmd && !cmd->cmd)
-		{
-			free(cmd);
+		if (empty_cmd(cmd) == 1)
 			continue ;
-		}
 		ft_loop_cmds(cmd, data);
 		ft_list_clear_cmd(cmd);
 		free(data->line);
 	}	
-	return (0);
 }
 
 void	data_init(t_data *data, char **envp)
 {
 	data->unset_path = 0;
-	if (data->lvl == 0)
-		data->lvl = data->lvl++;
 	data->env = NULL;
 	if (!*envp)
 	{
@@ -130,15 +123,14 @@ void	data_init(t_data *data, char **envp)
 
 int	main(int ac, char **av, char **envp)
 {
-	static int	lvl = 0;
 	t_data		data;
 
 	(void)ac;
 	(void)av;
-	data.lvl = lvl;
 	data_init(&data, envp);
 	minishell(&data);
 	free_lenv(&data.env);
-	lvl --;
+	if (data.hidden_path != NULL)
+		free(data.hidden_path);
 	return (0);
 }

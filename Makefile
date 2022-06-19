@@ -38,6 +38,7 @@ vpath %.c $(foreach dir, $(SRC_DIR), $(dir):)
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 
 SRCS			=	main.c					\
+					main_utils.c			\
 					l_env.c					\
 					l_env_utils.c			\
 					ft_pwd.c				\
@@ -57,6 +58,7 @@ SRCS			=	main.c					\
 					close_exec.c			\
 					child.c					\
 					signals.c				\
+					signals_utils.c			\
 					free.c					\
 					garbage.c				\
 					ft_gsplit.c				\
