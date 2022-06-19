@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:25 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/09 17:24:53 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/19 15:24:32 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,19 @@ static void	print_pwd_exception(char *buff)
 	free (buff);
 }
 
-static void	print_pwd(char *buff)
+static int	print_pwd(char *buff)
 {
+	free(buff);
+	buff = calloc(2049, sizeof(char));
+	if (!buff)
+	{
+		printf("Allocation error");
+		return (-1);
+	}
 	getcwd(buff, 2048);
 	printf("%s\n", buff);
 	free (buff);
+	return (0);
 }
 
 int	ft_pwd(char **cmd, t_lenv **env)
@@ -33,22 +41,21 @@ int	ft_pwd(char **cmd, t_lenv **env)
 
 	if (cmd[1] && cmd[1][0] == '-')
 	{
-		printf("Rovidshell: pwd: %s: options are not handled\n", cmd[1]);
+		buff = ft_strdjoin("Rovidshell: pwd: ", cmd[1],
+				": options are not handled\n");
+		if (!buff)
+			return (-1);
+		write(2, buff, ft_strlen(buff));
+		free(buff);
 		return (1);
 	}
 	buff = get_var_from_env(env, "PWD=", 4);
-	if (ft_strncmp(buff, "//", 2) == 0)
+	if (!buff)
+		return (2);
+	else if (ft_strcmp(buff, "//") == 0)
 		print_pwd_exception(buff);
 	else
-	{
-		free(buff);
-		buff = calloc(2049, sizeof(char));
-		if (!buff)
-		{
-			printf("Allocation error");
+		if (print_pwd(buff) == 1)
 			return (1);
-		}
-		print_pwd(buff);
-	}
 	return (0);
 }

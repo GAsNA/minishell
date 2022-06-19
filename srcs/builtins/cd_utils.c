@@ -6,26 +6,13 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 12:11:42 by aasli             #+#    #+#             */
-/*   Updated: 2022/05/14 12:23:23 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/19 15:40:14 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 #include "../../headers/builtins.h"
 #include "../libft/libft.h"
-
-int	update_env(t_lenv **env)
-{
-	char	*buff;
-
-	buff = NULL;
-	update_old_pwd(env);
-	buff = ft_calloc(2049, 1);
-	getcwd(buff, 2048);
-	update_pwd(env, buff);
-	free(buff);
-	return (0);
-}
 
 int	go_home(t_lenv **env, char *home)
 {

@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:50:21 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/10 18:01:55 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/19 16:11:59 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,23 @@ int	update_pwd(t_lenv **env, char *pwd)
 {
 	char	*tmp;
 	char	*tmp2;
+	char	**split;
 
 	(void)pwd;
 	tmp = ft_calloc(2049, sizeof(char));
 	if (!tmp)
-	{
-		printf("Allocation error");
-		return (0);
-	}
+		return (write(2, "Allocation error\n", 17), 0);
 	getcwd(tmp, 2048);
 	tmp2 = get_var_from_env(env, "PWD=", 4);
 	if (tmp2 && get_line(env, "PWD=", 4) != -1)
-	{
 		rep_var_env(env, tmp, "PWD=", 4);
+	else if (!tmp2)
+	{
+		split = ft_split("unset OLDPWD", ' ');
+		if (!split)
+			return (-1);
+		ft_unset(split, env);
+		free_split(split);
 	}
 	free (tmp);
 	free (tmp2);
@@ -79,15 +83,13 @@ int	update_old_pwd(t_lenv **env)
 int	ft_cd(char **cmd, t_lenv **env)
 {
 	if (cmd[0] && cmd[1] && cmd[2])
-	{
-		printf("Rovidshell: cd: too many arguments\n");
-		return (1);
-	}
+		return (write(2, "Rovidshell: cd: too many arguments\n",
+				ft_strlen("Rovidshell: cd: too many arguments\n")), 1);
 	if (cmd[0] && cmd[1])
 	{
 		if (check_cd_access(cmd) == 1)
 			return (1);
-		if (strcmp(cmd[1], "//") == 0)
+		if (ft_strcmp(cmd[1], "//") == 0)
 		{
 			update_old_pwd(env);
 			if (chdir(cmd[1]) == -1)
