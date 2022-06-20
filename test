@@ -1,0 +1,2443 @@
+.:
+total 164
+drwxr-xr-x 6 rleseur 2021_paris   4096 Jun 20 14:38 .
+drwxr-xr-x 3 rleseur 2021_paris   4096 Jun 16 16:13 ..
+drwxr-xr-x 8 rleseur 2021_paris   4096 Jun 20 12:21 .git
+-rw-r--r-- 1 rleseur 2021_paris     37 Jun  8 11:43 .gitignore
+drwxr-xr-x 2 rleseur 2021_paris   4096 Jun 20 12:20 headers
+-rw-r--r-- 1 rleseur 2021_paris    150 Jun  8 11:03 leak_suppress
+-rw-r--r-- 1 rleseur 2021_paris   4561 Jun 20 12:18 Makefile
+-rwxr-xr-x 1 rleseur 2021_paris 113216 Jun 20 14:38 minishell
+drwxr-xr-x 2 rleseur 2021_paris   4096 Jun 20 14:38 objs
+-rw-r--r-- 1 rleseur 2021_paris   6501 Jun  8 11:03 README.md
+drwxr-xr-x 9 rleseur 2021_paris   4096 Jun 20 12:18 srcs
+-rwx------ 1 rleseur 2021_paris      0 Jun 20 14:38 test
+-rwx------ 1 rleseur 2021_paris      0 Jun 20 14:38 test2
+-rw-r--r-- 1 rleseur 2021_paris   1409 Jun 15 18:25 valgrind_ret.log
+
+./.git:
+total 72
+drwxr-xr-x   8 rleseur 2021_paris  4096 Jun 20 12:21 .
+drwxr-xr-x   6 rleseur 2021_paris  4096 Jun 20 14:38 ..
+drwxr-xr-x   2 rleseur 2021_paris  4096 Apr 26 10:22 branches
+-rw-r--r--   1 rleseur 2021_paris    15 Jun 20 12:21 COMMIT_EDITMSG
+-rw-r--r--   1 rleseur 2021_paris   426 Jun 10 13:45 config
+-rw-r--r--   1 rleseur 2021_paris    73 Apr 26 10:22 description
+-rw-r--r--   1 rleseur 2021_paris   420 Jun 20 12:18 FETCH_HEAD
+-rw-r--r--   1 rleseur 2021_paris    21 Jun 20 12:18 HEAD
+drwxr-xr-x   2 rleseur 2021_paris  4096 Apr 26 10:22 hooks
+-rw-r--r--   1 rleseur 2021_paris 10354 Jun 20 12:21 index
+drwxr-xr-x   2 rleseur 2021_paris  4096 Apr 26 10:22 info
+drwxr-xr-x   3 rleseur 2021_paris  4096 Apr 26 10:22 logs
+drwxr-xr-x 243 rleseur 2021_paris  4096 Jun 20 12:18 objects
+-rw-r--r--   1 rleseur 2021_paris    41 Jun 20 12:18 ORIG_HEAD
+-rw-r--r--   1 rleseur 2021_paris   250 Apr 26 10:22 packed-refs
+drwxr-xr-x   5 rleseur 2021_paris  4096 Jun 15 17:32 refs
+
+./.git/branches:
+total 8
+drwxr-xr-x 2 rleseur 2021_paris 4096 Apr 26 10:22 .
+drwxr-xr-x 8 rleseur 2021_paris 4096 Jun 20 12:21 ..
+
+./.git/hooks:
+total 60
+drwxr-xr-x 2 rleseur 2021_paris 4096 Apr 26 10:22 .
+drwxr-xr-x 8 rleseur 2021_paris 4096 Jun 20 12:21 ..
+-rwxr-xr-x 1 rleseur 2021_paris  478 Apr 26 10:22 applypatch-msg.sample
+-rwxr-xr-x 1 rleseur 2021_paris  896 Apr 26 10:22 commit-msg.sample
+-rwxr-xr-x 1 rleseur 2021_paris 3079 Apr 26 10:22 fsmonitor-watchman.sample
+-rwxr-xr-x 1 rleseur 2021_paris  189 Apr 26 10:22 post-update.sample
+-rwxr-xr-x 1 rleseur 2021_paris  424 Apr 26 10:22 pre-applypatch.sample
+-rwxr-xr-x 1 rleseur 2021_paris 1638 Apr 26 10:22 pre-commit.sample
+-rwxr-xr-x 1 rleseur 2021_paris  416 Apr 26 10:22 pre-merge-commit.sample
+-rwxr-xr-x 1 rleseur 2021_paris 1492 Apr 26 10:22 prepare-commit-msg.sample
+-rwxr-xr-x 1 rleseur 2021_paris 1348 Apr 26 10:22 pre-push.sample
+-rwxr-xr-x 1 rleseur 2021_paris 4898 Apr 26 10:22 pre-rebase.sample
+-rwxr-xr-x 1 rleseur 2021_paris  544 Apr 26 10:22 pre-receive.sample
+-rwxr-xr-x 1 rleseur 2021_paris 3610 Apr 26 10:22 update.sample
+
+./.git/info:
+total 12
+drwxr-xr-x 2 rleseur 2021_paris 4096 Apr 26 10:22 .
+drwxr-xr-x 8 rleseur 2021_paris 4096 Jun 20 12:21 ..
+-rw-r--r-- 1 rleseur 2021_paris  240 Apr 26 10:22 exclude
+
+./.git/logs:
+total 28
+drwxr-xr-x 3 rleseur 2021_paris  4096 Apr 26 10:22 .
+drwxr-xr-x 8 rleseur 2021_paris  4096 Jun 20 12:21 ..
+-rw-r--r-- 1 rleseur 2021_paris 13648 Jun 20 12:21 HEAD
+drwxr-xr-x 4 rleseur 2021_paris  4096 Jun 15 17:32 refs
+
+./.git/logs/refs:
+total 20
+drwxr-xr-x 4 rleseur 2021_paris 4096 Jun 15 17:32 .
+drwxr-xr-x 3 rleseur 2021_paris 4096 Apr 26 10:22 ..
+drwxr-xr-x 2 rleseur 2021_paris 4096 Jun  9 11:24 heads
+drwxr-xr-x 3 rleseur 2021_paris 4096 Apr 26 10:22 remotes
+-rw-r--r-- 1 rleseur 2021_paris  160 Jun 15 17:32 stash
+
+./.git/logs/refs/heads:
+total 20
+drwxr-xr-x 2 rleseur 2021_paris 4096 Jun  9 11:24 .
+drwxr-xr-x 4 rleseur 2021_paris 4096 Jun 15 17:32 ..
+-rw-r--r-- 1 rleseur 2021_paris 3789 Jun 20 12:21 main
+-rw-r--r-- 1 rleseur 2021_paris 3203 Jun 20 12:16 parsing_details
+-rw-r--r-- 1 rleseur 2021_paris 2479 Jun  8 11:03 romane
+
+./.git/logs/refs/remotes:
+total 12
+drwxr-xr-x 3 rleseur 2021_paris 4096 Apr 26 10:22 .
+drwxr-xr-x 4 rleseur 2021_paris 4096 Jun 15 17:32 ..
+drwxr-xr-x 2 rleseur 2021_paris 4096 Jun 10 13:45 origin
+
+./.git/logs/refs/remotes/origin:
+total 28
+drwxr-xr-x 2 rleseur 2021_paris 4096 Jun 10 13:45 .
+drwxr-xr-x 3 rleseur 2021_paris 4096 Apr 26 10:22 ..
+-rw-r--r-- 1 rleseur 2021_paris  170 May 17 14:40 builtins
+-rw-r--r-- 1 rleseur 2021_paris  204 Apr 26 10:22 HEAD
+-rw-r--r-- 1 rleseur 2021_paris 3498 Jun 20 12:21 main
+-rw-r--r-- 1 rleseur 2021_paris 2588 Jun 20 12:16 parsing_details
+-rw-r--r-- 1 rleseur 2021_paris 2062 Jun  8 11:03 romane
+
+./.git/objects:
+total 972
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x   8 rleseur 2021_paris 4096 Jun 20 12:21 ..
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 16:11 00
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:08 01
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  7 15:04 02
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:39 03
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 19:01 04
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 05
+drwxr-xr-x   2 rleseur 2021_paris 4096 May 30 09:36 06
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 19:01 07
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 08
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 0a
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 11:14 0b
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 19:01 0c
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 0d
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:16 0f
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 16:11 10
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 11
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 13
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 13 16:48 15
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 20:01 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 11:32 18
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:32 19
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 1a
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 1b
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:08 1c
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 10 13:45 1d
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:16 1e
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 1f
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:08 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 21
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:21 22
+drwxr-xr-x   2 rleseur 2021_paris 4096 May 30 09:36 23
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 24
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 25
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 26
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 13 16:48 27
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 28
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:32 29
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 12:04 2a
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 2b
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 11:32 2c
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 19:00 2e
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:44 2f
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  9 09:43 30
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:39 31
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 12:04 32
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:21 33
+drwxr-xr-x   2 rleseur 2021_paris 4096 May 30 17:53 34
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 16:11 35
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 36
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 37
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 10 13:45 38
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:32 39
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 17:32 3a
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 11:14 3b
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 11:32 3c
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 11:32 3d
+drwxr-xr-x   2 rleseur 2021_paris 4096 May 30 09:36 3e
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:39 3f
+drwxr-xr-x   2 rleseur 2021_paris 4096 May 30 09:36 40
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 41
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:20 42
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 43
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:08 44
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 45
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  6 17:44 46
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 15:06 47
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:39 48
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 49
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 4a
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 19:41 4b
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 4c
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:20 4d
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  7 16:30 4e
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 16:12 4f
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 19:01 50
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 17:35 52
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:20 53
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:20 54
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 20:01 57
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 58
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 16:12 59
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:25 5a
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 5b
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 10 10:17 5c
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:16 5d
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:39 5e
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 17:34 5f
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:39 61
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 62
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 10 10:14 63
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 17:32 64
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 65
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:08 66
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 10:58 67
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 68
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 10:58 69
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:39 6a
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 17:32 6c
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:32 6d
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 10:58 6e
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:16 6f
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  9 09:43 70
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  1 17:20 71
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 17:32 72
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 75
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 15:06 76
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 17:30 77
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 16:11 78
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 79
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:32 7a
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:20 7b
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 16:11 7d
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 16:11 7e
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:08 7f
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:33 80
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 15:53 81
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 82
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 83
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 84
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 85
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 15:11 87
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 20:01 88
+drwxr-xr-x   2 rleseur 2021_paris 4096 May 30 17:54 89
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 15:53 8a
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:33 8b
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 8c
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  7 16:30 8d
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 8e
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 15:11 8f
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  1 17:19 90
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:39 91
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 92
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 11:14 93
+drwxr-xr-x   2 rleseur 2021_paris 4096 May 30 09:36 94
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:16 95
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  6 14:13 96
+drwxr-xr-x   2 rleseur 2021_paris 4096 May 30 09:36 97
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 10:58 98
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 18:52 99
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 10:58 9a
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 9b
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 16:11 9c
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 17:35 9d
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 9f
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 17:30 a0
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 a1
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 a2
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 a3
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 a4
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:21 a5
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 a6
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 16:11 a7
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 a8
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:03 a9
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 aa
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  9 09:43 ab
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:53 ac
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:39 ad
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 16 13:09 ae
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 af
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:32 b0
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 b1
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:39 b2
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:20 b3
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  6 17:19 b4
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 b5
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:16 b6
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  9 09:43 b7
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:25 b8
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:39 b9
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 20:01 ba
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 bb
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 bc
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 bd
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 be
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 bf
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:31 c0
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 c1
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  1 17:19 c2
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 18:52 c3
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 c4
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:53 c5
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 c7
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:25 c8
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:16 c9
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  6 17:16 ca
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 13 16:48 cb
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:08 cc
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 13 16:56 cd
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 10:58 ce
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:08 cf
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 d0
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:08 d1
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 10:58 d2
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 16:11 d3
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 d4
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 16:11 d5
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  6 14:14 d6
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 15:11 d7
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 d8
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:20 d9
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 15:11 da
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:16 db
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 10:58 dc
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 dd
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 de
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 19:40 df
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:25 e0
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 15:06 e1
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 11:32 e2
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:25 e3
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  7 15:04 e4
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 e5
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 e6
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 17:30 e7
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:20 e8
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 17:32 e9
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:20 ea
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:20 eb
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  6 17:16 ec
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 13 17:00 ed
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 ee
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:16 ef
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 12:04 f0
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 f1
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 19:41 f3
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:33 f4
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 20:01 f5
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  6 14:14 f6
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 18:52 f7
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  1 17:19 f8
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 f9
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 16:12 fa
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 10:58 fb
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 10:58 fc
+drwxr-xr-x   2 rleseur 2021_paris 4096 May 17 14:49 fd
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 fe
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 11:32 ff
+drwxr-xr-x   2 rleseur 2021_paris 4096 Apr 26 10:22 info
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 13 16:50 pack
+
+./.git/objects/00:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 16:11 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1136 Jun 15 15:33 17fd0ed9a23171a4b8d25bdac11a5b4ca1f895
+-r--r--r--   1 rleseur 2021_paris  143 Jun 18 16:11 31e2b18568f183ffa6ae2498f9652c9f9426e5
+-r--r--r--   1 rleseur 2021_paris  320 Jun  6 17:44 6dcda86c68fe3c7b362d072c1eeb8867997606
+
+./.git/objects/01:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:08 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  259 Jun 20 12:08 6b16a719ed6c2244a253bc0115d035ecf7e961
+
+./.git/objects/02:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  7 15:04 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  321 Jun  7 15:04 fbe63ab6db18bac3c255cc32fce2cbc0a89a18
+
+./.git/objects/03:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:39 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  639 Jun  8 11:39 bf14162a945d0a35165779af896e8841dc2183
+-r--r--r--   1 rleseur 2021_paris   54 May 30 17:54 e64a642b82cb4f2c406d4d06652b42ce2ed449
+
+./.git/objects/04:
+total 24
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 19:01 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  483 Jun 18 19:01 534aff7e31f1b0bc94a8d658e30c74e3f91629
+-r--r--r--   1 rleseur 2021_paris  184 May 30 09:36 b66ce8fe814a488fd0289d2a3f1d0ab50b41fe
+-r--r--r--   1 rleseur 2021_paris 1408 Jun  8 10:58 d05baac2b25a41bc3ddf0e124ac06c85a1c088
+-r--r--r--   1 rleseur 2021_paris 1682 May 30 09:36 dddf3fbfdf2ff9344e297e4f23f750f7087c8b
+
+./.git/objects/05:
+total 24
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  172 May 17 14:51 046da0c412361916d750cf36e5175f396f4f77
+-r--r--r--   1 rleseur 2021_paris  221 May 31 15:43 721a925d5a6758e304a631d4ec77570235d2fb
+-r--r--r--   1 rleseur 2021_paris 1209 Jun  8 12:04 a738e4c20befd6f8604fd77923765cdaeb4da7
+-r--r--r--   1 rleseur 2021_paris 1129 Jun 15 15:55 c903b66d281d3be8bfcbb35de92069d000ff2f
+
+./.git/objects/06:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 May 30 09:36 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  490 May 30 09:36 fda77438592f62583a00265b5a4b503c2ff636
+
+./.git/objects/07:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 19:01 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  312 Jun 18 19:01 683182799b4aaa8c575dcb577479887924fc1a
+-r--r--r--   1 rleseur 2021_paris  312 Jun 15 18:53 b5fdd1e734c371aeacb4e56a45b933d265ba51
+
+./.git/objects/08:
+total 24
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  313 Jun 15 15:55 0191b7c81d718bd0d04463efb4822e254f23d7
+-r--r--r--   1 rleseur 2021_paris  185 Jun 10 13:45 15218e6e5fd4fcd75f795b394f9f44f69bc684
+-r--r--r--   1 rleseur 2021_paris  501 May 30 17:54 4c6fc6700fbce0bcc29306208e6ab19d29251b
+-r--r--r--   1 rleseur 2021_paris 1022 Jun 20 12:18 9f68a8c11274540456ae7ec5a3a67a1235fb77
+
+./.git/objects/0a:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  259 Jun 13 16:48 4db5fbe0261f77d46d730a04ca1423cf53c692
+-r--r--r--   1 rleseur 2021_paris  260 Jun 20 12:18 969ceb7ca522dcf06031425d3a6683a8fbd4f6
+-r--r--r--   1 rleseur 2021_paris   89 May 30 09:36 c4a952aaf75fd3a77c53e18e4328d83fcbdc60
+
+./.git/objects/0b:
+total 24
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 11:14 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  259 Jun 20 11:14 16a89e7d9baa42391b6b69650af270aa7307cc
+-r--r--r--   1 rleseur 2021_paris  260 Jun 16 13:09 3e98859053a8f4a26e0ee6f383a72cad25a286
+-r--r--r--   1 rleseur 2021_paris  347 Jun 18 18:52 5221025a61bcb760b776f64bbc5eb52d07f9f9
+-r--r--r--   1 rleseur 2021_paris  490 May 30 09:36 62476c8f2a258cdd3de23b7ed2a2dcbdccc068
+
+./.git/objects/0c:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 19:01 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  181 Jun 18 19:01 3badc2c574e4637a9b533911475ee2b6e53572
+-r--r--r--   1 rleseur 2021_paris  312 Jun 13 17:00 4a5131dfe2b41188087de4e5633a152b300eb6
+
+./.git/objects/0d:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  182 Jun 15 15:55 1fc325099649307b54ee2f2ea7fd96feed42df
+-r--r--r--   1 rleseur 2021_paris  208 May 30 09:36 d970502d36d5a6abb439625afdf29321e54a96
+
+./.git/objects/0f:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:16 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  197 Jun 13 16:48 16dd7ef761e194016fc7f1481a279218439844
+-r--r--r--   1 rleseur 2021_paris  703 Jun  8 11:39 f39b806e3431e672fee4e779c152866961b63e
+-r--r--r--   1 rleseur 2021_paris  312 Jun 20 12:16 f798c4c02b46765d353808ca6f1becac765efa
+
+./.git/objects/10:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 16:11 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1176 Jun 18 16:11 50b8065b587ddd8b27321faee948c0a6391014
+
+./.git/objects/11:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris   54 Jun  8 11:03 1faf0a4c7fa805dd4eea1252536ce6c6ba5a52
+-r--r--r--   1 rleseur 2021_paris  498 Jun 20 12:18 3d59e46afc0385a47687ca57346b68013f8d1e
+-r--r--r--   1 rleseur 2021_paris  180 May 30 09:36 7b073848104a48e647e20e5dbd8a23707bf0b2
+
+./.git/objects/12:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  467 Jun  6 17:44 0995e9832030a70157f6d83d7e3b39587d0d84
+-r--r--r--   1 rleseur 2021_paris  499 Jun 20 12:18 67a70e338eb1df8a110984c24b00fdaf22bc64
+
+./.git/objects/13:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1176 Jun 20 12:18 9c3dd789aef63dad8e24771348b1479bdd4092
+
+./.git/objects/15:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 13 16:48 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  650 Jun 13 16:56 eb6c2f02dd1921a97bb80b80e7db2f354fd6fa
+
+./.git/objects/16:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 20:01 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  259 Jun 18 20:01 07a8d58dd356fe471cc7b7ee73f2fa7cc25986
+-r--r--r--   1 rleseur 2021_paris  390 May 17 14:49 b90c2a8149ef3b981b59c1444b6c6fa1ded7c8
+-r--r--r--   1 rleseur 2021_paris  155 Jun 18 16:11 de5a1b5642a39b71917abfec03b8f455072777
+
+./.git/objects/18:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 11:32 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  748 May 30 09:36 1bad0feb84b360cdbcf94c9800e30aec7182bd
+-r--r--r--   1 rleseur 2021_paris 1094 Jun 20 11:32 8aabb29079143d16f3315217b026de8d8f2b9b
+
+./.git/objects/19:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:32 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1237 Jun 10 10:14 0288551963eb3447cb6255d0b701c7bc5f07df
+-r--r--r--   1 rleseur 2021_paris  259 Jun 15 18:32 4df6ed96e4ed555fce12d40e75e00390806afc
+
+./.git/objects/1a:
+total 28
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  534 Jun  8 11:39 392194e40b260706e38eead78b02a5758ead20
+-r--r--r--   1 rleseur 2021_paris  985 Jun 20 12:18 4080240cacb67866ff48aa17d00c36888313b9
+-r--r--r--   1 rleseur 2021_paris  173 Jun  1 17:20 4944959f4f37f7764f2999dc33537ddd5c9696
+-r--r--r--   1 rleseur 2021_paris   84 Jun 20 12:18 5894ad764aa1217c44bc7201d52d2b5d39f5d1
+-r--r--r--   1 rleseur 2021_paris   29 May 30 17:54 d808811e90e7f93d1626fdc3e1ead7036b5073
+
+./.git/objects/1b:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  565 May 30 09:36 4adb7a331ed82694a5f246f0e728bf866c85e0
+-r--r--r--   1 rleseur 2021_paris  505 Jun 20 12:18 85578e77fff2f43a14bddf88b2366a9557154c
+
+./.git/objects/1c:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:08 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1144 Jun 20 12:08 28b6193eb38c951ebad65cdb68a9e4ea72bc25
+-r--r--r--   1 rleseur 2021_paris  802 Jun  6 17:44 584e3fc2eb3109c1eb4dcc65a9ef74682ae8a9
+-r--r--r--   1 rleseur 2021_paris  672 Jun 15 18:52 59dc48321bd9e49d4802bc3165d8d060472b75
+
+./.git/objects/1d:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 10 13:45 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  924 Jun 10 13:45 f176ec86ffe52e29b39b6d254daa1d64b497f9
+
+./.git/objects/1e:
+total 24
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:16 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  548 Jun 20 12:16 1fe513892d0c64a342f81dc86b9437ba143ee4
+-r--r--r--   1 rleseur 2021_paris 1731 May 30 09:36 29576a010bf1d1c36d7d60efaf373183cc65c6
+-r--r--r--   1 rleseur 2021_paris 1003 Jun 15 15:55 34129c694aadfad0731c06799e42640ddc809e
+-r--r--r--   1 rleseur 2021_paris  832 Jun  8 11:03 7c3ce2fdf0721d59f1a43db14a91a3dcc95cd1
+
+./.git/objects/1f:
+total 28
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  502 Jun  7 16:30 0c388f795716b56d67f520ec5c8516bdc87c3a
+-r--r--r--   1 rleseur 2021_paris  445 May 30 09:36 33ce82b9c19ca8c06f4b6a04ce0e98165bc826
+-r--r--r--   1 rleseur 2021_paris  597 Jun 20 12:18 52fb7a7ddddae4ed9d4c536fe57e788572b43b
+-r--r--r--   1 rleseur 2021_paris  215 Jun 15 15:55 87217fd77764c524bac5aadd3ce93918d7c2ec
+-r--r--r--   1 rleseur 2021_paris  652 Jun 20 12:18 9dd94638fe26c0c85534f965ae67024b851b49
+
+./.git/objects/20:
+total 24
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:08 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1384 Jun  8 10:58 8f369c88e13106b8402fd6f3c6a17c1c1806c5
+-r--r--r--   1 rleseur 2021_paris  167 Jun 18 15:11 90f599ccef0831571df1149a93a608a980279e
+-r--r--r--   1 rleseur 2021_paris 1366 Jun 20 12:08 9159f707c716e1826b635a7ae48bfb2c574ede
+-r--r--r--   1 rleseur 2021_paris  144 Jun 15 17:32 ed9fb5dbb25dc9ff743178bcd310daaff268e9
+
+./.git/objects/21:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  181 Jun  8 11:40 32e8092b8a1dc517578d851be6ca7cc47f0551
+-r--r--r--   1 rleseur 2021_paris  142 Jun 20 12:18 cd7c32581b4c168a359c1b56ed4eb43f73a665
+-r--r--r--   1 rleseur 2021_paris  486 Jun 20 12:18 d5541929c41127b7f0f1059b72aef24769b8ba
+
+./.git/objects/22:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:21 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  170 Jun 20 12:21 056a548182200b1b895e479a050850b385da7a
+-r--r--r--   1 rleseur 2021_paris  186 Jun  8 10:58 83ad81eda1f67feb9b24a3c537fb2bf8aeee6e
+-r--r--r--   1 rleseur 2021_paris  606 Jun  8 11:39 bcdf17d530210ae8ad66f9567d7e2265e15992
+
+./.git/objects/23:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 May 30 09:36 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  188 May 30 09:36 6ae7734a0127a0170f453a6208672289ca9e0c
+
+./.git/objects/24:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  491 Jun 20 12:18 a90a23dbede5e261b1691cceb81a68a1146b65
+
+./.git/objects/25:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  176 Jun  8 12:04 a969670a39a860717073fad8aaf3f8651aba0a
+-r--r--r--   1 rleseur 2021_paris  582 Jun 10 13:45 b6464341f9ac79ac1b0222ec5bfd6340f8e8e8
+-r--r--r--   1 rleseur 2021_paris  682 Jun 18 18:52 e21890c2c7a3c7673785ee4e63bfb13146ff0d
+
+./.git/objects/26:
+total 28
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris   89 May 30 09:36 554aa75140a455152d9570b3bbf4d774115f84
+-r--r--r--   1 rleseur 2021_paris  971 Jun 18 19:40 6ad2a9985c3c76b473137a8beab8cf283efd03
+-r--r--r--   1 rleseur 2021_paris  609 Jun 20 12:08 7afde638074eba85af505b927bfa8556307dca
+-r--r--r--   1 rleseur 2021_paris 1390 Jun 13 17:00 90168cd94de574ff32cacf20566a6def03b7c9
+-r--r--r--   1 rleseur 2021_paris  259 Jun 20 12:18 e25163882e71215fba622e9ea2923cc83c8b85
+
+./.git/objects/27:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 13 16:48 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  595 Jun 13 16:56 c2227f254e50a1488446104959b722f9b4ef9c
+
+./.git/objects/28:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  312 Jun 15 15:55 2a01bf76953e317e895a5114095fcb730b1fa5
+-r--r--r--   1 rleseur 2021_paris  286 May 30 17:54 45987a1b98d961afb1f2c4f87534bff8e8940a
+
+./.git/objects/29:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:32 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  313 Jun 15 18:32 b97b2e7df9661901d9f4752214847fbd348136
+
+./.git/objects/2a:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 12:04 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1650 May 30 09:36 090640a63ad093edd02f04b9db0288c23a4317
+-r--r--r--   1 rleseur 2021_paris  177 Jun  8 10:58 410da6163e213b584cf8ff62c8fa7ac9e2c8c0
+-r--r--r--   1 rleseur 2021_paris  497 Jun  8 12:04 f90715b7d7323eaf6d795cea7e0f8c307c6be7
+
+./.git/objects/2b:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris   87 Jun 20 12:20 67707c17a9ada0f1b8552b33c8ac6bd059f138
+-r--r--r--   1 rleseur 2021_paris  421 May 30 17:54 ad893026761824f868b0443b6d87bd5d5e1472
+-r--r--r--   1 rleseur 2021_paris  204 Jun 15 18:32 d1f7870d4882b24b919c634252a6d7b281080b
+
+./.git/objects/2c:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 11:32 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  173 Jun 20 11:32 44147bfbf028122482b3a965bdb66d7d87020a
+-r--r--r--   1 rleseur 2021_paris  595 Jun  8 11:39 45770f6e233642fde06359e58157712d806d23
+
+./.git/objects/2e:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 19:00 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  519 Jun  8 11:39 a306ed37a17f6faf2a8682e951ed21bb2a4c5a
+-r--r--r--   1 rleseur 2021_paris  312 Jun 18 16:12 c8d3a20b0f439136a4553f81777493ac156eeb
+-r--r--r--   1 rleseur 2021_paris  970 Jun 18 19:00 dc3fa8248af80a32929874e14d8157b63ec170
+
+./.git/objects/2f:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:44 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris   53 Jun  8 11:44 11eb44be655538be1fe0d2aa9feb27b0bd5627
+-r--r--r--   1 rleseur 2021_paris 3464 Jun  1 17:19 7cda24dba66075d28e58dd7297906dea8a4fb9
+-r--r--r--   1 rleseur 2021_paris  579 Jun  8 11:39 aae9c4d26c7e4afcf356d8e5ccd759e62c565b
+
+./.git/objects/30:
+total 36
+drwxr-xr-x   2 rleseur 2021_paris  4096 Jun  9 09:43 .
+drwxr-xr-x 243 rleseur 2021_paris  4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris   412 Jun  8 15:53 0fdec5e77054f9a2fb0d57d54945632716c938
+-r--r--r--   1 rleseur 2021_paris 16068 Jun  7 15:04 489421bbdae1ed0429262297c72d3348bd367f
+-r--r--r--   1 rleseur 2021_paris   942 Jun  8 11:20 c5da3781a0a4de8891a27074547f6091627f15
+-r--r--r--   1 rleseur 2021_paris   254 Jun  9 09:43 c6e677ae9609d64fafc8db26ea519ffbd44b1f
+
+./.git/objects/31:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:39 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  498 Jun  8 11:39 0f7ba581ad321225870b076c13ea5af27a3cc7
+-r--r--r--   1 rleseur 2021_paris  488 Jun  8 11:20 e06143b5d526c3cdeff2fc435084d74c17ad27
+
+./.git/objects/32:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 12:04 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  295 Jun  8 12:04 4ef887e709372e79a2883f85f33f46327c21b5
+-r--r--r--   1 rleseur 2021_paris  492 Jun  1 17:19 5bfc899634889e21e1f414862879fada321097
+-r--r--r--   1 rleseur 2021_paris  567 May 30 09:36 e66bf6a3dd48fcccfb68a65faa582dab7c8e2d
+
+./.git/objects/33:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:21 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  695 Jun 15 18:32 0190e19cc053a11c87858d25b140c1c5bee54c
+-r--r--r--   1 rleseur 2021_paris  941 Jun 20 12:18 2f406f2c760c3adfe6ae4a3faf37bc42cfa029
+-r--r--r--   1 rleseur 2021_paris  154 Jun 20 12:21 fe80fea292e4629355ef11895124aafb040c23
+
+./.git/objects/34:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 May 30 17:53 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  966 May 30 17:54 ea75c820d0cfb02667637ed789b43f3f1a49b4
+
+./.git/objects/35:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 16:11 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  312 Jun 18 16:11 42aad15cd78ec574d6e2bf7edf8acac2e87ad7
+-r--r--r--   1 rleseur 2021_paris 1095 Jun  8 11:39 b21bda44635cf170b2d60ce46fcd7031ea9207
+
+./.git/objects/36:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  178 Jun 15 18:31 b7ce3b1f8a54d98477db13a07792faecaa7bf5
+-r--r--r--   1 rleseur 2021_paris   87 Jun  8 11:03 c1a8507b1c62cc2f61b0ea97e0a18476e41dc9
+-r--r--r--   1 rleseur 2021_paris  340 Jun 20 12:18 f654b8a74ac07feffe5a356f51b7db6bebc655
+
+./.git/objects/37:
+total 28
+drwxr-xr-x   2 rleseur 2021_paris  4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris  4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris   260 Jun 15 18:25 1cf58b211dc8c9a2ac91a390b3ac147554d8aa
+-r--r--r--   1 rleseur 2021_paris   311 Jun 20 12:18 b6544f17a66a953d6ac7a2140547a8552e87fe
+-r--r--r--   1 rleseur 2021_paris 10521 Jun 20 11:32 d76ef2f3e7a9732a2bed4276f9cc728f3470c4
+
+./.git/objects/38:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 10 13:45 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  483 Jun 10 13:45 da3b925b0072e0a71ba5f380092543dee87329
+
+./.git/objects/39:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:32 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  290 Jun  8 10:58 25bc28b57d42257da1cf67942b200b49c3db6c
+-r--r--r--   1 rleseur 2021_paris  312 Jun 15 18:32 a689ce0a8539cf4f33d5797f189e5399f2e5a9
+-r--r--r--   1 rleseur 2021_paris  838 May 30 09:36 cedd5e7efaf7e6370a1b1de91424f1d8cec08c
+
+./.git/objects/3a:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 17:32 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  893 Jun 15 17:32 15f3af516562834cc8c7f0a87adcf721144275
+-r--r--r--   1 rleseur 2021_paris 2228 Jun  8 11:39 d7f78df51884879cb2b85d2910e3f8fcbf8cf8
+-r--r--r--   1 rleseur 2021_paris  259 Jun 15 15:55 f2090301f1e782717a8a592edb30bfd0e4c3ad
+
+./.git/objects/3b:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 11:14 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  321 Jun  1 17:20 264d42a962b636c52fed43fc2192cefad9a138
+-r--r--r--   1 rleseur 2021_paris  311 Jun 20 11:14 8a6b81759dbcedf7a72c3ba50437c9f1ac8896
+
+./.git/objects/3c:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 11:32 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  154 Jun 20 11:32 b0d5f23f45514408b94767647483cb1d3c68af
+
+./.git/objects/3d:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 11:32 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  188 Jun  8 10:58 713792a0649ad9d0024787f6dc03a90dfd4a3f
+-r--r--r--   1 rleseur 2021_paris  777 Jun 20 11:32 9ab801fd818d995b24e92e4cdf519210edaa4b
+-r--r--r--   1 rleseur 2021_paris  827 May 31 15:42 e8fabbe42264334123af738b1917a073eec833
+
+./.git/objects/3e:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 May 30 09:36 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  538 May 30 09:36 3c77a5fb066209fad9f616121d93dacd1a48ee
+
+./.git/objects/3f:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:39 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  682 Jun  8 11:39 3bc4a6ec0ca08e7c78d6c1b54aee1b534c7926
+-r--r--r--   1 rleseur 2021_paris  509 Jun  6 17:16 f5bdb803f347885826e76ee28d51d46d15f99e
+
+./.git/objects/40:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 May 30 09:36 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  598 May 30 09:36 109f6f3aaed974fd9f090eb2d663c3c69951b5
+
+./.git/objects/41:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  574 Jun  8 11:39 a7a49c374995ac3f935e976a3dcf84c2304c1a
+-r--r--r--   1 rleseur 2021_paris  836 Jun 20 12:18 a9c5b8f622ceef03a8adb6be53de378f96fe12
+
+./.git/objects/42:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:20 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  802 Jun  6 17:16 476a862233d11d9d7fc7605d5e7246ae8e7843
+-r--r--r--   1 rleseur 2021_paris 1118 Jun 20 12:20 fd7daa614f6b366f045c513ebbcd5acf408b45
+
+./.git/objects/43:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1724 May 30 09:36 09d086cd85bc6c56e65a1037bf4cdaa895eff8
+-r--r--r--   1 rleseur 2021_paris  154 Jun 20 12:18 3e7e9ebf71a1a7ed9054de6dfe116205934c61
+-r--r--r--   1 rleseur 2021_paris 1080 Jun 20 11:32 79366f53b3d8abb756c359095857a1c2eb27d5
+
+./.git/objects/44:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:08 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  312 Jun 20 12:08 fb4e56a0258f972a543eb4ca4e2c46b242ab4c
+
+./.git/objects/45:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  708 Jun  8 11:39 34175f2aa2dd08c162dff4f4823b40653d345c
+-r--r--r--   1 rleseur 2021_paris  175 Jun  8 11:03 55eebb87a10014c8c6e4965e3fe22800199c3e
+-r--r--r--   1 rleseur 2021_paris  154 Jun 20 12:18 8c4620abb1ca43b4ce575820076134aa3d5fc8
+
+./.git/objects/46:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  6 17:44 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  904 Jun  8 11:03 fc4ed700e74e6accd15355598ac600b38e9021
+
+./.git/objects/47:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 15:06 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  259 Jun 18 15:06 3e1033787a3f192b87fab6f8a68545b07b885d
+-r--r--r--   1 rleseur 2021_paris  159 Jun 15 15:33 badd70dcd076a9b5f3b33f4a158cf153504d6e
+
+./.git/objects/48:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:39 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  575 Jun  8 11:39 1f4ff213e832fd7b6335f34aabad1ca9fb6f6a
+
+./.git/objects/49:
+total 28
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  343 Jun 13 16:56 10789385616b66045174ba264101cde7c554ad
+-r--r--r--   1 rleseur 2021_paris  169 Jun 15 18:25 663eb9a67ad49d45f77ee4af89e39b1e5cd333
+-r--r--r--   1 rleseur 2021_paris  185 Jun  8 10:58 748b5060a6ea4a769c259e7fd4dd59557a3e36
+-r--r--r--   1 rleseur 2021_paris  259 Jun 20 12:18 d62b44809faca1bc1b59aedf7ca0a7c8ccde6b
+-r--r--r--   1 rleseur 2021_paris  805 Jun  8 11:39 e9523ed8a86f3762633c73266e30338d4961d2
+
+./.git/objects/4a:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1416 Jun 20 12:18 310162eefc329de37b94bd0cd3d79f44403207
+-r--r--r--   1 rleseur 2021_paris  556 May 30 09:36 9ee8f317bd67975d50a508bf8be2389f1b9921
+
+./.git/objects/4b:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 19:41 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  239 Jun 15 18:32 b4d16296a485c000acb18fd820fc54983e16f7
+-r--r--r--   1 rleseur 2021_paris  313 Jun 18 19:41 cc5466c700e5e67dc3d9dc966f883316d042a7
+
+./.git/objects/4c:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  955 Jun 15 15:55 43d69eea1f69723e0307967537751f0deb9cf6
+-r--r--r--   1 rleseur 2021_paris  184 Jun 20 12:18 6cefa4ff6fd97502f622f355118c82d2b6d435
+
+./.git/objects/4d:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:20 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1083 Jun  8 11:20 2f1f9cc30aa77a7360a581ef31fa5b0a67706f
+
+./.git/objects/4e:
+total 24
+drwxr-xr-x   2 rleseur 2021_paris  4096 Jun  7 16:30 .
+drwxr-xr-x 243 rleseur 2021_paris  4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 16312 Jun  7 16:30 0e6d31184d94645f99a89217d665f714f66b2d
+
+./.git/objects/4f:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 16:12 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  829 Jun 18 16:12 14945088dcf78056c54dc0761a7c4c084b10e5
+-r--r--r--   1 rleseur 2021_paris  313 Jun 15 17:35 75d0a93b0a6d916a0952a02ec67a059f4c6d2f
+-r--r--r--   1 rleseur 2021_paris  280 Jun  8 10:58 8d0b85240aa4f2e1a22c8dd117c45e0cf30d13
+
+./.git/objects/50:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 19:01 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1196 May 31 15:42 153bae60bc20e8d64fcd97b209b9bbec3f4c85
+-r--r--r--   1 rleseur 2021_paris  347 Jun 18 19:01 1f95ef007d7f53b108f60e458c72ac7fd8e29b
+-r--r--r--   1 rleseur 2021_paris  727 Jun  8 12:04 fec3c0b8c4830730bdc85f95ce1a64cadafd30
+
+./.git/objects/52:
+total 28
+drwxr-xr-x   2 rleseur 2021_paris  4096 Jun 15 17:35 .
+drwxr-xr-x 243 rleseur 2021_paris  4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  1134 Jun 18 18:52 5c259a456f89ac3a4109789a1d6d8adf2c002b
+-r--r--r--   1 rleseur 2021_paris 15342 Jun  6 14:13 8e7b3da8782b54ef8f002b05fc43100411e988
+
+./.git/objects/53:
+total 24
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:20 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  259 Jun 20 12:20 41274bee7b20360251849ff03671d63672c220
+-r--r--r--   1 rleseur 2021_paris  476 Jun  8 10:58 603931e5a10d6fb09df9bdfd36254e50c3606c
+-r--r--r--   1 rleseur 2021_paris  510 Jun 15 15:55 6c6b3878d77a9926f6c125f332ec071db98167
+-r--r--r--   1 rleseur 2021_paris  789 May 31 15:42 bb140f53a0fae4ce98980d93d97784fa39d609
+
+./.git/objects/54:
+total 24
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:20 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  254 Jun  8 12:04 37e5beab40059152bdcc7df6ae41d1330290a1
+-r--r--r--   1 rleseur 2021_paris 1414 Jun 13 16:48 9a4f99305399944df4eb79986d4a7e6a218e88
+-r--r--r--   1 rleseur 2021_paris  545 Jun 20 12:20 abdadf203520501ec5ce95a0ed9b6ba7dc902a
+-r--r--r--   1 rleseur 2021_paris  217 Jun 16 13:09 f692f1216d848e9b9724910126347d27ef4a5c
+
+./.git/objects/57:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 20:01 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1303 Jun 20 11:13 087d3083908cd272107b186a68f4dead6eb0f5
+
+./.git/objects/58:
+total 24
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  259 Jun 20 12:18 25edf58f752874ddddbbf5e00751251ceacc36
+-r--r--r--   1 rleseur 2021_paris  287 Jun  6 17:19 698934d64d39f6f606a9a968a9416d665bacda
+-r--r--r--   1 rleseur 2021_paris  518 Jun  8 11:39 a1f68d101782df70fc8e161c287323ae92cc11
+-r--r--r--   1 rleseur 2021_paris  770 Jun  8 10:58 d2df358549dd86f5d3dd46cc954fd932983188
+
+./.git/objects/59:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 16:12 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  470 Jun  8 11:03 0ed8422567cfbcd815341a928af88f79330a55
+-r--r--r--   1 rleseur 2021_paris  495 Jun 13 16:56 8cf1a4356596e228bc1da47966938000323dda
+-r--r--r--   1 rleseur 2021_paris  217 Jun 18 16:12 c46eb32e58b1beb3466e2fa91993803de48ca6
+
+./.git/objects/5a:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:25 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  645 Jun 15 18:25 8a5d27f62f2e85c5a7472ee2785b2b34c8622c
+
+./.git/objects/5b:
+total 24
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1401 Jun 13 16:57 7a2338cf3c65be92ac5fd14cf8703fe8d0d519
+-r--r--r--   1 rleseur 2021_paris  993 May 31 15:42 91bc1e4afa43e8837826220247c67c08a674ac
+-r--r--r--   1 rleseur 2021_paris 1162 Jun 20 12:18 a308b6b399110a521a46be3b9ba5e7c76f5d89
+-r--r--r--   1 rleseur 2021_paris   54 Jun 20 12:18 ec779fd5be4cb78cbe5668bfb03f40fafeb241
+
+./.git/objects/5c:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 10 10:17 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  259 Jun 10 10:17 292edfd9bf71924c577afa11c3501a50fb8a6f
+
+./.git/objects/5d:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:16 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  674 Jun 20 12:16 6df8a4d991f02d93d0133d80b7f5986d1bf2db
+-r--r--r--   1 rleseur 2021_paris  259 Jun  8 15:53 7530e564c3c69367e741d2df995af0df99eaab
+-r--r--r--   1 rleseur 2021_paris  180 Jun 18 18:52 934f032b060eedec3fae9061c52d4dda94b0c5
+
+./.git/objects/5e:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:39 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1375 Jun  8 10:59 0edae8eedee3d5b3acbd5d39de7a13c759a220
+-r--r--r--   1 rleseur 2021_paris  524 Jun  8 11:39 386ae73b23104f16d08925e8d173d4a498ca40
+-r--r--r--   1 rleseur 2021_paris  547 Jun  8 11:39 3e3924a46a531854f9009d9d941b802cd0f101
+
+./.git/objects/5f:
+total 28
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 17:34 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  552 Jun 13 16:56 4a5ab7588f833f1869ba772ff774bdd31e8625
+-r--r--r--   1 rleseur 2021_paris  685 Jun 13 16:56 5f6545ab0446e09c6bdd70f8f151b611b486bf
+-r--r--r--   1 rleseur 2021_paris 1168 Jun 15 17:34 72db5967b21125c47a5456a8aac523b32c495d
+-r--r--r--   1 rleseur 2021_paris 1409 Jun 20 12:16 aabce6d03250f0ce979a7b013c48b0f8520fc4
+-r--r--r--   1 rleseur 2021_paris  879 Jun 13 16:56 ba953650d6637d8e08c6ce0eda5c44f1b1d9fa
+
+./.git/objects/61:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:39 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  176 Jun  8 11:39 ba036b80e6b66b1352d219a98225c58d2b9993
+
+./.git/objects/62:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  259 Jun 15 15:55 390d2f874bcab10492ced6da5f394ce7cf3051
+-r--r--r--   1 rleseur 2021_paris  258 May 30 09:36 856c75ddc1cad3e37b274a09254b45df70caaa
+
+./.git/objects/63:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 10 10:14 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  577 Jun  6 17:16 14112e770968a2d662420239d194de4af39200
+-r--r--r--   1 rleseur 2021_paris  185 May 30 09:36 f89b96583e672326eabcd7543f9e84bdec9615
+-r--r--r--   1 rleseur 2021_paris 1018 Jun 10 10:14 feaff81fe29e5c30214b27c8101bca10607a56
+
+./.git/objects/64:
+total 28
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 17:32 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  142 Jun 15 15:55 3fea0a042167591d63031e6d69d39f722570cc
+-r--r--r--   1 rleseur 2021_paris  489 May 30 09:36 7ec04b888e6d72716b34b5e856ebea7aac344a
+-r--r--r--   1 rleseur 2021_paris  254 Jun 13 16:48 81294f2750e2ba7c21aa371ecb7248e0b84005
+-r--r--r--   1 rleseur 2021_paris  163 Jun 15 17:32 b955d6c032a2f6a595091b02c3fc32dae273d0
+-r--r--r--   1 rleseur 2021_paris  659 Jun  8 11:39 cb27b879db7eb9cb4ded728ac70a994695d3b4
+
+./.git/objects/65:
+total 32
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  312 Jun 20 11:32 093b34d98b08149b1b769d8a2045b94648c9c9
+-r--r--r--   1 rleseur 2021_paris  517 Jun  8 11:39 79381efe3ace5fcc10efa4c90c42467c3715ee
+-r--r--r--   1 rleseur 2021_paris  318 Jun 18 16:12 97fa08eec7a5dfb50d335c9452845738f44944
+-r--r--r--   1 rleseur 2021_paris  610 Jun  8 10:59 9b868b96a14f50578d547f16604c878ae14cce
+-r--r--r--   1 rleseur 2021_paris  154 Jun 10 10:17 9dd367995a712295b306eaf2c555db25b745ef
+-r--r--r--   1 rleseur 2021_paris  154 Jun 20 12:18 dd74a5473ac83c3ea5ac1f35688ae34793b114
+
+./.git/objects/66:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:08 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  155 Jun 20 12:08 177b0c23f4069b9134d1739cc49633b27669b3
+
+./.git/objects/67:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 10:58 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1087 Jun  7 15:04 4048ea415e11e0d8d840790b07308b62293d1f
+-r--r--r--   1 rleseur 2021_paris  233 Jun  8 10:58 62d7261411a39a23a79b80c048d0c8c1c1479c
+
+./.git/objects/68:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  367 Jun 15 15:55 378e8b280c89b6cbfcd23eeddf5af3cda96ba1
+
+./.git/objects/69:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 10:58 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  726 Jun  8 10:58 c4e7694743da38a836352305a44d647cbcf308
+
+./.git/objects/6a:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:39 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  254 Jun  8 11:39 8d153c6157f967f6090f7232d5a6b7c22cb4aa
+-r--r--r--   1 rleseur 2021_paris  175 May 30 09:36 c6d5f5556c2faa19ea10aa94fffdf3df91f367
+
+./.git/objects/6c:
+total 28
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 17:32 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  566 Jun 15 17:32 1c9e4a33d61f03595df220f9959545c4005604
+-r--r--r--   1 rleseur 2021_paris  563 Jun  1 17:19 99580b9a0b53b8f7822be3994998f776d32f45
+-r--r--r--   1 rleseur 2021_paris  592 May 30 09:36 b20461e56fc51da079f2dbbf5fbb8f9910fae5
+-r--r--r--   1 rleseur 2021_paris  488 Jun 13 16:48 c869c4f9abab9f7df1a16bf45d4e7d24694bbc
+-r--r--r--   1 rleseur 2021_paris  479 Jun 13 17:00 f13595ce093189e7f82f57e6532791c5d10bd1
+
+./.git/objects/6d:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:32 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  504 Jun 15 18:32 1ce38ddad5c3b72e50b0a350413e88c2dd8815
+-r--r--r--   1 rleseur 2021_paris  773 Jun  6 14:13 1ef8c8b8e2e797f992a60def90709c2c3e302c
+-r--r--r--   1 rleseur 2021_paris  287 Jun  8 11:39 d686bf05b975ca6ee44debcd075fd9707539f2
+
+./.git/objects/6e:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 10:58 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1409 Jun  8 10:58 3dcb6cc39e152e866d8f4b38257e11185a78a7
+-r--r--r--   1 rleseur 2021_paris  258 May 30 09:36 b5d387ec7ed942f5102adb2653f073dcfe6ad4
+
+./.git/objects/6f:
+total 32
+drwxr-xr-x   2 rleseur 2021_paris  4096 Jun 20 12:16 .
+drwxr-xr-x 243 rleseur 2021_paris  4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 13822 May 31 15:42 0a9b5fcb64435047766dfe49b5f3f842bd6bf0
+-r--r--r--   1 rleseur 2021_paris   562 Jun  8 11:39 ade8a949177b863fe68cae4dceac4e09d5bebc
+-r--r--r--   1 rleseur 2021_paris  1402 Jun 20 12:16 e99b65dfecf2ef3f5880efcd8e8eb242fb6813
+
+./.git/objects/70:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  9 09:43 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1282 Jun 10 10:14 97c5dd4d977f8713eb8f8c1d547c43e003e0f7
+
+./.git/objects/71:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  1 17:20 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  185 May 30 09:36 8ea89e583baa86a21e124d294da62214304392
+-r--r--r--   1 rleseur 2021_paris  424 Jun  1 17:20 a56cdbc811af1cbfe504c9fb016f915e9bfab7
+
+./.git/objects/72:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 17:32 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  582 Jun 10 10:14 502fbdf49dca62778aef87faf8b165e087d7ff
+-r--r--r--   1 rleseur 2021_paris  262 Jun  8 10:58 a95b7161997f086b9233a28cb42fa8fa09b4f9
+-r--r--r--   1 rleseur 2021_paris  313 Jun 15 17:32 b563b6fdd0ae41e18a9ce632de23d912863d2b
+
+./.git/objects/75:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1406 Jun 20 12:18 1e9d8b3fe082a5edda7c531d231a2098532b2f
+-r--r--r--   1 rleseur 2021_paris  258 Jun  8 10:58 a80e478bb9052eefa3ba1beb78b5a1fb3ab9bf
+-r--r--r--   1 rleseur 2021_paris  259 Jun 15 17:32 c454c162034accc83a0fec0bf544d1e5ad955c
+
+./.git/objects/76:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 15:06 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  254 Jun  8 15:53 0b478d87ef08293785ee57ca2860fd1cc0f88e
+-r--r--r--   1 rleseur 2021_paris  167 Jun 18 15:06 222a90a57ac0aa5ac8aff88e30ee755b633928
+-r--r--r--   1 rleseur 2021_paris 1134 Jun 13 16:56 afd71916e5476cb1a5dd463715c1b594cbe545
+
+./.git/objects/77:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 17:30 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  965 Jun 18 18:52 059420edca2f86f7d81fe83c35ec3443bbadf0
+
+./.git/objects/78:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 16:11 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  823 Jun 18 16:11 122a99f97ef2b489de92f6d598966d0ca89d68
+-r--r--r--   1 rleseur 2021_paris  178 Jun  7 16:30 ac688dccf182cd2402fc91c6d170b55af9c55a
+-r--r--r--   1 rleseur 2021_paris  467 Jun  6 17:16 c0d6f7c2ef2393a6a900d5f0de9bae961dfaf2
+
+./.git/objects/79:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  510 Jun 15 15:55 1e877259828a9fd15dec800235305d7b5392f8
+
+./.git/objects/7a:
+total 24
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:32 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  260 Jun 10 13:45 9a992a2adc749947bf9151afe9b895bf0b475b
+-r--r--r--   1 rleseur 2021_paris  174 May 31 15:43 b12c285a2ade83703df61d4427a7365b923a9f
+-r--r--r--   1 rleseur 2021_paris  504 Jun 15 18:32 b9a6880c9693aa78d1176fbf6e0f1cfd24fe35
+-r--r--r--   1 rleseur 2021_paris  487 Jun  8 10:58 fbcc989f99dee0e854159486dc0a6da6b62d6b
+
+./.git/objects/7b:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:20 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1057 Jun  8 11:03 7e8bfe935c6ca7e39bd9f3f27ac39c7efa18eb
+-r--r--r--   1 rleseur 2021_paris  200 Jun 20 12:20 f5c518450cbb54f2132e02c32564fbcdc1da06
+
+./.git/objects/7d:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 16:11 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  671 Jun 13 16:56 10e86ad72f2048ef3fac89d9d4d32c865ad42c
+-r--r--r--   1 rleseur 2021_paris  679 Jun  8 11:39 d77d5abd836a40375d0eb11040b7e5e1316d92
+-r--r--r--   1 rleseur 2021_paris  504 Jun 18 16:11 f2a3e8ca9f033c18f80a5483d012a1751b91d4
+
+./.git/objects/7e:
+total 28
+drwxr-xr-x   2 rleseur 2021_paris  4096 Jun 18 16:11 .
+drwxr-xr-x 243 rleseur 2021_paris  4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris   714 Jun 18 16:11 3910d29bc760434e6db18aa7ca3a95ee88556f
+-r--r--r--   1 rleseur 2021_paris 14099 Jun  1 17:19 669265c6a087becc17a2049338749db97257c2
+
+./.git/objects/7f:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:08 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1659 May 30 09:36 a52c0c1aef3d18f55750eef59af2c5b475d6d7
+-r--r--r--   1 rleseur 2021_paris 1098 Jun 20 12:08 b8b8bc12afd0549b2ba8fcfccba32dd6d89b2b
+-r--r--r--   1 rleseur 2021_paris 1053 Jun 20 11:13 e4d4c06ee2653b2c5875e1bf66a1a46fcad0e4
+
+./.git/objects/80:
+total 24
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:33 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  313 Jun 15 15:33 26f616f305222a7cab4e146e23e17fa2d6b780
+-r--r--r--   1 rleseur 2021_paris  451 May 30 09:36 37a127fd56f9cc3093e105696261df735e89da
+-r--r--r--   1 rleseur 2021_paris  257 May 30 09:36 4654649d69fb9bd8c511a9f73c5c1ee209cab0
+-r--r--r--   1 rleseur 2021_paris  190 Jun  9 09:43 cbf0bab95236c508bc058075466239c04a9afa
+
+./.git/objects/81:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 15:53 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1368 Jun  1 17:19 25c7eac9603f1b98d8df549c814578a7eb83bf
+-r--r--r--   1 rleseur 2021_paris  448 May 30 09:36 55ba6778ca31f332d5fe767c75ed62cfb186cd
+-r--r--r--   1 rleseur 2021_paris 1468 Jun  8 15:53 e30c70e43be45ddacecf606e959d32e8ce5520
+
+./.git/objects/82:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  259 Jun  8 11:44 0548f6580ab60ff9b5029f6ace1b5f4f9c46ee
+-r--r--r--   1 rleseur 2021_paris 1421 Jun 13 16:57 30ae4d7243d3a20a8727745b57dba5363fed6f
+-r--r--r--   1 rleseur 2021_paris  597 Jun 20 12:18 76d35405bd6b6691de1c24ba0fa5b5773a105e
+
+./.git/objects/83:
+total 24
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  253 Jun 10 13:45 312e43c397ea888141a7b17a7c7ae3ade1b2c9
+-r--r--r--   1 rleseur 2021_paris  209 Jun  8 10:58 64180bd7e884d99873989ab701e2310c74c3b4
+-r--r--r--   1 rleseur 2021_paris  202 Jun 20 12:18 87ca50a846ca6a3f27d37278926db76892b247
+-r--r--r--   1 rleseur 2021_paris 1416 Jun  8 10:58 a9abdb073c2512d704eb0b6521ee7fa1289c3d
+
+./.git/objects/84:
+total 28
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  154 Jun 18 18:52 668fce86a21d7545cde3e3ea285114df56a71c
+-r--r--r--   1 rleseur 2021_paris  185 May 30 09:36 691b77f07cec2685cb79daf6cb52226817acda
+-r--r--r--   1 rleseur 2021_paris  224 Jun 15 15:55 6b3ea9498c11da6b30ec0d146a22d72a444992
+-r--r--r--   1 rleseur 2021_paris  254 Jun  8 11:20 b6764da70bc9a3467dbfb6bff4b44e0ffedf93
+-r--r--r--   1 rleseur 2021_paris  312 Jun 15 15:55 ef42e4f9bac33bd1b522cff7b422620a59bf79
+
+./.git/objects/85:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  154 Jun 20 12:18 16020e949d94b8ded3e7932bc44eefd0b6d013
+-r--r--r--   1 rleseur 2021_paris  549 Jun  6 14:13 2d37cd672aadd58c1e63d44b3d1d8155ae68f3
+
+./.git/objects/87:
+total 24
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 15:11 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  483 Jun 18 15:11 415050bca71b2bd2c1d3c9f92cb18a45b04635
+-r--r--r--   1 rleseur 2021_paris 1003 Jun  8 10:58 6972cdd3beeff45305cab1f6e69b624714d8d4
+-r--r--r--   1 rleseur 2021_paris 1135 Jun 13 17:00 b298a07fb9359004b5c8123dbf4ccfd0aee711
+-r--r--r--   1 rleseur 2021_paris  485 Jun  8 11:03 f22d2feed4d10325b6317d86215d372574b291
+
+./.git/objects/88:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 20:01 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  482 Jun 18 20:01 04bef39dad91f85197c0e127de6a8706791a0a
+
+./.git/objects/89:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 May 30 17:54 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  178 May 30 17:54 95fd3927adef2a53ead0467bf84675630a5b3a
+
+./.git/objects/8a:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 15:53 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  590 Jun  8 15:53 6575a15842277e2e54dccd9e818e56343f2e63
+-r--r--r--   1 rleseur 2021_paris 1084 Jun  8 10:58 a1b6612a490d06910440118f69c3766e1d47db
+
+./.git/objects/8b:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:33 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  501 Jun  7 15:04 9bddf43ef8abfa8cf6237438dc80da6b599c98
+-r--r--r--   1 rleseur 2021_paris  479 Jun 15 15:33 fc5abe5db6cec0fead94e22cfa9372d91a5096
+
+./.git/objects/8c:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  340 Jun 20 12:18 2c825d7c05b1292a28f2ab37b8ba4b7bc16b8c
+-r--r--r--   1 rleseur 2021_paris  412 Jun  8 11:20 e5fc27b8d8a769842463d84de3a10a5300bcd1
+
+./.git/objects/8d:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  7 16:30 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  813 Jun  1 17:19 2c57faf8301f0e14541c5b5176823f39de2ec6
+-r--r--r--   1 rleseur 2021_paris  777 Jun  8 11:03 b45a0c64d68a8cde8823ae0d3e8fed815b4349
+
+./.git/objects/8e:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  190 Jun 20 12:18 218d4835085b2e46c2f9d3dba032d99fd02214
+-r--r--r--   1 rleseur 2021_paris  171 Jun 13 16:56 ad6b70a2f97fde87505aed6ee18d7c0704b131
+
+./.git/objects/8f:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 15:11 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  700 Jun 18 16:12 203143883df8643c1ead8196d27cf38064b1c5
+-r--r--r--   1 rleseur 2021_paris  785 Jun  8 11:39 5807326d9a6079bc45c7415c5ba08fd17509d4
+
+./.git/objects/90:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  1 17:19 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  387 Jun  1 17:19 108ae1e8baa8cef6fa87bca23c5c8ec8bcf664
+-r--r--r--   1 rleseur 2021_paris  827 Jun  1 17:19 22da852bdffdf4dddd25504c2800370b581cbc
+
+./.git/objects/91:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:39 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1239 May 30 09:36 60c0742f191de1e51bd3360e66fa116b122798
+-r--r--r--   1 rleseur 2021_paris  543 Jun  8 11:39 fb2ec8934051cd0b4ffb18386c782b724c1a95
+
+./.git/objects/92:
+total 24
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  231 May 30 09:36 2a8e71ce84b14c10b94bfbe78dcb784dafd599
+-r--r--r--   1 rleseur 2021_paris  478 Jun 15 15:55 88a36fa647d3c989677f7ccea37bf37feaca74
+-r--r--r--   1 rleseur 2021_paris 1021 Jun 20 12:18 8bccb5976bd675c179fcde05cbc290c88f4604
+-r--r--r--   1 rleseur 2021_paris  976 Jun 18 16:11 dedc916d565e0eea862e19b74110da2914c7cf
+
+./.git/objects/93:
+total 24
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 11:14 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris   21 Jun 18 18:52 0a814fe0d22bb01397c58900afa3d13093e966
+-r--r--r--   1 rleseur 2021_paris  902 May 30 09:36 33a863498cd7a3abcbc79809300e8dc5c9d6c0
+-r--r--r--   1 rleseur 2021_paris  482 Jun 20 11:14 81de367083036d61e708af7b6573eda5b896f3
+-r--r--r--   1 rleseur 2021_paris  432 Jun  6 14:13 e2fb6e34f2e96952154d2310891d0a6ee7ae73
+
+./.git/objects/94:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 May 30 09:36 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  186 May 30 09:36 45763c8e86112b4b198ff0ec01735c9eabc52b
+
+./.git/objects/95:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:16 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  165 Jun 20 12:16 f4ba29677e34d0bdbcec5a933ba040424c19fe
+
+./.git/objects/96:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  6 14:13 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  912 Jun  6 17:16 7b00ae19504aba9c0e80ee4846ec9816b07228
+
+./.git/objects/97:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 May 30 09:36 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1678 May 30 09:36 153ae7f903a8d0fe4aa10b2564869c72b40ccd
+
+./.git/objects/98:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 10:58 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  763 Jun  8 10:58 27848773a12c4275f45b84c5e26cf5e89e12f0
+-r--r--r--   1 rleseur 2021_paris  186 May 30 09:36 a5b9993d89c8b53e096cc5e5f7e86bca929975
+
+./.git/objects/99:
+total 24
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 18:52 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  288 May 17 14:51 21e00def79d52bb0b5857f39461174bae6a878
+-r--r--r--   1 rleseur 2021_paris   53 May 30 17:54 69d832b858eb61cb3752cd8e18d331aa8bd241
+-r--r--r--   1 rleseur 2021_paris  697 Jun 15 15:55 c2161d00cc2d7a696f808606cbbc045c9ee0fe
+-r--r--r--   1 rleseur 2021_paris  483 Jun 18 18:52 c9c256be0022ce7a159f961639c915a7f134af
+
+./.git/objects/9a:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 10:58 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  408 Jun  8 10:58 132bff1273e74be153ace249c84d4f169fdd5a
+-r--r--r--   1 rleseur 2021_paris  489 Jun  8 10:58 c979ceb93e482df7353eeec26f6cd0f1bdb2ae
+
+./.git/objects/9b:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  186 May 30 09:36 08667b5725644d3488d640d39c77246e705a1a
+-r--r--r--   1 rleseur 2021_paris  587 Jun 20 12:18 4987194fd87d8081d9648f64766532dbf3696e
+-r--r--r--   1 rleseur 2021_paris  312 Jun 18 16:12 a4ab0f10516a3a1a5efeb876d7a9749bcc2121
+
+./.git/objects/9c:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 16:11 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  496 Jun  8 10:58 1a0b2b71dbc65b3621845ebab3183b777e15aa
+-r--r--r--   1 rleseur 2021_paris 1015 May 30 17:54 86294f58da556d975c39fada3351afca8f2fc3
+-r--r--r--   1 rleseur 2021_paris  499 Jun 18 16:11 a01030a994cb124d1d121e4f47d1917bd22ee5
+
+./.git/objects/9d:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 17:35 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  509 Jun 18 18:52 36903add02139405191f771802df7ceac332d4
+-r--r--r--   1 rleseur 2021_paris  489 May 30 09:36 5638f0c1d4ccc7dabfbd03f1718a1702453365
+-r--r--r--   1 rleseur 2021_paris   20 Jun 10 10:14 aeafb9864cf43055ae93beb0afd6c7d144bfa4
+
+./.git/objects/9f:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  387 Jun 20 12:18 058aefbc549c916e0fcb0997dca34a679e4778
+
+./.git/objects/a0:
+total 24
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 17:30 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  154 Jun  8 11:20 0c019becca66c4135ac79cdef3dde0b780333a
+-r--r--r--   1 rleseur 2021_paris  312 Jun 15 17:30 84c9b1eaeb4bcd916e47b90b5bfb15fc507a75
+-r--r--r--   1 rleseur 2021_paris  814 Jun  8 11:39 edc665b74f40dc770fa00c88b42adbdc83a7ea
+-r--r--r--   1 rleseur 2021_paris  421 Jun  6 17:16 fe9dbdf3d4f97c74797db925d57b8634eb3ecc
+
+./.git/objects/a1:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  587 Jun  8 11:03 a4376203c62e004055342f9df5619846b11a5e
+-r--r--r--   1 rleseur 2021_paris  198 Jun 20 12:18 ffd09a47c03b6f5b54d0b102d14427abb2eaa8
+
+./.git/objects/a2:
+total 28
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  286 May 31 15:43 0a354eee5493220ffc8667cad2c11c53ea0f07
+-r--r--r--   1 rleseur 2021_paris  312 Jun 20 12:18 940354166329571115b70bb1bfd92893d21ac3
+-r--r--r--   1 rleseur 2021_paris  259 May 30 09:36 b98c09102de0176863a1d06a15142eba89cc89
+-r--r--r--   1 rleseur 2021_paris  190 Jun 15 17:35 c94e4fe27fde28302206fb63c86a9596bf644e
+-r--r--r--   1 rleseur 2021_paris  596 Jun 15 15:55 d06f7b8c4716cf4c23739a749d46f0110f5104
+
+./.git/objects/a3:
+total 24
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  788 Jun 13 16:48 04339e589293d8c270ed061e21fe7900726c7c
+-r--r--r--   1 rleseur 2021_paris  203 May 30 09:36 1a1ba0dbed2e27373ed805da61e919eabdd23a
+-r--r--r--   1 rleseur 2021_paris  474 Jun 20 12:20 9c2a87b3aea5b8852a46b715f450ec3cbc6524
+-r--r--r--   1 rleseur 2021_paris  991 Jun 18 16:11 b255620c5b91dc1ba3e38f4fd79397229349c0
+
+./.git/objects/a4:
+total 32
+drwxr-xr-x   2 rleseur 2021_paris  4096 Jun 15 15:55 .
+drwxr-xr-x 243 rleseur 2021_paris  4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris   912 Jun 18 18:52 339e17b9de579a20d320f01518844f2e15a956
+-r--r--r--   1 rleseur 2021_paris 15863 Jun  6 17:44 4ffee5e11a327b996d8f2723cb6de26cf2c523
+-r--r--r--   1 rleseur 2021_paris   795 Jun  8 11:39 75bfdbeca6facdc55cc7360f160962182ee4b0
+
+./.git/objects/a5:
+total 36
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:21 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  745 May 30 09:36 2e62c1730da065b617166503b227313bb7757c
+-r--r--r--   1 rleseur 2021_paris  259 Jun 20 12:21 3f07b192c864f68bdc5dbda51e72f5d3781077
+-r--r--r--   1 rleseur 2021_paris 1022 Jun 20 12:18 47627fa38326550e6d4320634e4df13dbd90c3
+-r--r--r--   1 rleseur 2021_paris  678 Jun 18 16:12 6289d64487e138781732d271c94b96918c9800
+-r--r--r--   1 rleseur 2021_paris  693 Jun 15 18:25 9705a086cea75dd870805d1348ff9c879ed910
+-r--r--r--   1 rleseur 2021_paris 1093 Jun 20 11:13 b0a4dfc801240453414a2035df44c85aa19701
+-r--r--r--   1 rleseur 2021_paris  260 Jun 18 16:12 e160e8c81bc985737cdd432b1f326c16709b60
+
+./.git/objects/a6:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  756 Jun 20 12:18 7612a4d42f3d4f9eef849880fd7914d0edbfc8
+-r--r--r--   1 rleseur 2021_paris  174 May 30 17:54 af8c59bcbb62e6adac32826dd76385f1ad52f8
+-r--r--r--   1 rleseur 2021_paris  696 Jun 18 16:11 eefe24a2e5df5990bd8e82e349d787dc15822f
+
+./.git/objects/a7:
+total 32
+drwxr-xr-x   2 rleseur 2021_paris  4096 Jun 18 16:11 .
+drwxr-xr-x 243 rleseur 2021_paris  4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 13547 May 17 14:48 075ff6507a359baf3ec2497a280133230c3e9c
+-r--r--r--   1 rleseur 2021_paris   207 Jun 18 16:11 9ea324b693ac840a4a1d840645a54fd4a0b09e
+-r--r--r--   1 rleseur 2021_paris   385 Jun  8 11:03 fa32b88a4aea6a366baa91029a9f3ae82aff6a
+
+./.git/objects/a8:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  176 Jun  8 15:53 55338f2f4e0d49801046914a985a17aaa36d4d
+-r--r--r--   1 rleseur 2021_paris  752 Jun 18 18:52 d2aeac6db0ca5fdbaa2883cdb7e27f5b9eda03
+
+./.git/objects/a9:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:03 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  117 Jun  8 11:03 3eb98dd5ac29f01388d398a2b045431a842d5c
+-r--r--r--   1 rleseur 2021_paris   88 Jun  6 17:16 d1f753f5b65eabda32f3f0710f0081a627f36c
+
+./.git/objects/aa:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  770 Jun  6 14:13 25a4e67a652ded2a2b7bbbccc5214dc2e9bb57
+-r--r--r--   1 rleseur 2021_paris  346 Jun 20 12:18 9fb1ddc7f6b2dbc5da7b2bb58b8790077d022c
+
+./.git/objects/ab:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  9 09:43 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  154 Jun  9 09:43 092ed158d872ba956e81a68c8ab0aad2868f7c
+
+./.git/objects/ac:
+total 28
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:53 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  489 Jun 10 10:17 0b5e863455f897cadb7c50c17526c74fa82df0
+-r--r--r--   1 rleseur 2021_paris  204 Jun  8 11:20 0d4004cce55f379042cabab2d14ae4f8b950a2
+-r--r--r--   1 rleseur 2021_paris  185 May 30 09:36 61537e21211f018a9879edec5f99e6eb73a756
+-r--r--r--   1 rleseur 2021_paris  484 Jun 15 18:53 8427cae570cf88bcfc8cd548a823cc4b78ee9b
+-r--r--r--   1 rleseur 2021_paris  489 Jun  8 10:58 a7d1701350523c2d2a100d4b7758002538da99
+
+./.git/objects/ad:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:39 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  646 Jun  8 11:39 83556bbe27158100917cad32ff0c497a85c2f8
+
+./.git/objects/ae:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 16 13:09 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  143 Jun 18 18:52 36c8ab4520f2a6453aad84ae040cf60e0ae9ea
+-r--r--r--   1 rleseur 2021_paris  909 Jun  8 15:53 46dd2c3d6a7bd667927d7750a72217835bbcf8
+-r--r--r--   1 rleseur 2021_paris  312 Jun 16 13:09 b47f6062353900cafaf36f30a670de4bf7c0ff
+
+./.git/objects/af:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  972 Jun 15 15:55 8ae20fd67165245f8a8f00d2b417b7a02a0086
+
+./.git/objects/b0:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:32 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  320 Jun  7 16:30 647d33514d81b19066f63841d37d90e98bdc63
+-r--r--r--   1 rleseur 2021_paris  638 Jun 15 18:32 7e1773b0a3262c24877a4b90168c66d7928f84
+
+./.git/objects/b1:
+total 24
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  727 Jun 20 12:18 21e28daeff295874fb1a542dca6ccdb214a737
+-r--r--r--   1 rleseur 2021_paris 1130 Jun 20 12:18 837ff2d00563d77697ee66577d151dd827dc62
+-r--r--r--   1 rleseur 2021_paris   89 Jun  8 10:58 b490e4276fcb01777eba6125545fe404a660e3
+-r--r--r--   1 rleseur 2021_paris  592 Jun  8 11:39 e8ba78c9cedeace6bb85d0118dca60120751cc
+
+./.git/objects/b2:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:39 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  490 May 30 09:36 12222ae9a14fcc32047851bb10fdb9507adac5
+-r--r--r--   1 rleseur 2021_paris  434 May 30 09:36 46c407f7fae252b97328bcbc34c553226f0299
+-r--r--r--   1 rleseur 2021_paris 1169 Jun  8 11:39 9e46f573ea4b00c2673bc849b5a25858a4a521
+
+./.git/objects/b3:
+total 28
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:20 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  259 May 30 09:36 32c9ffd3bcad5ce35601d8244745bb839231b1
+-r--r--r--   1 rleseur 2021_paris  664 Jun  8 11:39 625dcfba3d643ea916ba4e4f92ce70ad3370ba
+-r--r--r--   1 rleseur 2021_paris  155 Jun 20 12:20 717feca0b9e366fa1fc56e3f7e403bc9b88a36
+-r--r--r--   1 rleseur 2021_paris  940 Jun 15 18:32 ba5a401a3ce2c59128d2355701080128388380
+-r--r--r--   1 rleseur 2021_paris  830 May 17 14:48 e1543ff375f7427adf3d7347bd9084e9584579
+
+./.git/objects/b4:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  6 17:19 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  467 Jun  6 17:19 589b0e04719f31cdd95e7773f7b8907d7dbf58
+
+./.git/objects/b5:
+total 40
+drwxr-xr-x   2 rleseur 2021_paris  4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris  4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  1735 May 30 09:36 18ba916ffd82dc912d739f78613788dda47e5c
+-r--r--r--   1 rleseur 2021_paris  1419 Jun  8 10:58 4e60f4603e741b999f783767b1e98c3e792acd
+-r--r--r--   1 rleseur 2021_paris   328 Jun 20 12:18 a159b41a06ada10ae8042c382e1e953b0330c1
+-r--r--r--   1 rleseur 2021_paris   153 Jun  8 11:39 f5127e5a6ce63bd3fbc463bf783a64742c5261
+-r--r--r--   1 rleseur 2021_paris 13558 May 17 14:51 f5edf4f74c27c67c983c2f864481f2edb54725
+
+./.git/objects/b6:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:16 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  259 Jun 15 17:35 5d6d25220aeabdbf41bd4dd62ba3d4eebbf6fc
+-r--r--r--   1 rleseur 2021_paris  258 Jun 20 12:16 90da564d94525e4c45e744bd898440793bfb52
+-r--r--r--   1 rleseur 2021_paris  607 Jun  7 15:04 b64b0740e5a88aed06cfae18ca1d4c522f1e91
+
+./.git/objects/b7:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  9 09:43 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  609 Jun  8 11:39 6835d02745079e2a9d6fcdb76812286e3a822c
+-r--r--r--   1 rleseur 2021_paris  551 Jun 10 10:14 89943e5dc6fd6a65a481a3b4f6c3013554f9df
+
+./.git/objects/b8:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:25 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  185 May 30 09:36 0c6b568dd79efab365ed1436417180be3430e8
+-r--r--r--   1 rleseur 2021_paris  832 Jun 15 18:25 1e294bac680a687a07b1aac1a42afc35db7d7c
+-r--r--r--   1 rleseur 2021_paris  346 Jun  6 14:14 db3efe95a7f05d6afc45e8afa84149d8f06b63
+
+./.git/objects/b9:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 11:39 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1015 May 31 15:42 732cf6fb0f968990a65e33ffc829e407ebc976
+-r--r--r--   1 rleseur 2021_paris  557 Jun  8 11:39 d269b59923b86e2e460119826516bba1f6a7c1
+
+./.git/objects/ba:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 20:01 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  171 Jun 18 20:01 74e2ac01888124ec074bf4b86a62e7bcb65558
+-r--r--r--   1 rleseur 2021_paris  184 Jun  1 17:20 eff52d84c9e1fe8abedd92336a692b03100a27
+
+./.git/objects/bb:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  996 Jun 20 12:18 02a9a8d9508e59e5eff4024abcd4549c27337d
+-r--r--r--   1 rleseur 2021_paris  179 Jun 15 17:30 92b477e702b5196d8806a54d3fe7acc627ceca
+-r--r--r--   1 rleseur 2021_paris  190 Jun 10 10:17 ab73a1e1e6ae567d073fee9b408a31db2beabf
+
+./.git/objects/bc:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  154 Jun 20 12:16 26fdda9cdc6c8c511f27e62a25dee58d5280fa
+-r--r--r--   1 rleseur 2021_paris  699 Jun 20 12:18 964a9e7d617e8cfeb3471b05b6c3edd45ae2fa
+-r--r--r--   1 rleseur 2021_paris  873 May 17 14:51 f39a1298408fbe0c71f2bb96ae41354b41fe15
+
+./.git/objects/bd:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  986 Jun 20 12:18 95ab14ef3d8b0da44b42afe8f0b43e81357670
+
+./.git/objects/be:
+total 24
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  143 Jun 20 12:18 0c1091a0bd74322349693e7caf5b9d56f50d5f
+-r--r--r--   1 rleseur 2021_paris  154 Jun 20 11:14 29527f261586c2143121981b411d411dd265f0
+-r--r--r--   1 rleseur 2021_paris  527 Jun  8 12:04 714f7373357c026ddaba32ce4d2c3fa452b904
+-r--r--r--   1 rleseur 2021_paris   42 Jun  8 11:40 8d2386b75ac3538bb2096872f4fb0f5b75c386
+
+./.git/objects/bf:
+total 24
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  190 Jun  8 10:58 301730ac328aeb8325ce0217718cafd19c115d
+-r--r--r--   1 rleseur 2021_paris  143 Jun 20 12:18 3c2084219ae8678c78368f026766e81b9b3ff9
+-r--r--r--   1 rleseur 2021_paris  154 Jun 13 16:48 57f94e798022256abc2994fced3e9d94b0ddf3
+-r--r--r--   1 rleseur 2021_paris  153 Jun 13 17:00 73aa340f6f95c65471856ed92242af4966899b
+
+./.git/objects/c0:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:31 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  259 Jun 15 18:31 34bb8c065cdc8b9311ba3cd4b9c87b52b4fbe8
+-r--r--r--   1 rleseur 2021_paris  185 Jun  8 10:58 83aaf236b4656918ee59807bfdefa2e4b2eca9
+-r--r--r--   1 rleseur 2021_paris  489 Jun  8 15:53 976c5ed45b9e0e7b63be30bf1aa376fffaa14d
+
+./.git/objects/c1:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  476 Jun 20 12:18 76fba2a46957acc7d5feec74d79f5bd459aa3f
+-r--r--r--   1 rleseur 2021_paris  259 May 30 09:36 b051ed7874858a860a8eed9d554d450b4a2908
+
+./.git/objects/c2:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  1 17:19 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  496 Jun  1 17:19 1a536732d5e53d68cd0f0d0bfec1e18a6862a1
+
+./.git/objects/c3:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 18:52 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  479 Jun 13 16:56 4fdecbea6dfb55cbfdc7982afc47c8b3569a60
+-r--r--r--   1 rleseur 2021_paris 1042 Jun  6 14:13 f0e115c18fce438219c012535c516bd8977402
+-r--r--r--   1 rleseur 2021_paris  944 Jun 18 18:52 f15cada65a2a76460510ac8974789bfb94878d
+
+./.git/objects/c4:
+total 28
+drwxr-xr-x   2 rleseur 2021_paris  4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris  4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 14596 May 30 17:54 012ac5f901e92dbfec7e92bb62884c686e18be
+-r--r--r--   1 rleseur 2021_paris  1453 Jun 20 12:18 607164f49682454ddd39ab9a7f9168e7ecc10e
+
+./.git/objects/c5:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:53 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  193 Jun 15 18:53 c1d44e1079a7488beb5c5d0fbaea307af4d224
+
+./.git/objects/c7:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  143 Jun 15 15:55 64dd02abc80f61cc30160995e22f835dfccd1a
+
+./.git/objects/c8:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:25 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  312 Jun 15 18:25 8dcd9cb16594b44279cd691f348ec9d98881e6
+
+./.git/objects/c9:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:16 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1003 Jun 20 12:16 4ab74e9161202550b73474ee84406bbaf5b8c0
+-r--r--r--   1 rleseur 2021_paris  488 May 31 15:42 8223567ecef8b81e9dd20c621f48439c5b1338
+-r--r--r--   1 rleseur 2021_paris  260 Jun 15 18:53 93b9496559aa4b24ea707e9085f7ee664bf66d
+
+./.git/objects/ca:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  6 17:16 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  176 Jun  6 17:16 c2e949f61fccb61f48b18ec8c21b7177623e3f
+
+./.git/objects/cb:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 13 16:48 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1076 Jun 18 18:52 28e7f745c47893b6fac97b72994a187af19860
+-r--r--r--   1 rleseur 2021_paris  990 Jun 13 16:56 f04d2f174c322295f7a5e295e4e094d37e177f
+
+./.git/objects/cc:
+total 24
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:08 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  318 Jun 18 15:11 3960ff63c0862b68a58e2b51830c0fcc4c6763
+-r--r--r--   1 rleseur 2021_paris  171 Jun 20 12:08 726df2d986bcb0d137e724a81051ef4bf910a6
+-r--r--r--   1 rleseur 2021_paris  260 Jun  9 09:43 f9384b3e1b98570dd3e5968d68dac2bc5c4fa2
+-r--r--r--   1 rleseur 2021_paris  160 Jun 20 11:14 ffd00fe9e5eab4bf1c80ff487c03c3fcbe7048
+
+./.git/objects/cd:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 13 16:56 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1443 May 30 09:36 451d4855c5147c10e69ef4438526463afaaf9e
+-r--r--r--   1 rleseur 2021_paris  313 Jun 13 16:56 f45b4d1bf3329ae377481975944fd2dcc81772
+
+./.git/objects/ce:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 10:58 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  815 Jun  8 10:58 b56ba9dcc2072c143aa31bd1e0f5b25818aeef
+
+./.git/objects/cf:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:08 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  260 Jun  8 12:04 3c1c1c4204a09c42f7bc10e6dea098aea618dd
+-r--r--r--   1 rleseur 2021_paris  528 Jun  8 11:39 6d1387d281ed1470b8d64f7f74c901b673998e
+-r--r--r--   1 rleseur 2021_paris  652 Jun 20 12:08 b3cad18bb7fe28599685cd2503d98298d4f056
+
+./.git/objects/d0:
+total 24
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  874 Jun 10 10:14 184edea70fa9f7c4d93d34404eff903d03df20
+-r--r--r--   1 rleseur 2021_paris  703 Jun 20 12:18 35aaedcccbf669710ab05477dfab2ee1645777
+-r--r--r--   1 rleseur 2021_paris  969 Jun  7 16:30 77f107dfaa70f0e2ab64a70b5955061936bccb
+-r--r--r--   1 rleseur 2021_paris  974 Jun 18 18:52 9c01456addeff3e6012c3e271f377958506922
+
+./.git/objects/d1:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:08 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  483 Jun 20 12:08 8d3ca3eefd5206bbfc09f572310572f3aa1044
+-r--r--r--   1 rleseur 2021_paris 1282 May 30 09:36 bfa3303f4d2c094dd59b07581d3ec941b66e99
+-r--r--r--   1 rleseur 2021_paris  175 May 30 09:36 cd39150bfe33d9679564bbd18e3e08a033d358
+
+./.git/objects/d2:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 10:58 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  196 Jun  8 10:58 b16b8430c07e12526096773cf8112cc203753f
+-r--r--r--   1 rleseur 2021_paris  387 May 31 15:43 c13b21b38c90f20f11fcd01ea7829e88025bae
+
+./.git/objects/d3:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 16:11 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  260 Jun 18 16:11 6b173934ef242b59459a04c8ea44ad5363dc01
+-r--r--r--   1 rleseur 2021_paris  209 May 30 09:36 d512a3133199fe35e4503fd152551741798cf9
+
+./.git/objects/d4:
+total 28
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  259 Jun 15 18:32 8e7eba22b17584afe68a1a732d4c2c096449bd
+-r--r--r--   1 rleseur 2021_paris  953 Jun 20 12:18 9a5a138a8f1b1de16bbf0920226e8b9709dfa3
+-r--r--r--   1 rleseur 2021_paris   88 Jun  7 16:30 9f123541c9995ac44564d0aea33d0d4b9a3970
+-r--r--r--   1 rleseur 2021_paris  496 Jun 13 16:56 a4a68c8c5799111e92a4ed3bb636ea3bc555b6
+-r--r--r--   1 rleseur 2021_paris  489 Jun  8 10:58 fa6fb3e52209cba233d513bd82a34a04f2eacf
+
+./.git/objects/d5:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 16:11 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1680 May 30 09:36 6385f17bc224042d302513ac36f15227cf6e88
+-r--r--r--   1 rleseur 2021_paris  757 Jun 18 16:11 aa0ad3d8a72a4f6aea339dc8004f898cf1cb2e
+
+./.git/objects/d6:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  6 14:14 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  164 Jun  6 14:14 43470465099db4db63a22af318e2ca8a2ab17b
+
+./.git/objects/d7:
+total 36
+drwxr-xr-x   2 rleseur 2021_paris  4096 Jun 18 15:11 .
+drwxr-xr-x 243 rleseur 2021_paris  4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 23381 Jun 18 18:52 03f998f86093dbc7d04ff27dba786497fb5ea1
+-r--r--r--   1 rleseur 2021_paris   164 Jun  6 17:44 2c28cef88c362fde67d9ffc09667c465f2c996
+
+./.git/objects/d8:
+total 28
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  986 Jun 20 12:18 41236ce24a56f9bb33f1cee3f63bb0582a259f
+-r--r--r--   1 rleseur 2021_paris  483 Jun 18 16:12 4542a642f879e8eeb5e600596004a5688ecace
+-r--r--r--   1 rleseur 2021_paris 1114 May 30 17:54 b230705734651590ceb933071026c7b699f4b4
+-r--r--r--   1 rleseur 2021_paris  614 Jun  8 11:39 e4b5a1caeb8ad4d2e494d14fd8fc602b8e57b4
+-r--r--r--   1 rleseur 2021_paris   54 Jun 18 16:11 f575fcfb5b667b447e744a518e93b18018a04b
+
+./.git/objects/d9:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:20 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  834 Jun 13 16:56 26509a7bcaf073f29d2d8228e20c38eba2f814
+-r--r--r--   1 rleseur 2021_paris  340 Jun 20 12:20 c1560f0b1f12ac9c76eac28c2c187e8bfe1eca
+
+./.git/objects/da:
+total 28
+drwxr-xr-x   2 rleseur 2021_paris  4096 Jun 18 15:11 .
+drwxr-xr-x 243 rleseur 2021_paris  4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris   312 Jun 18 15:11 39eda3e2ffa257407ed51fb0feea132a63ce72
+-r--r--r--   1 rleseur 2021_paris 15771 Jun  6 17:19 89e18b9b420ce47367dbd418e69112270b7b6b
+
+./.git/objects/db:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:16 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  545 Jun 20 12:16 10ff343b5404a4f041326678160e4dddb34398
+-r--r--r--   1 rleseur 2021_paris  477 Jun 15 17:32 24fcd1c7f2788b8d81fcf0f3ea1d1ea5d0d761
+
+./.git/objects/dc:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 10:58 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  287 May 17 14:49 64cf8fc375c2f287b4cf9a5508af149070093c
+-r--r--r--   1 rleseur 2021_paris  259 Jun  8 10:58 9360882ecf11aad1923241246a267fb89a48ac
+
+./.git/objects/dd:
+total 28
+drwxr-xr-x   2 rleseur 2021_paris  4096 Jun 15 15:55 .
+drwxr-xr-x 243 rleseur 2021_paris  4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  1394 Jun 15 15:55 40d6629ce6dd328a0fca2c2917c8426a9743f9
+-r--r--r--   1 rleseur 2021_paris 10229 Jun  8 11:39 545c02dc44c7a24ad0411c00bd40d313085264
+-r--r--r--   1 rleseur 2021_paris  1155 Jun  8 11:39 92907532c8bac4b504cf805686914f0854d9e7
+
+./.git/objects/de:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  992 Jun 15 15:55 8fd687c72a564a64ef95981ad68f115f8344ea
+
+./.git/objects/df:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 19:40 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  390 May 17 14:51 51b218d2f1735dbae4cf287df61c3218d9fec5
+-r--r--r--   1 rleseur 2021_paris 1228 Jun 18 19:40 cbb9b67462d8b0ef1dc2ffa0bff06d64a87487
+
+./.git/objects/e0:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:25 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  854 Jun  6 17:16 1fb71bd7a4266d5e4b802fa008e7748d99a350
+-r--r--r--   1 rleseur 2021_paris  609 Jun 15 18:25 601d8f554742b3dab8adf626d60696af980aa1
+-r--r--r--   1 rleseur 2021_paris  487 May 30 09:36 eaf0ce91bdd2a3013b7a41e2e4cb8f3b04abb0
+
+./.git/objects/e1:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 15:06 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  312 Jun 18 15:06 1742079183e779b0c96bd83c4f6256b216c177
+-r--r--r--   1 rleseur 2021_paris  582 Jun 13 16:56 30f13bfa8dc0a5bbd3a6daf3318986076ffbda
+
+./.git/objects/e2:
+total 28
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 11:32 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  483 Jun 20 11:32 230869f3ca1a1be737463c3aa8f662719ce263
+-r--r--r--   1 rleseur 2021_paris  311 Jun 15 18:31 339b7a8ae1b3858b2300dffda1b13970de857b
+-r--r--r--   1 rleseur 2021_paris  449 Jun  8 11:03 3af321ff866c156675b2ff83ba68b7d422ce02
+-r--r--r--   1 rleseur 2021_paris  834 May 17 14:51 455b9e72e16aaa7811f70223e09ca9ca6c331b
+-r--r--r--   1 rleseur 2021_paris  484 Jun 18 15:06 5e3f2332758559b5d640470c4ced34b61d79e3
+
+./.git/objects/e3:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 18:25 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  484 Jun 15 18:25 4b9cd5da47ac35e5fd048a18eb5a109130f5f6
+-r--r--r--   1 rleseur 2021_paris  644 Jun  8 11:39 8fe04d7ceac199a12cc34c86ae7e97f845403e
+-r--r--r--   1 rleseur 2021_paris  601 Jun  8 11:39 d82fb0a5208dadb0228b9c1910d81677c5c2de
+
+./.git/objects/e4:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  7 15:04 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  700 Jun  8 11:03 fdf91bf4f896e1af6690535762ea1cd07e644b
+
+./.git/objects/e5:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1432 Jun 20 11:32 0be6fa04e5d228f66d83cb3ec99f354deb1526
+-r--r--r--   1 rleseur 2021_paris  144 Jun 20 12:18 7db2a01990906492ee52e498e77083deabec7f
+
+./.git/objects/e6:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  485 Jun 13 16:56 15c2bcf13d2bf901c0ecddf89e749f914c2a96
+-r--r--r--   1 rleseur 2021_paris   15 Jun 18 18:52 9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+-r--r--r--   1 rleseur 2021_paris  259 Jun 15 15:55 ccad18cf1ab86f98b945eff73b7c5341b23136
+
+./.git/objects/e7:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 17:30 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  259 Jun  8 11:40 0990798e5b6bae414a0e293f07fec9358df034
+-r--r--r--   1 rleseur 2021_paris  259 Jun 15 17:30 63de4c68f32151daea8b0e5f0581cb02df7c78
+
+./.git/objects/e8:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:20 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  186 May 30 09:36 ac26241f0463ce85a6191f994a94c172a2621e
+-r--r--r--   1 rleseur 2021_paris  259 Jun 13 16:56 cb34a251a4946e7dac66cce1996a5f93113610
+-r--r--r--   1 rleseur 2021_paris 1432 Jun 20 12:20 de84255e619901a3792cfb0a4f0879c8ba1be8
+
+./.git/objects/e9:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 17:32 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  191 Jun 15 17:32 b1c3c92234dc7e3d4caac0d07f95450856cb63
+-r--r--r--   1 rleseur 2021_paris  687 Jun  8 10:58 df9ae7a76be9eea9b49abce8260993f4da0c44
+
+./.git/objects/ea:
+total 32
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:20 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  122 Jun  8 10:58 2c2a24762d84927fd9613b43ff73857633d1a7
+-r--r--r--   1 rleseur 2021_paris  143 Jun 15 15:55 30549d9164867b65a87cef9bbba13afe5a8a33
+-r--r--r--   1 rleseur 2021_paris  181 Jun  8 11:44 33720ff707163b3e12c20531b5efecc3206e38
+-r--r--r--   1 rleseur 2021_paris  205 May 30 09:36 c17a507d4d4576c8ca3e8d7029cbc488b07e37
+-r--r--r--   1 rleseur 2021_paris  567 Jun 15 15:33 d23af09064989af813df91d32806b42393d845
+-r--r--r--   1 rleseur 2021_paris  913 Jun 20 12:20 db8961967cdadb6adbca3ba34d99fd1c39024e
+
+./.git/objects/eb:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:20 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  258 May 30 09:36 321a9f82576a0e033950ed78427617010fd36e
+-r--r--r--   1 rleseur 2021_paris  913 Jun 20 12:16 a0fd485b3147e98c42e0ae59c3fbb2b7240c7c
+-r--r--r--   1 rleseur 2021_paris 1143 Jun 20 12:20 f892fa4011cceda364e25a964c397bbc48affa
+
+./.git/objects/ec:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  6 17:16 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1060 Jun  6 17:16 96439c4595d95bbdb01d456828091d4e6562d3
+
+./.git/objects/ed:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 13 17:00 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  259 Jun 13 17:00 b2e53a489effd97f979c715412084d2d9918d0
+-r--r--r--   1 rleseur 2021_paris  483 Jun 10 10:17 fc83ade32adb09e9efe2cb7faeb89fbb65da33
+
+./.git/objects/ee:
+total 28
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  451 May 30 09:36 1f66926862f1b9ed5e23728641a79bebaf58bd
+-r--r--r--   1 rleseur 2021_paris  489 May 30 09:36 3fc16af3cf698b9c198a614a0566fd60ae03b0
+-r--r--r--   1 rleseur 2021_paris  154 Jun 18 16:12 65ecb7f69db1171245b0d6a2b5624e13203bab
+-r--r--r--   1 rleseur 2021_paris  848 Jun 20 12:18 c3781e4633cddb9a076f675982d093d0303373
+-r--r--r--   1 rleseur 2021_paris  254 Jun 10 10:17 d17982164464ccdf4cb42ae76ec5e33f0f0d55
+
+./.git/objects/ef:
+total 24
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:16 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1116 Jun 20 12:16 3f258ae702a4caf66255ba4e7ad5fa66c5ca6a
+-r--r--r--   1 rleseur 2021_paris  173 Jun  6 17:19 4af138140cd08b053b0aa9d983acff1396c2d9
+-r--r--r--   1 rleseur 2021_paris  185 May 30 09:36 b678dbff32c177e39a48c7adea46ac604e651a
+-r--r--r--   1 rleseur 2021_paris  260 Jun  8 11:20 ed9eb5ee007829a0152fc57bbf3c583d2a2573
+
+./.git/objects/f0:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 12:04 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  977 May 30 17:54 5b886eea0d366ffb26e16a2dd9594d90af5dfa
+-r--r--r--   1 rleseur 2021_paris  153 Jun  8 12:04 dc9f98df34d5934742a60ae048de1bd93e8a25
+
+./.git/objects/f1:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  966 Jun  8 11:39 b2cb599a6175e503be1d4151bb4e5cdb7b6a14
+-r--r--r--   1 rleseur 2021_paris  984 Jun 20 12:18 b59106f81b83852be76b408f9a9907dbbb24ef
+
+./.git/objects/f3:
+total 24
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 19:41 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  260 Jun 18 19:41 1fd93d0bac1236f652cef002eb7851ceac0e87
+-r--r--r--   1 rleseur 2021_paris  476 Jun  8 10:58 5e00313e5a545ab884d819207d9772b4d97be6
+-r--r--r--   1 rleseur 2021_paris  187 Jun 18 19:41 91172de92e95d67fe482cdc2be09a97559764d
+-r--r--r--   1 rleseur 2021_paris  979 May 30 09:36 d581c4c38f653e5eb1310349f6b0b7d01c9ff3
+
+./.git/objects/f4:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:33 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  259 Jun 15 15:33 b70e053824fe66bf3db5dfe5418c708678a03b
+
+./.git/objects/f5:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 20:01 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  312 Jun 18 20:01 84e1e840a9267e303aa0f5562f06ee13449c22
+-r--r--r--   1 rleseur 2021_paris  547 May 30 09:36 87714d31da97afbbde802f20d98049c0452ef0
+
+./.git/objects/f6:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  6 14:14 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  465 Jun  6 14:14 beec799697c9a0ca5fc0e9ee032ae728157f77
+
+./.git/objects/f7:
+total 16
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 18:52 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  312 Jun 18 18:52 59821c3f1ea2964176ca7c1fd15afa913e10b0
+-r--r--r--   1 rleseur 2021_paris  179 Jun 18 16:12 84d80b52d33d5c53896a28464a8438cc8ca95b
+
+./.git/objects/f8:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  1 17:19 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1013 Jun  1 17:19 15332dfa3899dc17237ff80be1e9352699571b
+
+./.git/objects/f9:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  862 Jun 20 12:18 6d9ca60b105d3f0245d63a2de794a24677a3c3
+
+./.git/objects/fa:
+total 28
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 18 16:12 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 2573 Jun  8 11:20 0b2b7dfa464e3136db2f246a266bb0c24b10be
+-r--r--r--   1 rleseur 2021_paris  258 May 30 09:36 6d00bad81d7dd88beeb92e41f912dfe069eb57
+-r--r--r--   1 rleseur 2021_paris 1037 Jun  6 14:13 bc2e39b66fcc3ac087cbae9ab669d4313cadaf
+-r--r--r--   1 rleseur 2021_paris  976 Jun 15 15:55 c5661a8365ad66596a2bd667118c42e58b3f08
+-r--r--r--   1 rleseur 2021_paris 1046 Jun 18 16:12 c5de396f4796221c63e58d4c52439ae10a4e0f
+
+./.git/objects/fb:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 10:58 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  186 Jun  8 10:58 1e10ec67c0cc80848638c5a6846f6905889911
+-r--r--r--   1 rleseur 2021_paris  463 May 30 09:36 2b554d5248ead6c89641ca5193fb47cf0c6c4a
+-r--r--r--   1 rleseur 2021_paris  352 Jun  8 10:58 351195f8b0673485ce8af84240222aac92f0e7
+
+./.git/objects/fc:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun  8 10:58 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  258 May 30 09:36 16616e3e896636a7071de80270634e530d5061
+-r--r--r--   1 rleseur 2021_paris  198 Jun  7 15:04 1d48c2a018cd9f67bfa9495b3abe8ae101337c
+-r--r--r--   1 rleseur 2021_paris  223 Jun  8 10:58 36ca813f74dd3589abe684eb54b58424cd5c69
+
+./.git/objects/fd:
+total 12
+drwxr-xr-x   2 rleseur 2021_paris 4096 May 17 14:49 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  186 May 17 14:49 e12ecf034234b96c23231d17279f3cc4031598
+
+./.git/objects/fe:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 15 15:55 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  574 Jun 15 15:55 5263c965b9b8d4c534a41a2e20688b110be4ec
+-r--r--r--   1 rleseur 2021_paris  191 Jun 13 17:00 844c8be531758222f03ca3dbd2afdd2542b65a
+-r--r--r--   1 rleseur 2021_paris  925 Jun 10 10:14 fadcdc99daff0afedd52edb8df74ad80282f8d
+
+./.git/objects/ff:
+total 20
+drwxr-xr-x   2 rleseur 2021_paris 4096 Jun 20 11:32 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris 1055 Jun  7 15:04 0b01e39a1d0ec4b05f3dfb73a4329c01f63636
+-r--r--r--   1 rleseur 2021_paris  259 Jun 20 11:32 893751e0d4f55210edee2e0ec469084301c160
+-r--r--r--   1 rleseur 2021_paris  483 Jun 18 19:41 ac89d4b5bafa52ac216db59fab3c53e84bc7b6
+
+./.git/objects/info:
+total 8
+drwxr-xr-x   2 rleseur 2021_paris 4096 Apr 26 10:22 .
+drwxr-xr-x 243 rleseur 2021_paris 4096 Jun 20 12:18 ..
+
+./.git/objects/pack:
+total 256
+drwxr-xr-x   2 rleseur 2021_paris   4096 Jun 13 16:50 .
+drwxr-xr-x 243 rleseur 2021_paris   4096 Jun 20 12:18 ..
+-r--r--r--   1 rleseur 2021_paris  10228 Apr 26 10:22 pack-3639a3612ba9f78e1cca6f837ae06d09ce369415.idx
+-r--r--r--   1 rleseur 2021_paris  72746 Jun  8 11:39 pack-3639a3612ba9f78e1cca6f837ae06d09ce369415.pack
+-r--r--r--   1 rleseur 2021_paris  12412 May 17 14:40 pack-5dbada90f83e690d1b788f87266e35df45668419.idx
+-r--r--r--   1 rleseur 2021_paris 110840 Jun 18 18:52 pack-5dbada90f83e690d1b788f87266e35df45668419.pack
+-r--r--r--   1 rleseur 2021_paris   4376 Jun 13 16:50 pack-877156d15f80ae9a737dee7fdf46e55aece3c623.idx
+-r--r--r--   1 rleseur 2021_paris  27183 Jun 18 18:52 pack-877156d15f80ae9a737dee7fdf46e55aece3c623.pack
+
+./.git/refs:
+total 24
+drwxr-xr-x 5 rleseur 2021_paris 4096 Jun 15 17:32 .
+drwxr-xr-x 8 rleseur 2021_paris 4096 Jun 20 12:21 ..
+drwxr-xr-x 2 rleseur 2021_paris 4096 Jun 20 12:21 heads
+drwxr-xr-x 3 rleseur 2021_paris 4096 Apr 26 10:22 remotes
+-rw-r--r-- 1 rleseur 2021_paris   41 Jun 15 17:32 stash
+drwxr-xr-x 2 rleseur 2021_paris 4096 Apr 26 10:22 tags
+
+./.git/refs/heads:
+total 20
+drwxr-xr-x 2 rleseur 2021_paris 4096 Jun 20 12:21 .
+drwxr-xr-x 5 rleseur 2021_paris 4096 Jun 15 17:32 ..
+-rw-r--r-- 1 rleseur 2021_paris   41 Jun 20 12:21 main
+-rw-r--r-- 1 rleseur 2021_paris   41 Jun 20 12:16 parsing_details
+-rw-r--r-- 1 rleseur 2021_paris   41 Jun  8 11:03 romane
+
+./.git/refs/remotes:
+total 12
+drwxr-xr-x 3 rleseur 2021_paris 4096 Apr 26 10:22 .
+drwxr-xr-x 5 rleseur 2021_paris 4096 Jun 15 17:32 ..
+drwxr-xr-x 2 rleseur 2021_paris 4096 Jun 20 12:21 origin
+
+./.git/refs/remotes/origin:
+total 28
+drwxr-xr-x 2 rleseur 2021_paris 4096 Jun 20 12:21 .
+drwxr-xr-x 3 rleseur 2021_paris 4096 Apr 26 10:22 ..
+-rw-r--r-- 1 rleseur 2021_paris   41 May 17 14:40 builtins
+-rw-r--r-- 1 rleseur 2021_paris   30 Apr 26 10:22 HEAD
+-rw-r--r-- 1 rleseur 2021_paris   41 Jun 20 12:21 main
+-rw-r--r-- 1 rleseur 2021_paris   41 Jun 20 12:16 parsing_details
+-rw-r--r-- 1 rleseur 2021_paris   41 Jun  8 11:03 romane
+
+./.git/refs/tags:
+total 8
+drwxr-xr-x 2 rleseur 2021_paris 4096 Apr 26 10:22 .
+drwxr-xr-x 5 rleseur 2021_paris 4096 Jun 15 17:32 ..
+
+./headers:
+total 24
+drwxr-xr-x 2 rleseur 2021_paris 4096 Jun 20 12:20 .
+drwxr-xr-x 6 rleseur 2021_paris 4096 Jun 20 14:38 ..
+-rw-r--r-- 1 rleseur 2021_paris 2563 Jun 20 12:18 builtins.h
+-rw-r--r-- 1 rleseur 2021_paris 1477 Jun  8 11:03 garbage.h
+-rw-r--r-- 1 rleseur 2021_paris 2452 Jun 20 12:18 minishell.h
+-rw-r--r-- 1 rleseur 2021_paris 3496 Jun 20 12:20 parsing.h
+
+./objs:
+total 324
+drwxr-xr-x 2 rleseur 2021_paris  4096 Jun 20 14:38 .
+drwxr-xr-x 6 rleseur 2021_paris  4096 Jun 20 14:38 ..
+-rw-r--r-- 1 rleseur 2021_paris  4944 Jun 20 14:35 calcul_divide_cmd.o
+-rw-r--r-- 1 rleseur 2021_paris  5608 Jun 20 14:35 cd_utils.o
+-rw-r--r-- 1 rleseur 2021_paris  5536 Jun 20 14:35 checks_before_all.o
+-rw-r--r-- 1 rleseur 2021_paris  9864 Jun 20 14:35 child.o
+-rw-r--r-- 1 rleseur 2021_paris  3624 Jun 20 14:35 close_exec.o
+-rw-r--r-- 1 rleseur 2021_paris  5160 Jun 20 14:35 env2.o
+-rw-r--r-- 1 rleseur 2021_paris  5736 Jun 20 14:35 env.o
+-rw-r--r-- 1 rleseur 2021_paris 11144 Jun 20 14:35 exec.o
+-rw-r--r-- 1 rleseur 2021_paris  4928 Jun 20 14:35 exec_utils.o
+-rw-r--r-- 1 rleseur 2021_paris  7400 Jun 20 14:35 expand.o
+-rw-r--r-- 1 rleseur 2021_paris  4016 Jun 20 14:35 expand_utils.o
+-rw-r--r-- 1 rleseur 2021_paris  4616 Jun 20 14:35 free.o
+-rw-r--r-- 1 rleseur 2021_paris  7344 Jun 20 14:35 ft_cd.o
+-rw-r--r-- 1 rleseur 2021_paris  5784 Jun 20 14:35 ft_echo.o
+-rw-r--r-- 1 rleseur 2021_paris  3136 Jun 20 14:35 ft_env.o
+-rw-r--r-- 1 rleseur 2021_paris  6592 Jun 20 14:35 ft_exit.o
+-rw-r--r-- 1 rleseur 2021_paris  5856 Jun 20 14:35 ft_export.o
+-rw-r--r-- 1 rleseur 2021_paris  3712 Jun 20 14:35 ft_export_utils.o
+-rw-r--r-- 1 rleseur 2021_paris  5304 Jun 20 14:35 ft_gsplit.o
+-rw-r--r-- 1 rleseur 2021_paris  4816 Jun 20 14:35 ft_pwd.o
+-rw-r--r-- 1 rleseur 2021_paris  3104 Jun 20 14:35 ft_strgdup.o
+-rw-r--r-- 1 rleseur 2021_paris  3824 Jun 20 14:35 ft_strgjoin.o
+-rw-r--r-- 1 rleseur 2021_paris  3776 Jun 20 14:35 ft_subgstr.o
+-rw-r--r-- 1 rleseur 2021_paris  5088 Jun 20 14:35 ft_unset.o
+-rw-r--r-- 1 rleseur 2021_paris  5856 Jun 20 14:35 garbage.o
+-rw-r--r-- 1 rleseur 2021_paris  5968 Jun 20 14:35 get_check_fd.o
+-rw-r--r-- 1 rleseur 2021_paris  4880 Jun 20 14:35 heredoc.o
+-rw-r--r-- 1 rleseur 2021_paris  4976 Jun 20 14:35 last_quotes.o
+-rw-r--r-- 1 rleseur 2021_paris  5848 Jun 20 14:38 last_splits.o
+-rw-r--r-- 1 rleseur 2021_paris  5080 Jun 20 14:35 l_env.o
+-rw-r--r-- 1 rleseur 2021_paris  3864 Jun 20 14:35 l_env_utils.o
+-rw-r--r-- 1 rleseur 2021_paris  4648 Jun 20 14:35 lexing.o
+-rw-r--r-- 1 rleseur 2021_paris  9344 Jun 20 14:35 main.o
+-rw-r--r-- 1 rleseur 2021_paris  3200 Jun 20 14:35 main_utils.o
+-rw-r--r-- 1 rleseur 2021_paris  4824 Jun 20 14:35 manage_lists_cmd.o
+-rw-r--r-- 1 rleseur 2021_paris  4088 Jun 20 14:35 manage_lists_lenv.o
+-rw-r--r-- 1 rleseur 2021_paris  4328 Jun 20 14:35 manage_lists_lexing.o
+-rw-r--r-- 1 rleseur 2021_paris  3784 Jun 20 14:35 manage_lists_regroup.o
+-rw-r--r-- 1 rleseur 2021_paris  8432 Jun 20 14:35 parsing.o
+-rw-r--r-- 1 rleseur 2021_paris  3584 Jun 20 14:35 path.o
+-rw-r--r-- 1 rleseur 2021_paris  2712 Jun 20 14:35 print_error.o
+-rw-r--r-- 1 rleseur 2021_paris  6184 Jun 20 14:35 regroup.o
+-rw-r--r-- 1 rleseur 2021_paris  5232 Jun 20 14:35 signals.o
+-rw-r--r-- 1 rleseur 2021_paris  3392 Jun 20 14:35 signals_utils.o
+-rw-r--r-- 1 rleseur 2021_paris  2496 Jun 20 14:35 utils.o
+
+./srcs:
+total 88
+drwxr-xr-x 9 rleseur 2021_paris  4096 Jun 20 12:18 .
+drwxr-xr-x 6 rleseur 2021_paris  4096 Jun 20 14:38 ..
+drwxr-xr-x 2 rleseur 2021_paris  4096 Jun 20 12:18 builtins
+-rw-r--r-- 1 rleseur 2021_paris 31375 Apr 26 10:22 david.txt
+drwxr-xr-x 2 rleseur 2021_paris  4096 Jun 20 12:18 exec
+drwxr-xr-x 2 rleseur 2021_paris  4096 Jun 13 16:57 garbage
+-rw-r--r-- 1 rleseur 2021_paris    92 Jun  8 11:03 .ignore_readline
+drwxr-xr-x 2 rleseur 2021_paris  4096 Jun 20 14:35 libft
+drwxr-xr-x 2 rleseur 2021_paris  4096 Jun 20 12:18 main
+-rw-r--r-- 1 rleseur 2021_paris  3282 Jun  8 11:03 Makefile
+drwxr-xr-x 2 rleseur 2021_paris  4096 Jun 20 14:38 parsing
+drwxr-xr-x 2 rleseur 2021_paris  4096 Jun 20 12:18 signals
+-rw-r--r-- 1 rleseur 2021_paris 12288 Jun  7 11:24 .utils.c.swp
+
+./srcs/builtins:
+total 72
+drwxr-xr-x 2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 9 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-rwxr-xr-x 1 rleseur 2021_paris 2011 Jun 20 12:18 cd_utils.c
+-rwxr-xr-x 1 rleseur 2021_paris 2045 Jun  8 11:03 env2.c
+-rwxr-xr-x 1 rleseur 2021_paris 1897 Jun 20 12:18 env.c
+-rw-r--r-- 1 rleseur 2021_paris 1203 Jun 20 12:18 free.c
+-rwxr-xr-x 1 rleseur 2021_paris 2719 Jun 20 12:18 ft_cd.c
+-rwxr-xr-x 1 rleseur 2021_paris 2129 Jun 20 12:18 ft_echo.c
+-rwxr-xr-x 1 rleseur 2021_paris 1267 Jun 13 16:57 ft_env.c
+-rwxr-xr-x 1 rleseur 2021_paris 2744 Jun 20 12:18 ft_exit.c
+-rwxr-xr-x 1 rleseur 2021_paris 2065 Jun 20 12:18 ft_export.c
+-rwxr-xr-x 1 rleseur 2021_paris 1570 Jun 13 16:57 ft_export_utils.c
+-rwxr-xr-x 1 rleseur 2021_paris 1764 Jun 20 12:18 ft_pwd.c
+-rwxr-xr-x 1 rleseur 2021_paris 1725 Jun 20 12:18 ft_unset.c
+-rwxr-xr-x 1 rleseur 2021_paris 1772 Jun 13 16:57 l_env.c
+-rwxr-xr-x 1 rleseur 2021_paris 1396 Jun 13 16:57 l_env_utils.c
+-rw-r--r-- 1 rleseur 2021_paris 1425 Jun  8 11:03 path.c
+-rw-r--r-- 1 rleseur 2021_paris 1172 Jun 15 17:34 utils.c
+
+./srcs/exec:
+total 24
+drwxr-xr-x 2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 9 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-rw-r--r-- 1 rleseur 2021_paris 3030 Jun 20 12:18 child.c
+-rw-r--r-- 1 rleseur 2021_paris 1247 Jun 13 16:57 close_exec.c
+-rw-r--r-- 1 rleseur 2021_paris 3615 Jun 20 12:18 exec.c
+-rw-r--r-- 1 rleseur 2021_paris 1719 Jun 15 17:34 exec_utils.c
+
+./srcs/garbage:
+total 32
+drwxr-xr-x 2 rleseur 2021_paris 4096 Jun 13 16:57 .
+drwxr-xr-x 9 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-rw-r--r-- 1 rleseur 2021_paris 2013 Jun  8 11:03 ft_gsplit.c
+-rw-r--r-- 1 rleseur 2021_paris 1187 Jun  8 11:03 ft_strgdup.c
+-rw-r--r-- 1 rleseur 2021_paris 1408 Jun  8 11:03 ft_strgjoin.c
+-rw-r--r-- 1 rleseur 2021_paris 1338 Jun  8 11:03 ft_subgstr.c
+-rw-r--r-- 1 rleseur 2021_paris 2253 Jun  8 11:03 garbage.c
+-rw-r--r-- 1 rleseur 2021_paris 1724 Jun 13 16:57 main.c
+
+./srcs/libft:
+total 412
+drwxr-xr-x 2 rleseur 2021_paris  4096 Jun 20 14:35 .
+drwxr-xr-x 9 rleseur 2021_paris  4096 Jun 20 12:18 ..
+-rw-r--r-- 1 rleseur 2021_paris  1327 Jun  8 11:03 ft_atoi.c
+-rw-r--r-- 1 rleseur 2021_paris  1704 Jun 20 14:35 ft_atoi.o
+-rw-r--r-- 1 rleseur 2021_paris  1048 Jun  8 11:03 ft_bzero.c
+-rw-r--r-- 1 rleseur 2021_paris  1424 Jun 20 14:35 ft_bzero.o
+-rw-r--r-- 1 rleseur 2021_paris  1155 Jun  8 11:03 ft_calloc.c
+-rw-r--r-- 1 rleseur 2021_paris  1640 Jun 20 14:35 ft_calloc.o
+-rw-r--r-- 1 rleseur 2021_paris  1138 Jun  8 11:03 ft_free_lst.c
+-rw-r--r-- 1 rleseur 2021_paris  1006 Jun  8 11:03 ft_isalnum.c
+-rw-r--r-- 1 rleseur 2021_paris  1432 Jun 20 14:35 ft_isalnum.o
+-rw-r--r-- 1 rleseur 2021_paris   978 Jun  8 11:03 ft_isalpha.c
+-rw-r--r-- 1 rleseur 2021_paris  1416 Jun 20 14:35 ft_isalpha.o
+-rw-r--r-- 1 rleseur 2021_paris   948 Jun  8 11:03 ft_isascii.c
+-rw-r--r-- 1 rleseur 2021_paris  1408 Jun 20 14:35 ft_isascii.o
+-rw-r--r-- 1 rleseur 2021_paris   950 Jun  8 11:03 ft_isdigit.c
+-rw-r--r-- 1 rleseur 2021_paris  1408 Jun 20 14:35 ft_isdigit.o
+-rw-r--r-- 1 rleseur 2021_paris   948 Jun  8 11:03 ft_isprint.c
+-rw-r--r-- 1 rleseur 2021_paris  1408 Jun 20 14:35 ft_isprint.o
+-rw-r--r-- 1 rleseur 2021_paris  1955 Jun  8 11:03 ft_itoa.c
+-rw-r--r-- 1 rleseur 2021_paris  2744 Jun 20 14:35 ft_itoa.o
+-rw-r--r-- 1 rleseur 2021_paris  1290 Jun  8 11:03 ft_lst_addback.c
+-rw-r--r-- 1 rleseur 2021_paris  1067 Jun  8 11:03 ft_lstadd_back.c
+-rw-r--r-- 1 rleseur 2021_paris  1025 Jun  8 11:03 ft_lstadd_front.c
+-rw-r--r-- 1 rleseur 2021_paris  1075 Jun  8 11:03 ft_lstclear.c
+-rw-r--r-- 1 rleseur 2021_paris  1033 Jun  8 11:03 ft_lstdelone.c
+-rw-r--r-- 1 rleseur 2021_paris  1080 Jun  8 11:03 ft_lstiter.c
+-rw-r--r-- 1 rleseur 2021_paris  1029 Jun  8 11:03 ft_lstlast.c
+-rw-r--r-- 1 rleseur 2021_paris  1240 Jun  8 11:03 ft_lstmap.c
+-rw-r--r-- 1 rleseur 2021_paris  1076 Jun  8 11:03 ft_lstnew.c
+-rw-r--r-- 1 rleseur 2021_paris  1140 Jun  8 11:03 ft_memchr.c
+-rw-r--r-- 1 rleseur 2021_paris  1456 Jun 20 14:35 ft_memchr.o
+-rw-r--r-- 1 rleseur 2021_paris  1185 Jun  8 11:03 ft_memcmp.c
+-rw-r--r-- 1 rleseur 2021_paris  1512 Jun 20 14:35 ft_memcmp.o
+-rw-r--r-- 1 rleseur 2021_paris  1173 Jun  8 11:03 ft_memcpy.c
+-rw-r--r-- 1 rleseur 2021_paris  1472 Jun 20 14:35 ft_memcpy.o
+-rw-r--r-- 1 rleseur 2021_paris  1218 Jun  8 11:03 ft_memmove.c
+-rw-r--r-- 1 rleseur 2021_paris  1680 Jun 20 14:35 ft_memmove.o
+-rw-r--r-- 1 rleseur 2021_paris  1063 Jun  8 11:03 ft_memset.c
+-rw-r--r-- 1 rleseur 2021_paris  1432 Jun 20 14:35 ft_memset.o
+-rw-r--r-- 1 rleseur 2021_paris   970 Jun  8 11:03 ft_putchar_fd.c
+-rw-r--r-- 1 rleseur 2021_paris  1592 Jun 20 14:35 ft_putchar_fd.o
+-rw-r--r-- 1 rleseur 2021_paris  1060 Jun  8 11:03 ft_putendl_fd.c
+-rw-r--r-- 1 rleseur 2021_paris  1808 Jun 20 14:35 ft_putendl_fd.o
+-rw-r--r-- 1 rleseur 2021_paris  1218 Jun  8 11:03 ft_putnbr_fd.c
+-rw-r--r-- 1 rleseur 2021_paris  2064 Jun 20 14:35 ft_putnbr_fd.o
+-rw-r--r-- 1 rleseur 2021_paris  1038 Jun  8 11:03 ft_putstr_fd.c
+-rw-r--r-- 1 rleseur 2021_paris  1648 Jun 20 14:35 ft_putstr_fd.o
+-rw-r--r-- 1 rleseur 2021_paris  2172 Jun  8 11:03 ft_split.c
+-rw-r--r-- 1 rleseur 2021_paris  2840 Jun 20 14:35 ft_split.o
+-rw-r--r-- 1 rleseur 2021_paris  1169 Jun  8 11:03 ft_strchr.c
+-rw-r--r-- 1 rleseur 2021_paris  1480 Jun 20 14:35 ft_strchr.o
+-rw-r--r-- 1 rleseur 2021_paris  1021 Jun  8 11:53 ft_strcmp.c
+-rw-r--r-- 1 rleseur 2021_paris  1504 Jun 20 14:35 ft_strcmp.o
+-rw-r--r-- 1 rleseur 2021_paris  1480 Jun 20 12:18 ft_strdjoin.c
+-rw-r--r-- 1 rleseur 2021_paris  2096 Jun 20 14:35 ft_strdjoin.o
+-rw-r--r-- 1 rleseur 2021_paris  1185 Jun  8 11:03 ft_strdup.c
+-rw-r--r-- 1 rleseur 2021_paris  1744 Jun 20 14:35 ft_strdup.o
+-rw-r--r-- 1 rleseur 2021_paris  1063 Jun  8 11:03 ft_striteri.c
+-rw-r--r-- 1 rleseur 2021_paris  1464 Jun 20 14:35 ft_striteri.o
+-rw-r--r-- 1 rleseur 2021_paris  1406 Jun  8 11:03 ft_strjoin.c
+-rw-r--r-- 1 rleseur 2021_paris  2024 Jun 20 14:35 ft_strjoin.o
+-rw-r--r-- 1 rleseur 2021_paris  1224 Jun  8 11:03 ft_strlcat.c
+-rw-r--r-- 1 rleseur 2021_paris  1528 Jun 20 14:35 ft_strlcat.o
+-rw-r--r-- 1 rleseur 2021_paris  1248 Jun  8 11:03 ft_strlcpy.c
+-rw-r--r-- 1 rleseur 2021_paris  1640 Jun 20 14:35 ft_strlcpy.o
+-rw-r--r-- 1 rleseur 2021_paris  1009 Jun  8 11:03 ft_strlen.c
+-rw-r--r-- 1 rleseur 2021_paris  1408 Jun 20 14:35 ft_strlen.o
+-rw-r--r-- 1 rleseur 2021_paris  1215 Jun  8 11:03 ft_strmapi.c
+-rw-r--r-- 1 rleseur 2021_paris  1784 Jun 20 14:35 ft_strmapi.o
+-rw-r--r-- 1 rleseur 2021_paris  1220 Jun  8 11:03 ft_strncmp.c
+-rw-r--r-- 1 rleseur 2021_paris  1552 Jun 20 14:35 ft_strncmp.o
+-rw-r--r-- 1 rleseur 2021_paris  1397 Jun  8 11:03 ft_strnstr.c
+-rw-r--r-- 1 rleseur 2021_paris  1736 Jun 20 14:35 ft_strnstr.o
+-rw-r--r-- 1 rleseur 2021_paris  1203 Jun  8 11:03 ft_strrchr.c
+-rw-r--r-- 1 rleseur 2021_paris  1512 Jun 20 14:35 ft_strrchr.o
+-rw-r--r-- 1 rleseur 2021_paris  1305 Jun  8 11:03 ft_strtrim.c
+-rw-r--r-- 1 rleseur 2021_paris  2128 Jun 20 14:35 ft_strtrim.o
+-rw-r--r-- 1 rleseur 2021_paris  1300 Jun  8 11:03 ft_substr.c
+-rw-r--r-- 1 rleseur 2021_paris  2064 Jun 20 14:35 ft_substr.o
+-rw-r--r-- 1 rleseur 2021_paris   977 Jun  8 11:03 ft_tolower.c
+-rw-r--r-- 1 rleseur 2021_paris  1400 Jun 20 14:35 ft_tolower.o
+-rw-r--r-- 1 rleseur 2021_paris   977 Jun  8 11:03 ft_toupper.c
+-rw-r--r-- 1 rleseur 2021_paris  1400 Jun 20 14:35 ft_toupper.o
+-rw-r--r-- 1 rleseur 2021_paris 63316 Jun 20 14:35 libft.a
+-rw-r--r-- 1 rleseur 2021_paris  2565 Jun 20 12:18 libft.h
+-rw-r--r-- 1 rleseur 2021_paris  1343 Jun 20 12:18 Makefile
+-rw-r--r-- 1 rleseur 2021_paris    27 Jun  8 11:03 README.md
+
+./srcs/main:
+total 16
+drwxr-xr-x 2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 9 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-rwxr-xr-x 1 rleseur 2021_paris 3071 Jun 20 12:18 main.c
+-rw-r--r-- 1 rleseur 2021_paris 1093 Jun 20 12:18 main_utils.c
+
+./srcs/parsing:
+total 84
+drwxr-xr-x 2 rleseur 2021_paris  4096 Jun 20 14:38 .
+drwxr-xr-x 9 rleseur 2021_paris  4096 Jun 20 12:18 ..
+-rw-r--r-- 1 rleseur 2021_paris  1732 Jun 13 16:52 calcul_divide_cmd.c
+-rw-r--r-- 1 rleseur 2021_paris  2348 Jun 15 18:25 checks_before_all.c
+-rw-r--r-- 1 rleseur 2021_paris  2556 Jun 20 12:19 expand.c
+-rw-r--r-- 1 rleseur 2021_paris  1649 Jun 20 12:18 expand_utils.c
+-rw-r--r-- 1 rleseur 2021_paris  2249 Jun 18 16:12 get_check_fd.c
+-rw-r--r-- 1 rleseur 2021_paris  1751 Jun 20 12:18 heredoc.c
+-rw-r--r-- 1 rleseur 2021_paris  1775 Jun 13 16:52 last_quotes.c
+-rw-r--r-- 1 rleseur 2021_paris  2114 Jun 20 14:38 last_splits.c
+-rw-r--r-- 1 rleseur 2021_paris 12288 Jun 20 14:38 .last_splits.c.swp
+-rw-r--r-- 1 rleseur 2021_paris  1745 Jun 20 12:18 lexing.c
+-rw-r--r-- 1 rleseur 2021_paris  1807 Jun 13 16:52 manage_lists_cmd.c
+-rw-r--r-- 1 rleseur 2021_paris  1574 Jun 13 16:52 manage_lists_lenv.c
+-rw-r--r-- 1 rleseur 2021_paris  1597 Jun 13 16:52 manage_lists_lexing.c
+-rw-r--r-- 1 rleseur 2021_paris  1518 Jun 13 16:52 manage_lists_regroup.c
+-rw-r--r-- 1 rleseur 2021_paris  3074 Jun 20 12:18 parsing.c
+-rw-r--r-- 1 rleseur 2021_paris  1080 Jun 13 16:52 print_error.c
+-rw-r--r-- 1 rleseur 2021_paris  2682 Jun 13 16:52 regroup.c
+
+./srcs/signals:
+total 16
+drwxr-xr-x 2 rleseur 2021_paris 4096 Jun 20 12:18 .
+drwxr-xr-x 9 rleseur 2021_paris 4096 Jun 20 12:18 ..
+-rw-r--r-- 1 rleseur 2021_paris 1542 Jun 20 12:18 signals.c
+-rw-r--r-- 1 rleseur 2021_paris 1119 Jun 20 12:18 signals_utils.c
