@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:15:15 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/20 12:15:17 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/20 21:40:37 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void		ft_list_clear_lex(t_lexing *begin_list);
 /* manage_lists_regroup.c */
 t_regroup	*ft_create_elem_reg(char *str);
 void		ft_list_push_back_reg(t_regroup **begin_list, char *str);
-void		ft_list_clear_reg(t_regroup *begin_list);
+void		ft_list_clear_reg(t_regroup *begin_list, int clear_str);
 
 /* manage_lists_cmd.c */
 t_cmd		*ft_create_elem_cmd(char **av, int fd_in);

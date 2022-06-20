@@ -6,20 +6,24 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 10:28:13 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/20 12:14:13 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/20 21:40:54 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+extern int	g_status;
 
 static t_cmd	*get_cmd_and_heredoc(t_regroup *reg, t_lenv *lenv)
 {
 	int			fd;
 	t_cmd		*cmd;
 	char		**av;
+	t_regroup	*ret;
 
 	cmd = NULL;
 	av = NULL;
+	ret = reg;
 	while (reg)
 	{
 		fd = -1;
@@ -27,6 +31,14 @@ static t_cmd	*get_cmd_and_heredoc(t_regroup *reg, t_lenv *lenv)
 		if (!av)
 			return (0);
 		reg = divide_cmd(reg, &av, &fd, lenv);
+		if (g_status == 42)
+		{
+			ft_list_clear_reg(ret, 1);
+			if (cmd)
+				ft_list_clear_cmd(cmd);
+			g_status = 130;
+			return (NULL);
+		}
 		ft_list_push_back_cmd(&cmd, av, fd);
 		av = NULL;
 		if (reg)
@@ -119,6 +131,8 @@ t_cmd	*parsing(t_regroup *reg, t_lenv *lenv)
 	if (!reg)
 		return (0);
 	cmd = get_cmd_and_heredoc(reg, lenv);
+	if (!cmd)
+		return (0);
 	cmd = get_in_out_file(cmd, reg);
 	tmp = cmd;
 	while (tmp->next)
@@ -129,6 +143,6 @@ t_cmd	*parsing(t_regroup *reg, t_lenv *lenv)
 	cmd = get_expands(cmd, lenv);
 	cmd = last_splits(cmd);
 	cmd = supp_useless_quotes(cmd);
-	ft_list_clear_reg(reg);
+	ft_list_clear_reg(reg, 0);
 	return (cmd);
 }
