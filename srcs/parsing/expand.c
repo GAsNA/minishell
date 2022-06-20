@@ -6,13 +6,15 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:13:02 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/18 16:10:47 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/20 12:19:01 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char	*replace_expand(char *str, int n, char *rep)
+extern int	g_status;
+
+static char	*replace_expand(char *str, int n, char *rep, int inte)
 {
 	int		i;
 	int		j;
@@ -23,8 +25,13 @@ static char	*replace_expand(char *str, int n, char *rep)
 	if (!n_str)
 		return (0);
 	i = -1;
-	while (str[++i] && str[i] != '$')
+	while (str[++i])
+	{
+		if (str[i] == '$' && ((inte && str[i + 1] == '?')
+				|| is_valid_iden(str[i + 1])))
+			break ;
 		n_str[i] = str[i];
+	}
 	j = -1;
 	while (rep[++j])
 		n_str[i + j] = rep[j];
@@ -35,53 +42,54 @@ static char	*replace_expand(char *str, int n, char *rep)
 	return (n_str);
 }
 
-char	*make_expand(char *str, int n, t_lenv *lenv)
+char	*make_expand(char *str, int n, t_lenv *lenv, int inte)
 {
-	int		i;
+	int	size;
+	int	i;
 
+	if (inte)
+		return (replace_expand(str, 1, ft_itoa(g_status), 1));
 	i = -1;
 	while (str[++i])
-		if (str[i] == '$')
+		if (str[i] == '$' && is_valid_iden(str[i + 1]))
 			break ;
 	while (lenv)
 	{
-		if (ft_strncmp(&str[i + 1], lenv->k, n) == 0)
+		size = ft_strlen(lenv->k) - 1;
+		if (size < n)
+			size = n;
+		if (ft_strncmp(&str[i + 1], lenv->k, size) == 0)
 			break ;
 		lenv = lenv->next;
 	}
 	if (!lenv)
-		return (replace_expand(str, n, ""));
-	return (replace_expand(str, n, lenv->v));
+		return (replace_expand(str, n, "", 0));
+	return (replace_expand(str, n, lenv->v, 0));
 }
 
 static void	prepare_expand(char	**av, t_lenv *lenv)
 {
 	int		i;
+	int		j;
 	int		k;
-	int		s_quote;
+	int		inte;
 	char	*str;
 
-	s_quote = 0;
 	if ((*av)[0] == '\'')
-		s_quote = 1;
-	i = -1;
-	k = 0;
-	while ((*av)[++i])
+		return ;
+	j = 0;
+	while (there_are_expand(&(*av)[j]))
 	{
-		if (((*av)[i] == '$' && (*av)[i + 1] != '?' && s_quote == 0 && k == 0) || k > 0)
+		inte = 0;
+		i = -1;
+		k = get_k_n(*av, &i, &inte);
+		if (k > 0 || inte)
 		{
-			if ((!(*av)[i] || (*av)[i] == ' ' || (*av)[i] == '\''
-					|| (*av)[i] == '"') && k > 0)
-				break ;
-			k++;
+			str = make_expand(*av, k, lenv, inte);
+			free(*av);
+			*av = str;
 		}
-	}
-	k--;
-	if (k > 0)
-	{
-		str = make_expand(*av, k, lenv);
-		free(*av);
-		*av = str;
+		j = i;
 	}
 }
 
