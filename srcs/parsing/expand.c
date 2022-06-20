@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:13:02 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/20 11:10:05 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/20 11:21:59 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 extern int g_status;
 
-static int	is_valid_iden(char c)
+int	is_valid_iden(char c)
 {
 	if (c == ' ' || c == '\'' || c == '"' || c == '$'
 		|| c == ':' || c == ';' || c == '-' || c == '?')
@@ -74,7 +74,7 @@ char	*make_expand(char *str, int n, t_lenv *lenv, int inte)
 	return (replace_expand(str, n, lenv->v, 0));
 }
 
-static int	there_are_expand(char *av)
+int	there_are_expand(char *av)
 {
 	int	i;
 
