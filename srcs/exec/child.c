@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 13:14:56 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/20 06:02:11 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/20 14:42:47 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static void	launch_execve(t_data *data, t_cmd *cmd)
 		free(path);
 }
 
-int	ft_exec_child(t_cmd *cmd, t_data *data)
+int	ft_exec_child(t_cmd *cmds, t_cmd *cmd, t_data *data)
 {
 	char	*str;
 
@@ -91,7 +91,7 @@ int	ft_exec_child(t_cmd *cmd, t_data *data)
 		g_status = 127;
 		free(str);
 	}
-	free_all(data, cmd);
+	free_all(data, cmds);
 	ft_close();
 	if (errno == EACCES)
 		g_status = 126;

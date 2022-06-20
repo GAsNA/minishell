@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 10:24:43 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/15 18:13:24 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/20 14:40:38 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,17 +109,19 @@ static int	ft_is_integer(char *av)
 
 int	ft_exit(char **cmd, t_lenv **env)
 {
+	char	*tmp;
+
 	(void)env;
 	if (cmd[0] && cmd[1] && cmd[2] && ft_is_integer(cmd[1]))
-	{
-		printf("exit\n");
-		printf("Rovidshell: exit: too many arguments\n");
-		return (1);
-	}
+		return (write(2, "exit\nRovidshell: exit: too many arguments\n",
+				ft_strlen("Exit\nRovidshell: exit: too many arguments\n")), 1);
 	else if (cmd[0] && cmd[1] && ft_is_integer(cmd[1]) == 0)
 	{
-		printf("exit\n");
-		printf("Rovidshell: exit: %s: numeric argument is required\n", cmd[1]);
+		tmp = ft_strdjoin("exit\nRovidshell: exit:", cmd[1],
+				": numeric argument is required\n");
+		if (!tmp)
+			return (-1);
+		write (2, tmp, ft_strlen(tmp));
 		exit (2);
 	}
 	else if (cmd[0] && cmd[1] && ft_is_integer(cmd[1]))
