@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 13:14:56 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/19 15:03:10 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/20 06:02:11 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,8 @@ void	wait_childs(t_cmd *cmd)
 			waitpid(cmd->pid, &g_status, 0);
 		if (WIFEXITED(g_status))
 			g_status = WEXITSTATUS(g_status);
-		else if (g_status != 131)
-			g_status = 130;
+	//	else if (g_status != 131)
+	//		g_status = 130;
 		cmd = cmd->next;
 	}
 }
