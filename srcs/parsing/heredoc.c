@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 13:31:59 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/20 21:36:08 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/20 22:01:24 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,19 @@ static void	write_in_file(char *line, t_lenv *lenv, int fd)
 	free(line);
 }
 
+static int	end_check(int fd, int fd2, char *line)
+{
+	free(line);
+	close(fd);
+	if (g_status == 42)
+	{
+		dup2(fd2, 0);
+		close(fd2);
+		return (0);
+	}
+	return (1);
+}
+
 int	make_heredoc(char *s, t_lenv *lenv)
 {
 	int		fd;
@@ -80,13 +93,7 @@ int	make_heredoc(char *s, t_lenv *lenv)
 			line = NULL;
 		}
 	}
-	free(line);
-	close(fd);
-	if (g_status == 42)
-	{
-		dup2(fd2, 0);
-		close(fd2);
+	if (!end_check(fd, fd2, line))
 		return (-1);
-	}
 	return (open(file, O_RDWR, 0666));
 }

@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:15:15 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/20 21:40:37 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/20 21:52:48 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,12 @@ t_regroup	*get_regroup(t_lexing *lex);
 
 /* parsing.c */
 t_cmd		*parsing(t_regroup *reg, t_lenv *lenv);
+
+/* parsing_utils.c */
+int			check_status(t_regroup *reg, t_cmd *cmd);
+t_regroup	*free_and_pass(t_regroup *reg, int redir);
+t_regroup	*make_redir(t_regroup *reg, int *fd_in, int *fd_out,
+				int *to_free);
 
 /* last_splits.c */
 t_cmd		*last_splits(t_cmd *cmd);
