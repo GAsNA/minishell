@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:15:15 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/20 12:19:47 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/20 12:20:55 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,7 @@ void		check_fd_out(int *fd_in, int *fd_out, t_regroup *reg, int *to_free);
 void		check_fd_in(int *fd_in, int *fd_out, t_regroup *reg, int *to_free);
 
 /* expand.c */
-<<<<<<< HEAD
-char		*make_expand(char *str, int n, t_lenv *lenv);
-=======
 char		*make_expand(char *str, int n, t_lenv *lenv, int inte);
->>>>>>> parsing_details
 t_cmd		*get_expands(t_cmd *cmd, t_lenv *lenv);
 
 /* expand_utils.c */
