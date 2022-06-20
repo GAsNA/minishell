@@ -6,37 +6,43 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 13:31:59 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/18 15:05:47 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/20 11:44:17 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	get_n(char *line)
+static void	write_in_file(char *line, t_lenv *lenv, int fd)
 {
-	int	i;
-	int	n;
+	int		i;
+	int		j;
+	int		n;
+	int		inte;
+	char	*new_line;
 
-	i = -1;
-	n = 0;
-	while (line[++i])
+	j = 0;
+	while (there_are_expand(&line[j]))
 	{
-		if ((line[i] == '$' && line[i + 1] != '?' && n == 0) || n > 0)
+		inte = 0;
+		i = -1;
+		n = get_k_n(line, &i, &inte);
+		if (n > 0 || inte)
 		{
-			if ((!line[i] || line[i] == ' ' || line[i] == '\'' || line[i] == '"') && n > 0)
-				break ;
-			n++;
+			new_line = make_expand(line, n, lenv, inte);
+			free(line);
+			line = new_line;
 		}
+		j = i;
 	}
-	return (n - 1);
+	write(fd, line, ft_strlen(line));
+	write(fd, "\n", 1);
+	free(line);
 }
 
 int	make_heredoc(char *s, t_lenv *lenv)
 {
 	int		fd;
-	int		n;
 	char	*line;
-	char	*new_line;
 	char	*file;
 
 	file = "/tmp/.tmp.heredoc";
@@ -47,16 +53,7 @@ int	make_heredoc(char *s, t_lenv *lenv)
 		line = readline(">");
 		if (line && ft_strcmp(line, s) != 0)
 		{
-			n = get_n(line);
-			if (n > 0)
-			{
-				new_line = make_expand(line, n, lenv);
-				free(line);
-				line = new_line;
-			}
-			write(fd, line, ft_strlen(line));
-			write(fd, "\n", 1);
-			free(line);
+			write_in_file(line, lenv, fd);
 			line = NULL;
 		}
 	}

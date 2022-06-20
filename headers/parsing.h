@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:15:15 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/18 16:11:05 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/20 12:20:55 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,9 @@ t_regroup	*get_regroup(t_lexing *lex);
 /* parsing.c */
 t_cmd		*parsing(t_regroup *reg, t_lenv *lenv);
 
+/* last_splits.c */
+t_cmd		*last_splits(t_cmd *cmd);
+
 /* last_quotes.c */
 t_cmd		*supp_useless_quotes(t_cmd *cmd);
 
@@ -88,8 +91,13 @@ void		check_fd_out(int *fd_in, int *fd_out, t_regroup *reg, int *to_free);
 void		check_fd_in(int *fd_in, int *fd_out, t_regroup *reg, int *to_free);
 
 /* expand.c */
-char		*make_expand(char *str, int n, t_lenv *lenv);
+char		*make_expand(char *str, int n, t_lenv *lenv, int inte);
 t_cmd		*get_expands(t_cmd *cmd, t_lenv *lenv);
+
+/* expand_utils.c */
+int			is_valid_iden(char c);
+int			there_are_expand(char *av);
+int			get_k_n(char *line, int *i, int *inte);
 
 /* heredoc.c */
 int			make_heredoc(char *s, t_lenv *lenv);
