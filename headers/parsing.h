@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:15:15 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/13 14:54:16 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/18 20:21:02 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void		check_fd_out(int *fd_in, int *fd_out, t_regroup *reg, int *to_free);
 void		check_fd_in(int *fd_in, int *fd_out, t_regroup *reg, int *to_free);
 
 /* expand.c */
-char		*make_expand(char *str, int n, t_lenv *lenv); // n = size $ ($USER == 4)
+char		*make_expand(char *str, int n, t_lenv *lenv, int inte);
 t_cmd		*get_expands(t_cmd *cmd, t_lenv *lenv);
 
 /* heredoc.c */

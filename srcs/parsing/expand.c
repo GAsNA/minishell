@@ -6,11 +6,13 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:13:02 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/18 19:31:49 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/20 11:10:05 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+extern int g_status;
 
 static int	is_valid_iden(char c)
 {
@@ -20,7 +22,7 @@ static int	is_valid_iden(char c)
 	return (1);
 }
 
-static char	*replace_expand(char *str, int n, char *rep)
+static char	*replace_expand(char *str, int n, char *rep, int inte)
 {
 	int		i;
 	int		j;
@@ -33,7 +35,7 @@ static char	*replace_expand(char *str, int n, char *rep)
 	i = -1;
 	while (str[++i])
 	{
-		if (str[i] == '$' && is_valid_iden(str[i + 1]))
+		if (str[i] == '$' && ((inte && str[i + 1] == '?') || is_valid_iden(str[i + 1])))
 			break;
 		n_str[i] = str[i];
 	}
@@ -47,11 +49,13 @@ static char	*replace_expand(char *str, int n, char *rep)
 	return (n_str);
 }
 
-char	*make_expand(char *str, int n, t_lenv *lenv)
+char	*make_expand(char *str, int n, t_lenv *lenv, int inte)
 {
 	int	size;
 	int	i;
-
+	
+	if (inte)
+		return (replace_expand(str, 1, ft_itoa(g_status), 1));
 	i = -1;
 	while (str[++i])
 		if (str[i] == '$' && is_valid_iden(str[i + 1]))
@@ -66,8 +70,8 @@ char	*make_expand(char *str, int n, t_lenv *lenv)
 		lenv = lenv->next;
 	}
 	if (!lenv)
-		return (replace_expand(str, n, ""));
-	return (replace_expand(str, n, lenv->v));
+		return (replace_expand(str, n, "", 0));
+	return (replace_expand(str, n, lenv->v, 0));
 }
 
 static int	there_are_expand(char *av)
@@ -76,7 +80,7 @@ static int	there_are_expand(char *av)
 
 	i = -1;
 	while (av[++i])
-		if (av[i] == '$' && av[i + 1] && is_valid_iden(av[i + 1]))
+		if (av[i] == '$' && av[i + 1] && (av[i + 1] == '?' || is_valid_iden(av[i + 1])))
 			return (1);
 	return (0);
 }
@@ -86,6 +90,7 @@ static void	prepare_expand(char	**av, t_lenv *lenv)
 	int		i;
 	int		j;
 	int		k;
+	int		inte;
 	char	*str;
 
 	if ((*av)[0] == '\'')
@@ -93,6 +98,7 @@ static void	prepare_expand(char	**av, t_lenv *lenv)
 	j = 0;
 	while (there_are_expand(&(*av)[j]))
 	{
+		inte = 0;
 		i = -1;
 		k = 0;
 		while ((*av)[++i])
@@ -103,11 +109,16 @@ static void	prepare_expand(char	**av, t_lenv *lenv)
 					break ;
 				k++;
 			}
+			else if ((*av)[i] == '$' && (*av)[i + 1] == '?')
+			{
+				inte = 1;
+				break;
+			}
 		}
 		k--;
-		if (k > 0)
+		if (k > 0 || inte)
 		{
-			str = make_expand(*av, k, lenv);
+			str = make_expand(*av, k, lenv, inte);
 			free(*av);
 			*av = str;
 		}
