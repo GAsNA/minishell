@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:13:02 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/20 12:19:01 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/20 16:10:01 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ static void	prepare_expand(char	**av, t_lenv *lenv)
 			*av = str;
 		}
 		j = i;
+		if (j >= (int)ft_strlen(*av) - 1)
+			break ;
 	}
 }
 
