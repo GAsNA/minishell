@@ -6,13 +6,13 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:13:02 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/20 11:21:59 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/20 11:46:25 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-extern int g_status;
+extern int	g_status;
 
 int	is_valid_iden(char c)
 {
@@ -35,8 +35,9 @@ static char	*replace_expand(char *str, int n, char *rep, int inte)
 	i = -1;
 	while (str[++i])
 	{
-		if (str[i] == '$' && ((inte && str[i + 1] == '?') || is_valid_iden(str[i + 1])))
-			break;
+		if (str[i] == '$' && ((inte && str[i + 1] == '?')
+				|| is_valid_iden(str[i + 1])))
+			break ;
 		n_str[i] = str[i];
 	}
 	j = -1;
@@ -53,7 +54,7 @@ char	*make_expand(char *str, int n, t_lenv *lenv, int inte)
 {
 	int	size;
 	int	i;
-	
+
 	if (inte)
 		return (replace_expand(str, 1, ft_itoa(g_status), 1));
 	i = -1;
@@ -80,9 +81,33 @@ int	there_are_expand(char *av)
 
 	i = -1;
 	while (av[++i])
-		if (av[i] == '$' && av[i + 1] && (av[i + 1] == '?' || is_valid_iden(av[i + 1])))
+		if (av[i] == '$' && av[i + 1] && (av[i + 1] == '?'
+				|| is_valid_iden(av[i + 1])))
 			return (1);
 	return (0);
+}
+
+int	get_k_n(char *line, int *i, int *inte)
+{
+	int	n;
+
+	n = 0;
+	while (line[++(*i)])
+	{
+		if ((line[(*i)] == '$' && line[(*i) + 1]
+				&& is_valid_iden(line[(*i) + 1]) && n == 0) || n > 0)
+		{
+			if ((!line[(*i)] || !is_valid_iden(line[(*i)])) && n > 0)
+				break ;
+			n++;
+		}
+		else if (line[(*i)] == '$' && line[(*i) + 1] == '?')
+		{
+			*inte = 1;
+			break ;
+		}
+	}
+	return (n - 1);
 }
 
 static void	prepare_expand(char	**av, t_lenv *lenv)
@@ -100,22 +125,7 @@ static void	prepare_expand(char	**av, t_lenv *lenv)
 	{
 		inte = 0;
 		i = -1;
-		k = 0;
-		while ((*av)[++i])
-		{
-			if (((*av)[i] == '$' && (*av)[i + 1] && is_valid_iden((*av)[i + 1]) && k == 0) || k > 0)
-			{
-				if ((!(*av)[i] || !is_valid_iden((*av)[i])) && k > 0)
-					break ;
-				k++;
-			}
-			else if ((*av)[i] == '$' && (*av)[i + 1] == '?')
-			{
-				inte = 1;
-				break;
-			}
-		}
-		k--;
+		k = get_k_n(*av, &i, &inte);
 		if (k > 0 || inte)
 		{
 			str = make_expand(*av, k, lenv, inte);

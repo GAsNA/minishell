@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 13:38:43 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/15 18:21:27 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/20 11:39:26 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static enum e_type	get_type(char c)
 		return (LITERAL);
 }
 
-static int not_all_spaces(char *line)
+static int	not_all_spaces(char *line)
 {
 	int	i;
 

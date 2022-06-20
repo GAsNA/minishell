@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 10:28:13 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/18 20:00:52 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/20 12:07:19 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,22 +60,26 @@ static t_regroup	*make_redir(t_regroup *reg, int *fd_in, int *fd_out,
 {
 	int	redir;
 
-	redir = 0;
-	if (ft_strcmp(reg->str, ">") == 0 || ft_strcmp(reg->str, ">>") == 0)
+	while (reg && reg->str && ft_strcmp(reg->str, "|") != 0
+		&& *to_free == 0)
 	{
-		check_fd_out(fd_in, fd_out, reg, to_free);
-		free(reg->str);
-		redir = 1;
-		reg = reg->next;
+		redir = 0;
+		if (ft_strcmp(reg->str, ">") == 0 || ft_strcmp(reg->str, ">>") == 0)
+		{
+			check_fd_out(fd_in, fd_out, reg, to_free);
+			free(reg->str);
+			redir = 1;
+			reg = reg->next;
+		}
+		else if (ft_strcmp(reg->str, "<") == 0)
+		{
+			check_fd_in(fd_in, fd_out, reg, to_free);
+			free(reg->str);
+			redir = 1;
+			reg = reg->next;
+		}
+		reg = free_and_pass(reg, redir);
 	}
-	else if (ft_strcmp(reg->str, "<") == 0)
-	{
-		check_fd_in(fd_in, fd_out, reg, to_free);
-		free(reg->str);
-		redir = 1;
-		reg = reg->next;
-	}
-	reg = free_and_pass(reg, redir);
 	return (reg);
 }
 
@@ -86,8 +90,7 @@ static t_cmd	*get_in_out_file(t_cmd *cmd, t_regroup *reg)
 	rt = cmd;
 	while (reg && cmd)
 	{
-		while (reg && reg->str && ft_strcmp(reg->str, "|") != 0 && cmd->to_free == 0)
-			reg = make_redir(reg, &cmd->fd_in, &cmd->fd_out, &cmd->to_free);
+		reg = make_redir(reg, &cmd->fd_in, &cmd->fd_out, &cmd->to_free);
 		if (cmd->to_free == 1)
 		{
 			while (reg && ft_strcmp(reg->str, "|") != 0)
@@ -119,14 +122,12 @@ static int	get_quotes(char *s)
 	return (0);
 }
 
-static char	**get_cmd_after_split(char **cmd)
+static int	get_size(char **cmd)
 {
 	int		i;
 	int		j;
-	int		k;
 	int		size;
 	char	**split;
-	char	**new_cmd;
 
 	size = 0;
 	i = -1;
@@ -142,7 +143,18 @@ static char	**get_cmd_after_split(char **cmd)
 				size++;
 		}
 	}
-	new_cmd = malloc((size + 1) * sizeof(char *));
+	return (size);
+}
+
+static char	**get_cmd_after_split(char **cmd)
+{
+	int		i;
+	int		j;
+	int		k;
+	char	**split;
+	char	**new_cmd;
+
+	new_cmd = malloc((get_size(cmd) + 1) * sizeof(char *));
 	if (!new_cmd)
 		return (0);
 	i = -1;
@@ -160,16 +172,34 @@ static char	**get_cmd_after_split(char **cmd)
 		}
 	}
 	new_cmd[j + 1] = 0;
-	i = 1;
 	return (new_cmd);
+}
+
+static t_cmd	*last_splits(t_cmd *cmd)
+{
+	int		i;
+	char	**tmp_char;
+	t_cmd	*ret;
+
+	ret = cmd;
+	while (cmd)
+	{
+		i = -1;
+		tmp_char = get_cmd_after_split(cmd->cmd);
+		i = -1;
+		while (cmd->cmd[++i])
+			free(cmd->cmd[i]);
+		free(cmd->cmd);
+		cmd->cmd = tmp_char;
+		cmd = cmd->next;
+	}
+	return (ret);
 }
 
 t_cmd	*parsing(t_regroup *reg, t_lenv *lenv)
 {
 	t_cmd	*cmd;
 	t_cmd	*tmp;
-	int		i;
-	char	**tmp_char;
 
 	if (!reg)
 		return (0);
@@ -182,18 +212,7 @@ t_cmd	*parsing(t_regroup *reg, t_lenv *lenv)
 		tmp = tmp->next;
 	}
 	cmd = get_expands(cmd, lenv);
-	tmp = cmd;
-	while (tmp)
-	{
-		i = -1;
-		tmp_char = get_cmd_after_split(tmp->cmd);
-		i = -1;
-		while (tmp->cmd[++i])
-			free(tmp->cmd[i]);
-		free(tmp->cmd);
-		tmp->cmd = tmp_char;
-		tmp = tmp->next;
-	}
+	cmd = last_splits(cmd);
 	cmd = supp_useless_quotes(cmd);
 	ft_list_clear_reg(reg);
 	return (cmd);

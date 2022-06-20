@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:15:15 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/20 11:22:26 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/20 11:47:01 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void		check_fd_in(int *fd_in, int *fd_out, t_regroup *reg, int *to_free);
 /* expand.c */
 int			is_valid_iden(char c);
 int			there_are_expand(char *av);
+int			get_k_n(char *line, int *i, int *inte);
 char		*make_expand(char *str, int n, t_lenv *lenv, int inte);
 t_cmd		*get_expands(t_cmd *cmd, t_lenv *lenv);
 
