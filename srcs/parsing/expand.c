@@ -6,21 +6,13 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:13:02 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/20 11:46:25 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/20 12:11:08 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 extern int	g_status;
-
-int	is_valid_iden(char c)
-{
-	if (c == ' ' || c == '\'' || c == '"' || c == '$'
-		|| c == ':' || c == ';' || c == '-' || c == '?')
-		return (0);
-	return (1);
-}
 
 static char	*replace_expand(char *str, int n, char *rep, int inte)
 {
@@ -73,41 +65,6 @@ char	*make_expand(char *str, int n, t_lenv *lenv, int inte)
 	if (!lenv)
 		return (replace_expand(str, n, "", 0));
 	return (replace_expand(str, n, lenv->v, 0));
-}
-
-int	there_are_expand(char *av)
-{
-	int	i;
-
-	i = -1;
-	while (av[++i])
-		if (av[i] == '$' && av[i + 1] && (av[i + 1] == '?'
-				|| is_valid_iden(av[i + 1])))
-			return (1);
-	return (0);
-}
-
-int	get_k_n(char *line, int *i, int *inte)
-{
-	int	n;
-
-	n = 0;
-	while (line[++(*i)])
-	{
-		if ((line[(*i)] == '$' && line[(*i) + 1]
-				&& is_valid_iden(line[(*i) + 1]) && n == 0) || n > 0)
-		{
-			if ((!line[(*i)] || !is_valid_iden(line[(*i)])) && n > 0)
-				break ;
-			n++;
-		}
-		else if (line[(*i)] == '$' && line[(*i) + 1] == '?')
-		{
-			*inte = 1;
-			break ;
-		}
-	}
-	return (n - 1);
 }
 
 static void	prepare_expand(char	**av, t_lenv *lenv)

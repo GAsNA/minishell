@@ -67,10 +67,12 @@ SRCS			=	main.c					\
 					lexing.c				\
 					regroup.c				\
 					parsing.c				\
+					last_splits.c			\
 					last_quotes.c			\
 					calcul_divide_cmd.c		\
 					get_check_fd.c			\
 					expand.c				\
+					expand_utils.c			\
 					heredoc.c				\
 					print_error.c			\
 					manage_lists_lexing.c	\
