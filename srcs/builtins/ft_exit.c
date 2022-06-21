@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 10:24:43 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/20 14:40:38 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/21 17:02:02 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "../../headers/builtins.h"
 #include "../libft/libft.h"
 #include <limits.h>
+
+extern int	g_status;
 
 static long long int	ft_atoll(const char *nptr)
 {
@@ -81,7 +83,7 @@ static int	get_exit_exit(char *av)
 	return (j);
 }
 
-static int	ft_is_integer(char *av)
+int	ft_is_integer(char *av)
 {
 	int						i;
 	int						len;
@@ -107,31 +109,26 @@ static int	ft_is_integer(char *av)
 	return (len);
 }
 
-int	ft_exit(char **cmd, t_lenv **env)
+int	ft_exit(char **cmd, t_data *data, t_cmd *cmds, int fork)
 {
-	char	*tmp;
+	int		status;
 
-	(void)env;
-	if (cmd[0] && cmd[1] && cmd[2] && ft_is_integer(cmd[1]))
-		return (write(2, "exit\nRovidshell: exit: too many arguments\n",
-				ft_strlen("Exit\nRovidshell: exit: too many arguments\n")), 1);
-	else if (cmd[0] && cmd[1] && ft_is_integer(cmd[1]) == 0)
+	if (no_exit_in_error(cmd, fork) == 1)
 	{
-		tmp = ft_strdjoin("exit\nRovidshell: exit:", cmd[1],
-				": numeric argument is required\n");
-		if (!tmp)
-			return (-1);
-		write (2, tmp, ft_strlen(tmp));
-		exit (2);
+		g_status = 1;
+		return (1);
 	}
+	else if (exit_in_error(cmd, data, cmds, fork) == 2)
+		exit (2);
 	else if (cmd[0] && cmd[1] && ft_is_integer(cmd[1]))
+		status = get_exit_exit(cmd[1]);
+	else
+		status = 0;
+	if (fork == 0)
 	{
 		printf("exit\n");
-		exit (get_exit_exit(cmd[1]));
+		free_all(data, cmds);
+		exit (status);
 	}
-	else
-	{
-		printf("Exit\n");
-		exit (0);
-	}
+	return (status);
 }

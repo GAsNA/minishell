@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 12:40:37 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/20 14:41:44 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/21 08:58:12 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int		ft_prepare_child(t_cmd *tmp);
 int		no_fork_allowed(char **cmd);
 int		ft_exec_child(t_cmd *cmds, t_cmd *cmd, t_data *data);
 void	wait_childs(t_cmd *cmd);
-int		launch_builtin(t_cmd *cmd, t_data *data);
+int		launch_builtin(t_cmd *cmd, t_data *data, t_cmd *cmds, int fork);
 
 //	Exec utils
 char	*try_access_path(char *cmd, char **paths, int i);

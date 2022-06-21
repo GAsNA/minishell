@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 12:01:24 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/19 16:12:03 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/21 17:02:45 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ int		ft_strnlen(char *str);
 int		ft_pwd(char **cmd, t_lenv **env);
 int		ft_cd(char **cmd, t_lenv **env);
 int		ft_echo(char **cmd, t_lenv **env);
-int		ft_exit(char **cmd, t_lenv **env);
+int		ft_exit(char **cmd, t_data *data, t_cmd *cmds, int fork);
+int		exit_in_error(char **cmd, t_data *data, t_cmd *cmds, int fork);
+int		no_exit_in_error(char **cmd, int fork);
 int		ft_export(char **cmd, t_data *data);
 int		is_bad_identifier(char c);
 int		check_key(char *key);
@@ -68,4 +70,5 @@ int		update_old_pwd(t_lenv **env);
 char	*get_var_from_env(t_lenv **env, char *str, size_t n);
 int		nb_isminus(int nb);
 int		get_exit(int nb);
+int		ft_is_integer(char *av);
 #endif

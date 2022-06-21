@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 13:14:56 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/20 14:42:47 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/21 16:40:42 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	ft_exec_child(t_cmd *cmds, t_cmd *cmd, t_data *data)
 	{
 	}
 	else if (is_builtin(cmd->cmd))
-		launch_builtin(cmd, data);
+		launch_builtin(cmd, data, cmds, 1);
 	else if (cmd->cmd[0])
 	{
 		handle_signals_exec(data);
@@ -106,8 +106,6 @@ void	wait_childs(t_cmd *cmd)
 			waitpid(cmd->pid, &g_status, 0);
 		if (WIFEXITED(g_status))
 			g_status = WEXITSTATUS(g_status);
-	//	else if (g_status != 131)
-	//		g_status = 130;
 		cmd = cmd->next;
 	}
 }

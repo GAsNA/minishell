@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:38:45 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/20 14:40:36 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/21 16:36:09 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_redir_pipe(t_cmd *cmd)
 	return (1);
 }
 
-int	launch_builtin(t_cmd *cmd, t_data *data)
+int	launch_builtin(t_cmd *cmd, t_data *data, t_cmd *cmds, int fork)
 {
 	if (ft_strncmp(cmd->cmd[0], "cd", ft_strlen("cd\0")) == 0)
 		g_status = ft_cd(cmd->cmd, &data->env);
@@ -42,7 +42,7 @@ int	launch_builtin(t_cmd *cmd, t_data *data)
 	else if (ft_strncmp(cmd->cmd[0], "unset", ft_strlen("unset\0")) == 0)
 		g_status = ft_unset(cmd->cmd, &data->env);
 	else if (ft_strncmp(cmd->cmd[0], "exit", ft_strlen("exit\0")) == 0)
-		g_status = ft_exit(cmd->cmd, &data->env);
+		g_status = ft_exit(cmd->cmd, data, cmds, fork);
 	else if (ft_strncmp(cmd->cmd[0], "export", ft_strlen("export\0")) == 0)
 		g_status = ft_export(cmd->cmd, data);
 	else if (ft_strncmp(cmd->cmd[0], "echo", ft_strlen("echo\0")) == 0)
@@ -115,13 +115,11 @@ void	ft_loop_cmds(t_cmd *cmds, t_data *data)
 				return ;
 			}
 		}
-		if (tmp->next == NULL && no_fork_allowed(tmp->cmd) == 1)
-			launch_builtin(tmp, data);
+		if (tmp->prev == NULL && tmp->next == NULL && is_builtin(tmp->cmd) == 1)
+			launch_builtin(tmp, data, cmds, 0);
 		else
-		{
 			if (ft_fork(cmds, tmp, data) == 0)
 				return ;
-		}
 		tmp = tmp->next;
 	}
 	tmp = cmds;

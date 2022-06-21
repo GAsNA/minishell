@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 14:08:48 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/13 12:55:24 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/21 10:48:22 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	ft_list_push_back_cmd(t_cmd **begin_list, char **av, int fd_in)
 		while (list->next)
 			list = list->next;
 		list->next = ft_create_elem_cmd(av, fd_in);
+		list->next->prev = list;
 	}
 	else
 		*begin_list = ft_create_elem_cmd(av, fd_in);

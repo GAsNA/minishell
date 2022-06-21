@@ -49,6 +49,7 @@ SRCS			=	main.c					\
 					ft_env.c				\
 					ft_unset.c				\
 					ft_exit.c				\
+					ft_exit_error.c			\
 					ft_export.c				\
 					ft_export_utils.c		\
 					utils.c					\
