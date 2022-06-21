@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:13:37 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/20 14:38:41 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/20 16:11:13 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ static char	**get_cmd_after_split(char **cmd)
 			k = -1;
 			while (split[++k])
 				new_cmd[++j] = split[k];
+			free(split);
 		}
 	}
 	new_cmd[j + 1] = 0;
