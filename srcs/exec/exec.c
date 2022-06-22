@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:38:45 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/22 17:41:42 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/22 21:54:48 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	launch_builtin(t_cmd *cmd, t_data *data, t_cmd *cmds, int fork)
 	else if (ft_strcmp(cmd->cmd[0], "pwd") == 0)
 		g_status = ft_pwd(cmd->cmd, &data->env);
 	else if (ft_strcmp(cmd->cmd[0], "env") == 0)
-		g_status = ft_env(cmd->cmd, &data->env);
+		g_status = ft_env(cmd->cmd, &data->env, data->min_env);
 	else if (ft_strcmp(cmd->cmd[0], "unset") == 0)
 		g_status = ft_unset(cmd->cmd, &data->env);
 	else if (ft_strcmp(cmd->cmd[0], "exit") == 0)

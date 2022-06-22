@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 12:10:30 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/22 12:42:29 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/22 21:58:58 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	print_env_error(char *s1, char *s2, char *s3)
 	return (1);
 }
 
-int	ft_env(char **cmd, t_lenv **env)
+int	ft_env(char **cmd, t_lenv **env, int hidden)
 {
 	t_lenv	*tmp;
 
@@ -39,6 +39,12 @@ int	ft_env(char **cmd, t_lenv **env)
 	}
 	while (tmp)
 	{
+		if (hidden == 1 &&
+			ft_strcmp("PATH=", tmp->k) == 0)
+		{
+			tmp = tmp->next;
+			continue ;
+		}
 		printf("%s%s\n", tmp->k, tmp->v);
 		tmp = tmp->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/22 17:28:49 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/22 21:56:07 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,10 @@ t_lenv	*get_min_env(t_data *data)
 	tmp2 = ft_strjoin("_=", getcwd(tmp, 2048));
 	free(tmp);
 	tmp = ft_strjoin(tmp2, "/Minishell");
+	ft_addback_lenv(data, ft_new_lenv(tmp));
+	free(tmp);
+	tmp = ft_strjoin("PATH=/usr/local/sbin/:",
+				"/usr/local/bin/:/usr/sbin/:/usr/bin/");
 	ft_addback_lenv(data, ft_new_lenv(tmp));
 	free(tmp);
 	free(tmp2);
