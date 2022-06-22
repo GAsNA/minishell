@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:13:02 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/22 11:12:15 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/22 12:15:03 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 extern int	g_status;
 
-static void	first_replace(char *str, char **n_str, int *i)
+static void	first_replace(char *str, char **n_str, int *i, int inte)
 {
 	while (str[++(*i)])
 	{
@@ -36,7 +36,7 @@ static char	*replace_expand(char *str, int n, char *rep, int inte)
 	if (!n_str)
 		return (0);
 	i = -1;
-	first_replace(str, &n_str, &i);
+	first_replace(str, &n_str, &i, inte);
 	j = -1;
 	while (rep[++j])
 		n_str[i + j] = rep[j];
