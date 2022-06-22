@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 12:37:38 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/22 12:39:22 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/22 14:09:55 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	make_export(t_data *data, char *cmd)
 		return ;
 	if (is_bad_identifier(cmd[0]) == 1)
 		print_export_error("Rovidshell: export: '",
-			cmd[0], "': not a valid identifier\n");
+			cmd, "': not a valid identifier\n");
 	else if (check_env_con(&data->env, k) == 1 && k && c_c(k) == 1)
 		con_var_env(&data->env, cmd + j + 1, k, ft_strlen(k) - 2);
 	else if (k && check_env_var(&data->env, k))
