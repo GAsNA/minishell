@@ -6,7 +6,7 @@
 /*   By: aasli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 10:11:36 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/20 13:21:34 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/22 10:57:41 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ static void	print_echo(char **cmd, int n)
 		{
 			g_status = get_exit(g_status);
 			status = ft_itoa(g_status);
+			if (!status)
+				return ;
 			write(1, status, ft_strlen(status));
 			if (cmd[i + n] + 2 != NULL)
 				write(1, cmd[i + n] + 2, ft_strlen(cmd[i + n] + 2));
