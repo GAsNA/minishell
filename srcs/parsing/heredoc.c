@@ -6,27 +6,13 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 13:31:59 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/22 10:58:52 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/22 11:01:31 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 extern int	g_status;
-
-static void	ctrl_c_heredoc(int signum)
-{
-	(void)signum;
-	close(0);
-	printf("\n");
-	g_status = 42;
-}
-
-static void	handle_signals_heredoc(void)
-{
-	signal(SIGINT, ctrl_c_heredoc);
-	signal(SIGQUIT, SIG_IGN);
-}
 
 static void	write_in_file(char *line, t_lenv *lenv, int fd)
 {

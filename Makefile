@@ -78,6 +78,7 @@ SRCS			=	main.c					\
 					expand.c				\
 					expand_utils.c			\
 					heredoc.c				\
+					heredoc_signals.c		\
 					print_error.c			\
 					manage_lists_lexing.c	\
 					manage_lists_regroup.c	\
