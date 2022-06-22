@@ -6,13 +6,24 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:13:02 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/22 10:25:39 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/22 11:12:15 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 extern int	g_status;
+
+static void	first_replace(char *str, char **n_str, int *i)
+{
+	while (str[++(*i)])
+	{
+		if (str[(*i)] == '$' && ((inte && str[(*i) + 1] == '?')
+				|| is_valid_iden(str[(*i) + 1])))
+			break ;
+		(*n_str)[(*i)] = str[(*i)];
+	}
+}
 
 static char	*replace_expand(char *str, int n, char *rep, int inte)
 {
@@ -25,13 +36,7 @@ static char	*replace_expand(char *str, int n, char *rep, int inte)
 	if (!n_str)
 		return (0);
 	i = -1;
-	while (str[++i])
-	{
-		if (str[i] == '$' && ((inte && str[i + 1] == '?')
-				|| is_valid_iden(str[i + 1])))
-			break ;
-		n_str[i] = str[i];
-	}
+	first_replace(str, &n_str, &i);
 	j = -1;
 	while (rep[++j])
 		n_str[i + j] = rep[j];
@@ -91,7 +96,7 @@ static void	prepare_expand(char	**av, t_lenv *lenv)
 			free(*av);
 			*av = str;
 		}
-		j = i;
+		j = i - k - 1;
 		if (j >= (int)ft_strlen(*av) - 1)
 			break ;
 	}

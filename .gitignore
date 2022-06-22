@@ -2,3 +2,4 @@
 objs/
 minishell
 srcs/libft/*.o
+srcs/libft/*.a

@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:15:15 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/22 10:26:01 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/22 11:02:30 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,9 @@ int			get_k_n(char *line, int *i, int *inte);
 
 /* heredoc.c */
 int			make_heredoc(char *s, t_lenv *lenv);
+
+/* heredoc_signals.c */
+void		handle_signals_heredoc(void);
 
 /* manage_lists_lexing.c */
 t_lexing	*ft_create_elem_lex(char letter, enum e_type type);

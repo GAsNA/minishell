@@ -6,18 +6,20 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:10:43 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/20 15:30:56 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/22 10:52:50 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+/*	if (c == ' ' || c == '\'' || c == '"' || c == '$'
+		|| c == ':' || c == ';' || c == '-' || c == '?'
+		|| c == '!')*/
 int	is_valid_iden(char c)
 {
-	if (c == ' ' || c == '\'' || c == '"' || c == '$'
-		|| c == ':' || c == ';' || c == '-' || c == '?')
-		return (0);
-	return (1);
+	if (ft_isalnum(c) || c == '_')
+		return (1);
+	return (0);
 }
 
 int	there_are_expand(char *av)

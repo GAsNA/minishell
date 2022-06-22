@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:13:37 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/20 16:11:13 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/22 11:08:32 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,13 @@ static int	get_size(char **cmd)
 	return (size);
 }
 
-static char	**get_cmd_after_split(char **cmd)
+static char	**get_new_cmd(char **cmd, char **new_cmd)
 {
 	int		i;
 	int		j;
 	int		k;
 	char	**split;
-	char	**new_cmd;
 
-	new_cmd = malloc((get_size(cmd) + 1) * sizeof(char *));
-	if (!new_cmd)
-		return (0);
 	i = -1;
 	j = -1;
 	while (cmd[++i])
@@ -78,6 +74,17 @@ static char	**get_cmd_after_split(char **cmd)
 		}
 	}
 	new_cmd[j + 1] = 0;
+	return (new_cmd);
+}
+
+static char	**get_cmd_after_split(char **cmd)
+{
+	char	**new_cmd;
+
+	new_cmd = malloc((get_size(cmd) + 1) * sizeof(char *));
+	if (!new_cmd)
+		return (0);
+	new_cmd = get_new_cmd(cmd, new_cmd);
 	return (new_cmd);
 }
 

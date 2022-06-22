@@ -6,27 +6,13 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 13:31:59 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/20 22:01:24 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/22 11:01:31 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 extern int	g_status;
-
-static void	ctrl_c_heredoc(int signum)
-{
-	(void)signum;
-	close(0);
-	printf("\n");
-	g_status = 42;
-}
-
-static void	handle_signals_heredoc(void)
-{
-	signal(SIGINT, ctrl_c_heredoc);
-	signal(SIGQUIT, SIG_IGN);
-}
 
 static void	write_in_file(char *line, t_lenv *lenv, int fd)
 {
@@ -48,7 +34,9 @@ static void	write_in_file(char *line, t_lenv *lenv, int fd)
 			free(line);
 			line = new_line;
 		}
-		j = i;
+		j = i - n - 1;
+		if (j >= (int)ft_strlen(line) - 1)
+			break ;
 	}
 	write(fd, line, ft_strlen(line));
 	write(fd, "\n", 1);
@@ -63,6 +51,19 @@ static int	end_check(int fd, int fd2, char *line)
 	{
 		dup2(fd2, 0);
 		close(fd2);
+		return (0);
+	}
+	close(fd2);
+	return (1);
+}
+
+static int	check(char *line)
+{
+	if (g_status == 42)
+		return (0);
+	if (!line)
+	{
+		printf("\n");
 		return (0);
 	}
 	return (1);
@@ -83,10 +84,8 @@ int	make_heredoc(char *s, t_lenv *lenv)
 	{
 		handle_signals_heredoc();
 		line = readline(">");
-		if (g_status == 42)
+		if (!check(line))
 			break ;
-		//if (!line[0])
-		//	continue ;
 		if (line && ft_strcmp(line, s) != 0)
 		{
 			write_in_file(line, lenv, fd);
