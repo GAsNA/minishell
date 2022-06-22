@@ -70,6 +70,7 @@ SRCS			=	main.c					\
 					lexing.c				\
 					regroup.c				\
 					parsing.c				\
+					parsing_utils.c			\
 					last_splits.c			\
 					last_quotes.c			\
 					calcul_divide_cmd.c		\
