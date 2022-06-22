@@ -6,7 +6,7 @@
 /*   By: aasli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 10:16:35 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/22 17:31:49 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/22 21:29:08 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,25 @@ static int	print_unset_error(char *s1, char *s2, char *s3)
 
 int	is_bad_identifier(char c)
 {
-	if (isalpha(c) || c == '_' || c == '#') // # ok if begin else not
+	if (isalpha(c) || c == '_' || c == '#')
 		return (0);
 	return (1);
+}
+
+static int	check_bad_identifier(char *c)
+{
+	int	i;
+	
+	if (!isalpha(c[0]) && !(c[0] == '_'))
+		return (1);
+	i = 1;
+	while(c[i])
+	{
+		if (!isalpha(c[i]) && !(c[i] == '_') && !(c[i] == '#'))
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 static int	proceed_unset(char **cmd, t_lenv **env)
@@ -42,7 +58,7 @@ static int	proceed_unset(char **cmd, t_lenv **env)
 	i = 0;
 	while (cmd[i])
 	{
-		if (is_bad_identifier(cmd[i][0]) == 1)
+		if (check_bad_identifier(cmd[i]) == 1)
 			status = print_unset_error("Rovidshell: unset: '", cmd[i],
 					"': not a valid identifier\n");
 		else if (check_env_var(env, cmd[i]) == 1)
