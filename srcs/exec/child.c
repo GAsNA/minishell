@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 13:14:56 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/21 16:40:42 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/22 14:40:37 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ int	no_fork_allowed(char **cmd)
 {
 	if (cmd[0] == NULL)
 		return (0);
-	if (ft_strncmp(cmd[0], "cd", ft_strlen("cd\0")) == 0)
+	if (ft_strcmp(cmd[0], "cd") == 0)
 		return (1);
-	if (ft_strncmp(cmd[0], "unset", ft_strlen("unset\0")) == 0)
+	if (ft_strcmp(cmd[0], "unset") == 0)
 		return (1);
-	if (ft_strncmp(cmd[0], "exit", ft_strlen("exit\0")) == 0)
+	if (ft_strcmp(cmd[0], "exit") == 0)
 		return (1);
-	if (ft_strncmp(cmd[0], "export", ft_strlen("export\0")) == 0)
+	if (ft_strcmp(cmd[0], "export") == 0)
 		return (1);
 	return (0);
 }
