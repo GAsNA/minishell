@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:15:15 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/22 18:35:54 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/22 18:57:11 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,11 @@ int			get_k_n(char *line, int *i, int *inte);
 /* heredoc.c */
 int			make_heredoc(char *s, t_lenv *lenv);
 
-/* heredoc_signals.c */
+/* heredoc_utils.c */
 void		handle_signals_heredoc(void);
+int			end_check(int fd, int fd2);
+int			check(char *line);
+void		check_quotes(char *s, int *expand);
 
 /* manage_lists_lexing.c */
 t_lexing	*ft_create_elem_lex(char letter, enum e_type type);
