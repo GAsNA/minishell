@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 12:10:30 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/22 11:16:00 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/22 12:42:29 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 static int	print_env_error(char *s1, char *s2, char *s3)
 {
-	char *tmp;
+	char	*tmp;
 
 	tmp = ft_strdjoin(s1, s2, s3);
 	if (!tmp)
@@ -34,7 +34,7 @@ int	ft_env(char **cmd, t_lenv **env)
 	if (cmd[1])
 	{
 		print_env_error("Rovidshell: env: '", cmd[1],
-							"': options or arguments are not handled\n");
+			"': options or arguments are not handled\n");
 		return (125);
 	}
 	while (tmp)

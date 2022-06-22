@@ -6,7 +6,7 @@
 /*   By: aasli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 10:16:35 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/22 10:55:21 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/22 12:41:17 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 static int	print_unset_error(char *s1, char *s2, char *s3)
 {
-	char *tmp;
+	char	*tmp;
 
 	tmp = ft_strdjoin(s1, s2, s3);
 	if (!tmp)
@@ -44,7 +44,7 @@ static int	proceed_unset(char **cmd, t_lenv **env)
 	{
 		if (is_bad_identifier(cmd[i][0]) == 1)
 			status = print_unset_error("Rovidshell: unset: '", cmd[i],
-						"': not a valid identifier\n");
+					"': not a valid identifier\n");
 		else if (check_env_var(env, cmd[i]) == 1)
 			unset_var_env(env, cmd[i], ft_strlen(cmd[i]));
 		i++;
@@ -62,7 +62,7 @@ int	ft_unset(char **cmd, t_lenv **env)
 		if (cmd[1][0] == '-')
 		{
 			print_unset_error("Rovidshell: unset: '", cmd[1],
-						"': options are not handled\n");
+				"': options are not handled\n");
 			return (2);
 		}
 		status = proceed_unset(cmd, env);
