@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:13:02 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/20 12:11:08 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/22 10:18:29 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ static char	*replace_expand(char *str, int n, char *rep, int inte)
 	while (str[++i])
 		n_str[i + j - (n + 1)] = str[i];
 	n_str[i + j - (n + 1)] = '\0';
+	if (inte)
+		free(rep);
 	return (n_str);
 }
 
