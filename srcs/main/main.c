@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/22 17:28:49 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/22 18:09:58 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	minishell(t_data *data)
 		if (empty_cmd(cmd) == 1)
 			continue ;
 		ft_loop_cmds(cmd, data);
-		ft_list_clear_cmd(cmd);
+		ft_list_clear_cmd(cmd, 1);
 		free(data->line);
 	}	
 }

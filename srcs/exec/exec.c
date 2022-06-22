@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:38:45 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/22 17:41:42 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/22 18:14:13 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,14 +106,14 @@ int	ft_fork(t_cmd *cmds, t_cmd *tmp, t_data *data)
 	reset_signals(data);
 	if (tmp->pid == -1)
 	{
-		ft_list_clear_cmd(cmds);
+		ft_list_clear_cmd(cmds, 1);
 		return (0);
 	}
 	if (tmp->pid == 0)
 	{
 		if (ft_prepare_child(tmp) == 0)
 		{
-			ft_list_clear_cmd(cmds);
+			ft_list_clear_cmd(cmds, 1);
 			return (0);
 		}
 		ft_exec_child(cmds, tmp, data);
@@ -134,7 +134,7 @@ void	ft_loop_cmds(t_cmd *cmds, t_data *data)
 		{
 			if (!ft_redir_pipe(tmp))
 			{
-				ft_list_clear_cmd(cmds);
+				ft_list_clear_cmd(cmds, 1);
 				return ;
 			}
 		}

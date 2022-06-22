@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 13:31:59 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/22 11:01:31 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/22 18:37:01 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 extern int	g_status;
 
-static void	write_in_file(char *line, t_lenv *lenv, int fd)
+static void	write_in_file(char *line, t_lenv *lenv, int fd, int expand)
 {
 	int		i;
 	int		j;
@@ -23,7 +23,7 @@ static void	write_in_file(char *line, t_lenv *lenv, int fd)
 	char	*new_line;
 
 	j = 0;
-	while (there_are_expand(&line[j]))
+	while (expand && there_are_expand(&line[j]))
 	{
 		inte = 0;
 		i = -1;
@@ -69,17 +69,32 @@ static int	check(char *line)
 	return (1);
 }
 
-int	make_heredoc(char *s, t_lenv *lenv)
+static void	check_quotes(char *s, int *expand)
+{
+	int	i;
+
+	i = -1;
+	while (s[++i])
+		if (s[i] == '\'' || s[i] == '"')
+			*expand = 0;
+}
+
+int	make_heredoc(char *str, t_lenv *lenv)
 {
 	int		fd;
 	int		fd2;
+	int		expand;
 	char	*line;
 	char	*file;
+	char	*s;
 
 	file = "/tmp/.tmp.heredoc";
 	fd = open(file, O_CREAT | O_RDWR | O_TRUNC, S_IRWXU);
 	line = NULL;
 	fd2 = dup(0);
+	expand = 1;
+	check_quotes(str, &expand);
+	s = check_and_supp(str, 0);
 	while (!line || ft_strcmp(line, s) != 0)
 	{
 		handle_signals_heredoc();
@@ -88,10 +103,11 @@ int	make_heredoc(char *s, t_lenv *lenv)
 			break ;
 		if (line && ft_strcmp(line, s) != 0)
 		{
-			write_in_file(line, lenv, fd);
+			write_in_file(line, lenv, fd, expand);
 			line = NULL;
 		}
 	}
+	free(s);
 	if (!end_check(fd, fd2, line))
 		return (-1);
 	return (open(file, O_RDWR, 0666));
