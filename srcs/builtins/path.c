@@ -16,7 +16,6 @@
 
 char	**ft_get_paths(t_lenv **env)
 {
-	char	*path;
 	char	*tmp;
 	char	**tmp2;
 	t_lenv	*tmp3;
@@ -36,9 +35,6 @@ char	**ft_get_paths(t_lenv **env)
 	}
 	if (tmp == NULL)
 		return (NULL);
-	path = ft_substr(tmp, 5, ft_strlen(tmp));
-	free(tmp);
-	tmp2 = ft_split(path, ':');
-	free(path);
+	tmp2 = ft_split(tmp, ':');
 	return (tmp2);
 }

@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:41:28 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/21 17:05:07 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/22 17:07:57 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	exit_in_error(char **cmd, t_data *data, t_cmd *cmds, int fork)
 		if (!tmp)
 			return (-1);
 		write (2, tmp, ft_strlen(tmp));
+		free (tmp);
 		free_all(data, cmds);
 		return (2);
 	}

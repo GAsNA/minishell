@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:38:45 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/22 15:39:01 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/22 17:41:42 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_redir_pipe(t_cmd *cmd)
 
 int	launch_builtin(t_cmd *cmd, t_data *data, t_cmd *cmds, int fork)
 {
-	int fd2 = dup(0);
+/*	int fd2 = dup(0);
 	int fd3 = dup(1);
 	
 	if (cmd->fd_in != -1)
@@ -42,7 +42,7 @@ int	launch_builtin(t_cmd *cmd, t_data *data, t_cmd *cmds, int fork)
 		dup2(cmd->fd_in, 0);
 		close(cmd->fd_in);
 	}
-	if (cmd->fd_out != -1)
+*/	if (cmd->fd_out != -1)
 	{
 		printf("redir out\n");
 		dup2(cmd->fd_out, 1);
@@ -65,17 +65,17 @@ int	launch_builtin(t_cmd *cmd, t_data *data, t_cmd *cmds, int fork)
 		g_status = ft_echo(cmd->cmd, &data->env);
 	if (cmd->next)
 		close(cmd->pipe_fd[0]);
-	if (!cmd->next && !cmd->prev)
+/*	if (!cmd->next && !cmd->prev)
 	{
 		dup2(fd2, 0);
-		close(fd2);
 		dup2(fd3, 1);
-		close(fd3);
 	}
-	if (cmd->fd_in != -1)
+*/	if (cmd->fd_in != -1)
 		close(cmd->fd_in);
 	if (cmd->fd_out != -1)
 		close(cmd->fd_out);
+//	close(fd3);
+//	close(fd2);
 	return (0);
 }
 

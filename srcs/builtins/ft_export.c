@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 12:37:38 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/22 14:09:55 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/22 17:36:47 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,6 @@ int	ft_export(char **cmd, t_data *data)
 					"': options are not handled\n"), 2);
 		while (cmd[i])
 		{	
-			if (is_bad_identifier(cmd[i][0]) == 1)
-				print_export_error("Rovidshell: export: '",
-					cmd[i], "': not a valid identifier\n");
 			make_export(data, cmd[i]);
 			i++;
 		}

@@ -6,7 +6,7 @@
 /*   By: aasli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 10:16:35 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/22 12:41:17 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/22 17:31:49 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	print_unset_error(char *s1, char *s2, char *s3)
 
 int	is_bad_identifier(char c)
 {
-	if (isalpha(c) || c == '_' || c == '#')
+	if (isalpha(c) || c == '_' || c == '#') // # ok if begin else not
 		return (0);
 	return (1);
 }
