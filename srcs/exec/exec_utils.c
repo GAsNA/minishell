@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 12:32:57 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/22 17:41:31 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/22 21:16:49 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ char	*try_access_path(char *cmd, char **paths, int i)
 	if (!path)
 		return (NULL);
 	free(tmp);
-	printf("%s\n", path);
 	if (access(path, X_OK) == 0)
 	{
 		free_split(paths);
@@ -51,7 +50,6 @@ char	*get_exec_path(char *cmd, t_data *data)
 		paths = ft_get_paths(&data->env);
 	if (!paths)
 		return (NULL);
-	printf("%s\n", paths[0]);
 	while (paths[i])
 	{
 		path = try_access_path(cmd, paths, i);
