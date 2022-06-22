@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:13:02 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/22 10:25:39 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/22 10:58:16 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static void	prepare_expand(char	**av, t_lenv *lenv)
 			free(*av);
 			*av = str;
 		}
-		j = i;
+		j = i - k - 1;
 		if (j >= (int)ft_strlen(*av) - 1)
 			break ;
 	}
