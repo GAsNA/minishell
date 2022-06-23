@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:38:45 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/22 21:54:48 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/23 10:18:57 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,15 @@ int	launch_builtin(t_cmd *cmd, t_data *data, t_cmd *cmds, int fork)
 	
 	if (cmd->fd_in != -1)
 	{
-		printf("redir in\n");
 		dup2(cmd->fd_in, 0);
 		close(cmd->fd_in);
 	}
-*/	if (cmd->fd_out != -1)
+	if (cmd->fd_out != -1)
 	{
-		printf("redir out\n");
 		dup2(cmd->fd_out, 1);
 		close(0);
 		close(cmd->fd_out);
-	}
+	}*/
 	if (ft_strcmp(cmd->cmd[0], "cd") == 0)
 		g_status = ft_cd(cmd->cmd, &data->env);
 	else if (ft_strcmp(cmd->cmd[0], "pwd") == 0)
@@ -73,7 +71,10 @@ int	launch_builtin(t_cmd *cmd, t_data *data, t_cmd *cmds, int fork)
 */	if (cmd->fd_in != -1)
 		close(cmd->fd_in);
 	if (cmd->fd_out != -1)
+	{
 		close(cmd->fd_out);
+	//	dup2(STDIN_FILENO, 0);
+	}
 //	close(fd3);
 //	close(fd2);
 	return (0);
@@ -138,7 +139,7 @@ void	ft_loop_cmds(t_cmd *cmds, t_data *data)
 				return ;
 			}
 		}
-		if (tmp->prev == NULL && tmp->next == NULL && is_builtin(tmp->cmd) == 1)
+		if (tmp->prev == NULL && tmp->next == NULL && no_fork_allowed(tmp->cmd) == 1)
 			launch_builtin(tmp, data, cmds, 0);
 		else
 			if (ft_fork(cmds, tmp, data) == 0)
