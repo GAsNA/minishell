@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:13:37 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/22 11:08:32 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/22 18:19:45 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ static char	**get_cmd_after_split(char **cmd)
 {
 	char	**new_cmd;
 
+	if (!cmd)
+		return (0);
 	new_cmd = malloc((get_size(cmd) + 1) * sizeof(char *));
 	if (!new_cmd)
 		return (0);
@@ -100,7 +102,7 @@ t_cmd	*last_splits(t_cmd *cmd)
 		i = -1;
 		tmp_char = get_cmd_after_split(cmd->cmd);
 		i = -1;
-		while (cmd->cmd[++i])
+		while (cmd->cmd && cmd->cmd[++i])
 			free(cmd->cmd[i]);
 		free(cmd->cmd);
 		cmd->cmd = tmp_char;

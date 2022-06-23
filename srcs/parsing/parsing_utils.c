@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:49:09 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/20 21:55:55 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/22 18:15:07 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	check_status(t_regroup *reg, t_cmd *cmd)
 	{
 		ft_list_clear_reg(reg, 1);
 		if (cmd)
-			ft_list_clear_cmd(cmd);
+			ft_list_clear_cmd(cmd, 0);
 		g_status = 130;
 		return (0);
 	}

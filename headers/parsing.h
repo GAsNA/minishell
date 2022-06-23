@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 16:15:15 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/22 11:02:30 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/22 18:57:11 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ t_regroup	*make_redir(t_regroup *reg, int *fd_in, int *fd_out,
 t_cmd		*last_splits(t_cmd *cmd);
 
 /* last_quotes.c */
+char		*check_and_supp(char *cmd, int can_free);
 t_cmd		*supp_useless_quotes(t_cmd *cmd);
 
 /* calcul_divide_cmd.c */
@@ -108,8 +109,11 @@ int			get_k_n(char *line, int *i, int *inte);
 /* heredoc.c */
 int			make_heredoc(char *s, t_lenv *lenv);
 
-/* heredoc_signals.c */
+/* heredoc_utils.c */
 void		handle_signals_heredoc(void);
+int			end_check(int fd, int fd2);
+int			check(char *line);
+void		check_quotes(char *s, int *expand);
 
 /* manage_lists_lexing.c */
 t_lexing	*ft_create_elem_lex(char letter, enum e_type type);
@@ -125,7 +129,7 @@ void		ft_list_clear_reg(t_regroup *begin_list, int clear_str);
 /* manage_lists_cmd.c */
 t_cmd		*ft_create_elem_cmd(char **av, int fd_in);
 void		ft_list_push_back_cmd(t_cmd **begin_list, char **av, int fd_in);
-void		ft_list_clear_cmd(t_cmd *begin_list);
+void		ft_list_clear_cmd(t_cmd *begin_list, int clear_av);
 
 /* manage_lists_lenv.c */
 t_lenv		*ft_create_elem_lenv(char *k, char *v);

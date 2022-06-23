@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 11:28:39 by rleseur           #+#    #+#             */
-/*   Updated: 2022/06/13 09:51:16 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/22 18:36:10 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	count(char *cmd)
 	return (count);
 }
 
-static char	*check_and_supp(char *cmd)
+char	*check_and_supp(char *cmd, int can_free)
 {
 	int		i;
 	int		j;
@@ -56,7 +56,8 @@ static char	*check_and_supp(char *cmd)
 			str[j++] = cmd[i];
 	}
 	str[j] = 0;
-	free(cmd);
+	if (can_free)
+		free(cmd);
 	return (str);
 }
 
@@ -72,7 +73,7 @@ t_cmd	*supp_useless_quotes(t_cmd *cmd)
 		{
 			i = -1;
 			while (cmd->cmd[++i])
-				cmd->cmd[i] = check_and_supp(cmd->cmd[i]);
+				cmd->cmd[i] = check_and_supp(cmd->cmd[i], 1);
 		}
 		cmd = cmd->next;
 	}
