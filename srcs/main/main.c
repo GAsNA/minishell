@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/23 10:44:53 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/23 11:01:08 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,9 @@ char	**get_c_nv(t_lenv **lenv)
 
 t_lenv	*get_min_env(t_data *data)
 {
-	t_lenv	*lbegin;
 	char	*tmp;
 	char	*tmp2;
 
-	lbegin = NULL;
 	tmp = ft_calloc(2049, sizeof(char));
 	if (!tmp)
 	{
