@@ -110,11 +110,8 @@ ${NAME}:		${OBJS}
 				@${CC} ${CFLAGS} -o ${NAME} ${OBJS} srcs/libft/libft.a -lreadline
 				@echo "\e[32m"Compilation success"\033[0m"
 
-test:			${NAME}
-				valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --trace-children=yes --track-fds=yes --suppressions=leak_suppress ./minishell			
-
-full:			${NAME}
-				valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --trace-children=yes --track-fds=yes --suppressions=leak_suppress --log-file=valgrind_ret.log  ./minishell			
+v:				${NAME}
+				valgrind --leak-check=full --show-leak-kinds=all --suppressions=leak_suppress ./minishell			
 
 clean:
 				@${RM} ${OBJ_DIR}
