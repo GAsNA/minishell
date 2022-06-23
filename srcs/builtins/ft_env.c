@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 12:10:30 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/22 21:58:58 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/23 10:43:35 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	ft_env(char **cmd, t_lenv **env, int hidden)
 	}
 	while (tmp)
 	{
-		if (hidden == 1 &&
-			ft_strcmp("PATH=", tmp->k) == 0)
+		if (hidden == 1
+			&& ft_strcmp("PATH=", tmp->k) == 0)
 		{
 			tmp = tmp->next;
 			continue ;

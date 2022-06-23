@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 08:44:48 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/23 10:31:28 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/06/23 10:44:53 by aasli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_lenv	*get_min_env(t_data *data)
 	ft_addback_lenv(data, ft_new_lenv(tmp));
 	free(tmp);
 	tmp = ft_strjoin("PATH=/usr/local/sbin/:",
-				"/usr/local/bin/:/usr/sbin/:/usr/bin/");
+			"/usr/local/bin/:/usr/sbin/:/usr/bin/");
 	ft_addback_lenv(data, ft_new_lenv(tmp));
 	free(tmp);
 	free(tmp2);
