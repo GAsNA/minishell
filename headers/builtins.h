@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 12:01:24 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/22 21:55:14 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/23 10:51:11 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <errno.h>
 # include <sys/types.h>
 # include <sys/wait.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 
 typedef struct s_cmd	t_cmd;
 

@@ -6,7 +6,7 @@
 /*   By: aasli <aasli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 12:40:37 by aasli             #+#    #+#             */
-/*   Updated: 2022/06/22 17:52:45 by aasli            ###   ########.fr       */
+/*   Updated: 2022/06/23 10:52:01 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,6 @@
 # include "garbage.h"
 # include "../srcs/libft/libft.h"
 
-/*enum ops
-{
-	PIPE,
-	REDI_IN,
-	REDI_OUT,
-	DREDI_IN,
-	DREDI_OUT
-};*/
-
 typedef struct s_data		t_data;
 typedef struct s_command	t_command;
 typedef struct s_lenv		t_lenv;
@@ -52,13 +43,6 @@ struct s_data
 	char	*hidden_path;
 };
 
-/*struct s_command
-{
-	char		**command;
-	enum ops	op;
-	t_command	*next;
-};*/
-
 struct s_lenv
 {
 	char		*k;
@@ -66,9 +50,8 @@ struct s_lenv
 	t_lenv		*next;
 };
 
-
 //	Main
-int	empty_cmd(t_cmd *cmd);
+int		empty_cmd(t_cmd *cmd);
 
 //	Env
 char	**get_c_nv(t_lenv **lenv);
@@ -98,7 +81,5 @@ int		launch_builtin(t_cmd *cmd, t_data *data, t_cmd *cmds, int fork);
 char	*try_access_path(char *cmd, char **paths, int i);
 char	*get_exec_path(char *cmd, t_data *data);
 int		is_builtin(char **cmd);
-
-
 
 #endif
